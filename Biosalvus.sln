@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biosalvus", "Biosalvus\Biosalvus.csproj", "{97AD78F8-15F8-4D63-BC41-182AD75C6C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biosalvus.Tests", "Biosalvus.Tests\Biosalvus.Tests.csproj", "{6A4B1DB3-E8C5-45DC-AA6B-D15A42E7850C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97AD78F8-15F8-4D63-BC41-182AD75C6C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AD78F8-15F8-4D63-BC41-182AD75C6C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AD78F8-15F8-4D63-BC41-182AD75C6C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AD78F8-15F8-4D63-BC41-182AD75C6C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A4B1DB3-E8C5-45DC-AA6B-D15A42E7850C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A4B1DB3-E8C5-45DC-AA6B-D15A42E7850C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A4B1DB3-E8C5-45DC-AA6B-D15A42E7850C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A4B1DB3-E8C5-45DC-AA6B-D15A42E7850C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E45EA129-A0CE-4C4C-BEE4-55A8F14EB3D3}
+	EndGlobalSection
+EndGlobal
