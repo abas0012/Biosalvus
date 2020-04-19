@@ -1,0 +1,281 @@
+﻿@model IEnumerable<Biosalvus.Models.CatRecord>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .filter-group {
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        position: fixed;
+        top: 110px;
+        right: 300px;
+        z-index: 1;
+        border-radius: 3px;
+        width: 150px;
+        color: #fff;
+    }
+
+        .filter-group input[type='checkbox']:first-child + label {
+            border-radius: 3px 3px 0 0;
+        }
+
+        .filter-group label:last-child {
+            border-radius: 0 0 3px 3px;
+            border: none;
+        }
+
+        .filter-group input[type='checkbox'] {
+            display: none;
+        }
+
+            .filter-group input[type='checkbox'] + label {
+                background-color: #3386c0;
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            }
+
+            .filter-group input[type='checkbox'] + label {
+                background-color: #3386c0;
+                text-transform: capitalize;
+            }
+
+                .filter-group input[type='checkbox'] + label:hover,
+                .filter-group input[type='checkbox']:checked + label {
+                    background-color: #4ea0da;
+                }
+
+                    .filter-group input[type='checkbox']:checked + label:before {
+                        content: '✔';
+                        margin-right: 5px;
+                    }
+</style>
+<h2>Index</h2>
+<div>
+    <div id="map" style="height:450px; width:740px"></div> <!--This is the Map-->
+    <nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" style="display:none">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ScientificName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxonRank)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.VernacularName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Kingdom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phylum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Family)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Species)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subspecies)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CoordinatePrecision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoordinateUncertaintyInMetres)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocalGovernmentAreas2011)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IMCRA4Regions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IBRA7Regions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumElevationInMeters)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximumElevationInMeters)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumDepthInMeters)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximumDepthInMeters)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IndividualCount)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Collector)
+        </th>
+        <th>*@
+            @*@Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisOfRecord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Occurrence_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="coordinates">
+            @*<td class="sciname">
+                @Html.DisplayFor(modelItem => item.ScientificName)
+            </td>
+            <td class="taxonrank">
+                @Html.DisplayFor(modelItem => item.TaxonRank)
+            </td>*@
+            <td class="name">
+                @Html.DisplayFor(modelItem => item.VernacularName)
+            </td>
+            @*<td class="kingdom">
+                @Html.DisplayFor(modelItem => item.Kingdom)
+            </td>
+            <td class="phylum">
+                @Html.DisplayFor(modelItem => item.Phylum)
+            </td>
+            <td class="class">
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td class="order">
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+            <td class="family">
+                @Html.DisplayFor(modelItem => item.Family)
+            </td>
+            <td class="genus">
+                @Html.DisplayFor(modelItem => item.Genus)
+            </td>
+            <td class="species">
+                @Html.DisplayFor(modelItem => item.Species)
+            </td>
+            <td class="subspecies">
+                @Html.DisplayFor(modelItem => item.Subspecies)
+            </td>*@
+            <td class="latitude">
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td class="longitude">
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            @*<td class="coordinateprecision">
+                @Html.DisplayFor(modelItem => item.CoordinatePrecision)
+            </td>
+            <td class="coordinateuncertainty">
+                @Html.DisplayFor(modelItem => item.CoordinateUncertaintyInMetres)
+            </td>
+            <td class="country">
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>*@
+            <td class="state">
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td class="lga">
+                @Html.DisplayFor(modelItem => item.LocalGovernmentAreas2011)
+            </td>
+            @*<td class="imcra4regions">
+                @Html.DisplayFor(modelItem => item.IMCRA4Regions)
+            </td>
+            <td class="ibra7regions">
+                @Html.DisplayFor(modelItem => item.IBRA7Regions)
+            </td>
+            <td class="mineleveation">
+                @Html.DisplayFor(modelItem => item.MinimumElevationInMeters)
+            </td>
+            <td class="maxelevation">
+                @Html.DisplayFor(modelItem => item.MaximumElevationInMeters)
+            </td>
+            <td class="mindepth">
+                @Html.DisplayFor(modelItem => item.MinimumDepthInMeters)
+            </td>
+            <td class="maxdepth">
+                @Html.DisplayFor(modelItem => item.MaximumDepthInMeters)
+            </td>*@
+            <td class="individualcount">
+                @Html.DisplayFor(modelItem => item.IndividualCount)
+            </td>
+            @*<td class="collector">
+                @Html.DisplayFor(modelItem => item.Collector)
+            </td>*@
+            @*<td class="year">
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td class="month">
+                @Html.DisplayFor(modelItem => item.Month)
+            </td>
+            <td class="day">
+                @Html.DisplayFor(modelItem => item.Day)
+            </td>
+            <td class="eventdate">
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+            <td class="basisofrecord">
+                @Html.DisplayFor(modelItem => item.BasisOfRecord)
+            </td>
+            <td class="occurencestatus">
+                @Html.DisplayFor(modelItem => item.Occurrence_status)
+            </td>
+            <td class="sex">
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+    @section Scripts {
+        @Scripts.Render("~/bundles/mapbox")
+    }
+
+</table>

@@ -22,6 +22,10 @@ namespace Biosalvus
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            // added catrecords.js to the bundle called mapbox. Filter by Tickbox
+            bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+            "~/Scripts/catrecords.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
