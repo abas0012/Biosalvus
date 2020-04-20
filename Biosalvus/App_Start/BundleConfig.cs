@@ -26,6 +26,10 @@ namespace Biosalvus
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
             "~/Scripts/catrecords.js"));
 
+            // added cats-heatmap.js to the bundle called mapbox. Heatmap
+            bundles.Add(new ScriptBundle("~/bundles/catheatmap").Include(
+            "~/Scripts/cats-heatmap.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

@@ -1,0 +1,219 @@
+﻿@model Biosalvus.Models.AvesEndangered
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AvesEndangered</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.individualCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.individualCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stateProvince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stateProvince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.verbatimLocality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.verbatimLocality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scientificName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scientificName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scientificName1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scientificName1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acceptedNameUsage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acceptedNameUsage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kingdom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kingdom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phylum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phylum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.family)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.family)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taxonRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taxonRank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vernacularName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vernacularName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.species)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.species)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.measurementID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.measurementID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatFood)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatFood)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -55,8 +55,8 @@
 </style>
 <h2>Index</h2>
 <div>
-    <div id="map" style="height:450px; width:740px"></div> <!--This is the Map-->
-    <nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->
+    <div id="map" style="height:450px; width:760px;"></div> <!--This is the Map-->
+    @*<nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->*@
 </div>
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -275,7 +275,7 @@
         </tr>
     }
     @section Scripts {
-        @Scripts.Render("~/bundles/mapbox")
+        @Scripts.Render("~/bundles/catheatmap")
     }
 
 </table>

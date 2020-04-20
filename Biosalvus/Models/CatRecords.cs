@@ -24,5 +24,9 @@ namespace Biosalvus.Models
                 .Property(e => e.Longitude)
                 .HasPrecision(11, 8);
         }
+
+        public System.Data.Entity.DbSet<Biosalvus.Models.AvesEndangered> AvesEndangereds { get; set; }
+
+        public System.Data.Entity.DbSet<Biosalvus.Models.SpeciesAustralia> SpeciesAustralias { get; set; }
     }
 }

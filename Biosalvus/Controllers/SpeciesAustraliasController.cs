@@ -10,107 +10,107 @@ using Biosalvus.Models;
 
 namespace Biosalvus.Controllers
 {
-    public class CatRecordsController : Controller
+    public class SpeciesAustraliasController : Controller
     {
         private CatRecords db = new CatRecords();
 
-        // GET: CatRecords
+        // GET: SpeciesAustralias
         public ActionResult Index()
         {
-            return View(db.CatRecordsdb.ToList());
+            return View(db.SpeciesAustralias.ToList());
         }
 
-        // GET: CatRecords/Details/5
+        // GET: SpeciesAustralias/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            SpeciesAustralia speciesAustralia = db.SpeciesAustralias.Find(id);
+            if (speciesAustralia == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(speciesAustralia);
         }
 
-        // GET: CatRecords/Create
+        // GET: SpeciesAustralias/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CatRecords/Create
+        // POST: SpeciesAustralias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ScientificName,TaxonRank,VernacularName,Kingdom,Phylum,Class,Order,Family,Genus,Species,Subspecies,Latitude,Longitude,CoordinatePrecision,CoordinateUncertaintyInMetres,Country,State,LocalGovernmentAreas2011,IMCRA4Regions,IBRA7Regions,MinimumElevationInMeters,MaximumElevationInMeters,MinimumDepthInMeters,MaximumDepthInMeters,IndividualCount,Collector,Year,Month,Day,EventDate,BasisOfRecord,Occurrence_status,Sex")] CatRecord catRecord)
+        public ActionResult Create([Bind(Include = "Id,Scientific_Name,Common_Name,Threatened_status,Kingdom,Phylum,Class,Family,Genus,Species,Grouping,Present_,StateCode,Country,StateCountry,State_Name")] SpeciesAustralia speciesAustralia)
         {
             if (ModelState.IsValid)
             {
-                db.CatRecordsdb.Add(catRecord);
+                db.SpeciesAustralias.Add(speciesAustralia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(catRecord);
+            return View(speciesAustralia);
         }
 
-        // GET: CatRecords/Edit/5
+        // GET: SpeciesAustralias/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            SpeciesAustralia speciesAustralia = db.SpeciesAustralias.Find(id);
+            if (speciesAustralia == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(speciesAustralia);
         }
 
-        // POST: CatRecords/Edit/5
+        // POST: SpeciesAustralias/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ScientificName,TaxonRank,VernacularName,Kingdom,Phylum,Class,Order,Family,Genus,Species,Subspecies,Latitude,Longitude,CoordinatePrecision,CoordinateUncertaintyInMetres,Country,State,LocalGovernmentAreas2011,IMCRA4Regions,IBRA7Regions,MinimumElevationInMeters,MaximumElevationInMeters,MinimumDepthInMeters,MaximumDepthInMeters,IndividualCount,Collector,Year,Month,Day,EventDate,BasisOfRecord,Occurrence_status,Sex")] CatRecord catRecord)
+        public ActionResult Edit([Bind(Include = "Id,Scientific_Name,Common_Name,Threatened_status,Kingdom,Phylum,Class,Family,Genus,Species,Grouping,Present_,StateCode,Country,StateCountry,State_Name")] SpeciesAustralia speciesAustralia)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(catRecord).State = EntityState.Modified;
+                db.Entry(speciesAustralia).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(catRecord);
+            return View(speciesAustralia);
         }
 
-        // GET: CatRecords/Delete/5
+        // GET: SpeciesAustralias/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            SpeciesAustralia speciesAustralia = db.SpeciesAustralias.Find(id);
+            if (speciesAustralia == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(speciesAustralia);
         }
 
-        // POST: CatRecords/Delete/5
+        // POST: SpeciesAustralias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            db.CatRecordsdb.Remove(catRecord);
+            SpeciesAustralia speciesAustralia = db.SpeciesAustralias.Find(id);
+            db.SpeciesAustralias.Remove(speciesAustralia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -123,7 +123,5 @@ namespace Biosalvus.Controllers
             }
             base.Dispose(disposing);
         }
-
-
     }
 }

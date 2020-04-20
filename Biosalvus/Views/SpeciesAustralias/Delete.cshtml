@@ -1,0 +1,145 @@
+﻿@model Biosalvus.Models.SpeciesAustralia
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SpeciesAustralia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Scientific_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Scientific_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Common_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Common_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Threatened_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Threatened_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kingdom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kingdom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phylum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phylum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Family)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Family)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Species)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Species)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grouping)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grouping)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Present_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Present_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

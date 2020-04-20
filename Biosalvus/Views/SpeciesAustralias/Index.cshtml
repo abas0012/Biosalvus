@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Biosalvus.Models.SpeciesAustralia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Scientific_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Common_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Threatened_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kingdom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phylum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Family)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Species)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grouping)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Present_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scientific_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Common_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Threatened_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kingdom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phylum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Family)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Species)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grouping)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Present_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

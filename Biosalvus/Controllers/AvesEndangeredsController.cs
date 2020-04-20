@@ -10,107 +10,107 @@ using Biosalvus.Models;
 
 namespace Biosalvus.Controllers
 {
-    public class CatRecordsController : Controller
+    public class AvesEndangeredsController : Controller
     {
         private CatRecords db = new CatRecords();
 
-        // GET: CatRecords
+        // GET: AvesEndangereds
         public ActionResult Index()
         {
-            return View(db.CatRecordsdb.ToList());
+            return View(db.AvesEndangereds.ToList());
         }
 
-        // GET: CatRecords/Details/5
+        // GET: AvesEndangereds/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            AvesEndangered avesEndangered = db.AvesEndangereds.Find(id);
+            if (avesEndangered == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(avesEndangered);
         }
 
-        // GET: CatRecords/Create
+        // GET: AvesEndangereds/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CatRecords/Create
+        // POST: AvesEndangereds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ScientificName,TaxonRank,VernacularName,Kingdom,Phylum,Class,Order,Family,Genus,Species,Subspecies,Latitude,Longitude,CoordinatePrecision,CoordinateUncertaintyInMetres,Country,State,LocalGovernmentAreas2011,IMCRA4Regions,IBRA7Regions,MinimumElevationInMeters,MaximumElevationInMeters,MinimumDepthInMeters,MaximumDepthInMeters,IndividualCount,Collector,Year,Month,Day,EventDate,BasisOfRecord,Occurrence_status,Sex")] CatRecord catRecord)
+        public ActionResult Create([Bind(Include = "ID,individualCount,sex,eventDate,eventTime,country,countryCode,stateProvince,verbatimLocality,Latitude,Longitude,scientificName,scientificName1,acceptedNameUsage,kingdom,phylum,_class,order,family,genus,taxonRank,vernacularName,species,measurementID,Status,CatFood")] AvesEndangered avesEndangered)
         {
             if (ModelState.IsValid)
             {
-                db.CatRecordsdb.Add(catRecord);
+                db.AvesEndangereds.Add(avesEndangered);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(catRecord);
+            return View(avesEndangered);
         }
 
-        // GET: CatRecords/Edit/5
+        // GET: AvesEndangereds/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            AvesEndangered avesEndangered = db.AvesEndangereds.Find(id);
+            if (avesEndangered == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(avesEndangered);
         }
 
-        // POST: CatRecords/Edit/5
+        // POST: AvesEndangereds/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ScientificName,TaxonRank,VernacularName,Kingdom,Phylum,Class,Order,Family,Genus,Species,Subspecies,Latitude,Longitude,CoordinatePrecision,CoordinateUncertaintyInMetres,Country,State,LocalGovernmentAreas2011,IMCRA4Regions,IBRA7Regions,MinimumElevationInMeters,MaximumElevationInMeters,MinimumDepthInMeters,MaximumDepthInMeters,IndividualCount,Collector,Year,Month,Day,EventDate,BasisOfRecord,Occurrence_status,Sex")] CatRecord catRecord)
+        public ActionResult Edit([Bind(Include = "ID,individualCount,sex,eventDate,eventTime,country,countryCode,stateProvince,verbatimLocality,Latitude,Longitude,scientificName,scientificName1,acceptedNameUsage,kingdom,phylum,_class,order,family,genus,taxonRank,vernacularName,species,measurementID,Status,CatFood")] AvesEndangered avesEndangered)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(catRecord).State = EntityState.Modified;
+                db.Entry(avesEndangered).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(catRecord);
+            return View(avesEndangered);
         }
 
-        // GET: CatRecords/Delete/5
+        // GET: AvesEndangereds/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            if (catRecord == null)
+            AvesEndangered avesEndangered = db.AvesEndangereds.Find(id);
+            if (avesEndangered == null)
             {
                 return HttpNotFound();
             }
-            return View(catRecord);
+            return View(avesEndangered);
         }
 
-        // POST: CatRecords/Delete/5
+        // POST: AvesEndangereds/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CatRecord catRecord = db.CatRecordsdb.Find(id);
-            db.CatRecordsdb.Remove(catRecord);
+            AvesEndangered avesEndangered = db.AvesEndangereds.Find(id);
+            db.AvesEndangereds.Remove(avesEndangered);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -123,7 +123,5 @@ namespace Biosalvus.Controllers
             }
             base.Dispose(disposing);
         }
-
-
     }
 }
