@@ -15,7 +15,7 @@ namespace Biosalvus.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Better manage Important Species for our Environment.";
 
             return View();
         }
