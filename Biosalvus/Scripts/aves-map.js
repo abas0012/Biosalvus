@@ -112,8 +112,8 @@ var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 11,
-    center: [aves[0].aveslongitude, aves[0].aveslatitude]
+    zoom: 4,
+    center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
     // Add a GeoJSON source containing place coordinates and information for Aves.
