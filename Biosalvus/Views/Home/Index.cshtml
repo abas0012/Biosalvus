@@ -5,7 +5,10 @@
 <div class="jumbotron">
     <h1>Biosalvus</h1>
     <p class="lead">Saving Australian Biodiversity</p>
-    <p>Seamless Dashboard made for professionals to tackle threats for Imporant Fauna Species in Australia</p>
+    <p>
+        BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing. Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
+        With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
+    </p>
     @*<p class="btn btn-primary btn-lg">@Html.ActionLink("About Us", "About", "Home")</p>*@
     <p>@Html.ActionLink("About Us", "About", "Home")</p>
 </div>
@@ -17,18 +20,18 @@
             Understand what future has in plan and how to prevent them.
         </p>
         <p>Learn More</p>
-        <p>@*<a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>*@</p>
+        <p>@Html.ActionLink("Learn More", "ClimateChange", "Home")</p>
     </div>
     <div class="col-md-4" style="background-color: #98ad84;height: 180px;">
         <h2>Bushfire</h2>
         <p>In December 2019, Australia Burns. Find out more!</p>
         <p>Learn More</p>
-        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+        <p>@Html.ActionLink("Learn More", "Bushfire", "Home")</p>
     </div>
     <div class="col-md-4" style="background: #a5e551;height: 180px;">
         <h2>Cats</h2>
         <p>Cats hunt Billions of Australian Fauna pushing them to extinction. What we can do to help!</p>
-        <p>@Html.ActionLink("Learn More", "Index", "CatRecords")</p>
+        <p>@Html.ActionLink("Learn More", "Cats", "Home")</p>
     </div>
 </div>
 <div>

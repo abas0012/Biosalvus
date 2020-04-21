@@ -134,7 +134,7 @@ map.on('load', function () {
             'id': 'catdensity-heat',
             'type': 'heatmap',
             'source': 'catsdatasource',
-            'maxzoom': 9,
+            'maxzoom': 20,
             'paint': {
                 // Increase the heatmap weight based on frequency and property individualcount
                 'heatmap-weight': [
@@ -166,16 +166,26 @@ map.on('load', function () {
                     ['heatmap-density'],
                     0,
                     'rgba(33,102,172,0)',
+                    0.1,
+                    'rgba(103,169,207,1)',
                     0.2,
-                    'rgb(103,169,207)',
+                    'rgba(209,229,240,1)',
+                    0.3,
+                    'rgba(153,255,148,1)',
                     0.4,
-                    'rgb(209,229,240)',
+                    'rgba(87,255,82,1)',
+                    0.5,
+                    'rgba(255,255,183,1)',
                     0.6,
-                    'rgb(253,219,199)',
+                    'rgba(255,255,177,1)',
+                    0.7,
+                    'rgba(250,252,84,1)',
                     0.8,
-                    'rgb(239,138,98)',
+                    'rgba(253,219,199,1)',
+                    0.9,
+                    'rgba(239,138,98,1)',
                     1,
-                    'rgb(178,24,43)'
+                    'rgba(178,24,43,1)'
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
@@ -183,7 +193,7 @@ map.on('load', function () {
                     ['linear'],
                     ['zoom'],
                     0,
-                    2,
+                    1,
                     9,
                     20
                 ],
@@ -192,9 +202,9 @@ map.on('load', function () {
                     'interpolate',
                     ['linear'],
                     ['zoom'],
-                    7,
+                    10,
                     1,
-                    9,
+                    20,
                     0
                 ]
             }
@@ -207,36 +217,15 @@ map.on('load', function () {
             'id': 'catdensity-point',
             'type': 'circle',
             'source': 'catsdatasource',
-            'minzoom': 7,
+            'minzoom': 15,
             'paint': {
                 // Size circle radius by individualcount and zoom level
-                'circle-radius': [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    7,
-                    ['interpolate', ['linear'], ['get', 'catindividualcount'], 1, 1, 6, 4],
-                    16,
-                    ['interpolate', ['linear'], ['get', 'catindividualcount'], 1, 5, 6, 50]
-                ],
+                'circle-radius': {
+                    'base': 3,
+                    'stops': [[12, 2], [22, 180]]
+                },
                 // Color circle by individualcount
-                'circle-color': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'catindividualcount'],
-                    1,
-                    'rgb(103,169,207)',
-                    2,
-                    'rgb(209,229,240)',
-                    3,
-                    'rgb(253,219,199)',
-                    4,
-                    'rgb(239,138,98)',
-                    5,
-                    'rgb(178,24,43)',
-                    6,
-                    'rgb(178,24,43)'
-                ],
+                'circle-color': 'rgba(178,24,43,1)', //Max Zoom Colour
                 'circle-stroke-color': 'white',
                 'circle-stroke-width': 1,
                 // Transition from heatmap to circle layer by zoom level
@@ -244,9 +233,9 @@ map.on('load', function () {
                     'interpolate',
                     ['linear'],
                     ['zoom'],
-                    7,
+                    10,
                     0,
-                    8,
+                    18,
                     1
                 ]
             }
@@ -267,7 +256,7 @@ map.on('load', function () {
                 'source': 'avesdatasource',
                 'paint': {
                     'circle-radius': {
-                        'base': 1.75,
+                        'base': 4,
                         'stops': [[12, 2], [22, 180]]
                     },
                     'circle-color': [
@@ -281,7 +270,7 @@ map.on('load', function () {
                         '#8b9133', //Light Moss Green
                         'Endangered',
                         '#e6e345', //Mustard
-                        /*other*/'rgba(38,255,241)',
+                        /*other*/'rgba(55,148,179,1)',
                     ]
                 },
                 'layout': {

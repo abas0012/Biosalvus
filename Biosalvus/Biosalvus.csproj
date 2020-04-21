@@ -242,6 +242,9 @@
     <Content Include="Views\SpeciesAustralias\Details.cshtml" />
     <Content Include="Views\SpeciesAustralias\Edit.cshtml" />
     <Content Include="Views\SpeciesAustralias\Index.cshtml" />
+    <Content Include="Views\Home\ClimateChange.cshtml" />
+    <Content Include="Views\Home\Bushfire.cshtml" />
+    <Content Include="Views\Home\Cats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

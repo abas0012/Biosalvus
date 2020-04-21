@@ -26,5 +26,20 @@ namespace Biosalvus.Controllers
 
             return View();
         }
+
+        public ActionResult ClimateChange()
+        {
+            return View();
+        }
+
+        public ActionResult Bushfire()
+        {
+            return View();
+        }
+
+        public ActionResult Cats()
+        {
+            return View();
+        }
     }
 }
