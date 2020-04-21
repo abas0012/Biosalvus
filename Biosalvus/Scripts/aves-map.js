@@ -1,87 +1,146 @@
 ﻿/**
-* This is a JavaScript to call MapBox API to load the maps with heatmap layers
+* This is a simple JavaScript to call MapBox API to load Aves Endangered Points.
+* Filter Function 1: based on Status; Endangered, Vulnerable etc. 
+* Filter Function 2: after Filter 1 drill-down to aves belonging to that group. - Optional
 * I have set the default configuration to enable the geocoder and the navigation control.
 * https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
-*
 * 
-* HeatMaps
+*
+* Filter by Text Input 
 * @author Adhi Baskoro <abas0012@student.monash.edu>
-* Date: 20/04/2020
+* Date: 21/04/2020
 */
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
+var aves = [];
 var cats = [];
 // The first step is obtain all the latitude and longitude from the HTML
-// jQuery selector for cats
-$(".coordinates").each(function () {
-    var name = $(".name", this).text().trim();
-    var longitude = $(".longitude", this).text().trim();
-    var latitude = $(".latitude", this).text().trim();
-    var state = $(".state", this).text().trim(); individualcount
-    var individualcount = $(".individualcount", this).text().trim();
+// jQuery selector for Aves Endangered
+$(".avescoordinates").each(function () {
+    var avesname = $(".avesname", this).text().trim();
+    var aveslongitude = $(".aveslongitude", this).text().trim();
+    var aveslatitude = $(".aveslatitude", this).text().trim();
+    var avesstatus = $(".avesstatus", this).text().trim();
+    var avesstate = $(".avesstate", this).text().trim();
+    var catfood = $(".catfood", this).text().trim();
     // Create a point data structure to hold the values.
     var point = {
-        "name": name,
-        "latitude": latitude,
-        "longitude": longitude,
-        "state": state,
-        "individualcount": individualcount
+        "avesname": avesname,
+        "aveslatitude": aveslatitude,
+        "aveslongitude": aveslongitude,
+        "avesstatus": avesstatus,
+        "avesstate": avesstate,
+        "catfood": catfood
+    };
+    // Push them all into an array.
+    aves.push(point);
+});
+//data from points
+var avesdata = [];
+for (i = 0; i < aves.length; i++) {
+    var feature = {
+        "type": "Feature",
+        "properties": {
+            "avesname": aves[i].avesname,
+            "avesstatus": aves[i].avesstatus,
+            "avesstate": aves[i].avesstate,
+            "catfood": aves[i].catfood
+            //"icon": "circle-15" //Point Type and Colour variations
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [aves[i].aveslongitude, aves[i].aveslatitude]
+        }
+    };
+    avesdata.push(feature)
+}
+
+//finaldata
+var avesfinaldata = {
+    "type": "FeatureCollection",
+    "features": avesdata
+}
+
+
+// jQuery selector for cats
+$(".catcoordinates").each(function () {
+    var catname = $(".catname", this).text().trim();
+    var catlongitude = $(".catlongitude", this).text().trim();
+    var catlatitude = $(".catlatitude", this).text().trim();
+    var catstate = $(".catstate", this).text().trim();
+    var catindividualcount = $(".catindividualcount", this).text().trim();
+    // Create a point data structure to hold the values.
+    var point = {
+        "catname": catname,
+        "catlatitude": catlatitude,
+        "catlongitude": catlongitude,
+        "catstate": catstate,
+        "catindividualcount": catindividualcount
     };
     // Push them all into an array.
     cats.push(point);
 });
 //data from points
-var catdata = [];
+var catsdata = [];
 for (i = 0; i < cats.length; i++) {
     var feature = {
         "type": "Feature",
         "properties": {
-            "name": cats[i].name,
-            "state": cats[i].state,
-            "individualcount": cats[i].individualcount,
-            "icon": "circle-15"
+            "catname": cats[i].catname,
+            "catstate": cats[i].catstate,
+            "catindividualcount": cats[i].catindividualcount,
+            //"icon": "circle-15"
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [cats[i].longitude, cats[i].latitude]
+            "coordinates": [cats[i].catlongitude, cats[i].catlatitude]
         }
     };
-    data.push(feature)
+    catsdata.push(feature)
 }
 
 //finaldata
-var catfinaldata = {
+var catsfinaldata = {
     "type": "FeatureCollection",
-    "features": catdata
+    "features": catsdata
 }
+
+
+
 
 mapboxgl.accessToken = TOKEN;
 var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 4,
-    center: [131.0369, -25.3444] //Uluru Longitude (Center of Australia)
+    zoom: 11,
+    center: [aves[0].aveslongitude, aves[0].aveslatitude]
 });
-
 map.on('load', function () {
-    // Add a GeoJSON source containing place coordinates and information.
-    map.addSource('datasource', {
+    // Add a GeoJSON source containing place coordinates and information for Aves.
+    map.addSource('avesdatasource', {
         'type': 'geojson',
-        'data': finaldata
+        'data': avesfinaldata
     });
 
+    // Add a GeoJSON source containing place coordinates and information for Cats.
+    map.addSource('catsdatasource', {
+        'type': 'geojson',
+        'data': catsfinaldata
+    });
+
+    //HEATMAP OF CATS
     map.addLayer(
         {
             'id': 'catdensity-heat',
             'type': 'heatmap',
-            'source': 'datasource',
+            'source': 'catsdatasource',
             'maxzoom': 9,
             'paint': {
                 // Increase the heatmap weight based on frequency and property individualcount
                 'heatmap-weight': [
                     'interpolate',
                     ['linear'],
-                    ['get', 'individualcount'],
+                    ['get', 'catindividualcount'],
                     0,
                     0,
                     6,
@@ -147,7 +206,7 @@ map.on('load', function () {
         {
             'id': 'catdensity-point',
             'type': 'circle',
-            'source': 'datasource',
+            'source': 'catsdatasource',
             'minzoom': 7,
             'paint': {
                 // Size circle radius by individualcount and zoom level
@@ -156,15 +215,15 @@ map.on('load', function () {
                     ['linear'],
                     ['zoom'],
                     7,
-                    ['interpolate', ['linear'], ['get', 'individualcount'], 1, 1, 6, 4],
+                    ['interpolate', ['linear'], ['get', 'catindividualcount'], 1, 1, 6, 4],
                     16,
-                    ['interpolate', ['linear'], ['get', 'individualcount'], 1, 5, 6, 50]
+                    ['interpolate', ['linear'], ['get', 'catindividualcount'], 1, 5, 6, 50]
                 ],
                 // Color circle by individualcount
                 'circle-color': [
                     'interpolate',
                     ['linear'],
-                    ['get', 'individualcount'],
+                    ['get', 'catindividualcount'],
                     1,
                     'rgb(103,169,207)',
                     2,
@@ -194,6 +253,64 @@ map.on('load', function () {
         },
     );
 
+
+    // ADD LAYER SHOWING AVES WITH FILTER FUNCTION
+    avesfinaldata.features.forEach(function (feature) {
+        var avesstatus = feature.properties['avesstatus'];
+        var layerID = 'poi-' + avesstatus;
+
+        // Add a layer for this avesstatus type if it hasn't been added already.
+        if (!map.getLayer(layerID)) {
+            map.addLayer({
+                'id': layerID,
+                'type': 'circle',
+                'source': 'avesdatasource',
+                'paint': {
+                    'circle-radius': {
+                        'base': 1.75,
+                        'stops': [[12, 2], [22, 180]]
+                    },
+                    'circle-color': [
+                        'match',
+                        ['get', 'avesstatus'],
+                        'Extinct',
+                        '#380b0b', //Dark Maroon
+                        'Critically Endangered',
+                        '#754d24', //Brown
+                        'Vulnerable',
+                        '#8b9133', //Light Moss Green
+                        'Endangered',
+                        '#e6e345', //Mustard
+                        /*other*/'rgba(38,255,241)',
+                    ]
+                },
+                'layout': {
+                    'visibility': 'none',
+                },
+                'filter': ['==', 'avesstatus', avesstatus]
+            });
+            // Add checkbox and label elements for the layer.
+            var input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = layerID;
+            input.checked = false; //set to untick on initial load
+            filterGroup.appendChild(input);
+
+            var label = document.createElement('label');
+            label.setAttribute('for', layerID);
+            label.textContent = avesstatus; //Label names
+            filterGroup.appendChild(label);
+
+            // When the checkbox changes, update the visibility of the layer.
+            input.addEventListener('change', function (e) {
+                map.setLayoutProperty(
+                    layerID,
+                    'visibility',
+                    e.target.checked ? 'visible' : 'none'
+                );
+            });
+        }
+    });
 });
 
 map.addControl(new MapboxGeocoder({
@@ -234,4 +351,3 @@ map.addControl(
         trackUserLocation: true
     })
 );
-

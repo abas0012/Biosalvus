@@ -1,178 +1,136 @@
-﻿@model IEnumerable<Biosalvus.Models.AvesEndangered>
-
+﻿@*@model IEnumerable<Biosalvus.Models.AvesEndangered>*@
+@model Biosalvus.Models.EndageredMap
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .filter-group {
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        position: fixed;
+        top: 110px;
+        right: 300px;
+        z-index: 1;
+        border-radius: 3px;
+        width: 150px;
+        color: #fff;
+    }
 
-<h2>Index</h2>
+        .filter-group input[type='checkbox']:first-child + label {
+            border-radius: 3px 3px 0 0;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.individualCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.eventDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.eventTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.countryCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.stateProvince)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.verbatimLocality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scientificName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scientificName1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.acceptedNameUsage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.kingdom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phylum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model._class)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.order)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.family)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.genus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.taxonRank)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vernacularName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.species)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.measurementID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CatFood)
-        </th>
-        <th></th>
-    </tr>
+        .filter-group label:last-child {
+            border-radius: 0 0 3px 3px;
+            border: none;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.individualCount)
+        .filter-group input[type='checkbox'] {
+            display: none;
+        }
+
+            .filter-group input[type='checkbox'] + label {
+                background-color: #3386c0;
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            }
+
+            .filter-group input[type='checkbox'] + label {
+                background-color: #3386c0;
+                text-transform: capitalize;
+            }
+
+                .filter-group input[type='checkbox'] + label:hover,
+                .filter-group input[type='checkbox']:checked + label {
+                    background-color: #4ea0da;
+                }
+
+                    .filter-group input[type='checkbox']:checked + label:before {
+                        content: '✔';
+                        margin-right: 5px;
+                    }
+</style>
+<h2>AvesEndangered Map</h2>
+<div>
+    <div id="map" style="height:450px; width:760px;"></div> <!--This is the Map-->
+    <nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->
+</div>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+@* Aves Endangered Table *@
+<table class="table" style="display:none">
+    @foreach (var item in Model.aveslist)
+    {
+        <tr class="avescoordinates">
+            <td class="avesindividualcount">
+                @Html.DisplayFor(modelItem => item.individualCount)
+            </td>
+            <td class="avessex">
+                @Html.DisplayFor(modelItem => item.sex)
+            </td>
+            <td class="aveseventdate">
+                @Html.DisplayFor(modelItem => item.eventDate)
+            </td>
+            <td class="aveseventtime">
+                @Html.DisplayFor(modelItem => item.eventTime)
+            </td>
+            <td class="avesstate">
+                @Html.DisplayFor(modelItem => item.stateProvince)
+            </td>
+            <td class="aveslatitude">
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td class="aveslongitude">
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td class="avesname">
+                @Html.DisplayFor(modelItem => item.vernacularName)
+            </td>
+            <td class="avesspecies">
+                @Html.DisplayFor(modelItem => item.species)
+            </td>
+            <td class="avesstatus">
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td class="catfood">
+                @Html.DisplayFor(modelItem => item.CatFood)
+            </td>
+        </tr>
+    }
+</table>
+
+@* Cat Record Table *@
+<table class="table" style="display:none">
+    @foreach (var item in Model.catslist)
+    {
+    <tr class="catcoordinates">
+        <td class="catname">
+            @Html.DisplayFor(modelItem => item.VernacularName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.eventDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.eventTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.countryCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stateProvince)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.verbatimLocality)
-        </td>
-        <td>
+        <td class="catlatitude">
             @Html.DisplayFor(modelItem => item.Latitude)
         </td>
-        <td>
+        <td class="catlongitude">
             @Html.DisplayFor(modelItem => item.Longitude)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scientificName)
+        <td class="catstate">
+            @Html.DisplayFor(modelItem => item.State)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scientificName1)
+        <td class="catlga">
+            @Html.DisplayFor(modelItem => item.LocalGovernmentAreas2011)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.acceptedNameUsage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.kingdom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phylum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._class)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.order)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.family)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.taxonRank)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vernacularName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.species)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.measurementID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CatFood)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        <td class="catindividualcount">
+            @Html.DisplayFor(modelItem => item.IndividualCount)
         </td>
     </tr>
-}
-
+    }
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mapbox")
+}

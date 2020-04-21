@@ -15,9 +15,32 @@ namespace Biosalvus.Controllers
         private CatRecords db = new CatRecords();
 
         // GET: AvesEndangereds
+        //public ActionResult Index()
+        //{
+        //    return View(db.AvesEndangereds.ToList());
+        //}
+
         public ActionResult Index()
         {
-            return View(db.AvesEndangereds.ToList());
+
+            EndageredMap finalitem = new EndageredMap();
+            finalitem.aveslist = db.AvesEndangereds;
+            finalitem.catslist = db.CatRecordsdb;
+            //var aves =  db.AvesEndangereds
+            //    .Select( a => new {
+            //        a.individualCount,
+            //        a.sex,
+            //        a.eventDate,
+            //        a.eventTime,
+            //        a.stateProvince,
+            //        a.Latitude,
+            //        a.Longitude,
+            //        a.vernacularName,
+            //        a.species,
+            //        a.Status,
+            //        a.CatFood
+            //    });
+            return View(finalitem);
         }
 
         // GET: AvesEndangereds/Details/5

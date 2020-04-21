@@ -24,7 +24,7 @@ namespace Biosalvus
 
             // added catrecords.js to the bundle called mapbox. Filter by Tickbox
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
-            "~/Scripts/catrecords.js"));
+            "~/Scripts/aves-map.js"));
 
             // added cats-heatmap.js to the bundle called mapbox. Heatmap
             bundles.Add(new ScriptBundle("~/bundles/catheatmap").Include(
