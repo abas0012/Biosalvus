@@ -2,33 +2,62 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Biosalvus</h1>
-    <p class="lead">Saving Australian Biodiversity</p>
-    <p>
-        BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing. Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
-        With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
-    </p>
-    @*<p class="btn btn-primary btn-lg">@Html.ActionLink("About Us", "About", "Home")</p>*@
-    <p>@Html.ActionLink("About Us", "About", "Home")</p>
-</div>
-
 <div class="row">
-    <div class="col-md-4" style="background-color: #8a6d3b;height: 180px;">
+    <div class="col-md-12" style="background-image:url(../Content/Images/plant-in-hand.jpg);height: 500px;background-size: cover;position: relative;">
+        <br />
+        <br />
+        <div style="background-color:lightgrey;opacity:0.5;margin: auto;width:50%;">
+            <div style="text-align: center;">
+                <h1>Biosalvus</h1>
+                <p class="lead">Saving Australian Biodiversity</p>
+                <p>
+                    BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing. Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
+                    With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
+                </p>
+                <p>@Html.ActionLink("About Us", "About", "Home")</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6" style="background-color: #c9c350">
+        <h2>They Are Crying</h2>
+        <p>
+            Australia ’s Biodiversity Is Currently Declining.<br />
+            In Australia, more than 1,700 species and ecological communities are known to be threatened and in threat of extinction.<br />
+            The main threats to species are invasive species and changes in fire. Other threats include climate change caused by unsustainable use and management of natural resources.<br />
+        </p>
+        <p>@Html.ActionLink("Go To Map", "Index", "AvesEndangereds")</p>
+    </div>
+    <div class="col-md-6">
+        <img src="~/Content/Images/2-tricolor-parrots.jpg" alt="2-tricolor-parrots" height="300" />
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4" style="background-color: #8a6d3b;height: 350px;text-align: center;">
+        <img src="~/Content/Images/climate-protest.jpg" alt="climate-protest img" height="200" width="350" />
         <h2>Climate Change</h2>
         <p>
             Understand what future has in plan and how to prevent them.
         </p>
-        <p>Learn More</p>
         <p>@Html.ActionLink("Learn More", "ClimateChange", "Home")</p>
     </div>
-    <div class="col-md-4" style="background-color: #98ad84;height: 180px;">
+    <div class="col-md-4" style="background-color: #98ad84;height: 350px;text-align: center;">
+        <img src="~/Content/Images/bushfire1.jpg" alt="bushfire img" height="200" width="350" />
         <h2>Bushfire</h2>
         <p>In December 2019, Australia Burns. Find out more!</p>
-        <p>Learn More</p>
         <p>@Html.ActionLink("Learn More", "Bushfire", "Home")</p>
     </div>
-    <div class="col-md-4" style="background: #a5e551;height: 180px;">
+    <div class="col-md-4" style="background: #a5e551;height: 350px;text-align: center;">
+        <img src="~/Content/Images/cats-face.jpg" alt="cats-face img" height="200" width="350" />
         <h2>Cats</h2>
         <p>Cats hunt Billions of Australian Fauna pushing them to extinction. What we can do to help!</p>
         <p>@Html.ActionLink("Learn More", "Cats", "Home")</p>

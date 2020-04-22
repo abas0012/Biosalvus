@@ -8,7 +8,6 @@
     .filter-group {
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         font-weight: 600;
-        position: fixed;
         top: 110px;
         right: 300px;
         z-index: 1;
@@ -54,13 +53,15 @@
                     }
 </style>
 <h2>AvesEndangered Map</h2>
-<div>
-    <div id="map" style="height:450px; width:760px;"></div> <!--This is the Map-->
-    <nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->
+<div class="row">
+    <div class="col-md-9">
+        <div id="map" style="height:450px; width:760px;"></div> <!--This is the Map-->
+    </div>
+    <div class="col-md-3">
+        <nav id="filter-group" class="filter-group"></nav> <!--This is the filter elements-->
+    </div>
 </div>
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+
 
 @* Aves Endangered Table *@
 <table class="table" style="display:none">
