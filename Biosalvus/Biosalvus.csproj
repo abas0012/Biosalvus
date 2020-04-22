@@ -179,6 +179,7 @@
     <Compile Include="Models\CatRecord.cs" />
     <Compile Include="Models\CatRecords.cs" />
     <Compile Include="Models\EndageredMap.cs" />
+    <Compile Include="Models\SpeciesAllViewModel.cs" />
     <Compile Include="Models\SpeciesAustralia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -251,6 +252,7 @@
     <Content Include="Views\Home\ClimateChange.cshtml" />
     <Content Include="Views\Home\Bushfire.cshtml" />
     <Content Include="Views\Home\Cats.cshtml" />
+    <Content Include="Views\SpeciesAustralias\LinqTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

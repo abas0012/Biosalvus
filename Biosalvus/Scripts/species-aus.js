@@ -12,47 +12,23 @@ const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dC
 var species = [];
 // The first step is obtain all the latitude and longitude from the HTML
 // The below is a simple jQuery selector
-$(".coordinates").each(function () {
-    var name = $(".name", this).text().trim();
-    var longitude = $(".longitude", this).text().trim();
-    var latitude = $(".latitude", this).text().trim();
-    var state = $(".state", this).text().trim();
-    var lga = $(".lga", this).text().trim();
-    //var year = $(".year", this).text().trim();
-    //var month = $(".month", this).text().trim();
-    //var day = $(".day", this).text().trim();
+$(".species").each(function () {
+    var speciesname = $(".speciesname", this).text().trim();
+    var statecode = $(".statecode", this).text().trim();
+    var statename = $(".statename", this).text().trim();
+    var speciesstatus = $(".speciesstatus", this).text().trim();
+    var present = $(".present", this).text().trim();
     // Create a point data structure to hold the values.
     var point = {
-        "name": name,
-        "latitude": latitude,
-        "longitude": longitude,
-        "state": state,
-        "lga": lga
-        //"year": year,
-        //"month": month,
-        //"day": day
+        "speciesname": speciesname,
+        "statecode": statecode,
+        "statename": statename,
+        "speciesstatus": speciesstatus,
+        "present": present
     };
     // Push them all into an array.
     species.push(point);
 });
-//data from points
-var data = [];
-for (i = 0; i < species.length; i++) {
-    var feature = {
-        "type": "Feature",
-        "properties": {
-            "name": species[i].name,
-            "state": species[i].state,
-            "lga": species[i].lga,
-            "icon": "circle-15"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [species[i].longitude, species[i].latitude]
-        }
-    };
-    data.push(feature)
-}
 
 //finaldata
 var finaldata = {
@@ -69,15 +45,6 @@ var map = new mapboxgl.Map({
     center: [131.0369, -25.3444] //Uluru Longitude (Center of Australia)
 });
 map.on('load', function () {
-    // Add a GeoJSON source containing place coordinates and information.
-    map.addSource('datasource', {
-        'type': 'geojson',
-        'data': finaldata,
-        'cluster': true,
-        'clusterMaxZoom': 14, // Max zoom to cluster points on
-        'clusterRadius': 50 // Radius of each cluster when clustering points (defaults to 50)
-    });
-
     //STATES ADD GEOJSON SECTION
     // Add a source for NEW SOUTH WALES state polygons.
     map.addSource('nsw', {

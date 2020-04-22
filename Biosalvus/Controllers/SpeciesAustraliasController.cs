@@ -123,5 +123,34 @@ namespace Biosalvus.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult LinqTest()
+        {
+
+            SpeciesAllViewModel queryitem = new SpeciesAllViewModel();
+            //queryitem.TotalCount
+            string statecode = "VIC";
+            var query = (from r in db.SpeciesAustralias
+                        where r.StateCode == statecode
+                        group r by new {r.StateCode,r.Threatened_status} into groupedbyStateStatus
+                        select new SpeciesAllViewModel {
+                            TotalCount = groupedbyStateStatus.Count(x => x.Threatened_status != null),
+                            StateCode = groupedbyStateStatus.Key.StateCode,
+                            Status = groupedbyStateStatus.Key.Threatened_status}
+                        );
+            //var query = db.SpeciesAustralias
+            //    //.Where(x => x.Present_ = TRUE)
+            //    .Select(x => new { x.StateCode, x.Threatened_status })
+            //    .AsEnumerable();
+
+                //group a by new { a.Threatened_status, a.StateCode } into r
+                //select new
+                //{
+                //    Total = r.Count(),
+                //    a.Threatened_status
+                //};
+
+            return View(query.ToList());
+        }
     }
 }
