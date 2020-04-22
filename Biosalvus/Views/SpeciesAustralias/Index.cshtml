@@ -6,11 +6,28 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<div id="species-map" style="height:450px;"></div> <!--This is the Map-->
+<div class="row">
+    <div class="col-md-2">
+        <button>Vulnerable</button>
+    </div>
+    <div class="col-md-2">
+        <button>Conservation Dependent</button>
+    </div>
+    <div class="col-md-2">
+        <button>Endangered</button>
+    </div>
+    <div class="col-md-2">
+        <button>Critically Endangered</button>
+    </div>
+    <div class="col-md-2">
+        <button>Extinct in the wild</button>
+    </div>
+    <div class="col-md-2">
+        <button>Extinct</button>
+    </div>
+</div>
+<table class="table" style="display:none">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Scientific_Name)
@@ -60,59 +77,63 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scientific_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Common_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Threatened_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kingdom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phylum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Class)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Family)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Species)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grouping)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Present_)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StateCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StateCountry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State_Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scientific_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Common_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Threatened_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kingdom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phylum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Family)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Species)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grouping)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Present_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+@section Scripts {
+    @Scripts.Render("~/bundles/speciesmap")
+}
