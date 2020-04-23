@@ -124,33 +124,28 @@ namespace Biosalvus.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult LinqTest()
+        public ActionResult SpeciesMap()
         {
-
-            SpeciesAllViewModel queryitem = new SpeciesAllViewModel();
-            //queryitem.TotalCount
-            string statecode = "VIC";
-            var query = (from r in db.SpeciesAustralias
-                        where r.StateCode == statecode
-                        group r by new {r.StateCode,r.Threatened_status} into groupedbyStateStatus
-                        select new SpeciesAllViewModel {
-                            TotalCount = groupedbyStateStatus.Count(x => x.Threatened_status != null),
-                            StateCode = groupedbyStateStatus.Key.StateCode,
-                            Status = groupedbyStateStatus.Key.Threatened_status}
-                        );
-            //var query = db.SpeciesAustralias
-            //    //.Where(x => x.Present_ = TRUE)
-            //    .Select(x => new { x.StateCode, x.Threatened_status })
-            //    .AsEnumerable();
-
-                //group a by new { a.Threatened_status, a.StateCode } into r
-                //select new
-                //{
-                //    Total = r.Count(),
-                //    a.Threatened_status
-                //};
-
-            return View(query.ToList());
+            string present = "Yes";
+            SpeciesAllViewModel viewModel = new SpeciesAllViewModel();
+            viewModel.speciescountbystatus = (from r in db.SpeciesAustralias
+                                              where r.Present_ == present
+                                              group r by new { r.Threatened_status } into groupedbyStatus
+                                              select new SpeciesCountGroupedStatus
+                                              {
+                                                  TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
+                                                  Status = groupedbyStatus.Key.Threatened_status
+                                              });
+            viewModel.speciescountbystatestatus = (from r in db.SpeciesAustralias
+                                                   where r.Present_ == present
+                                                   group r by new { r.StateCode, r.Threatened_status } into groupedbyStateStatus
+                                                   select new SpeciesCountGroupedStateStatus
+                                                   {
+                                                       TotalCount = groupedbyStateStatus.Count(x => x.Threatened_status != null),
+                                                       StateCode = groupedbyStateStatus.Key.StateCode,
+                                                       Status = groupedbyStateStatus.Key.Threatened_status
+                                                   });
+            return View(viewModel);
         }
     }
 }

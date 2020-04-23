@@ -3,41 +3,45 @@
 * I have set the default configuration to enable the geocoder and the navigation control.
 * https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
 *
-* 
-* Filter by Tickbox  
 * @author Adhi Baskoro <abas0012@student.monash.edu>
 * Date: 22/04/2020
 */
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
-var species = [];
+var speciescount = [];
 // The first step is obtain all the latitude and longitude from the HTML
-// The below is a simple jQuery selector
-$(".species").each(function () {
-    var speciesname = $(".speciesname", this).text().trim();
-    var statecode = $(".statecode", this).text().trim();
-    var statename = $(".statename", this).text().trim();
-    var speciesstatus = $(".speciesstatus", this).text().trim();
-    var present = $(".present", this).text().trim();
+// jQuery selector
+$(".countbystatestatus").each(function () {
+    var totalcountbystatestatus = $(".totalcountbystatestatus", this).text().trim();
+    var statebystatestatus = $(".statebystatestatus", this).text().trim();
+    var statusbystatestatus = $(".statusbystatestatus", this).text().trim();
     // Create a point data structure to hold the values.
-    var point = {
-        "speciesname": speciesname,
-        "statecode": statecode,
-        "statename": statename,
-        "speciesstatus": speciesstatus,
-        "present": present
+    var temp = {
+        "totalcountbystatestatus": totalcountbystatestatus,
+        "statebystatestatus": statebystatestatus,
+        "statusbystatestatus": statusbystatestatus
     };
     // Push them all into an array.
-    species.push(point);
+    speciescount.push(temp);
 });
 
-//finaldata
-var finaldata = {
-    "type": "FeatureCollection",
-    "features": data
-}
+var statusdata = [];
+for (i = 0; i < speciescount.length && speciescount.statusbystatestatus == 'Vulnerable'; i++) {
+    var temp = {
+        "Vulnerable": {
+                "count": speciescount[i].totalcountbystatestatus,
+                "state": speciescount[i].statebystatestatus
+            }
+    }
+    statusdata.push(temp);
+    }
+
+//"Conservation Dependent"
+//"Endangered"
+//"Critically Endangered"
+//"Extinct in the wild"
+//"Extinct"
 
 mapboxgl.accessToken = TOKEN;
-//var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'species-map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
@@ -243,10 +247,20 @@ map.on('load', function () {
             .addTo(map);
     });
 
+    //BUTTONS INTERACTIONS
+    document.getElementById("vulnerablebutton").addEventListener("click", function () {
+        map.setPaintProperty(
+            'vic-layer',
+            'fill-color',
+            'rgba(222, 48, 13, 0.4)'); 
+        map.setPaintProperty(
+            'vic-layer',
+            'fill-outline-color',
+            'rgba(222, 48, 13, 1)');
+    });
 
 
 });
-
 
 map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
@@ -286,4 +300,5 @@ map.addControl(
         trackUserLocation: true
     })
 );
+
 

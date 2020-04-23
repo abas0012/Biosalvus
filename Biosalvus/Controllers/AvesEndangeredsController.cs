@@ -23,24 +23,10 @@ namespace Biosalvus.Controllers
         public ActionResult Index()
         {
 
-            EndageredMap finalitem = new EndageredMap();
-            finalitem.aveslist = db.AvesEndangereds;
-            finalitem.catslist = db.CatRecordsdb;
-            //var aves =  db.AvesEndangereds
-            //    .Select( a => new {
-            //        a.individualCount,
-            //        a.sex,
-            //        a.eventDate,
-            //        a.eventTime,
-            //        a.stateProvince,
-            //        a.Latitude,
-            //        a.Longitude,
-            //        a.vernacularName,
-            //        a.species,
-            //        a.Status,
-            //        a.CatFood
-            //    });
-            return View(finalitem);
+            EndageredMap viewmodel = new EndageredMap();
+            viewmodel.aveslist = db.AvesEndangereds;
+            viewmodel.catslist = db.CatRecordsdb;
+            return View(viewmodel);
         }
 
         // GET: AvesEndangereds/Details/5

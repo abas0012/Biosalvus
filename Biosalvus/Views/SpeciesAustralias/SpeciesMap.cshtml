@@ -1,0 +1,134 @@
+﻿@model Biosalvus.Models.SpeciesAllViewModel
+
+@{
+    ViewBag.Title = "LinqTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div id="species-map" style="height:450px;"></div> <!--This is the Map-->
+<div class="row">
+    <div class="col-md-2">
+        <button id="vulnerablebutton" style="width: 100%;height: 70px;">
+            Vulnerable
+            @foreach (var item in Model.speciescountbystatus)
+            {
+                <p class="vulnerablecount">
+                    @if (string.Equals(item.Status, "Vulnerable"))
+                    {
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    }
+                </p>
+            }
+            </button>
+    </div>
+    <div class="col-md-2">
+        <button id="conservationbutton" style="width: 100%;height: 70px;">
+            Conservation Dependent
+            @foreach (var item in Model.speciescountbystatus)
+            {
+                <p class="conservationcount">
+                    @if (string.Equals(item.Status, "Conservation Dependent"))
+                    {
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    }
+                </p>
+            }
+            </button>
+    </div>
+    <div class="col-md-2">
+        <button id="endangeredbutton" style="width: 100%;height: 70px;">
+            Endangered
+            @foreach (var item in Model.speciescountbystatus)
+            {
+                <p class="endangeredcount">
+                    @if (string.Equals(item.Status, "Endangered"))
+                    {
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    }
+                </p>
+            }
+            </button>
+    </div>
+    <div class="col-md-2">
+        <button id="critendangeredbutton" style="width: 100%;height: 70px;">
+            Critically Endangered
+            @foreach (var item in Model.speciescountbystatus)
+            {
+                <p class="critendangeredcount">
+                    @if (string.Equals(item.Status, "Critically Endangered"))
+                    {
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    }
+                </p>
+            }
+            </button>
+    </div>
+    <div class="col-md-2">
+        <button id="wildextinctbutton" style="width: 100%;height: 70px;">
+            Extinct in the wild
+            @foreach (var item in Model.speciescountbystatus)
+            {
+            <p class="wildextinctcount">
+                @if (string.Equals(item.Status, "Extinct in the wild"))
+                {
+                    @Html.DisplayFor(modelItem => item.TotalCount)
+                }
+            </p>
+            }
+            </button>
+    </div>
+    <div class="col-md-2">
+        <button id="extinctbutton"  style="width: 100%;height: 70px;">
+            Extinct
+                @foreach (var item in Model.speciescountbystatus)
+                {
+                <p class="extinctcount">
+                    @if (string.Equals(item.Status, "Extinct"))
+                    {
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    }
+                </p>
+                }
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            @foreach (var item in Model.speciescountbystatus)
+            {
+                <tr class="countbystatus">
+                    <td class="statusbystatus">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="totalcountbystatus">
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            @foreach (var item in Model.speciescountbystatestatus)
+            {
+                <tr class="countbystatestatus">
+                    <td class="statusbystatestatus">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="statebystatestatus">
+                        @Html.DisplayFor(modelItem => item.StateCode)
+                    </td>
+                    <td class="totalcountbystatestatus">
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/speciesmap")
+}
