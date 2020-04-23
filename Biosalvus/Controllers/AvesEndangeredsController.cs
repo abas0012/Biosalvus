@@ -20,12 +20,35 @@ namespace Biosalvus.Controllers
         //    return View(db.AvesEndangereds.ToList());
         //}
 
-        public ActionResult Index()
+        public ActionResult AvesEndangeredMap()
         {
+            string state = "Victoria";
 
-            EndageredMap viewmodel = new EndageredMap();
-            viewmodel.aveslist = db.AvesEndangereds;
-            viewmodel.catslist = db.CatRecordsdb;
+            EndageredMapViewModel viewmodel = new EndageredMapViewModel();
+            viewmodel.aveslist = (from r in db.AvesEndangereds
+                                  select new AvesSummary
+                                  {
+                                      aveslatitude = r.Latitude,
+                                      aveslongitude = r.Longitude,
+                                      avesname = r.vernacularName,
+                                      avesstate = r.stateProvince,
+                                      avesstatus = r.Status,
+                                      catfood = r.CatFood
+                                  }
+                                  );
+
+            //viewmodel.aveslist = db.AvesEndangereds;
+            viewmodel.catslist = (from r in db.CatRecordsdb
+                                  where r.State == state
+                                  select new CatsSummary
+                                  {
+                                      catname = r.VernacularName,
+                                      catlatitude = r.Latitude,
+                                      catlongitude = r.Longitude,
+                                      catstate = r.State,
+                                      catindividualcount = r.IndividualCount                                
+                                  }
+                                  );
             return View(viewmodel);
         }
 
