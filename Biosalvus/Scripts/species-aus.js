@@ -56,7 +56,8 @@ map.on('load', function () {
     // Add a source for WESTERN AUSTRALIA state polygons.
     map.addSource('wa', {
         'type': 'geojson',
-        'data': '../Content/GeoJson/data-gov-au-wa-geojson-polygon.json'
+        'data': 'https://data.gov.au/geoserver/wa-state-boundary-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_5c00d495_21ba_452d_ae46_1ad0ca05e41f&outputFormat=json'
+        //'data': '../Content/GeoJson/data-gov-au-wa-geojson-polygon.json'
         
     });
 
