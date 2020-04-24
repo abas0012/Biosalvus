@@ -7,40 +7,7 @@
 * Date: 22/04/2020
 */
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
-var speciescount = [];
-// The first step is obtain all the latitude and longitude from the HTML
-// jQuery selector
-$(".countbystatestatus").each(function () {
-    var totalcountbystatestatus = $(".totalcountbystatestatus", this).text().trim();
-    var statebystatestatus = $(".statebystatestatus", this).text().trim();
-    var statusbystatestatus = $(".statusbystatestatus", this).text().trim();
-    // Create a point data structure to hold the values.
-    var temp = {
-        "totalcountbystatestatus": totalcountbystatestatus,
-        "statebystatestatus": statebystatestatus,
-        "statusbystatestatus": statusbystatestatus
-    };
-    // Push them all into an array.
-    speciescount.push(temp);
-});
-
-var statusdata = [];
-for (i = 0; i < speciescount.length && speciescount.statusbystatestatus == 'Vulnerable'; i++) {
-    var temp = {
-        "Vulnerable": {
-                "count": speciescount[i].totalcountbystatestatus,
-                "state": speciescount[i].statebystatestatus
-            }
-    }
-    statusdata.push(temp);
-    }
-
-//"Conservation Dependent"
-//"Endangered"
-//"Critically Endangered"
-//"Extinct in the wild"
-//"Extinct"
-
+//MAP SOURCE CODES
 mapboxgl.accessToken = TOKEN;
 var map = new mapboxgl.Map({
     container: 'species-map',
@@ -89,7 +56,8 @@ map.on('load', function () {
     // Add a source for WESTERN AUSTRALIA state polygons.
     map.addSource('wa', {
         'type': 'geojson',
-        'data': 'https://data.gov.au/geoserver/wa-state-boundary-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_5c00d495_21ba_452d_ae46_1ad0ca05e41f&outputFormat=json'
+        'data': '../Content/GeoJson/data-gov-au-wa-geojson-polygon.json'
+        
     });
 
     // Add a source for NORTHEN TERRITORY state polygons.
@@ -101,17 +69,17 @@ map.on('load', function () {
     //STATES ADD LAYER SECTION
     // Add a layer showing NEW SOUTH WALES state polygons.
     map.addLayer({
-        'id': 'nsw-layer',
+        'id': 'NSW',
         'type': 'fill',
         'source': 'nsw',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
+            'fill-color': 'rgba(200, 100, 240, 0.4)', //Violet
             'fill-outline-color': 'rgba(200, 100, 240, 1)'
         }
     });
     // Add a layer showing AUSTRALIAN CAPITAL TERRITORY state polygons.
     map.addLayer({
-        'id': 'act-layer',
+        'id': 'ACT',
         'type': 'fill',
         'source': 'act',
         'paint': {
@@ -121,7 +89,7 @@ map.on('load', function () {
     });
     // Add a layer showing SOUTH AUSTRALIA state polygons.
     map.addLayer({
-        'id': 'sa-layer',
+        'id': 'SA',
         'type': 'fill',
         'source': 'sa',
         'paint': {
@@ -131,7 +99,7 @@ map.on('load', function () {
     });
     // Add a layer showing VICTORIA state polygons.
     map.addLayer({
-        'id': 'vic-layer',
+        'id': 'VIC',
         'type': 'fill',
         'source': 'vic',
         'paint': {
@@ -141,7 +109,7 @@ map.on('load', function () {
     });
     // Add a layer showing TASMANIA state polygons.
     map.addLayer({
-        'id': 'tas-layer',
+        'id': 'TAS',
         'type': 'fill',
         'source': 'tas',
         'paint': {
@@ -151,7 +119,7 @@ map.on('load', function () {
     });
     // Add a layer showing QUEENSLAND state polygons.
     map.addLayer({
-        'id': 'qld-layer',
+        'id': 'QLD',
         'type': 'fill',
         'source': 'qld',
         'paint': {
@@ -161,7 +129,7 @@ map.on('load', function () {
     });
     // Add a layer showing WESTERN AUSTRALIA state polygons.
     map.addLayer({
-        'id': 'wa-layer',
+        'id': 'WA',
         'type': 'fill',
         'source': 'wa',
         'paint': {
@@ -172,7 +140,7 @@ map.on('load', function () {
 
     // Add a layer showing NORTHEN TERRITORY state polygons.
     map.addLayer({
-        'id': 'nt-layer',
+        'id': 'NT',
         'type': 'fill',
         'source': 'nt',
         'paint': {
@@ -184,7 +152,7 @@ map.on('load', function () {
     //STATES ON CLICK FUNCTIONS
     // When a click event occurs on a feature in the NEW SOUTH WALES layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'nsw-layer', function (e) {
+    map.on('click', 'NSW', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -192,7 +160,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the AUSTRALIAN CAPITAL TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'act-layer', function (e) {
+    map.on('click', 'ACT', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -200,7 +168,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the SOUTH AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'sa-layer', function (e) {
+    map.on('click', 'SA', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -208,7 +176,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the VICTORIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'vic-layer', function (e) {
+    map.on('click', 'VIC', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -216,7 +184,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the TASMANIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'tas-layer', function (e) {
+    map.on('click', 'TAS', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -224,7 +192,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the QUEENSLAND layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'qld-layer', function (e) {
+    map.on('click', 'QLD', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -232,7 +200,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the WESTERN AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'wa-layer', function (e) {
+    map.on('click', 'WA', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -240,7 +208,7 @@ map.on('load', function () {
     });
     // When a click event occurs on a feature in the NORTHEN TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'nt-layer', function (e) {
+    map.on('click', 'NT', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.state_pid)
@@ -249,19 +217,259 @@ map.on('load', function () {
 
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebutton").addEventListener("click", function () {
-        map.setPaintProperty(
-            'vic-layer',
-            'fill-color',
-            'rgba(222, 48, 13, 0.4)'); 
-        map.setPaintProperty(
-            'vic-layer',
-            'fill-outline-color',
-            'rgba(222, 48, 13, 1)');
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(vulnerablearray);
+        setLegendCountValues(vulnerablearray);
     });
-
-
+    document.getElementById("wildextinctbutton").addEventListener("click", function () {
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(extinctinwildarray);
+        setLegendCountValues(extinctinwildarray);
+    });
+    document.getElementById("endangeredbutton").addEventListener("click", function () {
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(endangeredarray);
+        setLegendCountValues(endangeredarray);
+    });
+    document.getElementById("critendangeredbutton").addEventListener("click", function () {
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(critendangeredarray);
+        setLegendCountValues(critendangeredarray);
+    });
+    document.getElementById("conservationbutton").addEventListener("click", function () {
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(conservationarray);
+        setLegendCountValues(conservationarray);
+    });
+    document.getElementById("extinctbutton").addEventListener("click", function () {
+        resetStateFilter();
+        resetRankingValue();
+        displayStateFilter(extinctarray);
+        setLegendCountValues(extinctarray);
+    });
 });
 
+//jQuery selector
+//Arrays To Hold Species Data in Ranking Order grouped by Status
+//"Vulnerable"
+var vulnerablearray = [];
+$(".vulnerablerows").each(function () {
+    var statevulnerable = $(".statevulnerable", this).text().trim();
+    var totalcountvulnerable = $(".totalcountvulnerable", this).text().trim();
+    var temp = {
+        "state": statevulnerable,
+        "totalcount": totalcountvulnerable,
+    };
+    vulnerablearray.push(temp);
+});
+//"Extinct in the wild"
+var extinctinwildarray = [];
+$(".extinctinwildrows").each(function () {
+    var stateextinctinwild = $(".stateextinctinwild", this).text().trim();
+    var totalcountextinctinwild = $(".totalcountextinctinwild", this).text().trim();
+    var temp = {
+        "state": stateextinctinwild,
+        "totalcount": totalcountextinctinwild,
+    };
+    extinctinwildarray.push(temp);
+});
+//"Endangered"
+var endangeredarray = [];
+$(".endangeredrows").each(function () {
+    var stateendangered = $(".stateendangered", this).text().trim();
+    var totalcountendangered = $(".totalcountendangered", this).text().trim();
+    var temp = {
+        "state": stateendangered,
+        "totalcount": totalcountendangered,
+    };
+    endangeredarray.push(temp);
+});
+//"Critically Endangered"
+var critendangeredarray = [];
+$(".critendangeredrows").each(function () {
+    var statecritendangered = $(".statecritendangered", this).text().trim();
+    var totalcountcritendangered = $(".totalcountcritendangered", this).text().trim();
+    var temp = {
+        "state": statecritendangered,
+        "totalcount": totalcountcritendangered,
+    };
+    critendangeredarray.push(temp);
+});
+//"Conservation Dependent"
+var conservationarray = [];
+$(".conservationrows").each(function () {
+    var stateconservation = $(".stateconservation", this).text().trim();
+    var totalcountconservation = $(".totalcountconservation", this).text().trim();
+    var temp = {
+        "state": stateconservation,
+        "totalcount": totalcountconservation,
+    };
+    conservationarray.push(temp);
+});
+//"Extinct"
+var extinctarray = [];
+$(".extinctrows").each(function () {
+    var stateextinct = $(".stateextinct", this).text().trim();
+    var totalcountextinct = $(".totalcountextinct", this).text().trim();
+    var temp = {
+        "state": stateextinct,
+        "totalcount": totalcountextinct,
+    };
+    extinctarray.push(temp);
+});
+
+
+//Function to set the the Legend Values for Vulnerable Status
+function setLegendCountValues(temparray) {
+    for (i = 0; i < temparray.length; i++) {
+        switch (i) {
+            case 0:
+                document.getElementById("rank1").innerHTML = temparray[i].totalcount;
+                break;
+            case 1:
+                document.getElementById("rank2").innerHTML = temparray[i].totalcount;
+                break;
+            case 2:
+                document.getElementById("rank3").innerHTML = temparray[i].totalcount;
+                break;
+            case 3:
+                document.getElementById("rank4").innerHTML = temparray[i].totalcount;
+                break;
+            case 4:
+                document.getElementById("rank5").innerHTML = temparray[i].totalcount;
+                break;
+            case 5:
+                document.getElementById("rank6").innerHTML = temparray[i].totalcount;
+                break;
+            case 6:
+                document.getElementById("rank7").innerHTML = temparray[i].totalcount;
+                break;
+            case 7:
+                document.getElementById("rank8").innerHTML = temparray[i].totalcount;
+                break;
+        }
+    }
+}
+
+//Function to change Filter of States by Vulnerable Status in Ranking Order
+function displayStateFilter(temparray) {
+    console.log(temparray);
+    for (i = 0; i < temparray.length; i++) {
+        console.log(temparray[i]);
+        switch (i) {
+            case 0: //RANK 1
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(120, 25, 25, 1)'); //Dark Maroon
+                break;
+            case 1: //RANK 2
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(222, 48, 13, 0.4)'); //Red
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(222, 48, 13, 1)'); //Red
+                break;
+            case 2: //RANK 3
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(120, 77, 25, 0.4)'); //Brown
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(120, 77, 25, 1)'); //Brown
+                break;
+            case 3: //RANK 4
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(237, 102, 12,0.4)'); //Orange
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(237, 102, 12,1)'); //Orange
+                break;
+            case 4: //RANK 5
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(184, 181, 35, 0.4)'); //Mustard Yellow
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(184, 181, 35, 1)'); //Mustard Yellow
+                break;
+            case 5: //RANK 6
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(245, 225, 7, 0.4)'); //Yellow
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(245, 225, 7, 1)'); //Yellow
+                break;
+            case 6: //RANK 7
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(120, 148, 31, 0.4)'); //Olive Green
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(120, 148, 31, 1)'); //Olive Green
+                break;
+            case 7: //RANK 8
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(100, 224, 22, 0.4)'); //Light Green
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(100, 224, 22, 1)'); //Light Green
+                break;
+        }
+    }
+}
+
+//Function to Reset State Fill Colour to 'Default'
+const statecodearray = ['ACT','VIC','NSW','SA','WA','QLD','TAS','NT'];
+function resetStateFilter() {
+    for (i = 0; i < statecodearray.length; i++) {
+        map.setPaintProperty(
+            statecodearray[i],
+            'fill-color',
+            'rgba(200, 100, 240, 0.4)'); //Violet
+        map.setPaintProperty(
+            statecodearray[i],
+            'fill-outline-color',
+            'rgba(200, 100, 240, 1)'); //Violet
+    }
+}
+
+//Function to Reset Rank Count value to 0
+const rankcountarray = ['rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8'];
+function resetRankingValue() {
+    for (i = 0; i < rankcountarray.length; i++) {
+        document.getElementById(rankcountarray[i]).innerHTML = 0;
+    }
+}
+
+//MAP CONTROLS
 map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
 }));;
