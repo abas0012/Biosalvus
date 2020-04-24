@@ -6,13 +6,53 @@
 * @author Adhi Baskoro <abas0012@student.monash.edu>
 * Date: 22/04/2020
 */
-const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
-//MAP SOURCE CODES
+const statecodearray = ['ACT', 'VIC', 'NSW', 'SA', 'WA', 'QLD', 'TAS', 'NT'];
+const rankcountarray = ['rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8'];
+//Array to hold Count by State and Status
+var countstatestatusarray = [];
+$(".countbystatestatusrows").each(function () {
+    var statusbystatestatus = $(".statusbystatestatus", this).text().trim();
+    var statebystatestatus = $(".statebystatestatus", this).text().trim();
+    var totalcountbystatestatus = $(".totalcountbystatestatus", this).text().trim();
+    var temp = {
+        "status": statusbystatestatus,
+        "state": statebystatestatus,
+        "totalcount": totalcountbystatestatus
+    };
+    countstatestatusarray.push(temp);
+});
+
+//Array to hold Count by Status
+var countbystatusarray = [];
+$(".countbystatusrow").each(function () {
+    var status = $(".status", this).text().trim();
+    var totalcount = $(".totalcount", this).text().trim();
+    var temp = {
+        "status": status,
+        "totalcount": totalcount
+    };
+    countbystatusarray.push(temp);
+});
+
+//"Initial Count Per Status"
+var statuscountarray = [];
+$(".countbystatusrow").each(function () {
+    var status = $(".status", this).text().trim();
+    var totalcount = $(".totalcount", this).text().trim();
+    var temp = {
+        "status": status,
+        "totalcount": totalcount,
+    };
+    statuscountarray.push(temp);
+});
+
+//MAP SOURCE CODES STARTS HERE
+const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q"; //Mapbox API Key
 mapboxgl.accessToken = TOKEN;
 var map = new mapboxgl.Map({
     container: 'species-map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 4,
+    zoom: 3,
     center: [131.0369, -25.3444] //Uluru Longitude (Center of Australia)
 });
 map.on('load', function () {
@@ -154,104 +194,187 @@ map.on('load', function () {
     // When a click event occurs on a feature in the NEW SOUTH WALES layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NSW', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('NSW');
+        map.setPaintProperty(
+            'NSW',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'NSW',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('NSW');
     });
     // When a click event occurs on a feature in the AUSTRALIAN CAPITAL TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'ACT', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('ACT');
+        map.setPaintProperty(
+            'ACT',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'ACT',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('ACT');
     });
     // When a click event occurs on a feature in the SOUTH AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'SA', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('SA');
+        map.setPaintProperty(
+            'SA',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'SA',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('SA');
     });
     // When a click event occurs on a feature in the VICTORIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'VIC', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('VIC');
+        map.setPaintProperty(
+            'VIC',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'VIC',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('VIC');
     });
     // When a click event occurs on a feature in the TASMANIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'TAS', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('TAS');
+        map.setPaintProperty(
+            'TAS',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'TAS',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('TAS');
     });
     // When a click event occurs on a feature in the QUEENSLAND layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'QLD', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('QLD');
+        map.setPaintProperty(
+            'QLD',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'QLD',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('QLD');
     });
     // When a click event occurs on a feature in the WESTERN AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'WA', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        resetCountButtonValue();
+        setStatusButtonCountValue('WA');
+        map.setPaintProperty(
+            'WA',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'WA',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('WA');
     });
     // When a click event occurs on a feature in the NORTHEN TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NT', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.state_pid)
-            .addTo(map);
+        resetStateFilter();
+        resetRankingValue();
+        setStatusButtonCountValue('NT');
+        map.setPaintProperty(
+            'NT',
+            'fill-color',
+            'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+        map.setPaintProperty(
+            'NT',
+            'fill-outline-color',
+            'rgba(120, 25, 25, 1)'); //Dark Maroon
+        $('#mapfilter').html('NT');
     });
 
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(vulnerablearray);
         setLegendCountValues(vulnerablearray);
+        $('#mapfilter').html('Vulnerable');
     });
     document.getElementById("wildextinctbutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(extinctinwildarray);
         setLegendCountValues(extinctinwildarray);
+        $('#mapfilter').html('Extinct in wild');
     });
     document.getElementById("endangeredbutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(endangeredarray);
         setLegendCountValues(endangeredarray);
+        $('#mapfilter').html('Endangered');
     });
     document.getElementById("critendangeredbutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(critendangeredarray);
         setLegendCountValues(critendangeredarray);
+        $('#mapfilter').html('Critically Endangered');
     });
     document.getElementById("conservationbutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(conservationarray);
         setLegendCountValues(conservationarray);
+        $('#mapfilter').html('Conservation Dependent');
     });
     document.getElementById("extinctbutton").addEventListener("click", function () {
+        resetCountButtonValue()
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(extinctarray);
         setLegendCountValues(extinctarray);
+        $('#mapfilter').html('Extinct');
     });
 });
 
@@ -324,6 +447,58 @@ $(".extinctrows").each(function () {
     extinctarray.push(temp);
 });
 
+function resetCountButtonValue() {
+    for (i = 0; i < countbystatusarray.length; i++) {
+        switch (countbystatusarray[i].status) {
+            case "Vulnerable":
+                $('#vulnerablecnt').html(countbystatusarray[i].totalcount);
+                break;
+            case "Critically Endangered":
+                $('#critendangeredncnt').html(countbystatusarray[i].totalcount);
+                break;
+            case "Conservation Dependent":
+                $('#conservationcnt').html(countbystatusarray[i].totalcount);
+                break;
+            case "Endangered":
+                $('#endangeredcnt').html(countbystatusarray[i].totalcount);
+                break;
+            case "Extinct":
+                $('#extinctcnt').html(countbystatusarray[i].totalcount);
+                break;
+            case "Extinct in the wild":
+                $('#wildextinctcnt').html(countbystatusarray[i].totalcount);
+                break;
+        }
+    }
+}
+
+//Function to set the count values on Status Button based on State selected.
+function setStatusButtonCountValue(state) {
+    for (i = 0; i < countstatestatusarray.length; i++) {
+        if (countstatestatusarray[i].state == state) {
+            switch (countstatestatusarray[i].status) {
+                case "Vulnerable":
+                    $('#vulnerablecnt').html(countstatestatusarray[i].totalcount);
+                    break;
+                case "Critically Endangered":
+                    $('#critendangeredncnt').html(countstatestatusarray[i].totalcount);
+                    break;
+                case "Conservation Dependent":
+                    $('#conservationcnt').html(countstatestatusarray[i].totalcount);
+                    break;
+                case "Endangered":
+                    $('#endangeredcnt').html(countstatestatusarray[i].totalcount);
+                    break;
+                case "Extinct":
+                    $('#extinctcnt').html(countstatestatusarray[i].totalcount);
+                    break;
+                case "Extinct in the wild":
+                    $('#wildextinctcnt').html(countstatestatusarray[i].totalcount);
+                    break;
+            }
+        }
+    }
+}
 
 //Function to set the the Legend Values for Vulnerable Status
 function setLegendCountValues(temparray) {
@@ -357,11 +532,9 @@ function setLegendCountValues(temparray) {
     }
 }
 
-//Function to change Filter of States by Vulnerable Status in Ranking Order
+//Function to change Filter of States by Status in Ranking Order
 function displayStateFilter(temparray) {
-    console.log(temparray);
     for (i = 0; i < temparray.length; i++) {
-        console.log(temparray[i]);
         switch (i) {
             case 0: //RANK 1
                 map.setPaintProperty(
@@ -447,8 +620,15 @@ function displayStateFilter(temparray) {
     }
 }
 
+//Function to Reset Count in Status Button to 0
+const statuscntbtnarray = ['vulnerablecnt', 'conservationcnt', 'endangeredcnt', 'critendangeredncnt', 'wildextinctcnt', 'extinctcnt'];
+function resetCountButtonValue() {
+    for (i = 0; i < statuscntbtnarray.length; i++) {
+        document.getElementById(statuscntbtnarray[i]).innerHTML = 0;
+    }
+}
+
 //Function to Reset State Fill Colour to 'Default'
-const statecodearray = ['ACT','VIC','NSW','SA','WA','QLD','TAS','NT'];
 function resetStateFilter() {
     for (i = 0; i < statecodearray.length; i++) {
         map.setPaintProperty(
@@ -463,7 +643,6 @@ function resetStateFilter() {
 }
 
 //Function to Reset Rank Count value to 0
-const rankcountarray = ['rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8'];
 function resetRankingValue() {
     for (i = 0; i < rankcountarray.length; i++) {
         document.getElementById(rankcountarray[i]).innerHTML = 0;

@@ -142,6 +142,15 @@ namespace Biosalvus.Controllers
                                                   TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
                                                   Status = groupedbyStatus.Key.Threatened_status
                                               });
+            viewModel.speciescountbystatestatus = (from r in db.SpeciesAustralias
+                                                   where r.Present_ == present
+                                                   group r by new { r.Threatened_status, r.StateCode } into groupedbyStatus
+                                                   select new SpeciesCountGroupedStateStatus
+                                                   {
+                                                       TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
+                                                       Status = groupedbyStatus.Key.Threatened_status,
+                                                       StateCode = groupedbyStatus.Key.StateCode
+                                                   });
             viewModel.speciescountvulnerable = (from r in db.SpeciesAustralias
                                                 where (r.Present_ == present && r.Threatened_status == vulnerable)
                                                 group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
