@@ -329,7 +329,7 @@ map.on('load', function () {
 
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(vulnerablearray);
@@ -337,7 +337,7 @@ map.on('load', function () {
         $('#mapfilter').html('Vulnerable');
     });
     document.getElementById("wildextinctbutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(extinctinwildarray);
@@ -345,7 +345,7 @@ map.on('load', function () {
         $('#mapfilter').html('Extinct in wild');
     });
     document.getElementById("endangeredbutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(endangeredarray);
@@ -353,7 +353,7 @@ map.on('load', function () {
         $('#mapfilter').html('Endangered');
     });
     document.getElementById("critendangeredbutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(critendangeredarray);
@@ -361,7 +361,7 @@ map.on('load', function () {
         $('#mapfilter').html('Critically Endangered');
     });
     document.getElementById("conservationbutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(conservationarray);
@@ -369,7 +369,7 @@ map.on('load', function () {
         $('#mapfilter').html('Conservation Dependent');
     });
     document.getElementById("extinctbutton").addEventListener("click", function () {
-        resetCountButtonValue()
+        resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
         displayStateFilter(extinctarray);
@@ -447,7 +447,7 @@ $(".extinctrows").each(function () {
     extinctarray.push(temp);
 });
 
-function resetCountButtonValue() {
+function resetCountInitialValue() {
     for (i = 0; i < countbystatusarray.length; i++) {
         switch (countbystatusarray[i].status) {
             case "Vulnerable":
