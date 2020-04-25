@@ -243,6 +243,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the NEW SOUTH WALES layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NSW', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -260,6 +261,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the AUSTRALIAN CAPITAL TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'ACT', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -277,6 +279,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the SOUTH AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'SA', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -294,6 +297,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the VICTORIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'VIC', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -311,6 +315,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the TASMANIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'TAS', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -328,6 +333,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the QUEENSLAND layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'QLD', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -345,6 +351,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the WESTERN AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'WA', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         resetCountButtonValue();
@@ -362,6 +369,7 @@ map.on('load', function () {
     // When a click event occurs on a feature in the NORTHEN TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NT', function (e) {
+        hideLegend();
         resetStateFilter();
         resetRankingValue();
         setStatusButtonCountValue('NT');
@@ -378,6 +386,7 @@ map.on('load', function () {
 
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -386,6 +395,7 @@ map.on('load', function () {
         $('#mapfilter').html('Vulnerable');
     });
     document.getElementById("wildextinctbutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -394,6 +404,7 @@ map.on('load', function () {
         $('#mapfilter').html('Extinct in wild');
     });
     document.getElementById("endangeredbutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -402,6 +413,7 @@ map.on('load', function () {
         $('#mapfilter').html('Endangered');
     });
     document.getElementById("critendangeredbutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -410,6 +422,7 @@ map.on('load', function () {
         $('#mapfilter').html('Critically Endangered');
     });
     document.getElementById("conservationbutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -418,6 +431,7 @@ map.on('load', function () {
         $('#mapfilter').html('Conservation Dependent');
     });
     document.getElementById("extinctbutton").addEventListener("click", function () {
+        showLegend();
         resetCountInitialValue();
         resetStateFilter();
         resetRankingValue();
@@ -696,6 +710,14 @@ function resetRankingValue() {
     for (i = 0; i < rankcountarray.length; i++) {
         document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
     }
+}
+
+function hideLegend() {
+    document.getElementById("legend").style.display = "none";
+}
+
+function showLegend() {
+    document.getElementById("legend").style.display = "block";
 }
 
 //MAP CONTROLS

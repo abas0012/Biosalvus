@@ -1,12 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
-    <div class="col-12 col-md-12 col-sm-12" style="background-image:url(../Content/Images/burning-antler.jpg);height: 500px;background-size: cover;position: relative;opacity:0.8;">
+    <div class="col-12 col-md-12 col-sm-12" style="background-image:url(../Content/Images/burning-antler.jpg);height:650px;background-size: cover;position: relative;opacity:0.8;">
         <br />
         <br />
-        <div> @*style="background-color:lightgrey;opacity:0.5;margin: auto;width:50%;"*@
             <div style="text-align:center;color:white;padding-left:20%;padding-right:20%;padding-top:12%;">
                 <h1>Biosalvus</h1>
                 <p class="lead">Saving Australian Biodiversity</p>
@@ -18,7 +18,6 @@
                     With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
                 </p>
             </div>
-        </div>
     </div>
 </div>
 <br />
@@ -56,18 +55,20 @@
         <div style="background-color: #3c4b4d;height: 350px;text-align: center;color:white;">
             <img class="img-responsive" src="~/Content/Images/tornado.jpg" alt="torando img" height="200" width="350" style="height:200px;" />
             <h2>Climate Change</h2>
-            <p>
+            @*<p>
                 Understand what future has in plan and how to prevent them.
-            </p>
-            <input type="button" style="color:black;" value="Know More" onclick="location.href='@Url.Action("ClimateChange", "Home")'" />
+            </p>*@
+            <p>**Content currently unavailable - under construction**</p>
+            <input type="button" style="color:black;" value="Disabled" />
         </div>
     </div>
     <div class="col-4 col-md-4">
         <div style="background-color:lightgrey;height: 350px;text-align: center;">
             <img class="img-responsive" src="~/Content/Images/burning-antler.jpg" alt="burning-antler img" height="200" width="350" style="height:200px;" />
             <h2>Bushfire</h2>
-            <p>In December 2019, Australia Burns. Find out more!</p>
-            <input type="button" value="Know More" onclick="location.href='@Url.Action("Bushfire", "Home")'" />
+            @*<p>In December 2019, Australia Burns. Find out more!</p>*@
+            <p>**Content currently unavailable - under construction**</p>
+            <input type="button" value="Disabled" />
         </div>
     </div>
 </div>
