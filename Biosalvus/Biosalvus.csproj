@@ -196,9 +196,13 @@
     <Content Include="Content\Images\cat-and-hummingbird.jpg" />
     <Content Include="Content\Images\cat-and-mouse.jpg" />
     <Content Include="Content\Images\cat-and-sparrow.jpg" />
+    <Content Include="Content\Images\cat-headline1.PNG" />
+    <Content Include="Content\Images\cat-headline2.PNG" />
+    <Content Include="Content\Images\cat-headline8.PNG" />
     <Content Include="Content\Images\cats-face.jpg" />
     <Content Include="Content\Images\climate-protest.jpg" />
     <Content Include="Content\Images\plant-in-hand.jpg" />
+    <Content Include="Content\Images\tornado.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

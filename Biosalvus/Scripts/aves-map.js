@@ -109,7 +109,7 @@ var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 10,
+    zoom: 6,
     center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
@@ -162,7 +162,7 @@ map.on('load', function () {
                     ['linear'],
                     ['heatmap-density'],
                     0,
-                    'rgba(33,102,172,0.2)',
+                    'rgba(33,102,172,0)',
                     0.1,
                     'rgba(103,169,207,0.5)',
                     0.2,
@@ -252,18 +252,18 @@ map.on('load', function () {
                 'type': 'circle',
                 'source': 'avesdatasource',
                 'paint': {
-                    'circle-radius': 10,
+                    'circle-radius': 6,
                     'circle-color': [
                         'match',
                         ['get', 'avesstatus'],
                         'Extinct',
-                        'rgba(169, 169, 169,0.5)', //Dark Gray
+                        'rgba(169, 169, 169,0.2)', //Dark Gray
                         'Critically Endangered',
-                        'rgba(51, 0, 0,0.5)', //Dark Maroon
+                        'rgba(51, 0, 0,0.2)', //Dark Maroon
                         'Vulnerable',
-                        'rgba(255, 165, 0,0.5)', //Orange
+                        'rgba(255, 165, 0,0.2)', //Orange
                         'Endangered',
-                        'rgba(255, 69, 0,0.5)', //Orange Red
+                        'rgba(255, 69, 0,0.2)', //Orange Red
                         /*other*/'rgba(55,148,179,1)',
                     ]
                 },

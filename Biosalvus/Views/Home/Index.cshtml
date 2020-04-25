@@ -3,7 +3,7 @@
 }
 
 <div class="row">
-    <div class="col-md-12" style="background-image:url(../Content/Images/burning-antler.jpg);height: 500px;background-size: cover;position: relative;opacity:0.8;">
+    <div class="col-12 col-md-12 col-sm-12" style="background-image:url(../Content/Images/burning-antler.jpg);height: 500px;background-size: cover;position: relative;opacity:0.8;">
         <br />
         <br />
         <div> @*style="background-color:lightgrey;opacity:0.5;margin: auto;width:50%;"*@
@@ -26,7 +26,7 @@
 <br />
 <br />
 <div class="row">
-    <div class="col-md-6" style="background-color: #3c4b4d;height:300px;color:white;">
+    <div class="col-6 col-md-6" style="text-align:center;background-color: #3c4b4d;height:323px;color:white;">
         <h2>They Are Crying</h2>
         <p>
             Australia ’s Biodiversity Is Currently Declining.<br />
@@ -35,8 +35,8 @@
         </p>
         <input type="button" style="color:black;" value="Explore Stats" onclick="location.href='@Url.Action("SpeciesMap", "SpeciesAustralias")'" />
     </div>
-    <div class="col-md-6">
-        <img src="~/Content/Images/2-tricolor-parrots.jpg" alt="2-tricolor-parrots" height="300" width="485"/>
+    <div class="col-6 col-md-6">
+        <img class="img-responsive" src="~/Content/Images/2-tricolor-parrots.jpg" alt="2-tricolor-parrots" height="300" width="485" style="margin-left:auto;"/>
     </div>
 </div>
 <br />
@@ -44,27 +44,30 @@
 <br />
 <br />
 <div class="row">
-    <div class="col-md-4" style="background-color:lightgrey;height: 350px;text-align: center;">
-        <img src="~/Content/Images/cat-and-hummingbird.jpg" alt="cat-and-hummingbird img" height="200" width="350" />
-        <h2>Cats</h2>
-        <p>Cats hunt Billions of Australian Fauna pushing them to extinction. What we can do to help!</p>
-        <input type="button" value="Know More" onclick="location.href='@Url.Action("Cats", "Home")'" />
+    <div class="col-4 col-md-4">
+        <div style="background-color:lightgrey;height: 350px;text-align:center;">
+            <img class="img-responsive" src="~/Content/Images/cat-and-hummingbird.jpg" alt="cat-and-hummingbird img" height="200" width="350" style="height:200px;" />
+            <h2>Cats</h2>
+            <p>Cats hunt Billions of Australian Fauna pushing them to extinction. What we can do to help!</p>
+            <input type="button" value="Know More" onclick="location.href='@Url.Action("Cats", "Home")'" />
+        </div>
     </div>
-    <div class="col-md-4" style="background-color: #3c4b4d;height: 350px;text-align: center;color:white;">
-        <img src="~/Content/Images/climate-protest.jpg" alt="climate-protest img" height="200" width="350" />
-        <h2>Climate Change</h2>
-        <p>
-            Understand what future has in plan and how to prevent them.
-        </p>
-        <input type="button" style="color:black;" value="Know More" onclick="location.href='@Url.Action("ClimateChange", "Home")'" />
+    <div class="col-4 col-md-4">
+        <div style="background-color: #3c4b4d;height: 350px;text-align: center;color:white;">
+            <img class="img-responsive" src="~/Content/Images/tornado.jpg" alt="torando img" height="200" width="350" style="height:200px;" />
+            <h2>Climate Change</h2>
+            <p>
+                Understand what future has in plan and how to prevent them.
+            </p>
+            <input type="button" style="color:black;" value="Know More" onclick="location.href='@Url.Action("ClimateChange", "Home")'" />
+        </div>
     </div>
-    <div class="col-md-4" style="background-color:lightgrey;height: 350px;text-align: center;">
-        <img src="~/Content/Images/burning-antler.jpg" alt="burning-antler img" height="200" width="350" />
-        <h2>Bushfire</h2>
-        <p>In December 2019, Australia Burns. Find out more!</p>
-        <input type="button" value="Know More" onclick="location.href='@Url.Action("Bushfire", "Home")'" />
+    <div class="col-4 col-md-4">
+        <div style="background-color:lightgrey;height: 350px;text-align: center;">
+            <img class="img-responsive" src="~/Content/Images/burning-antler.jpg" alt="burning-antler img" height="200" width="350" style="height:200px;" />
+            <h2>Bushfire</h2>
+            <p>In December 2019, Australia Burns. Find out more!</p>
+            <input type="button" value="Know More" onclick="location.href='@Url.Action("Bushfire", "Home")'" />
+        </div>
     </div>
-</div>
-<div>
-    <img src="~/Content/Images/BiosalvusLogo.jpeg" alt="Company logo" width="150" height="150" />
 </div>
