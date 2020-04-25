@@ -1085,7 +1085,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+  color: #333; /*Original Colour #333*/
   background-color: #fff;
 }
 input,
@@ -4353,12 +4353,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-nav {
-    float: left;
+    float: right; /*Original Position 'left'*/
     margin: 0;
   }
-  .navbar-nav > li {
-    float: left;
-  }
+    .navbar-nav > li {
+        float: right; /*Original Position 'left'*/
+    }
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px;

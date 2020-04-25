@@ -191,7 +191,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\2-tricolor-parrots.jpg" />
     <Content Include="Content\Images\BiosalvusLogo.jpeg" />
+    <Content Include="Content\Images\burning-antler.jpg" />
     <Content Include="Content\Images\bushfire1.jpg" />
+    <Content Include="Content\Images\cat-and-hummingbird.jpg" />
+    <Content Include="Content\Images\cat-and-mouse.jpg" />
+    <Content Include="Content\Images\cat-and-sparrow.jpg" />
     <Content Include="Content\Images\cats-face.jpg" />
     <Content Include="Content\Images\climate-protest.jpg" />
     <Content Include="Content\Images\plant-in-hand.jpg" />

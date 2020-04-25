@@ -27,14 +27,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Biosalvus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/Content/Images/BiosalvusLogo.jpeg" alt="Company logo" width="75" height="75" />
+                    </div>
+                    <div class="col-md-6" style="padding-left:10%;">
+                        <h5> Biosalvus </h5>
+                        <h6> Saving Australian BioDiversity </h6>
+                    </div>
+                </div>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="float:right;">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Threatened Species in Australia", "SpeciesMap", "SpeciesAustralias")</li>
+                    <li>@Html.ActionLink("Cats-Threat to Australian Biodiversity", "AvesEndangeredMap", "AvesEndangereds")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("AvesEndangeredMap", "AvesEndangeredMap", "AvesEndangereds")</li>
-                    <li>@Html.ActionLink("SpeciesMap", "SpeciesMap", "SpeciesAustralias")</li>
                 </ul>
             </div>
         </div>
