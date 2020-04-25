@@ -55,6 +55,7 @@ var map = new mapboxgl.Map({
     zoom: 3,
     center: [131.0369, -25.3444] //Uluru Longitude (Center of Australia)
 });
+var hoveredStateId = null;
 map.on('load', function () {
     //STATES ADD GEOJSON SECTION
     // Add a source for NEW SOUTH WALES state polygons.
@@ -114,8 +115,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'nsw',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)', //Violet
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)', //Yellow
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',//Yellow
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing AUSTRALIAN CAPITAL TERRITORY state polygons.
@@ -124,8 +131,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'act',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing SOUTH AUSTRALIA state polygons.
@@ -134,8 +147,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'sa',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing VICTORIA state polygons.
@@ -144,8 +163,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'vic',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing TASMANIA state polygons.
@@ -154,8 +179,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'tas',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing QUEENSLAND state polygons.
@@ -164,8 +195,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'qld',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
     // Add a layer showing WESTERN AUSTRALIA state polygons.
@@ -174,8 +211,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'wa',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
 
@@ -185,8 +228,14 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'nt',
         'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+            'fill-color': 'rgba(255, 255, 0, 0.1)',
+            'fill-outline-color': 'rgba(255, 255, 0, 1)',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.5
+            ]
         }
     });
 
@@ -505,28 +554,28 @@ function setLegendCountValues(temparray) {
     for (i = 0; i < temparray.length; i++) {
         switch (i) {
             case 0:
-                document.getElementById("rank1").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank1").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 1:
-                document.getElementById("rank2").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank2").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 2:
-                document.getElementById("rank3").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank3").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 3:
-                document.getElementById("rank4").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank4").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 4:
-                document.getElementById("rank5").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank5").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 5:
-                document.getElementById("rank6").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank6").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 6:
-                document.getElementById("rank7").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank7").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
             case 7:
-                document.getElementById("rank8").innerHTML = temparray[i].totalcount;
+                document.getElementById("rank8").innerHTML = temparray[i].state + ": " + temparray[i].totalcount;
                 break;
         }
     }
@@ -540,41 +589,41 @@ function displayStateFilter(temparray) {
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(120, 25, 25, 0.4)'); //Dark Maroon
+                    'rgba(51, 0, 0, 0.4)'); //Dark Maroon
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(120, 25, 25, 1)'); //Dark Maroon
+                    'rgba(51, 0, 0, 1)'); //Dark Maroon
                 break;
             case 1: //RANK 2
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(222, 48, 13, 0.4)'); //Red
+                    'rgba(165, 42, 42, 0.4)'); //Red
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(222, 48, 13, 1)'); //Red
+                    'rgba(165, 42, 42, 1)'); //Red
                 break;
             case 2: //RANK 3
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(120, 77, 25, 0.4)'); //Brown
+                    'rgba(255, 69, 0, 0.4)'); //Brown
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(120, 77, 25, 1)'); //Brown
+                    'rgba(255, 69, 0, 1)'); //Brown
                 break;
             case 3: //RANK 4
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(237, 102, 12,0.4)'); //Orange
+                    'rgba(255, 165, 0,0.4)'); //Orange
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(237, 102, 12,1)'); //Orange
+                    'rgba(255, 165, 0,1)'); //Orange
                 break;
             case 4: //RANK 5
                 map.setPaintProperty(
@@ -600,21 +649,21 @@ function displayStateFilter(temparray) {
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(120, 148, 31, 0.4)'); //Olive Green
+                    'rgba(169, 169, 169, 0.4)'); //Dark Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(120, 148, 31, 1)'); //Olive Green
+                    'rgba(169, 169, 169, 1)'); //Dark Gray
                 break;
             case 7: //RANK 8
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(100, 224, 22, 0.4)'); //Light Green
+                    'rgba(211, 211, 211, 0.4)'); //Light Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(100, 224, 22, 1)'); //Light Green
+                    'rgba(211, 211, 211, 1)'); //Light Gray
                 break;
         }
     }
@@ -634,18 +683,18 @@ function resetStateFilter() {
         map.setPaintProperty(
             statecodearray[i],
             'fill-color',
-            'rgba(200, 100, 240, 0.4)'); //Violet
+            'rgba(0, 0, 0, 0.1)'); //Yellow
         map.setPaintProperty(
             statecodearray[i],
             'fill-outline-color',
-            'rgba(200, 100, 240, 1)'); //Violet
+            'rgba(255, 255, 0, 1)'); //Yellow
     }
 }
 
-//Function to Reset Rank Count value to 0
+//Function to Reset Rank Count value to N/A
 function resetRankingValue() {
     for (i = 0; i < rankcountarray.length; i++) {
-        document.getElementById(rankcountarray[i]).innerHTML = 0;
+        document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
     }
 }
 
@@ -654,39 +703,44 @@ map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
 }));;
 map.addControl(new mapboxgl.NavigationControl());
-// When a click event occurs on a feature in the places layer, open a popup at the
-// location of the feature, with description HTML from its properties.
-map.on('click', 'places', function (e) {
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = e.features[0].properties.description;
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-    new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(map);
-});
-// Change the cursor to a pointer when the mouse is over the places layer.
-map.on('mouseenter', 'places', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'places', function () {
-    map.getCanvas().style.cursor = '';
-});
 
-// Add geolocate control to the map.
-map.addControl(
-    new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    })
-);
+//// Change the cursor to a pointer when the mouse is over the places layer.
+//map.on('mouseenter', 'places', function () {
+//    map.getCanvas().style.cursor = 'pointer';
+//});
+//// Change it back to a pointer when it leaves.
+//map.on('mouseleave', 'places', function () {
+//    map.getCanvas().style.cursor = '';
+//});
+
+//// When the user moves their mouse over the state-fill layer, we'll update the
+//// feature state for the feature under the mouse.
+//map.on('mousemove', 'NSW', function (e) {
+//    if (e.features.length > 0) {
+//        if (hoveredStateId) {
+//            map.setFeatureState(
+//                { source: 'nsw', id: hoveredStateId },
+//                { hover: false }
+//            );
+//        }
+//        hoveredStateId = e.features[0].id;
+//        map.setFeatureState(
+//            { source: 'nsw', id: hoveredStateId },
+//            { hover: true }
+//        );
+//    }
+//});
+
+//// When the mouse leaves the state-fill layer, update the feature state of the
+//// previously hovered feature.
+//map.on('mouseleave', 'NSW', function () {
+//    if (hoveredStateId) {
+//        map.setFeatureState(
+//            { source: 'nsw', id: hoveredStateId },
+//            { hover: false }
+//        );
+//    }
+//    hoveredStateId = null;
+//});
 
 

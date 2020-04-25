@@ -104,15 +104,12 @@ var catsfinaldata = {
     "features": catsdata
 }
 
-
-
-
 mapboxgl.accessToken = TOKEN;
 var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 4,
+    zoom: 10,
     center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
@@ -165,27 +162,27 @@ map.on('load', function () {
                     ['linear'],
                     ['heatmap-density'],
                     0,
-                    'rgba(33,102,172,0)',
+                    'rgba(33,102,172,0.2)',
                     0.1,
-                    'rgba(103,169,207,1)',
+                    'rgba(103,169,207,0.5)',
                     0.2,
-                    'rgba(209,229,240,1)',
+                    'rgba(209,229,240,0.5)',
                     0.3,
-                    'rgba(153,255,148,1)',
+                    'rgba(153,255,148,0.5)',
                     0.4,
-                    'rgba(87,255,82,1)',
+                    'rgba(87,255,82,0.5)',
                     0.5,
-                    'rgba(255,255,183,1)',
+                    'rgba(255,255,183,0.5)',
                     0.6,
-                    'rgba(255,255,177,1)',
+                    'rgba(255,255,177,0.5)',
                     0.7,
-                    'rgba(250,252,84,1)',
+                    'rgba(250,252,84,0.5)',
                     0.8,
-                    'rgba(253,219,199,1)',
+                    'rgba(253,219,199,0.5)',
                     0.9,
-                    'rgba(239,138,98,1)',
+                    'rgba(239,138,98,0.5)',
                     1,
-                    'rgba(178,24,43,1)'
+                    'rgba(255,200,0,0.5)'
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
@@ -255,21 +252,18 @@ map.on('load', function () {
                 'type': 'circle',
                 'source': 'avesdatasource',
                 'paint': {
-                    'circle-radius': {
-                        'base': 4,
-                        'stops': [[12, 2], [22, 180]]
-                    },
+                    'circle-radius': 10,
                     'circle-color': [
                         'match',
                         ['get', 'avesstatus'],
                         'Extinct',
-                        '#380b0b', //Dark Maroon
+                        'rgba(169, 169, 169,0.5)', //Dark Gray
                         'Critically Endangered',
-                        '#754d24', //Brown
+                        'rgba(51, 0, 0,0.5)', //Dark Maroon
                         'Vulnerable',
-                        '#8b9133', //Light Moss Green
+                        'rgba(255, 165, 0,0.5)', //Orange
                         'Endangered',
-                        '#e6e345', //Mustard
+                        'rgba(255, 69, 0,0.5)', //Orange Red
                         /*other*/'rgba(55,148,179,1)',
                     ]
                 },

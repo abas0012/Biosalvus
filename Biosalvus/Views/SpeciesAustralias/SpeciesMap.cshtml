@@ -38,21 +38,21 @@
     <div class="col-md-2">
         <div id="state-legend" class="legend">
             <h4>Count Ranking</h4>
-            <div><span style="background-color: rgba(120,25,25,1)"></span>Rank 1, Count: <p id="rank1"></p></div>
-            <div><span style="background-color: rgba(222,48,13,1)"></span>Rank 2, Count: <p id="rank2"></p></div>
-            <div><span style="background-color: rgba(120,77,25,1)"></span>Rank 3, Count: <p id="rank3"></p></div>
-            <div><span style="background-color: rgba(237,102,12,1)"></span>Rank 4, Count: <p id="rank4"></p></div>
-            <div><span style="background-color: rgba(184,181,35,1)"></span>Rank 5, Count: <p id="rank5"></p></div>
-            <div><span style="background-color: rgba(245,225,7,1)"></span>Rank 6, Count: <p id="rank6"></p></div>
-            <div><span style="background-color: rgba(120,148,31,1)"></span>Rank 7, Count: <p id="rank7"></p></div>
-            <div><span style="background-color: rgba(100,224,22,1)"></span>Rank 8, Count: <p id="rank8"></p></div>
-            <div><span style="background-color: rgba(200,100,240,1)"></span>N/A</div>
+            <div><span style="background-color: rgba(51, 0, 0,1)"></span><nbsp></nbsp><p id="rank1"></p></div>
+            <div><span style="background-color: rgba(165, 42, 42,1)"></span><nbsp></nbsp><p id="rank2"></p></div>
+            <div><span style="background-color: rgba(255, 69, 0,1)"></span><nbsp></nbsp><p id="rank3"></p></div>
+            <div><span style="background-color: rgba(255, 165, 0,1)"></span><nbsp></nbsp><p id="rank4"></p></div>
+            <div><span style="background-color: rgba(184, 181, 35,1)"></span><nbsp></nbsp><p id="rank5"></p></div>
+            <div><span style="background-color: rgba(245,225,7,1)"></span><nbsp></nbsp><p id="rank6"></p></div>
+            <div><span style="background-color: rgba(169, 169, 169,1)"></span><nbsp></nbsp><p id="rank7"></p></div>
+            <div><span style="background-color: rgba(211, 211, 211,1)"></span><nbsp></nbsp><p id="rank8"></p></div>
+            <div><span style="background-color: rgba(255, 255, 0, 0.1)"></span>N/A</div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-2">
-        <button id="vulnerablebutton" style="width: 100%;height: 70px;">
+        <button id="vulnerablebutton" style="width: 100%;height: 70px;color:white;background-color:orangered;">
             Vulnerable
             <span id="vulnerablecnt">1221</span>
             @*@foreach (var item in Model.speciescountbystatus)
@@ -67,7 +67,7 @@
         </button>
     </div>
     <div class="col-md-2">
-        <button id="conservationbutton" style="width: 100%;height: 70px;">
+        <button id="conservationbutton" style="width: 100%;height: 70px;color:white;background-color:orange;">
             Conservation Dependent
             <span id="conservationcnt">28</span>
             @*@foreach (var item in Model.speciescountbystatus)
@@ -82,7 +82,7 @@
         </button>
     </div>
     <div class="col-md-2">
-        <button id="endangeredbutton" style="width: 100%;height: 70px;">
+        <button id="endangeredbutton" style="width: 100%;height: 70px;color:white;background-color:brown;">
             Endangered
             <span id="endangeredcnt">932</span>
             @*@foreach (var item in Model.speciescountbystatus)
@@ -97,7 +97,7 @@
         </button>
     </div>
     <div class="col-md-2">
-        <button id="critendangeredbutton" style="width: 100%;height: 70px;">
+        <button id="critendangeredbutton" style="width: 100%;height: 70px;color:white;background-color:maroon;">
             Critically Endangered
             <span id="critendangeredncnt">315</span>
             @*@foreach (var item in Model.speciescountbystatus)
@@ -112,7 +112,7 @@
         </button>
     </div>
     <div class="col-md-2">
-        <button id="wildextinctbutton" style="width: 100%;height: 70px;">
+        <button id="wildextinctbutton" style="width: 100%;height: 70px;color:white;background-color:darkgrey;">
             Extinct in the wild
             <span id="wildextinctcnt">1</span>
             @*@foreach (var item in Model.speciescountbystatus)
@@ -127,7 +127,7 @@
         </button>
     </div>
     <div class="col-md-2">
-        <button id="extinctbutton" style="width: 100%;height: 70px;">
+        <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
             Extinct
             <span id="extinctcnt">136</span>
             @*@foreach (var item in Model.speciescountbystatus)
