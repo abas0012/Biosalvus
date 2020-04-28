@@ -258,11 +258,13 @@ map.on('load', function () {
     // When a click event occurs on a feature in the NEW SOUTH WALES layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NSW', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('NSW');
+        setAllStateFlagOFF(); //turn of all state flags
+        nswstate = true;
         map.setPaintProperty(
             'NSW',
             'fill-color',
@@ -271,16 +273,18 @@ map.on('load', function () {
             'NSW',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('NSW');
+        $('#statefilter').html('NSW');
     });
     // When a click event occurs on a feature in the AUSTRALIAN CAPITAL TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'ACT', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('ACT');
+        setAllStateFlagOFF(); //turn of all state flags
+        actstate = true;
         map.setPaintProperty(
             'ACT',
             'fill-color',
@@ -289,16 +293,18 @@ map.on('load', function () {
             'ACT',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('ACT');
+        $('#statefilter').html('ACT');
     });
     // When a click event occurs on a feature in the SOUTH AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'SA', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('SA');
+        setAllStateFlagOFF(); //turn of all state flags
+        sastate = true;
         map.setPaintProperty(
             'SA',
             'fill-color',
@@ -307,16 +313,18 @@ map.on('load', function () {
             'SA',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('SA');
+        $('#statefilter').html('SA');
     });
     // When a click event occurs on a feature in the VICTORIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'VIC', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('VIC');
+        setAllStateFlagOFF(); //turn of all state flags
+        vicstate = true;
         map.setPaintProperty(
             'VIC',
             'fill-color',
@@ -325,16 +333,18 @@ map.on('load', function () {
             'VIC',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('VIC');
+        $('#statefilter').html('VIC');
     });
     // When a click event occurs on a feature in the TASMANIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'TAS', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('TAS');
+        setAllStateFlagOFF(); //turn of all state flags
+        tasstate = true;
         map.setPaintProperty(
             'TAS',
             'fill-color',
@@ -343,16 +353,18 @@ map.on('load', function () {
             'TAS',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('TAS');
+        $('#statefilter').html('TAS');
     });
     // When a click event occurs on a feature in the QUEENSLAND layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'QLD', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('QLD');
+        setAllStateFlagOFF(); //turn of all state flags
+        qldstate = true;
         map.setPaintProperty(
             'QLD',
             'fill-color',
@@ -361,16 +373,18 @@ map.on('load', function () {
             'QLD',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('QLD');
+        $('#statefilter').html('QLD');
     });
     // When a click event occurs on a feature in the WESTERN AUSTRALIA layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'WA', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         resetCountButtonValue();
         setStatusButtonCountValue('WA');
+        setAllStateFlagOFF(); //turn of all state flags
+        wastate = true;
         map.setPaintProperty(
             'WA',
             'fill-color',
@@ -379,15 +393,17 @@ map.on('load', function () {
             'WA',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('WA');
+        $('#statefilter').html('WA');
     });
     // When a click event occurs on a feature in the NORTHEN TERRITORY layer, open a popup at the
     // location of the click, with description HTML from its properties.
     map.on('click', 'NT', function (e) {
-        hideLegend();
+        //hideLegend();
         resetStateFilter();
-        resetRankingValue();
+        //resetRankingValue();
         setStatusButtonCountValue('NT');
+        setAllStateFlagOFF(); //turn of all state flags
+        ntstate = true;
         map.setPaintProperty(
             'NT',
             'fill-color',
@@ -396,63 +412,356 @@ map.on('load', function () {
             'NT',
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
-        $('#mapfilter').html('NT');
+        $('#statefilter').html('NT');
     });
 
     //BUTTONS INTERACTIONS
-    document.getElementById("vulnerablebutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
+    document.getElementById("refreshbtn").addEventListener("click", function () {
+        setAllStateFlagOFF();
+        setAllStatusFlagOFF();
+        resetStatusBtnBorderColor();
         resetStateFilter();
+        resetCountInitialValue();
         resetRankingValue();
-        displayStateFilter(vulnerablearray);
-        setLegendCountValues(vulnerablearray);
-        $('#mapfilter').html('Vulnerable');
     });
-    document.getElementById("wildextinctbutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
-        resetStateFilter();
-        resetRankingValue();
-        displayStateFilter(extinctinwildarray);
-        setLegendCountValues(extinctinwildarray);
-        $('#mapfilter').html('Extinct in wild');
+    document.getElementById("vulnerablebutton").addEventListener("click", function () {      
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(vulnerablearray);
+        //setLegendCountValues(vulnerablearray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Vulnerable');
+
+        //TEST
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(vulnerablearray);
+            setLegendCountValues(vulnerablearray);
+            setAllStatusFlagOFF();
+            vulnerable = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Vulnerable');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (conservation == true || endangered == true || critendangered == true ||
+                extinct == true || wildextinct == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(vulnerablearray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+                vulnerable = true;
+                $('#statusfilter').html('Vulnerable');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(vulnerablearray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+                vulnerable = true;
+                $('#statusfilter').html('Vulnerable');
+            }          
+        }
+    });
+    document.getElementById("wildextinctbutton").addEventListener("click", function () {     
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(extinctinwildarray);
+        //setLegendCountValues(extinctinwildarray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Extinct in wild');
+
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(extinctinwildarray);
+            setLegendCountValues(extinctinwildarray);
+            setAllStatusFlagOFF();
+            wildextinct = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Extinct in wild');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (conservation == true || endangered == true || critendangered == true ||
+                extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(extinctinwildarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                wildextinct = true;
+                $('#statusfilter').html('Extinct in wild');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(extinctinwildarray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                wildextinct = true;
+                $('#statusfilter').html('Extinct in wild');
+            }
+        }
     });
     document.getElementById("endangeredbutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
-        resetStateFilter();
-        resetRankingValue();
-        displayStateFilter(endangeredarray);
-        setLegendCountValues(endangeredarray);
-        $('#mapfilter').html('Endangered');
+        ////ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(endangeredarray);
+        //setLegendCountValues(endangeredarray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Endangered');
+
+        //TEST
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(endangeredarray);
+            setLegendCountValues(endangeredarray);
+            setAllStatusFlagOFF();
+            endangered = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Endangered');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (conservation == true || vulnerable == true || critendangered == true ||
+                extinct == true || wildextinct == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(endangeredarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                endangered = true;
+                $('#statusfilter').html('Endangered');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(endangeredarray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                endangered = true;
+                $('#statusfilter').html('Endangered');
+            }
+
+        }
     });
     document.getElementById("critendangeredbutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
-        resetStateFilter();
-        resetRankingValue();
-        displayStateFilter(critendangeredarray);
-        setLegendCountValues(critendangeredarray);
-        $('#mapfilter').html('Critically Endangered');
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(critendangeredarray);
+        //setLegendCountValues(critendangeredarray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Critically Endangered');
+
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(critendangeredarray);
+            setLegendCountValues(critendangeredarray);
+            setAllStatusFlagOFF();
+            critendangered = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Critically Endangered');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (conservation == true || endangered == true || wildextinct == true ||
+                extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(critendangeredarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                critendangered = true;
+                $('#statusfilter').html('Critically Endangered');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(critendangeredarray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                critendangered = true;
+                $('#statusfilter').html('Critically Endangered');
+            }
+        }
     });
     document.getElementById("conservationbutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
-        resetStateFilter();
-        resetRankingValue();
-        displayStateFilter(conservationarray);
-        setLegendCountValues(conservationarray);
-        $('#mapfilter').html('Conservation Dependent');
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(conservationarray);
+        //setLegendCountValues(conservationarray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Conservation Dependent');
+
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(conservationarray);
+            setLegendCountValues(conservationarray);
+            setAllStatusFlagOFF();
+            conservation = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Conservation Dependent');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (critendangered == true || endangered == true || wildextinct == true ||
+                extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(conservationarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                conservation = true;
+                $('#statusfilter').html('Conservation Dependent');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(conservationarray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                conservation = true;
+                $('#statusfilter').html('Conservation Dependent');
+            }
+        }
     });
     document.getElementById("extinctbutton").addEventListener("click", function () {
-        showLegend();
-        resetCountInitialValue();
-        resetStateFilter();
-        resetRankingValue();
-        displayStateFilter(extinctarray);
-        setLegendCountValues(extinctarray);
-        $('#mapfilter').html('Extinct');
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(extinctarray);
+        //setLegendCountValues(extinctarray);
+        //resetStatusBtnBorderColor();
+        //document.getElementById("extinctbutton").style.borderColor = 'red';
+        //$('#statusfilter').html('Extinct');
+
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(extinctarray);
+            setLegendCountValues(extinctarray);
+            setAllStatusFlagOFF();
+            extinct = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Extinct');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (conservation == true || endangered == true || wildextinct == true ||
+                critendangered == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(extinctarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                extinct = true;
+                $('#statusfilter').html('Extinct');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                showGroupingbtns();
+                setLegendCountValues(extinctarray);
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                extinct = true;
+                $('#statusfilter').html('Extinct');
+            }
+        }
+    });
+    document.getElementById("conservationbutton").addEventListener("click", function () {
+        //ORIGINAL
+        //showLegend();
+        //resetCountInitialValue();
+        //resetStateFilter();
+        //resetRankingValue();
+        //displayStateFilter(conservationarray);
+        //setLegendCountValues(conservationarray);
+        //resetStatusBtnBorderColor(); //Button Highlight Toggle
+        //document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+        //$('#statusfilter').html('Conservation Dependent');
+
+        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+            showLegend();
+            resetStateFilter();
+            resetRankingValue();
+            displayStateFilter(conservationarray);
+            setLegendCountValues(conservationarray);
+            setAllStatusFlagOFF();
+            conservation = true;
+            resetStatusBtnBorderColor(); //Button Highlight Toggle
+            document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            $('#statusfilter').html('Conservation Dependent');
+        }
+        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+            if (critendangered == true || endangered == true || wildextinct == true ||
+                extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+                showGroupingbtns();
+                resetRankingValue();
+                setLegendCountValues(conservationarray);
+                setAllStatusFlagOFF();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                conservation = true;
+                $('#statusfilter').html('Conservation Dependent');
+            }
+            else { //NO OTHER BUTTON CLICKED
+                setLegendCountValues(conservationarray);
+                showGroupingbtns();
+                resetStatusBtnBorderColor(); //Button Highlight Toggle              
+                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                conservation = true;
+                $('#statusfilter').html('Conservation Dependent');
+            }
+        }
     });
 });
 
@@ -706,6 +1015,14 @@ function resetCountButtonValue() {
     }
 }
 
+//Function to Reset border colour in Status Button to white
+const statusbtnarray = ['vulnerablebutton', 'conservationbutton', 'endangeredbutton', 'critendangeredbutton', 'wildextinctbutton', 'extinctbutton'];
+function resetStatusBtnBorderColor() {
+    for (i = 0; i < statusbtnarray.length; i++) {
+        document.getElementById(statusbtnarray[i]).style.borderColor = 'white';
+    }
+}
+
 //Function to Reset State Fill Colour to 'Default'
 function resetStateFilter() {
     for (i = 0; i < statecodearray.length; i++) {
@@ -735,49 +1052,31 @@ function showLegend() {
     document.getElementById("legend").style.display = "block";
 }
 
-//MAP CONTROLS
-map.addControl(new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
-}));;
-map.addControl(new mapboxgl.NavigationControl());
-
-//// Change the cursor to a pointer when the mouse is over the places layer.
-//map.on('mouseenter', 'places', function () {
-//    map.getCanvas().style.cursor = 'pointer';
-//});
-//// Change it back to a pointer when it leaves.
-//map.on('mouseleave', 'places', function () {
-//    map.getCanvas().style.cursor = '';
-//});
-
-//// When the user moves their mouse over the state-fill layer, we'll update the
-//// feature state for the feature under the mouse.
-//map.on('mousemove', 'NSW', function (e) {
-//    if (e.features.length > 0) {
-//        if (hoveredStateId) {
-//            map.setFeatureState(
-//                { source: 'nsw', id: hoveredStateId },
-//                { hover: false }
-//            );
-//        }
-//        hoveredStateId = e.features[0].id;
-//        map.setFeatureState(
-//            { source: 'nsw', id: hoveredStateId },
-//            { hover: true }
-//        );
-//    }
-//});
-
-//// When the mouse leaves the state-fill layer, update the feature state of the
-//// previously hovered feature.
-//map.on('mouseleave', 'NSW', function () {
-//    if (hoveredStateId) {
-//        map.setFeatureState(
-//            { source: 'nsw', id: hoveredStateId },
-//            { hover: false }
-//        );
-//    }
-//    hoveredStateId = null;
-//});
+function showGroupingbtns() {
+    document.getElementById("groupingbtns").style.display = "block";
+}
 
 
+//sets all state boolean flag to False
+function setAllStateFlagOFF() {
+    nswstate = false;
+    actstate = false;
+    vicstate = false;
+    qldstate = false;
+    tasstate = false;
+    ntstate = false;
+    sastate = false;
+    wastate = false;
+
+}
+
+//sets all status boolean flag to False
+function setAllStatusFlagOFF() {
+    vulnerable = false;
+    endangered = false;
+    critendangered = false;
+    conservation = false;
+    extinct = false;
+    wildextinct = false;
+    vulnerable = false;
+}
