@@ -41,5 +41,10 @@ namespace Biosalvus.Controllers
         {
             return View();
         }
+
+        public ActionResult Climate()
+        {
+            return View();
+        }
     }
 }

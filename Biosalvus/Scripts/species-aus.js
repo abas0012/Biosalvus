@@ -6,6 +6,21 @@
 * @author Adhi Baskoro <abas0012@student.monash.edu>
 * Date: 22/04/2020
 */
+var nswstate = false; //Boolean Flag for NSW
+var actstate = false; //Boolean Flag for ACT
+var vicstate = false; //Boolean Flag for VIC
+var qldstate = false; //Boolean Flag for QLD
+var sastate = false; //Boolean Flag for SA
+var ntstate = false; //Boolean Flag for NT
+var wastate = false; //Boolean Flag for WA
+var tasstate = false; //Boolean Flag for TAS 
+var vulnerable = false; //Boolean Flag for Vulnerable Status 
+var conservation = false;//Boolean Flag for Conservation Status 
+var endangered = false;//Boolean Flag for Endangered Status 
+var critendangered = false;//Boolean Flag for Critically Endangered Status 
+var extinct = false;//Boolean Flag for Extinct Status 
+var wildextinct = false;//Boolean Flag for Extinct in Wild Status 
+
 const statecodearray = ['ACT', 'VIC', 'NSW', 'SA', 'WA', 'QLD', 'TAS', 'NT'];
 const rankcountarray = ['rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8'];
 //Array to hold Count by State and Status
