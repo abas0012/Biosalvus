@@ -3,9 +3,82 @@
     ViewBag.Title = "Climate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Climate</h2>
-<iframe width="630" height="460" frameborder="0" src="https://www.globalforestwatch.org/embed/widget/treeLoss/country/AUS/10?treeLoss=eyJpbnRlcmFjdGlvbiI6e319"></iframe>
+<div style="width:400px;height:400px;">
+    <canvas id="groupChart" width="400" height="400"></canvas>
+</div>
+<button id="data1">data1</button>
+<button id="data2">data2</button>
+<div id="helloworld" style="display:none;">
+    Hello World
+</div>
+@*<iframe width="630" height="460" frameborder="0" src="https://www.globalforestwatch.org/embed/widget/treeLoss/country/AUS/10?treeLoss=eyJpbnRlcmFjdGlvbiI6e319"></iframe>
 <iframe width="315" height="460" frameborder="0" src="https://www.globalforestwatch.org/embed/widget/firesRanked/country/AUS/10?firesRanked=eyJwYWdlIjowfQ=="></iframe>
-<iframe width="630" height="460" frameborder="0" src="https://www.globalforestwatch.org/embed/widget/firesAlerts/country/AUS/10?firesAlerts=eyJpbnRlcmFjdGlvbiI6e319"></iframe>
+<iframe width="630" height="460" frameborder="0" src="https://www.globalforestwatch.org/embed/widget/firesAlerts/country/AUS/10?firesAlerts=eyJpbnRlcmFjdGlvbiI6e319"></iframe>*@
+<script>
+    var barChartData = {
+        datakeys: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
+        labels: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
+        datasets: [{
+            label: 'Animalia',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+    var ctx = document.getElementById('groupChart').getContext('2d');
+    var groupChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: barChartData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            events: ['click']
+        }
+    });
 
+    //Sample On Click
+    document.getElementById("groupChart").onclick = function (evt) {
+        var activePoints = groupChart.getElementAtEvent(evt);
+        var theElement = groupChart.config.data.datasets[activePoints[0]._datasetIndex].data[activePoints[0]._index];
+        console.log(activePoints);
+        console.log(theElement);
+        console.log(groupChart.config.data.datakeys[activePoints[0]._index]);
+        document.getElementById("helloworld").style.display = "block";
+    }
+
+    document.getElementById("data1").addEventListener("click", function () { //WORKS
+        const array = [5, 15, 20, 11, 6, 8];
+        for (i = 0; i < array.length; i++) {
+            barChartData.datasets[0].data[i] = array[i];
+        };
+        groupChart.update();
+    });
+    document.getElementById("data2").addEventListener("click", function () {
+        const array = [11, 6, 8, 5, 15, 20,];
+        for (i = 0; i < array.length; i++) {
+            barChartData.datasets[0].data[i] = array[i];
+        };
+        groupChart.update();
+    });
+</script>

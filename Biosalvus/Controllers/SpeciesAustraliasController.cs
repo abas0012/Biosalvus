@@ -20,6 +20,111 @@ namespace Biosalvus.Controllers
             return View(db.SpeciesAustralias.ToList());
         }
 
+        public ActionResult SpeciesMap()
+        {
+            string present = "Yes";
+            string vulnerable = "Vulnerable";
+            string extinct = "Extinct";
+            string conservationdependent = "Conservation Dependent";
+            string criticallyendangered = "Critically Endangered";
+            string endangered = "Endangered";
+            string extinctinthewild = "Extinct in the wild";
+            string animalia = "Animalia";
+            SpeciesAllViewModel viewModel = new SpeciesAllViewModel();
+            viewModel.speciescountbystatus = (from r in db.SpeciesAustralias
+                                              where (r.Present_ == present && r.Kingdom == animalia)
+                                              group r by new { r.Threatened_status } into groupedbyStatus
+                                              select new SpeciesCountGroupedStatus
+                                              {
+                                                  TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
+                                                  Status = groupedbyStatus.Key.Threatened_status
+                                              });
+            viewModel.speciescountbystatestatus = (from r in db.SpeciesAustralias
+                                                   where (r.Present_ == present && r.Kingdom == animalia)
+                                                   group r by new { r.Threatened_status, r.StateCode } into groupedbyStatus
+                                                   select new SpeciesCountGroupedStateStatus
+                                                   {
+                                                       TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
+                                                       Status = groupedbyStatus.Key.Threatened_status,
+                                                       StateCode = groupedbyStatus.Key.StateCode
+                                                   });
+            viewModel.speciescountvulnerable = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == vulnerable && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountVulnerable
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountextinct = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == extinct && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountExtinct
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountconservation = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == conservationdependent && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountConservationDependent
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountcritendangered = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == criticallyendangered && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountCriticallyEndangered
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountendangered = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == endangered && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountEndangered
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountextinctinwild = (from r in db.SpeciesAustralias
+                                                where (r.Present_ == present && r.Threatened_status == extinctinthewild && r.Kingdom == animalia)
+                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
+                                                select new SpeciesCountExtinctInWild
+                                                {
+                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
+                                                    StateCode = groupedbyVulnerable.Key.StateCode,
+                                                    Status = groupedbyVulnerable.Key.Threatened_status
+                                                }).OrderByDescending(x => x.TotalCount);
+            viewModel.speciescountbygroupings = (from r in db.SpeciesAustralias
+                                                 where (r.Present_ == present && r.Kingdom == animalia)
+                                                 group r by new { r.StateCode, r.Threatened_status, r.Grouping} into groupedCounts
+                                                 select new SpeciesCountByGrouping
+                                                 {
+                                                     TotalCount = groupedCounts.Count(x => x.Threatened_status != null),
+                                                     StateCode = groupedCounts.Key.StateCode,
+                                                     Status = groupedCounts.Key.Threatened_status,
+                                                     Grouping = groupedCounts.Key.Grouping
+                                                 }).OrderBy(x => x.Grouping);
+            viewModel.speciesbygroupings = (from r in db.SpeciesAustralias
+                                            where (r.Present_ == present && r.Kingdom == animalia)
+                                            select new SpeciesByGrouping
+                                            {
+                                                CommonName = r.Common_Name,
+                                                StateCode = r.StateCode,
+                                                Status = r.Threatened_status,
+                                                Grouping = r.Grouping
+                                            }).OrderBy(x => x.Grouping);
+            return View(viewModel);
+        }
+
+
         // GET: SpeciesAustralias/Details/5
         public ActionResult Details(int? id)
         {
@@ -122,91 +227,6 @@ namespace Biosalvus.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult SpeciesMap()
-        {
-            string present = "Yes";
-            string vulnerable = "Vulnerable";
-            string extinct = "Extinct";
-            string conservationdependent = "Conservation Dependent";
-            string criticallyendangered = "Critically Endangered";
-            string endangered = "Endangered";
-            string extinctinthewild = "Extinct in the wild";
-            string animalia = "Animalia";
-            SpeciesAllViewModel viewModel = new SpeciesAllViewModel();
-            viewModel.speciescountbystatus = (from r in db.SpeciesAustralias
-                                              where (r.Present_ == present && r.Kingdom == animalia)
-                                              group r by new { r.Threatened_status } into groupedbyStatus
-                                              select new SpeciesCountGroupedStatus
-                                              {
-                                                  TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
-                                                  Status = groupedbyStatus.Key.Threatened_status
-                                              });
-            viewModel.speciescountbystatestatus = (from r in db.SpeciesAustralias
-                                                   where (r.Present_ == present && r.Kingdom == animalia)
-                                                   group r by new { r.Threatened_status, r.StateCode } into groupedbyStatus
-                                                   select new SpeciesCountGroupedStateStatus
-                                                   {
-                                                       TotalCount = groupedbyStatus.Count(x => x.Threatened_status != null),
-                                                       Status = groupedbyStatus.Key.Threatened_status,
-                                                       StateCode = groupedbyStatus.Key.StateCode
-                                                   });
-            viewModel.speciescountvulnerable = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == vulnerable && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountVulnerable
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            viewModel.speciescountextinct = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == extinct && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountExtinct
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            viewModel.speciescountconservation = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == conservationdependent && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountConservationDependent
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            viewModel.speciescountcritendangered = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == criticallyendangered && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountCriticallyEndangered
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            viewModel.speciescountendangered = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == endangered && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountEndangered
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            viewModel.speciescountextinctinwild = (from r in db.SpeciesAustralias
-                                                where (r.Present_ == present && r.Threatened_status == extinctinthewild && r.Kingdom == animalia)
-                                                group r by new { r.StateCode, r.Threatened_status } into groupedbyVulnerable
-                                                select new SpeciesCountExtinctInWild
-                                                {
-                                                    TotalCount = groupedbyVulnerable.Count(x => x.Threatened_status != null),
-                                                    StateCode = groupedbyVulnerable.Key.StateCode,
-                                                    Status = groupedbyVulnerable.Key.Threatened_status
-                                                }).OrderByDescending(x => x.TotalCount);
-            return View(viewModel);
         }
     }
 }

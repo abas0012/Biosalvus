@@ -106,7 +106,6 @@
     </div>
 </div>
 <br />
-<h4>Species Grouping</h4>
 <div id="groupingbtns" class="row">
     <div class="col-md-2 col-xs-4">
         <button id="amphibiansbtn" style="width: 100%;height: 70px;">
@@ -145,10 +144,90 @@
         </button>
     </div>
 </div>
+<h4>Species Grouping</h4>
+<div class="row">
+    <div class="col-md-6 col-xs-6" style="height:400px;">
+        <canvas id="groupChart" width="400" height="400"></canvas>
+    </div>
+    <div class="col-md-6" style="height:400px;">
+        <table id="speciesbygroupings" class="table">
+            <tr>
+                <th>
+                    CommonName
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    StateCode
+                </th>
+                <th>
+                    Grouping
+                </th>
+            </tr>
+
+            @foreach (var item in Model.speciesbygroupings)
+            {
+                <tr class="speciesbygroupings">
+                    <td class="speciesname">
+                        @Html.DisplayFor(modelItem => item.CommonName)
+                    </td>
+                    <td class="speciesstatus">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="speciesstate">
+                        @Html.DisplayFor(modelItem => item.StateCode)
+                    </td>
+                    <td class="speciesgrouping">
+                        @Html.DisplayFor(modelItem => item.Grouping)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
 <h4>Grouping Details</h4>
-<div>
+<div class="row">
+    <div class="col-md-12">
+        <table id="speciescountbygroupings" class="table" style="display:none;">
+                <tr>
+                    <th>
+                        Total Count
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        StateCode
+                    </th>
+                    <th>
+                        Grouping
+                    </th>
+                </tr>
+            @foreach (var item in Model.speciescountbygroupings)
+            {
+                <tr class="speciescountbygroupings">
+                    <td class="speciestotalcount">
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    </td>
+                    <td class="speciescountstatus">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="speciescountstate">
+                        @Html.DisplayFor(modelItem => item.StateCode)
+                    </td>
+                    <td class="speciescountgrouping">
+                        @Html.DisplayFor(modelItem => item.Grouping)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 
 </div>
+
+
 <div class="row">
     <div class="col-md-6">
         <table class="table" style="display:none">
