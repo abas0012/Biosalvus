@@ -6,6 +6,7 @@
 }
 <style>
     .legend {
+        height:150px;
         background-color: #fff;
         border-radius: 3px;
         bottom: 30px;
@@ -29,127 +30,92 @@
         }
 </style>
 <h2>@ViewBag.Title</h2>
-<div class="row">
-    <div class="col-md-4">
-        <h3>State: <span id="statefilter"></span></h3>
-    </div>
-    <div class="col-md-4">
-        <h3>Status: <span id="statusfilter"></span></h3>
-    </div>
-    <div class="col-md-4">
-        <h3>Group: <span id="groupfilter"></span></h3>
-    </div>
-</div>
+
 @*<h3>Filter Selected: <span id="mapfilter"></span></h3>*@
 
 <div class="row">
-    <div class="col-md-12 col-xs-12">
+    <div class="col-md-6 col-xs-12">
         <div id="species-map" style="height:450px;"></div> <!--This is the Map-->
     </div>
-</div>
-<div  class="row"> @*style="display:none;"*@
-    <div class="col-md-8 col-xs-8">
-        <div id="legend" class="legend">
-            <h4>Status Count Ranking:</h4>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(51, 0, 0,1)"></span><nbsp></nbsp><p id="rank1"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(165, 42, 42,1)"></span><nbsp></nbsp><p id="rank2"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 69, 0,1)"></span><nbsp></nbsp><p id="rank3"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 165, 0,1)"></span><nbsp></nbsp><p id="rank4"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(184, 181, 35,1)"></span><nbsp></nbsp><p id="rank5"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(245,225,7,1)"></span><nbsp></nbsp><p id="rank6"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(169, 169, 169,1)"></span><nbsp></nbsp><p id="rank7"></p></div>
-            <div class="col-md-2 col-xs-2"><span style="background-color: rgba(211, 211, 211,1)"></span><nbsp></nbsp><p id="rank8"></p></div>
+    <div class="col-md-6 col-xs-12">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="col-md-4 col-xs-4">
+                    <button id="vulnerablebutton" style="width: 100%;height: 70px;color:white;background-color:orangered;">
+                        Vulnerable
+                        <span id="vulnerablecnt">486</span>
+                    </button>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <button id="conservationbutton" style="width: 100%;height: 70px;color:white;background-color:orange;">
+                        Conservation Dependent
+                        <span id="conservationcnt">28</span>
+                    </button>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <button id="endangeredbutton" style="width: 100%;height: 70px;color:white;background-color:brown;">
+                        Endangered
+                        <span id="endangeredcnt">312</span>
+                    </button>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <button id="critendangeredbutton" style="width: 100%;height: 70px;color:white;background-color:maroon;">
+                        Critically Endangered
+                        <span id="critendangeredncnt">136</span>
+                    </button>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <button id="wildextinctbutton" style="width: 100%;height: 70px;color:white;background-color:darkgrey;">
+                        Extinct in the wild
+                        <span id="wildextinctcnt">1</span>
+                    </button>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
+                        Extinct
+                        <span id="extinctcnt">95</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div id="legend" class="legend">
+                    <h4>Status Count Ranking:</h4>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(51, 0, 0,1)"></span><nbsp></nbsp><p id="rank1"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(165, 42, 42,1)"></span><nbsp></nbsp><p id="rank2"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 69, 0,1)"></span><nbsp></nbsp><p id="rank3"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 165, 0,1)"></span><nbsp></nbsp><p id="rank4"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(184, 181, 35,1)"></span><nbsp></nbsp><p id="rank5"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(245,225,7,1)"></span><nbsp></nbsp><p id="rank6"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(169, 169, 169,1)"></span><nbsp></nbsp><p id="rank7"></p></div>
+                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(211, 211, 211,1)"></span><nbsp></nbsp><p id="rank8"></p></div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <button id="refreshbtn" style="width:30%;height:50px;color:white;background-color:lightblue;float:left;">
+                        ALL/REFRESH
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>State: <span id="statefilter"></span></h3>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Status: <span id="statusfilter"></span></h3>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Group: <span id="groupfilter"></span></h3>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-4 col-xs-4" >
-        <button id="refreshbtn" style="float:right;">
-            ALL/REFRESH
-        </button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2 col-xs-4">
-        <button id="vulnerablebutton" style="width: 100%;height: 70px;color:white;background-color:orangered;">
-            Vulnerable
-            <span id="vulnerablecnt">486</span>
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="conservationbutton" style="width: 100%;height: 70px;color:white;background-color:orange;">
-            Conservation Dependent
-            <span id="conservationcnt">28</span>
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="endangeredbutton" style="width: 100%;height: 70px;color:white;background-color:brown;">
-            Endangered
-            <span id="endangeredcnt">312</span>
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="critendangeredbutton" style="width: 100%;height: 70px;color:white;background-color:maroon;">
-            Critically Endangered
-            <span id="critendangeredncnt">136</span>
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="wildextinctbutton" style="width: 100%;height: 70px;color:white;background-color:darkgrey;">
-            Extinct in the wild
-            <span id="wildextinctcnt">1</span>
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
-            Extinct
-            <span id="extinctcnt">95</span>
-        </button>
     </div>
 </div>
 <br />
-<div id="groupingbtns" class="row">
-    <div class="col-md-2 col-xs-4">
-        <button id="amphibiansbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Amphibians
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="birdsbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Birds
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="insectsbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Insects
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="mammalsbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Mammals
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="reptilesbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Reptiles
-        </button>
-    </div>
-    <div class="col-md-2 col-xs-4">
-        <button id="othersbtn" style="width: 100%;height: 70px;">
-            <!--color:white;background-color:lightgrey;-->
-            Others
-        </button>
-    </div>
-</div>
 <h4>Species Grouping</h4>
-<div class="row">
-    <div class="col-md-6 col-xs-6" style="height:400px;">
+<div id="speciesgrouping"  class="row">
+    <div id="speciesgroupChart" class="col-md-3 col-xs-3" style="height:400px;display:none;">
         <canvas id="groupChart" width="400" height="400"></canvas>
     </div>
-    <div class="col-md-6" style="height:400px;">
+    <div id="speciesgroupTable" class="col-md-9 col-xs-9" style="height:400px;display:none;">
         <table id="speciesbygroupings" class="table">
             <tr>
                 <th>
@@ -187,7 +153,6 @@
     </div>
 </div>
 
-<h4>Grouping Details</h4>
 <div class="row">
     <div class="col-md-12">
         <table id="speciescountbygroupings" class="table" style="display:none;">
