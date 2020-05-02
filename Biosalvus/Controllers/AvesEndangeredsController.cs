@@ -20,9 +20,12 @@ namespace Biosalvus.Controllers
         //    return View(db.AvesEndangereds.ToList());
         //}
 
-        public ActionResult AvesEndangeredMap()
+        public ActionResult AvesThreatenedMap()
         {
             string state = "Victoria";
+            string criticallyendangered = "Critically Endangered";
+            string endangered = "Endangered";
+            string vulnerable = "Vulnerable";
 
             EndageredMapViewModel viewmodel = new EndageredMapViewModel();
             viewmodel.aveslist = (from r in db.AvesEndangereds
@@ -34,10 +37,7 @@ namespace Biosalvus.Controllers
                                       avesstate = r.stateProvince,
                                       avesstatus = r.Status,
                                       catfood = r.CatFood
-                                  }
-                                  );
-
-            //viewmodel.aveslist = db.AvesEndangereds;
+                                  });
             viewmodel.catslist = (from r in db.CatRecordsdb
                                   where r.State == state
                                   select new CatsSummary
@@ -47,8 +47,52 @@ namespace Biosalvus.Controllers
                                       catlongitude = r.Longitude,
                                       catstate = r.State,
                                       catindividualcount = r.IndividualCount                                
-                                  }
-                                  );
+                                  });
+
+            viewmodel.distinctBirdStatuses = (from r in db.AvesEndangereds
+                                              //group r by new { r.vernacularName, r.Status } into groupedQuery
+                                              select new DistinctBirdStatus
+                                              {
+                                                  birdname = r.vernacularName,
+                                                  status = r.Status
+                                              }).DistinctBy(x => x.birdname);
+            viewmodel.vulnerablebirds = (from r in db.AvesEndangereds
+                                         where r.Status == vulnerable
+                                         select new BirdPoint
+                                         {
+                                             birdname = r.vernacularName,
+                                             scientificname = r.species,
+                                             birdlongitude = r.Longitude,
+                                             birdlatitude = r.Latitude,
+                                             state = r.stateProvince,
+                                             status = r.Status,
+                                             catfood = r.CatFood
+                                         });
+            viewmodel.endangeredbirds = (from r in db.AvesEndangereds
+                                         where r.Status == endangered
+                                         select new BirdPoint
+                                         {
+                                             birdname = r.vernacularName,
+                                             scientificname = r.species,
+                                             birdlongitude = r.Longitude,
+                                             birdlatitude = r.Latitude,
+                                             state = r.stateProvince,
+                                             status = r.Status,
+                                             catfood = r.CatFood
+                                         });
+            viewmodel.critendangeredbirds = (from r in db.AvesEndangereds
+                                         where r.Status == criticallyendangered
+                                         select new BirdPoint
+                                         {
+                                             birdname = r.vernacularName,
+                                             scientificname = r.species,
+                                             birdlongitude = r.Longitude,
+                                             birdlatitude = r.Latitude,
+                                             state = r.stateProvince,
+                                             status = r.Status,
+                                             catfood = r.CatFood
+                                         });
+
             return View(viewmodel);
         }
 

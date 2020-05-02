@@ -1,6 +1,6 @@
 ﻿@model Biosalvus.Models.EndageredMapViewModel
 @{
-    ViewBag.Title = "AvesEndangered";
+    ViewBag.Title = "AvesThreatened";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -72,6 +72,48 @@
             margin-right: 5px;
             width: 10px;
         }
+
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
 </style>
 <h2>Threatened Birds vs. Cats Map</h2>
 <div class="row">
@@ -95,6 +137,37 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-4 col-xs-4">
+        <button id="vulnerablebtn" style="width: 80%;height: 40px;color:white;background-color:orange;">
+            Vulnerable
+        </button>
+    </div>
+    <div class="col-md-4 col-xs-4">
+        <button id="endangeredbtn" style="width: 80%;height: 40px;color:white;background-color:orangered;">
+            Endangered
+        </button>
+    </div>
+    <div class="col-md-4 col-xs-4">
+        <button id="critendangeredbtn" style="width: 80%;height: 40px;color:white;background-color:brown;">
+            Critically Endangered
+        </button>
+    </div>
+</div>
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        @foreach (var item in Model.distinctBirdStatuses)
+        {
+        <button>
+            @Html.DisplayFor(modelItem => item.birdname)
+        </button>
+        }
+            @*<a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>*@
+        </div>
+</div>
+@*<div class="row">
     <div class="col-lg-12 col-md-12">
         <div style="border-color:black">
             <h4><strong>Threatened Birds Occurence:</strong></h4>
@@ -119,33 +192,32 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <input type="button" value="Cats Details" onclick="location.href='@Url.Action("Cats", "Home")'" />
 <div class="row">
     <div class="col-md-6">
-        @* Aves Endangered Table *@
+        @* aves endangered table *@
         <table class="table" style="display:none">
-            @*style="display:none"*@
             @foreach (var item in Model.aveslist)
             {
                 <tr class="avescoordinates">
                     <td class="avesstate">
-                        @Html.DisplayFor(modelItem => item.avesstate)
+                        @Html.DisplayFor(modelitem => item.avesstate)
                     </td>
                     <td class="aveslatitude">
-                        @Html.DisplayFor(modelItem => item.aveslatitude)
+                        @Html.DisplayFor(modelitem => item.aveslatitude)
                     </td>
                     <td class="aveslongitude">
-                        @Html.DisplayFor(modelItem => item.aveslongitude)
+                        @Html.DisplayFor(modelitem => item.aveslongitude)
                     </td>
                     <td class="avesname">
-                        @Html.DisplayFor(modelItem => item.avesname)
+                        @Html.DisplayFor(modelitem => item.avesname)
                     </td>
                     <td class="avesstatus">
-                        @Html.DisplayFor(modelItem => item.avesstatus)
+                        @Html.DisplayFor(modelitem => item.avesstatus)
                     </td>
                     <td class="catfood">
-                        @Html.DisplayFor(modelItem => item.catfood)
+                        @Html.DisplayFor(modelitem => item.catfood)
                     </td>
                 </tr>
             }
@@ -177,6 +249,94 @@
         </table>
     </div>
 </div>
+
+<table class="table" style="display:none"> <!--Vulnerable Birds Table Data-->
+    @foreach (var item in Model.vulnerablebirds)
+    {
+    <tr class="vulnerablebirds">
+        <td class="vulnerablename">
+            @Html.DisplayFor(modelItem => item.birdname)
+        </td>
+        <td class="vulnerablescientific">
+            @Html.DisplayFor(modelItem => item.scientificname)
+        </td>
+        <td class="vulnerablelongitude">
+            @Html.DisplayFor(modelItem => item.birdlongitude)
+        </td>
+        <td class="vulnerablelatitude">
+            @Html.DisplayFor(modelItem => item.birdlatitude)
+        </td>
+        <td class="vulnerablestate">
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td class="vulnerablestatus">
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td class="vulnerablecatfood">
+            @Html.DisplayFor(modelItem => item.catfood)
+        </td>
+    </tr>
+    }
+</table>
+<table class="table" style="display:none">
+    <!--Critically Endangered Birds Table Data-->
+    @foreach (var item in Model.critendangeredbirds)
+    {
+        <tr class="critendangeredbirds">
+            <td class="critendangeredname">
+                @Html.DisplayFor(modelItem => item.birdname)
+            </td>
+            <td class="critendangeredscientific">
+                @Html.DisplayFor(modelItem => item.scientificname)
+            </td>
+            <td class="critendangeredlongitude">
+                @Html.DisplayFor(modelItem => item.birdlongitude)
+            </td>
+            <td class="critendangeredlatitude">
+                @Html.DisplayFor(modelItem => item.birdlatitude)
+            </td>
+            <td class="critendangeredstate">
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td class="critendangeredstatus">
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td class="critendangeredcatfood">
+                @Html.DisplayFor(modelItem => item.catfood)
+            </td>
+        </tr>
+    }
+</table>
+<table class="table" style="display:none">
+    <!--Endangered Birds Table Data-->
+    @foreach (var item in Model.endangeredbirds)
+    {
+        <tr class="endangeredbirds">
+            <td class="endangeredname">
+                @Html.DisplayFor(modelItem => item.birdname)
+            </td>
+            <td class="endangeredscientific">
+                @Html.DisplayFor(modelItem => item.scientificname)
+            </td>
+            <td class="endangeredlongitude">
+                @Html.DisplayFor(modelItem => item.birdlongitude)
+            </td>
+            <td class="endangeredlatitude">
+                @Html.DisplayFor(modelItem => item.birdlatitude)
+            </td>
+            <td class="endangeredstate">
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td class="endangeredstatus">
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td class="endangeredcatfood">
+                @Html.DisplayFor(modelItem => item.catfood)
+            </td>
+        </tr>
+    }
+</table>
+
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
 }

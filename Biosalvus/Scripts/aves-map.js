@@ -13,51 +13,202 @@
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
 var aves = [];
 var cats = [];
-// The first step is obtain all the latitude and longitude from the HTML
-// jQuery selector for Aves Endangered
-$(".avescoordinates").each(function () {
-    var avesname = $(".avesname", this).text().trim();
-    var aveslongitude = $(".aveslongitude", this).text().trim();
-    var aveslatitude = $(".aveslatitude", this).text().trim();
-    var avesstatus = $(".avesstatus", this).text().trim();
-    var avesstate = $(".avesstate", this).text().trim();
-    var catfood = $(".catfood", this).text().trim();
+var vulnerablearray = [];
+var endangeredarray = [];
+var critendangeredarray = [];
+var vulnerable = false;
+var endangered = false;
+var critendangered = false;
+//// The first step is obtain all the latitude and longitude from the HTML
+//// jQuery selector for Aves Endangered
+//$(".avescoordinates").each(function () {
+//    var avesname = $(".avesname", this).text().trim();
+//    var aveslongitude = $(".aveslongitude", this).text().trim();
+//    var aveslatitude = $(".aveslatitude", this).text().trim();
+//    var avesstatus = $(".avesstatus", this).text().trim();
+//    var avesstate = $(".avesstate", this).text().trim();
+//    var catfood = $(".catfood", this).text().trim();
+//    // Create a point data structure to hold the values.
+//    var point = {
+//        "avesname": avesname,
+//        "aveslatitude": aveslatitude,
+//        "aveslongitude": aveslongitude,
+//        "avesstatus": avesstatus,
+//        "avesstate": avesstate,
+//        "catfood": catfood
+//    };
+//    // Push them all into an array.
+//    aves.push(point);
+//});
+////data from points
+//var avesdata = [];
+//for (i = 0; i < aves.length; i++) {
+//    var feature = {
+//        "type": "Feature",
+//        "properties": {
+//            "avesname": aves[i].avesname,
+//            "avesstatus": aves[i].avesstatus,
+//            "avesstate": aves[i].avesstate,
+//            "catfood": aves[i].catfood
+//            //"icon": "circle-15" //Point Type and Colour variations
+//        },
+//        "geometry": {
+//            "type": "Point",
+//            "coordinates": [aves[i].aveslongitude, aves[i].aveslatitude]
+//        }
+//    };
+//    avesdata.push(feature)
+//}
+////finaldata
+//var avesfinaldata = {
+//    "type": "FeatureCollection",
+//    "features": avesdata
+//}
+//GATHER BIRDS LOCATION DATA
+
+//Vulnerable Birds
+$(".vulnerablebirds").each(function () {
+    var vulnerablename = $(".vulnerablename", this).text().trim();
+    var vulnerablescientific = $(".vulnerablescientific", this).text().trim();
+    var vulnerablelongitude = $(".vulnerablelongitude", this).text().trim();
+    var vulnerablelatitude = $(".vulnerablelatitude", this).text().trim();
+    var vulnerablestate = $(".vulnerablestate", this).text().trim();
+    var vulnerablestatus = $(".vulnerablestatus", this).text().trim();
+    var vulnerablecatfood = $(".vulnerablecatfood", this).text().trim();
     // Create a point data structure to hold the values.
     var point = {
-        "avesname": avesname,
-        "aveslatitude": aveslatitude,
-        "aveslongitude": aveslongitude,
-        "avesstatus": avesstatus,
-        "avesstate": avesstate,
-        "catfood": catfood
+        "vulnerablename": vulnerablename,
+        "vulnerablescientific": vulnerablescientific,
+        "vulnerablelongitude": vulnerablelongitude,
+        "vulnerablelatitude": vulnerablelatitude,
+        "vulnerablestate": vulnerablestate,
+        "vulnerablestatus": vulnerablestatus,
+        "vulnerablecatfood": vulnerablecatfood
     };
     // Push them all into an array.
-    aves.push(point);
+    vulnerablearray.push(point);
 });
 //data from points
-var avesdata = [];
-for (i = 0; i < aves.length; i++) {
+var vulnerabledata = [];
+for (i = 0; i < vulnerablearray.length; i++) {
     var feature = {
         "type": "Feature",
         "properties": {
-            "avesname": aves[i].avesname,
-            "avesstatus": aves[i].avesstatus,
-            "avesstate": aves[i].avesstate,
-            "catfood": aves[i].catfood
-            //"icon": "circle-15" //Point Type and Colour variations
+            "vulnerablename": vulnerablearray[i].vulnerablename,
+            "vulnerablescientific": vulnerablearray[i].vulnerablescientific,
+            "vulnerablestate": vulnerablearray[i].vulnerablestate,
+            "vulnerablestatus": vulnerablearray[i].vulnerablestatus,
+            "vulnerablecatfood": vulnerablearray[i].vulnerablecatfood,
+            "icon": "circle-15"
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [aves[i].aveslongitude, aves[i].aveslatitude]
+            "coordinates": [vulnerablearray[i].vulnerablelongitude, vulnerablearray[i].vulnerablelatitude]
         }
     };
-    avesdata.push(feature)
+    vulnerabledata.push(feature)
+}
+//finaldata
+var vulnerablefinaldata = {
+    "type": "FeatureCollection",
+    "features": vulnerabledata
 }
 
+
+//Critically Endangered Birds
+$(".critendangeredbirds").each(function () {
+    var critendangeredname = $(".critendangeredname", this).text().trim();
+    var critendangeredscientific = $(".critendangeredscientific", this).text().trim();
+    var critendangeredlongitude = $(".critendangeredlongitude", this).text().trim();
+    var critendangeredlatitude = $(".critendangeredlatitude", this).text().trim();
+    var critendangeredstate = $(".critendangeredstate", this).text().trim();
+    var critendangeredstatus = $(".critendangeredstatus", this).text().trim();
+    var critendangeredcatfood = $(".critendangeredcatfood", this).text().trim();
+    // Create a point data structure to hold the values.
+    var point = {
+        "critendangeredname": critendangeredname,
+        "critendangeredscientific": critendangeredscientific,
+        "critendangeredlongitude": critendangeredlongitude,
+        "critendangeredlatitude": critendangeredlatitude,
+        "critendangeredstate": critendangeredstate,
+        "critendangeredstatus": critendangeredstatus,
+        "critendangeredcatfood": critendangeredcatfood
+    };
+    // Push them all into an array.
+    critendangeredarray.push(point);
+});
+//data from points
+var critendangereddata = [];
+for (i = 0; i < critendangeredarray.length; i++) {
+    var feature = {
+        "type": "Feature",
+        "properties": {
+            "critendangeredname": critendangeredarray[i].critendangeredname,
+            "critendangeredscientific": critendangeredarray[i].critendangeredscientific,
+            "critendangeredstate": critendangeredarray[i].critendangeredstate,
+            "critendangeredstatus": critendangeredarray[i].critendangeredstatus,
+            "critendangeredcatfood": critendangeredarray[i].critendangeredcatfood,
+            "icon": "circle-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [critendangeredarray[i].critendangeredlongitude, critendangeredarray[i].critendangeredlatitude]
+        }
+    };
+    critendangereddata.push(feature)
+}
 //finaldata
-var avesfinaldata = {
+var critendangeredfinaldata = {
     "type": "FeatureCollection",
-    "features": avesdata
+    "features": critendangereddata
+}
+
+//Endangered Birds
+$(".endangeredbirds").each(function () {
+    var endangeredname = $(".endangeredname", this).text().trim();
+    var endangeredscientific = $(".endangeredscientific", this).text().trim();
+    var endangeredlongitude = $(".endangeredlongitude", this).text().trim();
+    var endangeredlatitude = $(".endangeredlatitude", this).text().trim();
+    var endangeredstate = $(".endangeredstate", this).text().trim();
+    var endangeredstatus = $(".endangeredstatus", this).text().trim();
+    var endangeredcatfood = $(".endangeredcatfood", this).text().trim();
+    // Create a point data structure to hold the values.
+    var point = {
+        "endangeredname": endangeredname,
+        "endangeredscientific": endangeredscientific,
+        "endangeredlongitude": endangeredlongitude,
+        "endangeredlatitude": endangeredlatitude,
+        "endangeredstate": endangeredstate,
+        "endangeredstatus": endangeredstatus,
+        "endangeredcatfood": endangeredcatfood
+    };
+    // Push them all into an array.
+    endangeredarray.push(point);
+});
+//data from points
+var endangereddata = [];
+for (i = 0; i < endangeredarray.length; i++) {
+    var feature = {
+        "type": "Feature",
+        "properties": {
+            "endangeredname": endangeredarray[i].endangeredname,
+            "endangeredscientific": endangeredarray[i].endangeredscientific,
+            "endangeredstate": endangeredarray[i].endangeredstate,
+            "endangeredstatus": endangeredarray[i].endangeredstatus,
+            "endangeredcatfood": endangeredarray[i].endangeredcatfood,
+            "icon": "circle-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
+        }
+    };
+    endangereddata.push(feature)
+}
+//finaldata
+var endangeredfinaldata = {
+    "type": "FeatureCollection",
+    "features": endangereddata
 }
 
 
@@ -110,14 +261,78 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
     zoom: 6,
-    center: [144.946457, -37.840935] //Victoria, AUS
+    center: [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
+    //center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
-    // Add a GeoJSON source containing place coordinates and information for Aves.
-    map.addSource('avesdatasource', {
+    console.log(endangeredfinaldata);
+    //// Add a GeoJSON source containing place coordinates and information for Aves.
+    //map.addSource('avesdatasource', {
+    //    'type': 'geojson',
+    //    'data': avesfinaldata
+    //});
+
+    // Add a GeoJSON source containing place coordinates and information for Endangered Birds.
+    map.addSource('endangereddatasource', {
         'type': 'geojson',
-        'data': avesfinaldata
+        'data': endangeredfinaldata
     });
+    // Add a GeoJSON source containing place coordinates and information for Critically Endangered Birds.
+    map.addSource('critendangereddatasource', {
+        'type': 'geojson',
+        'data': critendangeredfinaldata
+    });
+    // Add a GeoJSON source containing place coordinates and information for Vulnerable Birds.
+    map.addSource('vulnerabledatasource', {
+        'type': 'geojson',
+        'data': vulnerablefinaldata
+    });
+    
+    //Endangered Birds Layer
+    map.addLayer(
+        {
+            'id': 'endangeredbirds',
+            'type': 'circle',
+            'source': 'endangereddatasource',
+            'paint': {
+                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-radius': 4
+            },
+            'layout': {
+                'visibility': 'none'
+            }
+        }
+    );
+    //Critically Endangered Birds Layer
+    map.addLayer(
+        {
+            'id': 'critendangeredbirds',
+            'type': 'circle',
+            'source': 'critendangereddatasource',
+            'paint': {
+                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-radius': 4
+            },
+            'layout': {
+                'visibility': 'none'
+            }
+        }
+    );
+    //Vulnerable Birds Layer
+    map.addLayer(
+        {
+            'id': 'vulnerablebirds',
+            'type': 'circle',
+            'source': 'vulnerabledatasource',
+            'paint': {
+                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-radius': 4
+            },
+            'layout': {
+                'visibility': 'none'
+            }
+        }
+    );
 
     // Add a GeoJSON source containing place coordinates and information for Cats.
     map.addSource('catsdatasource', {
@@ -209,35 +424,35 @@ map.on('load', function () {
         'waterway-label'
     );
 
-    map.addLayer(
-        {
-            'id': 'catdensity-point',
-            'type': 'circle',
-            'source': 'catsdatasource',
-            'minzoom': 15,
-            'paint': {
-                // Size circle radius by individualcount and zoom level
-                'circle-radius': {
-                    'base': 3,
-                    'stops': [[12, 2], [22, 180]]
-                },
-                // Color circle by individualcount
-                'circle-color': 'rgba(178,24,43,1)', //Max Zoom Colour
-                'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
-                // Transition from heatmap to circle layer by zoom level
-                'circle-opacity': [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    10,
-                    0,
-                    18,
-                    1
-                ]
-            }
-        },
-    );
+    //map.addLayer(
+    //    {
+    //        'id': 'catdensity-point',
+    //        'type': 'circle',
+    //        'source': 'catsdatasource',
+    //        'minzoom': 15,
+    //        'paint': {
+    //            // Size circle radius by individualcount and zoom level
+    //            'circle-radius': {
+    //                'base': 3,
+    //                'stops': [[12, 2], [22, 180]]
+    //            },
+    //            // Color circle by individualcount
+    //            'circle-color': 'rgba(178,24,43,1)', //Max Zoom Colour
+    //            'circle-stroke-color': 'white',
+    //            'circle-stroke-width': 1,
+    //            // Transition from heatmap to circle layer by zoom level
+    //            'circle-opacity': [
+    //                'interpolate',
+    //                ['linear'],
+    //                ['zoom'],
+    //                10,
+    //                0,
+    //                18,
+    //                1
+    //            ]
+    //        }
+    //    },
+    //);
 
 
     // ADD LAYER SHOWING AVES WITH FILTER FUNCTION
@@ -252,21 +467,8 @@ map.on('load', function () {
                 'type': 'circle',
                 'source': 'avesdatasource',
                 'paint': {
-                    'circle-radius': 6,
-                    'circle-color': [
-                        'match',
-                        ['get', 'avesstatus'],
-                        'Extinct',
-                        'rgba(169, 169, 169,0.2)', //Dark Gray
-                        'Critically Endangered',
-                        'rgba(51, 0, 0,0.2)', //Dark Maroon
-                        'Vulnerable',
-                        'rgba(255, 165, 0,0.2)', //Orange
-                        'Endangered',
-                        'rgba(255, 69, 0,0.2)', //Orange Red
-                        /*other*/'rgba(55,148,179,1)',
-                    ]
-                },
+                      'circle-color': 'rgba(255,0,0,1)', //RED
+                      'circle-radius': 4,
                 'layout': {
                     'visibility': 'none',
                 },
@@ -284,6 +486,7 @@ map.on('load', function () {
             label.textContent = avesstatus; //Label names
             filterGroup.appendChild(label);
 
+            //ON CLICK VISIBLE/HIDE
             // When the checkbox changes, update the visibility of the layer.
             input.addEventListener('change', function (e) {
                 map.setLayoutProperty(
@@ -294,43 +497,93 @@ map.on('load', function () {
             });
         }
     });
+
+    //BUTTONS INTERACTIONS
+    document.getElementById("vulnerablebtn").addEventListener("click", function () {
+        hideBirds();
+        setAllStatusFlagOFF();
+        vulnerable = true;
+        showBirds();
+    });
+    document.getElementById("endangeredbtn").addEventListener("click", function () {
+        hideBirds();
+        setAllStatusFlagOFF();
+        endangered = true;
+        showBirds();
+    });
+    document.getElementById("critendangeredbtn").addEventListener("click", function () {
+        hideBirds();
+        setAllStatusFlagOFF();
+        critendangered = true;
+        showBirds();
+    });
 });
 
-map.addControl(new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
-}));;
+//Show Bird coordinates if Status is true.
+function showBirds() {
+    if (vulnerable = true) {
+        map.setLayoutProperty(
+            'vulnerablebirds',
+            'visibility',
+            'visible'
+        );
+    }
+    else if (endangered = true) {
+        map.setLayoutProperty(
+            'endangeredbirds',
+            'visibility',
+            'visible'
+        );
+    }
+    else if (critendangered = true) {
+        map.setLayoutProperty(
+            'critendangeredbirds',
+            'visibility',
+            'visible'
+        );
+    }
+}
+//Hide Bird coordinates
+function hideBirds() {
+    map.setLayoutProperty(
+        'endangeredbirds',
+        'visibility',
+        'none'
+    );
+    map.setLayoutProperty(
+        'critendangeredbirds',
+        'visibility',
+        'none'
+    );
+    map.setLayoutProperty(
+        'vulnerablebirds',
+        'visibility',
+        'none'
+    );
+}
+
+//sets all status boolean flag to False
+function setAllStatusFlagOFF() {
+    vulnerable = false;
+    endangered = false;
+    critendangered = false;
+}
+
 map.addControl(new mapboxgl.NavigationControl());
 // When a click event occurs on a feature in the places layer, open a popup at the
 // location of the feature, with description HTML from its properties.
-map.on('click', 'places', function (e) {
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = e.features[0].properties.description;
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
+map.on('click', 'endangeredbirds', function (e) {
+    var name = e.features[0].properties.endangeredname;
     new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
+        .setHTML(name)
         .addTo(map);
 });
-// Change the cursor to a pointer when the mouse is over the places layer.
-map.on('mouseenter', 'places', function () {
+// Change the cursor to a pointer when the mouse is over the endangeredbirds layer.
+map.on('mouseenter', 'endangeredbirds', function () {
     map.getCanvas().style.cursor = 'pointer';
 });
 // Change it back to a pointer when it leaves.
-map.on('mouseleave', 'places', function () {
+map.on('mouseleave', 'endangeredbirds', function () {
     map.getCanvas().style.cursor = '';
 });
 
-// Add geolocate control to the map.
-map.addControl(
-    new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    })
-);

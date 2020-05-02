@@ -6,7 +6,7 @@
 }
 <style>
     .legend {
-        height:150px;
+        height: 150px;
         background-color: #fff;
         border-radius: 3px;
         bottom: 30px;
@@ -111,15 +111,65 @@
 </div>
 <br />
 <h4>Species Grouping</h4>
-<div id="speciesgrouping"  class="row">
-    <div id="speciesgroupChart" class="col-md-3 col-xs-3" style="height:400px;display:none;">
+<div id="speciesgrouping" class="row">
+    <div id="speciesgroupChart" class="col-md-4 col-xs-4" style="height:400px;display:none;">
         <canvas id="groupChart" width="400" height="400"></canvas>
     </div>
-    <div id="speciesgroupTable" class="col-md-9 col-xs-9" style="height:400px;display:none;">
-        <table id="speciesbygroupings" class="table">
+    <div id="speciesgroupTable" class="col-md-8 col-xs-8" style="height:400px;display:none;">
+        <div id="speciesbygroupings" class="row">
+            <div class="col-md-12 col-xs-12">
+                <table  class="table">
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">
+                                CommonName
+                            </th>
+                            <th style="width:25%;">
+                                Status
+                            </th>
+                            <th style="width:25%;">
+                                StateCode
+                            </th>
+                            <th style="width:25%;">
+                                Grouping
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-12 col-xs-12" style="overflow:scroll;height:400px;">
+                <table>
+                    <tbody>
+                        @foreach (var item in Model.speciesbygroupings)
+                        {
+                            <tr class="speciesbygroupings">
+                                <td class="speciesname" style="width:25%;">
+                                    @Html.DisplayFor(modelItem => item.CommonName)
+                                </td>
+                                <td class="speciesstatus" style="width:25%;">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td class="speciesstate" style="width:25%;">
+                                    @Html.DisplayFor(modelItem => item.StateCode)
+                                </td>
+                                <td class="speciesgrouping" style="width:25%;">
+                                    @Html.DisplayFor(modelItem => item.Grouping)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>                   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="speciescountbygroupings" class="table" style="display:none;">
             <tr>
                 <th>
-                    CommonName
+                    Total Count
                 </th>
                 <th>
                     Status
@@ -131,45 +181,6 @@
                     Grouping
                 </th>
             </tr>
-
-            @foreach (var item in Model.speciesbygroupings)
-            {
-                <tr class="speciesbygroupings">
-                    <td class="speciesname">
-                        @Html.DisplayFor(modelItem => item.CommonName)
-                    </td>
-                    <td class="speciesstatus">
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td class="speciesstate">
-                        @Html.DisplayFor(modelItem => item.StateCode)
-                    </td>
-                    <td class="speciesgrouping">
-                        @Html.DisplayFor(modelItem => item.Grouping)
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <table id="speciescountbygroupings" class="table" style="display:none;">
-                <tr>
-                    <th>
-                        Total Count
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        StateCode
-                    </th>
-                    <th>
-                        Grouping
-                    </th>
-                </tr>
             @foreach (var item in Model.speciescountbygroupings)
             {
                 <tr class="speciescountbygroupings">

@@ -63,5 +63,6 @@ namespace Biosalvus.Models
         public string Status { get; set; }
 
         public string CatFood { get; set; }
+
     }
 }

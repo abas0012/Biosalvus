@@ -76,8 +76,8 @@ mapboxgl.accessToken = TOKEN;
 var map = new mapboxgl.Map({
     container: 'species-map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 3,
-    center: [131.0369, -25.3444] //Uluru Longitude (Center of Australia)
+    zoom: 2.8,
+    center: [-224.503977, -26.902479] //Uluru Longitude (Center of Australia)
 });
 var hoveredStateId = null;
 map.on('load', function () {
@@ -285,7 +285,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('NSW');
@@ -311,7 +311,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('ACT');
@@ -337,7 +337,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('SA');
@@ -363,7 +363,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('VIC');
@@ -389,7 +389,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('TAS');
@@ -415,7 +415,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('QLD');
@@ -441,7 +441,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };
         $('#statefilter').html('WA');
@@ -466,7 +466,7 @@ map.on('load', function () {
             'fill-outline-color',
             'rgba(120, 25, 25, 1)'); //Dark Maroon
         if (conservation == true || endangered == true || critendangered == true ||
-            extinct == true || wildextinct == true || wildextinct == true) { //If a Status button is clicked
+            extinct == true || wildextinct == true || vulnerable == true) { //If a Status button is clicked
             document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
         };        
         $('#statefilter').html('NT');
@@ -482,6 +482,9 @@ map.on('load', function () {
         resetRankingValue();
         document.getElementById("speciesgroupChart").style.display = "none"; //hide Species Grouping Chart
         document.getElementById("speciesgroupTable").style.display = "none"; //hide Species Grouping Table
+        $('#statefilter').html('');
+        $('#statusfilter').html('');
+        $('#groupfilter').html('');
     });
     document.getElementById("vulnerablebutton").addEventListener("click", function () {     
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
@@ -1014,6 +1017,7 @@ function displayStateFilter(temparray) {
         }
     }
 }
+
 
 //Function to Reset Count in Status Button to 0
 const statuscntbtnarray = ['vulnerablecnt', 'conservationcnt', 'endangeredcnt', 'critendangeredncnt', 'wildextinctcnt', 'extinctcnt'];
@@ -1724,3 +1728,55 @@ function dynamicTable() {
     else if (sastate == true && wildextinct == true && others == true) groupingTableDisplayFilter('SA', 'Extinct in the wild', 'Others');
     else if (sastate == true && extinct == true && others == true) groupingTableDisplayFilter('SA', 'Extinct', 'Others');
 }
+
+
+// Change the cursor to a pointer when the mouse is over the state layer.
+map.on('mouseenter', 'ACT', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'NSW', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'VIC', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'QLD', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'TAS', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'SA', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'NT', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'WA', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'ACT', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'NSW', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'VIC', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'QLD', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'TAS', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'SA', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'WA', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('mouseleave', 'NT', function () {
+    map.getCanvas().style.cursor = '';
+});

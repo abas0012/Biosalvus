@@ -179,6 +179,7 @@
     <Compile Include="Models\CatRecord.cs" />
     <Compile Include="Models\CatRecords.cs" />
     <Compile Include="Models\EndageredMapViewModel.cs" />
+    <Compile Include="Models\MoreEnumerable.cs" />
     <Compile Include="Models\SpeciesAllViewModel.cs" />
     <Compile Include="Models\SpeciesAustralia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -491,7 +492,7 @@
     <Content Include="Views\AvesEndangereds\Delete.cshtml" />
     <Content Include="Views\AvesEndangereds\Details.cshtml" />
     <Content Include="Views\AvesEndangereds\Edit.cshtml" />
-    <Content Include="Views\AvesEndangereds\AvesEndangeredMap.cshtml" />
+    <Content Include="Views\AvesEndangereds\AvesThreatenedMap.cshtml" />
     <Content Include="Views\SpeciesAustralias\Create.cshtml" />
     <Content Include="Views\SpeciesAustralias\Delete.cshtml" />
     <Content Include="Views\SpeciesAustralias\Details.cshtml" />
