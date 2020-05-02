@@ -197,31 +197,31 @@
 <div class="row">
     <div class="col-md-6">
         @* aves endangered table *@
-        <table class="table" style="display:none">
-            @foreach (var item in Model.aveslist)
-            {
-                <tr class="avescoordinates">
-                    <td class="avesstate">
-                        @Html.DisplayFor(modelitem => item.avesstate)
-                    </td>
-                    <td class="aveslatitude">
-                        @Html.DisplayFor(modelitem => item.aveslatitude)
-                    </td>
-                    <td class="aveslongitude">
-                        @Html.DisplayFor(modelitem => item.aveslongitude)
-                    </td>
-                    <td class="avesname">
-                        @Html.DisplayFor(modelitem => item.avesname)
-                    </td>
-                    <td class="avesstatus">
-                        @Html.DisplayFor(modelitem => item.avesstatus)
-                    </td>
-                    <td class="catfood">
-                        @Html.DisplayFor(modelitem => item.catfood)
-                    </td>
-                </tr>
-            }
-        </table>
+        @*<table class="table" style="display:none">*@
+        @*@foreach (var item in Model.aveslist)
+        {
+            <tr class="avescoordinates">
+                <td class="avesstate">
+                    @Html.DisplayFor(modelitem => item.avesstate)
+                </td>
+                <td class="aveslatitude">
+                    @Html.DisplayFor(modelitem => item.aveslatitude)
+                </td>
+                <td class="aveslongitude">
+                    @Html.DisplayFor(modelitem => item.aveslongitude)
+                </td>
+                <td class="avesname">
+                    @Html.DisplayFor(modelitem => item.avesname)
+                </td>
+                <td class="avesstatus">
+                    @Html.DisplayFor(modelitem => item.avesstatus)
+                </td>
+                <td class="catfood">
+                    @Html.DisplayFor(modelitem => item.catfood)
+                </td>
+            </tr>
+        }
+    </table>*@
     </div>
     <div class="col-md-6">
         @* Cat Record Table *@

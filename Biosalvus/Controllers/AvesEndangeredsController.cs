@@ -28,16 +28,16 @@ namespace Biosalvus.Controllers
             string vulnerable = "Vulnerable";
 
             EndageredMapViewModel viewmodel = new EndageredMapViewModel();
-            viewmodel.aveslist = (from r in db.AvesEndangereds
-                                  select new AvesSummary
-                                  {
-                                      aveslatitude = r.Latitude,
-                                      aveslongitude = r.Longitude,
-                                      avesname = r.vernacularName,
-                                      avesstate = r.stateProvince,
-                                      avesstatus = r.Status,
-                                      catfood = r.CatFood
-                                  });
+            //viewmodel.aveslist = (from r in db.AvesEndangereds
+            //                      select new AvesSummary
+            //                      {
+            //                          aveslatitude = r.Latitude,
+            //                          aveslongitude = r.Longitude,
+            //                          avesname = r.vernacularName,
+            //                          avesstate = r.stateProvince,
+            //                          avesstatus = r.Status,
+            //                          catfood = r.CatFood
+            //                      });
             viewmodel.catslist = (from r in db.CatRecordsdb
                                   where r.State == state
                                   select new CatsSummary

@@ -261,11 +261,14 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
     zoom: 6,
+    maxzoom: 10,
     center: [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
     //center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
     console.log(endangeredfinaldata);
+    console.log(critendangeredfinaldata);
+    console.log(vulnerablefinaldata);
     //// Add a GeoJSON source containing place coordinates and information for Aves.
     //map.addSource('avesdatasource', {
     //    'type': 'geojson',
@@ -296,7 +299,7 @@ map.on('load', function () {
             'source': 'endangereddatasource',
             'paint': {
                 'circle-color': 'rgba(255,0,0,1)', //RED
-                'circle-radius': 4
+                'circle-radius': 3
             },
             'layout': {
                 'visibility': 'none'
@@ -311,7 +314,7 @@ map.on('load', function () {
             'source': 'critendangereddatasource',
             'paint': {
                 'circle-color': 'rgba(255,0,0,1)', //RED
-                'circle-radius': 4
+                'circle-radius': 3
             },
             'layout': {
                 'visibility': 'none'
@@ -326,7 +329,7 @@ map.on('load', function () {
             'source': 'vulnerabledatasource',
             'paint': {
                 'circle-color': 'rgba(255,0,0,1)', //RED
-                'circle-radius': 4
+                'circle-radius': 3
             },
             'layout': {
                 'visibility': 'none'
@@ -455,72 +458,91 @@ map.on('load', function () {
     //);
 
 
-    // ADD LAYER SHOWING AVES WITH FILTER FUNCTION
-    avesfinaldata.features.forEach(function (feature) {
-        var avesstatus = feature.properties['avesstatus'];
-        var layerID = 'poi-' + avesstatus;
+    //// ADD LAYER SHOWING AVES WITH FILTER FUNCTION
+    //avesfinaldata.features.forEach(function (feature) {
+    //    var avesstatus = feature.properties['avesstatus'];
+    //    var layerID = 'poi-' + avesstatus;
 
-        // Add a layer for this avesstatus type if it hasn't been added already.
-        if (!map.getLayer(layerID)) {
-            map.addLayer({
-                'id': layerID,
-                'type': 'circle',
-                'source': 'avesdatasource',
-                'paint': {
-                      'circle-color': 'rgba(255,0,0,1)', //RED
-                      'circle-radius': 4,
-                'layout': {
-                    'visibility': 'none',
-                },
-                'filter': ['==', 'avesstatus', avesstatus]
-            });
-            // Add checkbox and label elements for the layer.
-            var input = document.createElement('input');
-            input.type = 'checkbox';
-            input.id = layerID;
-            input.checked = false; //set to untick on initial load
-            filterGroup.appendChild(input);
+    //    // Add a layer for this avesstatus type if it hasn't been added already.
+    //    if (!map.getLayer(layerID)) {
+    //        map.addLayer({
+    //            'id': layerID,
+    //            'type': 'circle',
+    //            'source': 'avesdatasource',
+    //            'paint': {
+    //                  'circle-color': 'rgba(255,0,0,1)', //RED
+    //                  'circle-radius': 4,
+    //            'layout': {
+    //                'visibility': 'none',
+    //            },
+    //            'filter': ['==', 'avesstatus', avesstatus]
+    //        });
+    //        // Add checkbox and label elements for the layer.
+    //        var input = document.createElement('input');
+    //        input.type = 'checkbox';
+    //        input.id = layerID;
+    //        input.checked = false; //set to untick on initial load
+    //        filterGroup.appendChild(input);
 
-            var label = document.createElement('label');
-            label.setAttribute('for', layerID);
-            label.textContent = avesstatus; //Label names
-            filterGroup.appendChild(label);
+    //        var label = document.createElement('label');
+    //        label.setAttribute('for', layerID);
+    //        label.textContent = avesstatus; //Label names
+    //        filterGroup.appendChild(label);
 
-            //ON CLICK VISIBLE/HIDE
-            // When the checkbox changes, update the visibility of the layer.
-            input.addEventListener('change', function (e) {
-                map.setLayoutProperty(
-                    layerID,
-                    'visibility',
-                    e.target.checked ? 'visible' : 'none'
-                );
-            });
-        }
-    });
+    //        //ON CLICK VISIBLE/HIDE
+    //        // When the checkbox changes, update the visibility of the layer.
+    //        input.addEventListener('change', function (e) {
+    //            map.setLayoutProperty(
+    //                layerID,
+    //                'visibility',
+    //                e.target.checked ? 'visible' : 'none'
+    //            );
+    //        });
+    //    }
+    //});
 
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebtn").addEventListener("click", function () {
         hideBirds();
         setAllStatusFlagOFF();
         vulnerable = true;
-        showBirds();
+        //showBirds();
+        map.setLayoutProperty(
+            'vulnerablebirds',
+            'visibility',
+            'visible'
+        );
     });
     document.getElementById("endangeredbtn").addEventListener("click", function () {
         hideBirds();
         setAllStatusFlagOFF();
         endangered = true;
-        showBirds();
+        //showBirds();
+        map.setLayoutProperty(
+            'endangeredbirds',
+            'visibility',
+            'visible'
+        );
     });
     document.getElementById("critendangeredbtn").addEventListener("click", function () {
+        const startTime = performance.now(); //performance testing
         hideBirds();
         setAllStatusFlagOFF();
         critendangered = true;
-        showBirds();
+        //showBirds();
+        map.setLayoutProperty(
+            'critendangeredbirds',
+            'visibility',
+            'visible'
+        );
+        const duration = performance.now() - startTime; //performance testing
+        console.log(duration); //performance testing
     });
 });
 
 //Show Bird coordinates if Status is true.
 function showBirds() {
+    const startTime = performance.now(); //performance testing
     if (vulnerable = true) {
         map.setLayoutProperty(
             'vulnerablebirds',
@@ -542,9 +564,12 @@ function showBirds() {
             'visible'
         );
     }
+    const duration = performance.now() - startTime; //performance testing
+    console.log(duration); //performance testing
 }
 //Hide Bird coordinates
 function hideBirds() {
+    const startTime = performance.now(); //performance testing
     map.setLayoutProperty(
         'endangeredbirds',
         'visibility',
@@ -560,13 +585,18 @@ function hideBirds() {
         'visibility',
         'none'
     );
+    const duration = performance.now() - startTime; //performance testing
+    console.log(duration); //performance testing
 }
 
 //sets all status boolean flag to False
 function setAllStatusFlagOFF() {
+    const startTime = performance.now(); //performance testing
     vulnerable = false;
     endangered = false;
     critendangered = false;
+    const duration = performance.now() - startTime; //performance testing
+    console.log(duration); //performance testing
 }
 
 map.addControl(new mapboxgl.NavigationControl());
