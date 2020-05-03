@@ -266,9 +266,6 @@ var map = new mapboxgl.Map({
     //center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
-    console.log(endangeredfinaldata);
-    console.log(critendangeredfinaldata);
-    console.log(vulnerablefinaldata);
     //// Add a GeoJSON source containing place coordinates and information for Aves.
     //map.addSource('avesdatasource', {
     //    'type': 'geojson',
@@ -506,43 +503,53 @@ map.on('load', function () {
         hideBirds();
         setAllStatusFlagOFF();
         vulnerable = true;
-        //showBirds();
         map.setLayoutProperty(
             'vulnerablebirds',
             'visibility',
             'visible'
         );
+        document.getElementById('vulnerableheader').style.display = "block";
+        document.getElementById('vulnerablelist').style.display = "block"; 
+        document.getElementById('endangeredheader').style.display = "none"; 
+        document.getElementById('endangeredlist').style.display = "none"; 
+        document.getElementById('critendangeredheader').style.display = "none";
+        document.getElementById('critendangeredlist').style.display = "none"; 
     });
     document.getElementById("endangeredbtn").addEventListener("click", function () {
         hideBirds();
         setAllStatusFlagOFF();
         endangered = true;
-        //showBirds();
         map.setLayoutProperty(
             'endangeredbirds',
             'visibility',
             'visible'
         );
+        document.getElementById('vulnerableheader').style.display = "none";
+        document.getElementById('vulnerablelist').style.display = "none";
+        document.getElementById('endangeredheader').style.display = "block";
+        document.getElementById('endangeredlist').style.display = "block";
+        document.getElementById('critendangeredheader').style.display = "none";
+        document.getElementById('critendangeredlist').style.display = "none";
     });
     document.getElementById("critendangeredbtn").addEventListener("click", function () {
-        const startTime = performance.now(); //performance testing
         hideBirds();
         setAllStatusFlagOFF();
-        critendangered = true;
-        //showBirds();
         map.setLayoutProperty(
             'critendangeredbirds',
             'visibility',
             'visible'
         );
-        const duration = performance.now() - startTime; //performance testing
-        console.log(duration); //performance testing
+        document.getElementById('vulnerableheader').style.display = "none";
+        document.getElementById('vulnerablelist').style.display = "none";
+        document.getElementById('endangeredheader').style.display = "none";
+        document.getElementById('endangeredlist').style.display = "none";
+        document.getElementById('critendangeredheader').style.display = "block";
+        document.getElementById('critendangeredlist').style.display = "block";
     });
 });
 
 //Show Bird coordinates if Status is true.
 function showBirds() {
-    const startTime = performance.now(); //performance testing
     if (vulnerable = true) {
         map.setLayoutProperty(
             'vulnerablebirds',
@@ -564,12 +571,9 @@ function showBirds() {
             'visible'
         );
     }
-    const duration = performance.now() - startTime; //performance testing
-    console.log(duration); //performance testing
 }
 //Hide Bird coordinates
 function hideBirds() {
-    const startTime = performance.now(); //performance testing
     map.setLayoutProperty(
         'endangeredbirds',
         'visibility',
@@ -585,18 +589,13 @@ function hideBirds() {
         'visibility',
         'none'
     );
-    const duration = performance.now() - startTime; //performance testing
-    console.log(duration); //performance testing
 }
 
 //sets all status boolean flag to False
 function setAllStatusFlagOFF() {
-    const startTime = performance.now(); //performance testing
     vulnerable = false;
     endangered = false;
     critendangered = false;
-    const duration = performance.now() - startTime; //performance testing
-    console.log(duration); //performance testing
 }
 
 map.addControl(new mapboxgl.NavigationControl());

@@ -9,7 +9,9 @@ namespace Biosalvus.Models
     {
         public IEnumerable<AvesSummary> aveslist { get; set; }
         public IEnumerable<CatsSummary> catslist { get; set; }
-        public IEnumerable<DistinctBirdStatus> distinctBirdStatuses { get; set; }
+        public IEnumerable<DistinctBird> distinctvulnerableBirds{ get; set; }
+        public IEnumerable<DistinctBird> distinctendangeredBirds { get; set; }
+        public IEnumerable<DistinctBird> distinctcritendangeredBirds { get; set; }
         public IEnumerable<BirdPoint> endangeredbirds { get; set; }
         public IEnumerable<BirdPoint> critendangeredbirds { get; set; }
         public IEnumerable<BirdPoint> vulnerablebirds { get; set; }
@@ -34,10 +36,17 @@ namespace Biosalvus.Models
         public string catfood { get; set; }
    }
 
-    public class DistinctBirdStatus
+    public class DistinctBird
     {
-        public string birdname { get; set; }
+        public string speciesname { get; set; }
         public string status { get; set; }
+        public string specieskingdom { get; set; }
+        public string speciesphylum { get; set; }
+        public string speciesclass { get; set; }
+        public string speciesorder { get; set; }
+        public string speciesfamily { get; set; }
+        public string speciesgenus { get; set; }
+
     }
 
     public class BirdPoint

@@ -49,13 +49,48 @@ namespace Biosalvus.Controllers
                                       catindividualcount = r.IndividualCount                                
                                   });
 
-            viewmodel.distinctBirdStatuses = (from r in db.AvesEndangereds
-                                              //group r by new { r.vernacularName, r.Status } into groupedQuery
-                                              select new DistinctBirdStatus
+            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
+                                                 where r.Status == vulnerable 
+                                                 select new DistinctBird
                                               {
-                                                  birdname = r.vernacularName,
-                                                  status = r.Status
-                                              }).DistinctBy(x => x.birdname);
+                                                  speciesname = r.vernacularName,
+                                                  status = r.Status,
+                                                  specieskingdom = r.kingdom,
+                                                  speciesphylum = r.phylum,
+                                                  speciesclass = r._class,
+                                                  speciesorder = r.order,
+                                                  speciesfamily = r.order,
+                                                  speciesgenus = r.genus
+
+                                              }).DistinctBy(x => x.speciesname);
+            viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
+                                                 where r.Status == endangered
+                                                 select new DistinctBird
+                                                 {
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
+
+                                                 }).DistinctBy(x => x.speciesname);
+            viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
+                                                 where r.Status == criticallyendangered
+                                                 select new DistinctBird
+                                                 {
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
+
+                                                 }).DistinctBy(x => x.speciesname);
             viewmodel.vulnerablebirds = (from r in db.AvesEndangereds
                                          where r.Status == vulnerable
                                          select new BirdPoint
