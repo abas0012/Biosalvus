@@ -175,33 +175,63 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li id="vulnerableheader" class="dropdown-header">Vulnerable</li>
-                @foreach (var item in Model.distinctvulnerableBirds)
-                {
+                <li id="vulnerableheader" class="dropdown-header">Vulnerable</li>                
                     <li id="vulnerablelist">
-                        @Html.DisplayFor(modelItem => item.speciesname) : @Html.DisplayFor(modelItem => item.status)
-                    </li>
-                }
+                        <table>
+                            @foreach (var item in Model.distinctvulnerableBirds)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.speciesname) : @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("VulnerableDetails",new { id = item.ID })" class="ajax">Details</a>
+                                </td>
+                            </tr>
+                            }
+                        </table>
+                    </li>                
                 <li id="endangeredheader" class="dropdown-header">Endangered</li>
-                @foreach (var item in Model.distinctendangeredBirds)
-                {
                 <li id="endangeredlist">
-                    @Html.DisplayFor(modelItem => item.speciesname) : @Html.DisplayFor(modelItem => item.status)
+                    <table>
+                        @foreach (var item in Model.distinctendangeredBirds)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.speciesname) : @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("VulnerableDetails",new { id = item.ID })" class="ajax">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>      
                 </li>
-                }
+                
                 <li id="critendangeredheader" class="dropdown-header">Critically Endangered.</li>
-                @foreach (var item in Model.distinctcritendangeredBirds)
-                {
+
                 <li id="critendangeredlist">
-                    @Html.DisplayFor(modelItem => item.status) : @Html.DisplayFor(modelItem => item.status)
+                    <table>
+                        @foreach (var item in Model.distinctcritendangeredBirds)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.speciesname) : @Html.DisplayFor(modelItem => item.status)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("VulnerableDetails",new { id = item.ID })" class="ajax">Details</a>
+                            </td>
+                        </tr>
+                        }
+                    </table>      
                 </li>
-                }
+                
             </ul>
                         
         </div>
     </div>
 </div>
-
+<div id="TargetDiv">Hello World</div>
 @*<div class="row">
     <div class="col-lg-12 col-md-12">
         <div style="border-color:black">

@@ -50,23 +50,25 @@ namespace Biosalvus.Controllers
                                   });
 
             viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
-                                                 where r.Status == vulnerable 
+                                                 where (r.Status == vulnerable && r.vernacularName != null)
                                                  select new DistinctBird
                                               {
-                                                  speciesname = r.vernacularName,
-                                                  status = r.Status,
-                                                  specieskingdom = r.kingdom,
-                                                  speciesphylum = r.phylum,
-                                                  speciesclass = r._class,
-                                                  speciesorder = r.order,
-                                                  speciesfamily = r.order,
-                                                  speciesgenus = r.genus
+                                                     ID = r.ID,
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
 
                                               }).DistinctBy(x => x.speciesname);
             viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
-                                                 where r.Status == endangered
+                                                 where (r.Status == endangered && r.vernacularName != null)
                                                  select new DistinctBird
                                                  {
+                                                     ID = r.ID,
                                                      speciesname = r.vernacularName,
                                                      status = r.Status,
                                                      specieskingdom = r.kingdom,
@@ -78,9 +80,10 @@ namespace Biosalvus.Controllers
 
                                                  }).DistinctBy(x => x.speciesname);
             viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
-                                                 where r.Status == criticallyendangered
+                                                     where (r.Status == criticallyendangered && r.vernacularName != null)
                                                  select new DistinctBird
                                                  {
+                                                     ID = r.ID,
                                                      speciesname = r.vernacularName,
                                                      status = r.Status,
                                                      specieskingdom = r.kingdom,
@@ -132,18 +135,29 @@ namespace Biosalvus.Controllers
         }
 
         // GET: AvesEndangereds/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult VulnerableDetails(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AvesEndangered avesEndangered = db.AvesEndangereds.Find(id);
-            if (avesEndangered == null)
-            {
-                return HttpNotFound();
-            }
-            return View(avesEndangered);
+            string state = "Victoria";
+            string criticallyendangered = "Critically Endangered";
+            string endangered = "Endangered";
+            string vulnerable = "Vulnerable";
+
+            EndageredMapViewModel viewmodel = new EndageredMapViewModel();
+            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
+                                                 where (r.Status == vulnerable && r.vernacularName != null)
+                                                 select new DistinctBird
+                                                 {
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
+
+                                                 }).DistinctBy(x => x.speciesname);
+            return View(viewmodel);
         }
 
         // GET: AvesEndangereds/Create

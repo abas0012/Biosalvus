@@ -38,6 +38,7 @@ namespace Biosalvus.Models
 
     public class DistinctBird
     {
+        public int ID { get; set; }
         public string speciesname { get; set; }
         public string status { get; set; }
         public string specieskingdom { get; set; }

@@ -490,7 +490,7 @@
     <Content Include="Views\CatRecords\Index.cshtml" />
     <Content Include="Views\AvesEndangereds\Create.cshtml" />
     <Content Include="Views\AvesEndangereds\Delete.cshtml" />
-    <Content Include="Views\AvesEndangereds\Details.cshtml" />
+    <Content Include="Views\AvesEndangereds\VulnerableDetails.cshtml" />
     <Content Include="Views\AvesEndangereds\Edit.cshtml" />
     <Content Include="Views\AvesEndangereds\AvesThreatenedMap.cshtml" />
     <Content Include="Views\SpeciesAustralias\Create.cshtml" />
