@@ -13,6 +13,7 @@
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
 var aves = [];
 var cats = [];
+var fires = [];
 var vulnerablearray = [];
 var endangeredarray = [];
 var critendangeredarray = [];
@@ -212,6 +213,46 @@ var endangeredfinaldata = {
 }
 
 
+
+//Fire Coordinates
+$(".firecoordinates").each(function () {
+    var firelatitude = $(".firelatitude", this).text().trim();
+    var firelongitude = $(".firelongitude", this).text().trim();
+    var firecity = $(".firecity", this).text().trim();
+    var firedate = $(".firedate", this).text().trim();
+    // Create a point data structure to hold the values.
+    var point = {
+        "firelatitude": firelatitude,
+        "firelongitude": firelongitude,
+        "firecity": firecity,
+        "firedate": firedate
+    };
+    // Push them all into an array.
+    fires.push(point);
+});
+//data from points
+var firedata = [];
+for (i = 0; i < fires.length; i++) {
+    var feature = {
+        "type": "Feature",
+        "properties": {
+            "firecity": fires[i].firecity,
+            "firedate": fires[i].firedate,
+            "icon": "circle-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [fires[i].firelongitude, fires[i].firelatitude]
+        }
+    };
+    firedata.push(feature)
+}
+//finaldata
+var firefinaldata = {
+    "type": "FeatureCollection",
+    "features": firedata
+}
+
 // jQuery selector for cats
 $(".catcoordinates").each(function () {
     var catname = $(".catname", this).text().trim();
@@ -260,8 +301,9 @@ var filterGroup = document.getElementById('filter-group'); //filter element
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
-    zoom: 6,
-    maxzoom: 10,
+    zoom: 5,
+    maxZoom: 7,
+    minZoom: 5,
     center: [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
     //center: [144.946457, -37.840935] //Victoria, AUS
 });
@@ -287,6 +329,11 @@ map.on('load', function () {
         'type': 'geojson',
         'data': vulnerablefinaldata
     });
+    // Add a GeoJSON source containing place coordinates and information for Fire.
+    map.addSource('firedatasource', {
+        'type': 'geojson',
+        'data': firefinaldata
+    });
     
     //Endangered Birds Layer
     map.addLayer(
@@ -295,7 +342,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'endangereddatasource',
             'paint': {
-                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-color': 'rgba(0,255,0,1)', //RED
                 'circle-radius': 3
             },
             'layout': {
@@ -310,7 +357,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'critendangereddatasource',
             'paint': {
-                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-color': 'rgba(0,255,0,1)', //RED
                 'circle-radius': 3
             },
             'layout': {
@@ -325,7 +372,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'vulnerabledatasource',
             'paint': {
-                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-color': 'rgba(0,255,0,1)', //RED
                 'circle-radius': 3
             },
             'layout': {
@@ -333,7 +380,18 @@ map.on('load', function () {
             }
         }
     );
-
+    //Fire Layer
+    map.addLayer(
+        {
+            'id': 'firelayer',
+            'type': 'circle',
+            'source': 'firedatasource',
+            'paint': {
+                'circle-color': 'rgba(255,0,0,1)', //RED
+                'circle-radius': 2
+            }
+        }
+    );
     // Add a GeoJSON source containing place coordinates and information for Cats.
     map.addSource('catsdatasource', {
         'type': 'geojson',
@@ -509,9 +567,9 @@ map.on('load', function () {
             'visible'
         );
         document.getElementById('vulnerableheader').style.display = "block";
-        document.getElementById('vulnerablelist').style.display = "block"; 
+        document.getElementById('brownthornbilllst').style.display = "block"; 
         document.getElementById('endangeredheader').style.display = "none"; 
-        document.getElementById('endangeredlist').style.display = "none"; 
+        document.getElementById('emulst').style.display = "none"; 
         document.getElementById('critendangeredheader').style.display = "none";
         document.getElementById('critendangeredlist').style.display = "none"; 
     });
@@ -525,9 +583,9 @@ map.on('load', function () {
             'visible'
         );
         document.getElementById('vulnerableheader').style.display = "none";
-        document.getElementById('vulnerablelist').style.display = "none";
+        document.getElementById('brownthornbilllst').style.display = "none";
         document.getElementById('endangeredheader').style.display = "block";
-        document.getElementById('endangeredlist').style.display = "block";
+        document.getElementById('emulst').style.display = "block";
         document.getElementById('critendangeredheader').style.display = "none";
         document.getElementById('critendangeredlist').style.display = "none";
     });
@@ -540,9 +598,9 @@ map.on('load', function () {
             'visible'
         );
         document.getElementById('vulnerableheader').style.display = "none";
-        document.getElementById('vulnerablelist').style.display = "none";
+        document.getElementById('brownthornbilllst').style.display = "none";
         document.getElementById('endangeredheader').style.display = "none";
-        document.getElementById('endangeredlist').style.display = "none";
+        document.getElementById('emulst').style.display = "none";
         document.getElementById('critendangeredheader').style.display = "block";
         document.getElementById('critendangeredlist').style.display = "block";
     });
@@ -616,3 +674,18 @@ map.on('mouseleave', 'endangeredbirds', function () {
     map.getCanvas().style.cursor = '';
 });
 
+//DESCRIPTION INTERACTION
+function birdDescription() {
+    document.getElementById("vulbirdbtn");
+    document.getElementById("endbirdbtn");
+    document.getElementById("critbirdbtn");
+}
+
+document.getElementById("brownthornbilllst").addEventListener("click", function () {
+    document.getElementById('brownthornbill').style.display = "block";
+    document.getElementById('emu').style.display = "none";
+});
+document.getElementById("emulst").addEventListener("click", function () {
+    document.getElementById('brownthornbill').style.display = "none";
+    document.getElementById('emu').style.display = "block";
+});

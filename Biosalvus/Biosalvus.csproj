@@ -170,6 +170,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AvesEndangeredsController.cs" />
     <Compile Include="Controllers\CatRecordsController.cs" />
+    <Compile Include="Controllers\FireDatasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SpeciesAustraliasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,6 +180,7 @@
     <Compile Include="Models\CatRecord.cs" />
     <Compile Include="Models\CatRecords.cs" />
     <Compile Include="Models\EndageredMapViewModel.cs" />
+    <Compile Include="Models\FireData.cs" />
     <Compile Include="Models\MoreEnumerable.cs" />
     <Compile Include="Models\SpeciesAllViewModel.cs" />
     <Compile Include="Models\SpeciesAustralia.cs" />
@@ -351,6 +353,8 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Images\2-tricolor-parrots.jpg" />
     <Content Include="Content\Images\BiosalvusLogo.jpeg" />
+    <Content Include="Content\Images\Birds\brown-thornbill.png" />
+    <Content Include="Content\Images\Birds\emu.png" />
     <Content Include="Content\Images\burning-antler.jpg" />
     <Content Include="Content\Images\bushfire1.jpg" />
     <Content Include="Content\Images\cat-and-hummingbird.jpg" />
@@ -503,6 +507,12 @@
     <Content Include="Views\Home\Cats.cshtml" />
     <Content Include="Views\SpeciesAustralias\SpeciesMap.cshtml" />
     <Content Include="Views\Home\Climate.cshtml" />
+    <Content Include="Views\FireDatas\Create.cshtml" />
+    <Content Include="Views\FireDatas\Delete.cshtml" />
+    <Content Include="Views\FireDatas\Details.cshtml" />
+    <Content Include="Views\FireDatas\Edit.cshtml" />
+    <Content Include="Views\FireDatas\Index.cshtml" />
+    <Content Include="Views\AvesEndangereds\AvesBushfire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

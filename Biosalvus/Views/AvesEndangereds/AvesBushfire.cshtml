@@ -1,0 +1,132 @@
+﻿@model Biosalvus.Models.EndageredMapViewModel
+@{
+    ViewBag.Title = "AvesBushfire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Threatened Birds vs. Bushfire Map</h2>
+
+<div class="row">
+    <div class="col-md-10">
+        <div id="map" style="height:450px;"></div> <!--This is the Map-->
+    </div>
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <button id="vulnerablebtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                    Vulnerable
+                </button>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <button id="endangeredbtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                    Endangered
+                </button>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <button id="critendangeredbtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                    Critically Endangered
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Vulnerable Birds Table Data-->
+<table class="table" style="display:none">
+    @foreach (var item in Model.vulnerablebirds)
+    {
+        <tr class="vulnerablebirds">
+            <td class="vulnerablename">@Html.DisplayFor(modelItem => item.birdname)</td>
+            <td class="vulnerablescientific">@Html.DisplayFor(modelItem => item.scientificname)</td>
+            <td class="vulnerablelongitude">@Html.DisplayFor(modelItem => item.birdlongitude)</td>
+            <td class="vulnerablelatitude">@Html.DisplayFor(modelItem => item.birdlatitude)</td>
+            <td class="vulnerablestate">@Html.DisplayFor(modelItem => item.state)</td>
+            <td class="vulnerablestatus">@Html.DisplayFor(modelItem => item.status)</td>
+            <td class="vulnerablecatfood">@Html.DisplayFor(modelItem => item.catfood)</td>
+        </tr>
+    }
+</table>
+<!--Critically Endangered Birds Table Data-->
+<table class="table" style="display:none">
+    @foreach (var item in Model.critendangeredbirds)
+    {
+        <tr class="critendangeredbirds">
+            <td class="critendangeredname">@Html.DisplayFor(modelItem => item.birdname)</td>
+            <td class="critendangeredscientific">@Html.DisplayFor(modelItem => item.scientificname)</td>
+            <td class="critendangeredlongitude">@Html.DisplayFor(modelItem => item.birdlongitude)</td>
+            <td class="critendangeredlatitude">@Html.DisplayFor(modelItem => item.birdlatitude)</td>
+            <td class="critendangeredstate">@Html.DisplayFor(modelItem => item.state)</td>
+            <td class="critendangeredstatus">@Html.DisplayFor(modelItem => item.status)</td>
+            <td class="critendangeredcatfood">@Html.DisplayFor(modelItem => item.catfood)</td>
+        </tr>
+    }
+</table>
+<!--Endangered Birds Table Data-->
+<table class="table" style="display:none">
+    @foreach (var item in Model.endangeredbirds)
+    {
+        <tr class="endangeredbirds">
+            <td class="endangeredname">@Html.DisplayFor(modelItem => item.birdname)</td>
+            <td class="endangeredscientific">@Html.DisplayFor(modelItem => item.scientificname)</td>
+            <td class="endangeredlongitude">@Html.DisplayFor(modelItem => item.birdlongitude)</td>
+            <td class="endangeredlatitude">@Html.DisplayFor(modelItem => item.birdlatitude)</td>
+            <td class="endangeredstate">@Html.DisplayFor(modelItem => item.state)</td>
+            <td class="endangeredstatus">@Html.DisplayFor(modelItem => item.status)</td>
+            <td class="endangeredcatfood">@Html.DisplayFor(modelItem => item.catfood)</td>
+        </tr>
+    }
+</table>
+
+<!--Fire Rank Table-->
+<table class="table" style="display:none">
+    @foreach (var item in Model.fireRanks.Take(5))
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.firecount)</td>
+            <td>@Html.DisplayFor(modelItem => item.city)</td>
+            <td>@Html.DisplayFor(modelItem => item.state)</td>
+        </tr>
+    }
+</table>
+
+<!--Fire Data Table-->
+<table class="table" style="display:none">
+    @foreach (var item in Model.firelist)
+    {
+        <tr class="firecoordinates">
+            <td class="firelatitude">@Html.DisplayFor(modelitem => item.firelatitude)</td>
+            <td class="firelongitude">@Html.DisplayFor(modelitem => item.firelongitude)</td>
+            <td class="firecity">@Html.DisplayFor(modelitem => item.city)</td>
+            <td class="firedate">@Html.DisplayFor(modelitem => item.acq_date)</td>
+        </tr>
+    }
+</table>
+
+<!--BROWN THORNBILL-->
+<div id="brownthornbill">
+    @foreach (var item in Model.brownThornbillRankings.Take(1))
+    {
+        <h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>
+    }
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/brown-thornbill.png" alt="brown-thornbill" />
+            The brown thornbill is a passerine bird usually found in eastern and south-eastern Australia, including Tasmania. It can grow up to 10 centimetres long, and feeds on insects. It is brown, grey and white. The species has five subspecies.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>Area</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.brownThornbillRankings.Take(5))
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelitem => item.birdcount)</td><td>@Html.DisplayFor(modelitem => item.status)</td><td>@Html.DisplayFor(modelitem => item.locality)</td><td>@Html.DisplayFor(modelitem => item.threatrate)</td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/mapbox")
+}
+

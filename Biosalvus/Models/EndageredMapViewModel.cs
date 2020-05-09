@@ -15,6 +15,24 @@ namespace Biosalvus.Models
         public IEnumerable<BirdPoint> endangeredbirds { get; set; }
         public IEnumerable<BirdPoint> critendangeredbirds { get; set; }
         public IEnumerable<BirdPoint> vulnerablebirds { get; set; }
+        public IEnumerable<FireRecords> firelist { get; set; }
+        public IEnumerable<FireRanks> fireRanks { get; set; }
+        public IEnumerable<BirdThreatRanking> brownThornbillRankings { get; set; }
+        public IEnumerable<BirdThreatRanking> emuRankings { get; set; }
+    }
+
+    public class FireRecords
+    {
+        public decimal firelatitude { get; set; }
+        public decimal firelongitude { get; set; }
+        public string city { get; set; }
+        public DateTime? acq_date { get; set; }
+    }
+    public class FireRanks
+    {
+        public int firecount { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
     }
 
     public class CatsSummary
@@ -35,6 +53,15 @@ namespace Biosalvus.Models
         public string avesstate { get; set; }
         public string catfood { get; set; }
    }
+
+    public class BirdThreatRanking
+    {
+        public int birdcount { get; set; }
+        public double threatrate { get; set; }
+        public string speciesname { get; set; }
+        public string status { get; set; }
+        public string locality { get; set; }
+    }
 
     public class DistinctBird
     {

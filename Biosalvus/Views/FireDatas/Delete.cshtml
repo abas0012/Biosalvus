@@ -1,0 +1,169 @@
+﻿@model Biosalvus.Models.FireData
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FireData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brightness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brightness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.track)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.track)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acq_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acq_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acq_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acq_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.satellite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.satellite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instrument)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instrument)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.confidence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confidence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.version)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.version)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bright_t31)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bright_t31)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.daynight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.daynight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.full_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.full_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postcode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

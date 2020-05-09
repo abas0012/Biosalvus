@@ -28,5 +28,7 @@ namespace Biosalvus.Models
         public System.Data.Entity.DbSet<Biosalvus.Models.AvesEndangered> AvesEndangereds { get; set; }
 
         public System.Data.Entity.DbSet<Biosalvus.Models.SpeciesAustralia> SpeciesAustralias { get; set; }
+
+        public System.Data.Entity.DbSet<Biosalvus.Models.FireData> FireDatas { get; set; }
     }
 }

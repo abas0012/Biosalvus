@@ -26,18 +26,9 @@ namespace Biosalvus.Controllers
             string criticallyendangered = "Critically Endangered";
             string endangered = "Endangered";
             string vulnerable = "Vulnerable";
+            
 
             EndageredMapViewModel viewmodel = new EndageredMapViewModel();
-            //viewmodel.aveslist = (from r in db.AvesEndangereds
-            //                      select new AvesSummary
-            //                      {
-            //                          aveslatitude = r.Latitude,
-            //                          aveslongitude = r.Longitude,
-            //                          avesname = r.vernacularName,
-            //                          avesstate = r.stateProvince,
-            //                          avesstatus = r.Status,
-            //                          catfood = r.CatFood
-            //                      });
             viewmodel.catslist = (from r in db.CatRecordsdb
                                   where r.State == state
                                   select new CatsSummary
@@ -130,7 +121,185 @@ namespace Biosalvus.Controllers
                                              status = r.Status,
                                              catfood = r.CatFood
                                          });
+            
 
+            //Brown Thornbill
+            viewmodel.brownThornbillRankings = (from r in db.AvesEndangereds
+                                            where r.vernacularName == "Brown Thornbill"
+                                            group r by new { r.vernacularName, r.verbatimLocality } into groupedByObject
+                                            select new BirdThreatRanking
+                                            {
+                                                birdcount = groupedByObject.Count(x => x.vernacularName != null),
+                                                speciesname = groupedByObject.Key.vernacularName,
+                                                locality = groupedByObject.Key.verbatimLocality
+                                            }
+                                            ).OrderByDescending(x => x.birdcount)
+                                            .ThenByDescending(x => x.speciesname);
+            //Emu
+            viewmodel.emuRankings = (from r in db.AvesEndangereds
+                                            where r.vernacularName == "Emu"
+                                            group r by new { r.vernacularName, r.verbatimLocality } into groupedByObject
+                                            select new BirdThreatRanking
+                                            {
+                                                birdcount = groupedByObject.Count(x => x.vernacularName != null),
+                                                speciesname = groupedByObject.Key.vernacularName,
+                                                locality = groupedByObject.Key.verbatimLocality
+                                            }
+                                            ).OrderByDescending(x => x.birdcount)
+                                            .ThenByDescending(x => x.speciesname);
+            return View(viewmodel);
+        }
+
+
+        public ActionResult AvesBushfire()
+        {
+            string state = "Victoria";
+            string criticallyendangered = "Critically Endangered";
+            string endangered = "Endangered";
+            string vulnerable = "Vulnerable";
+            string vic = "VIC";
+            EndageredMapViewModel viewmodel = new EndageredMapViewModel();
+            var fireranks = from r in db.FireDatas
+                            group r by r.city into g
+                            select new
+                            {
+                                city = g.Key,
+                                rate = (g.Count() / 388.59)
+                            };
+            var birdranks = from r in db.AvesEndangereds
+                            group r by new { r.vernacularName, r.verbatimLocality, r.Status } into g
+                            select new
+                            {
+                                name = g.Key.vernacularName,
+                                city = g.Key.verbatimLocality,
+                                status = g.Key.Status,
+                                count = g.Count()
+                            };
+            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
+                                                 where (r.Status == vulnerable && r.vernacularName != null)
+                                                 select new DistinctBird
+                                                 {
+                                                     ID = r.ID,
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
+
+                                                 }).DistinctBy(x => x.speciesname);
+            viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
+                                                 where (r.Status == endangered && r.vernacularName != null)
+                                                 select new DistinctBird
+                                                 {
+                                                     ID = r.ID,
+                                                     speciesname = r.vernacularName,
+                                                     status = r.Status,
+                                                     specieskingdom = r.kingdom,
+                                                     speciesphylum = r.phylum,
+                                                     speciesclass = r._class,
+                                                     speciesorder = r.order,
+                                                     speciesfamily = r.order,
+                                                     speciesgenus = r.genus
+
+                                                 }).DistinctBy(x => x.speciesname);
+            viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
+                                                     where (r.Status == criticallyendangered && r.vernacularName != null)
+                                                     select new DistinctBird
+                                                     {
+                                                         ID = r.ID,
+                                                         speciesname = r.vernacularName,
+                                                         status = r.Status,
+                                                         specieskingdom = r.kingdom,
+                                                         speciesphylum = r.phylum,
+                                                         speciesclass = r._class,
+                                                         speciesorder = r.order,
+                                                         speciesfamily = r.order,
+                                                         speciesgenus = r.genus
+
+                                                     }).DistinctBy(x => x.speciesname);
+            viewmodel.vulnerablebirds = (from r in db.AvesEndangereds
+                                         where r.Status == vulnerable
+                                         select new BirdPoint
+                                         {
+                                             birdname = r.vernacularName,
+                                             scientificname = r.species,
+                                             birdlongitude = r.Longitude,
+                                             birdlatitude = r.Latitude,
+                                             state = r.stateProvince,
+                                             status = r.Status,
+                                             catfood = r.CatFood
+                                         });
+            viewmodel.endangeredbirds = (from r in db.AvesEndangereds
+                                         where r.Status == endangered
+                                         select new BirdPoint
+                                         {
+                                             birdname = r.vernacularName,
+                                             scientificname = r.species,
+                                             birdlongitude = r.Longitude,
+                                             birdlatitude = r.Latitude,
+                                             state = r.stateProvince,
+                                             status = r.Status,
+                                             catfood = r.CatFood
+                                         });
+            viewmodel.critendangeredbirds = (from r in db.AvesEndangereds
+                                             where r.Status == criticallyendangered
+                                             select new BirdPoint
+                                             {
+                                                 birdname = r.vernacularName,
+                                                 scientificname = r.species,
+                                                 birdlongitude = r.Longitude,
+                                                 birdlatitude = r.Latitude,
+                                                 state = r.stateProvince,
+                                                 status = r.Status,
+                                                 catfood = r.CatFood
+                                             });
+            viewmodel.firelist = (from r in db.FireDatas
+                                  select new FireRecords
+                                  {
+                                      firelatitude = r.latitude,
+                                      firelongitude = r.longitude,
+                                      city = r.city,
+                                      acq_date = r.acq_date
+                                  }
+                                  );
+            viewmodel.fireRanks = (from r in db.FireDatas
+                                   where r.state == vic
+                                   group r by new { r.city, r.state } into groupedByObject
+                                   select new FireRanks
+                                   {
+                                       firecount = groupedByObject.Count(x => x.city != null),
+                                       city = groupedByObject.Key.city,
+                                       state = groupedByObject.Key.state
+                                   }).OrderByDescending(x => x.firecount);
+
+            //BirdFireRank
+            //Brown Thornbill
+            viewmodel.brownThornbillRankings = (from b in birdranks
+                                                where b.name == "Brown Thornbill"
+                                                join f in fireranks on b.city equals f.city into birdfirerank
+                                               from f in birdfirerank
+                                               select new BirdThreatRanking
+                                               {
+                                                   birdcount = b.count,
+                                                   threatrate = f.rate,
+                                                   speciesname = b.name,
+                                                   status = b.status,
+                                                   locality = b.city
+                                               }).OrderByDescending(x => x.birdcount);
+            //viewmodel.brownThornbillRankings = (from r in db.AvesEndangereds
+            //                                    where r.vernacularName == "Brown Thornbill"
+            //                                    group r by new { r.vernacularName, r.verbatimLocality } into groupedByObject
+            //                                    select new BirdThreatRanking
+            //                                    {
+            //                                        birdcount = groupedByObject.Count(x => x.vernacularName != null),
+            //                                        speciesname = groupedByObject.Key.vernacularName,
+            //                                        locality = groupedByObject.Key.verbatimLocality
+            //                                    }
+            //                                ).OrderByDescending(x => x.birdcount)
+            //                                .ThenByDescending(x => x.speciesname);
             return View(viewmodel);
         }
 

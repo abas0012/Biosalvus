@@ -19,20 +19,6 @@
           type='text/css' />
     <script src="~/Scripts/Chart.js"></script> <!--Chart.js-->
     <script src="~/Scripts/Chart.min.js"></script> <!--Chart.js-->
-    <script>
-        $(document).ready(function () {
-            $(".ajax").on("click", function (e) {
-                e.preventDefault();
-                var elementUrl = $(this).attr('href');
-                $.ajax({
-                    url: elementUrl,
-                    cache: false,
-                    success: function (data) {
-                        $('#TargetDiv').html(data);
-                    }
-                })
-        })
-    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: beige;">
