@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Biosalvus</title>
+    <title>@ViewBag.Title - BioSalvus</title>
     <link href="~/BiosalvusIcon.ico" rel="shortcut icon" type="image/x-icon" /> <!--This is for the PRoduct Logo/Icon-->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -21,18 +21,16 @@
     <script src="~/Scripts/Chart.min.js"></script> <!--Chart.js-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: beige;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:rgba(247,247,247,1);">
         <div class="container">
             <div class="navbar-header">
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-2">
                         <a href="@Url.Action("Index", "Home")">
-                            <img src="~/Content/Images/BiosalvusLogo.jpeg" alt="Company logo" width="75" height="75" />
+                            <img src="~/Content/Images/BiosalvusLogo.jpeg" alt="Company logo" width="50" height="50" />
                         </a>
                     </div>
                     <div class="col-md-6 col-sm-9 col-xs-8" style="padding-left: 30px;">
-                        <h5> Biosalvus </h5>
-                        <h6> Saving Australian BioDiversity </h6>
                     </div>
                     <div class="col-xs-2">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,10 +43,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="float:right;">
+                    <li>@Html.ActionLink("Threat: Bushfire", "AvesBushfire", "AvesEndangereds")</li>
+                    <li>@Html.ActionLink("Threat: Feral Cats", "AvesThreatenedMap", "AvesEndangereds")</li>
+                    <li>@Html.ActionLink("Explore Australia", "SpeciesMap", "SpeciesAustralias")</li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Threatened Species in Australia", "SpeciesMap", "SpeciesAustralias")</li>
-                    <li>@Html.ActionLink("Cats-Threat to Australian Biodiversity", "AvesThreatenedMap", "AvesEndangereds")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
             </div>
         </div>

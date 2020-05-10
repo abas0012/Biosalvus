@@ -1122,7 +1122,7 @@ var barChartData = {
     datakeys: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     labels: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     datasets: [{
-        label: 'Animalia',
+        //label: 'Animalia',
         data: [0, 0, 0, 0, 0, 0], //Initial Value
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',

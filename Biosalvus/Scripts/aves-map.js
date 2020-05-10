@@ -342,7 +342,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'endangereddatasource',
             'paint': {
-                'circle-color': 'rgba(0,255,0,1)', //RED
+                'circle-color': 'rgba(0,0,0,1)', //BLACK
                 'circle-radius': 3
             },
             'layout': {
@@ -357,7 +357,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'critendangereddatasource',
             'paint': {
-                'circle-color': 'rgba(0,255,0,1)', //RED
+                'circle-color': 'rgba(0,0,0,1)', //BLACK
                 'circle-radius': 3
             },
             'layout': {
@@ -372,7 +372,7 @@ map.on('load', function () {
             'type': 'circle',
             'source': 'vulnerabledatasource',
             'paint': {
-                'circle-color': 'rgba(0,255,0,1)', //RED
+                'circle-color': 'rgba(0,0,0,1)', //BLACK
                 'circle-radius': 3
             },
             'layout': {
@@ -482,80 +482,6 @@ map.on('load', function () {
         'waterway-label'
     );
 
-    //map.addLayer(
-    //    {
-    //        'id': 'catdensity-point',
-    //        'type': 'circle',
-    //        'source': 'catsdatasource',
-    //        'minzoom': 15,
-    //        'paint': {
-    //            // Size circle radius by individualcount and zoom level
-    //            'circle-radius': {
-    //                'base': 3,
-    //                'stops': [[12, 2], [22, 180]]
-    //            },
-    //            // Color circle by individualcount
-    //            'circle-color': 'rgba(178,24,43,1)', //Max Zoom Colour
-    //            'circle-stroke-color': 'white',
-    //            'circle-stroke-width': 1,
-    //            // Transition from heatmap to circle layer by zoom level
-    //            'circle-opacity': [
-    //                'interpolate',
-    //                ['linear'],
-    //                ['zoom'],
-    //                10,
-    //                0,
-    //                18,
-    //                1
-    //            ]
-    //        }
-    //    },
-    //);
-
-
-    //// ADD LAYER SHOWING AVES WITH FILTER FUNCTION
-    //avesfinaldata.features.forEach(function (feature) {
-    //    var avesstatus = feature.properties['avesstatus'];
-    //    var layerID = 'poi-' + avesstatus;
-
-    //    // Add a layer for this avesstatus type if it hasn't been added already.
-    //    if (!map.getLayer(layerID)) {
-    //        map.addLayer({
-    //            'id': layerID,
-    //            'type': 'circle',
-    //            'source': 'avesdatasource',
-    //            'paint': {
-    //                  'circle-color': 'rgba(255,0,0,1)', //RED
-    //                  'circle-radius': 4,
-    //            'layout': {
-    //                'visibility': 'none',
-    //            },
-    //            'filter': ['==', 'avesstatus', avesstatus]
-    //        });
-    //        // Add checkbox and label elements for the layer.
-    //        var input = document.createElement('input');
-    //        input.type = 'checkbox';
-    //        input.id = layerID;
-    //        input.checked = false; //set to untick on initial load
-    //        filterGroup.appendChild(input);
-
-    //        var label = document.createElement('label');
-    //        label.setAttribute('for', layerID);
-    //        label.textContent = avesstatus; //Label names
-    //        filterGroup.appendChild(label);
-
-    //        //ON CLICK VISIBLE/HIDE
-    //        // When the checkbox changes, update the visibility of the layer.
-    //        input.addEventListener('change', function (e) {
-    //            map.setLayoutProperty(
-    //                layerID,
-    //                'visibility',
-    //                e.target.checked ? 'visible' : 'none'
-    //            );
-    //        });
-    //    }
-    //});
-
     //BUTTONS INTERACTIONS
     document.getElementById("vulnerablebtn").addEventListener("click", function () {
         hideBirds();
@@ -571,7 +497,9 @@ map.on('load', function () {
         document.getElementById('endangeredheader').style.display = "none"; 
         document.getElementById('emulst').style.display = "none"; 
         document.getElementById('critendangeredheader').style.display = "none";
-        document.getElementById('critendangeredlist').style.display = "none"; 
+        document.getElementById('critendangeredlist').style.display = "none";
+        console.log(birdcitykey);
+        console.log(birdcitydata);
     });
     document.getElementById("endangeredbtn").addEventListener("click", function () {
         hideBirds();
@@ -688,4 +616,63 @@ document.getElementById("brownthornbilllst").addEventListener("click", function 
 document.getElementById("emulst").addEventListener("click", function () {
     document.getElementById('brownthornbill').style.display = "none";
     document.getElementById('emu').style.display = "block";
+});
+
+
+//CHART.JS GRAPH
+var birdcityarray = [];
+var birdcitykey = [];
+var birdcitydata = [];
+$(".birddata").each(function () {
+    var i = 1;
+    var birdcity = $(".birdcity", this).text().trim();
+    var threatrate = $(".threatrate", this).text().trim();
+    var key = {
+        "birdcity": i + ". " + birdcity
+    };
+    var data = {
+        "threatrate": threatrate
+    };
+    birdcitykey.push(key);
+    birdcitydata.push(data);
+    i++;
+});
+
+var barChartData = {
+    datakeys: birdcitykey,
+    labels: birdcitykey,
+    datasets: [{
+        data: birdcitydata, //Initial Value
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+};
+var ctx = document.getElementById('birdRankCanvas').getContext('2d');
+var groupChart = new Chart(ctx, {
+    type: 'bar',
+    data: barChartData,
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
 });

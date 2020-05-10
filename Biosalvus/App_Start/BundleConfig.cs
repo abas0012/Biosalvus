@@ -41,6 +41,7 @@ namespace Biosalvus
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/template-style.css",
                       "~/Content/site.css"));
         }
     }

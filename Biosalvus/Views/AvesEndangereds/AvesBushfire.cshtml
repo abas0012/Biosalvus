@@ -3,7 +3,11 @@
     ViewBag.Title = "AvesBushfire";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .list {
+        cursor: pointer;
+    }
+</style>
 <h2>Threatened Birds vs. Bushfire Map</h2>
 
 <div class="row">
@@ -30,7 +34,52 @@
         </div>
     </div>
 </div>
-
+<!--DROPDOWN LIST-->
+<div>
+    <div>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                Birds List
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li id="vulnerableheader" class="dropdown-header">Vulnerable</li>
+                <li id="brownthornbilllst" class="list">Brown Thornbill</li>
+                <li id="endangeredheader" class="dropdown-header">Endangered</li>
+                <li id="emulst">Emu</li>
+                <li id="critendangeredheader" class="dropdown-header">Critically Endangered.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--BROWN THORNBILL-->
+<div id="brownthornbill">
+    @foreach (var item in Model.brownThornbillRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/brown-thornbill.png" alt="brown-thornbill" />
+            The brown thornbill is a passerine bird usually found in eastern and south-eastern Australia, including Tasmania. It can grow up to 10 centimetres long, and feeds on insects. It is brown, grey and white. The species has five subspecies.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.brownThornbillRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<div id="birdRankChart"  style="height:400px;">
+    <canvas id="birdRankCanvas" width="400" height="400"></canvas>
+</div>
 <!--Vulnerable Birds Table Data-->
 <table class="table" style="display:none">
     @foreach (var item in Model.vulnerablebirds)
@@ -77,18 +126,6 @@
     }
 </table>
 
-<!--Fire Rank Table-->
-<table class="table" style="display:none">
-    @foreach (var item in Model.fireRanks.Take(5))
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.firecount)</td>
-            <td>@Html.DisplayFor(modelItem => item.city)</td>
-            <td>@Html.DisplayFor(modelItem => item.state)</td>
-        </tr>
-    }
-</table>
-
 <!--Fire Data Table-->
 <table class="table" style="display:none">
     @foreach (var item in Model.firelist)
@@ -102,30 +139,6 @@
     }
 </table>
 
-<!--BROWN THORNBILL-->
-<div id="brownthornbill">
-    @foreach (var item in Model.brownThornbillRankings.Take(1))
-    {
-        <h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>
-    }
-    <div class="row">
-        <div class="col-md-6">
-            <img class="img-responsive" src="~/Content/Images/Birds/brown-thornbill.png" alt="brown-thornbill" />
-            The brown thornbill is a passerine bird usually found in eastern and south-eastern Australia, including Tasmania. It can grow up to 10 centimetres long, and feeds on insects. It is brown, grey and white. The species has five subspecies.
-        </div>
-        <div class="col-md-6">
-            <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>Area</th><th>Fire Rate</th></tr>
-                @foreach (var item in Model.brownThornbillRankings.Take(5))
-                {
-                <tr>
-                    <td>@Html.DisplayFor(modelitem => item.birdcount)</td><td>@Html.DisplayFor(modelitem => item.status)</td><td>@Html.DisplayFor(modelitem => item.locality)</td><td>@Html.DisplayFor(modelitem => item.threatrate)</td>
-                </tr>
-                }
-            </table>
-        </div>
-    </div>
-</div>
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
 }

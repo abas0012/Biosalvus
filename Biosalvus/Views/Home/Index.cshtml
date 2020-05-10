@@ -2,76 +2,92 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .button {
+        border-radius: 4px;
+    }
 
+        .button:hover {
+            background-color: #4c956c;
+            color: white;
+        }
+</style>
 <div class="row">
-    <div class="col-12 col-md-12 col-sm-12" style="background-image:url(../Content/Images/burning-antler.jpg);height:680px;background-size: cover;position: relative;opacity:0.8;">
+    <div class="col-12 col-md-12 col-sm-12" style="background-image:url(../Content/Images/kingfisher.jpg);width:1550px;height:680px;background-size: cover;position: relative;margin-left:-180px;">
         <br />
         <br />
         <div style="text-align:center;color:white;padding-left:20%;padding-right:20%;padding-top:12%;">
-            <h1>Biosalvus</h1>
-            <p class="lead">Saving Australian Biodiversity</p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <h1 class="text-white margin-bottom-30 text-size-60 text-m-size-30 text-line-height-1">BioSalvus</h1>
+            <h3 class="text-white margin-bottom-30 text-size-60 text-m-size-30 text-line-height-1">
+                Saving Australian Biodiversity
+            </h3>
             <br />
             <p>
-                BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing. Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
-                With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
+                Australia is one of the most biologically diverse countries on the planet,<br />
+                home to more than 1 million species of plants and animals.<br />
+                The information below helps in understanding more about threatened animals in various states.
+            </p>
+            <input class="button" type="button" style="font-size:x-large;width:250px;background:transparent;border:1px solid #fff;" value="Explore Australia" onclick="location.href='@Url.Action("SpeciesMap", "SpeciesAustralias")'" />
+            @*<p>
+            BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing. Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
+            With the help of this dashboard, you can also filter the historical data of different species at different times, so that you can better plan for the protection of Australia's endangered species in the future.
+        </p>*@
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<h2 class="text-size-50 text-center">Threats</h2>
+<hr class="break-small background-primary break-center">
+<div class="row">
+    <div class="col-6 col-md-6">
+        <div class="image-with-hover-overlay image-hover-zoom">
+            <div class="image-hover-overlay background-primary">
+                <div class="image-hover-overlay-content text-center padding-2x">
+                    <h2 class="text-thin">Feral Cats</h2>
+                    <p>Recent research estimates that feral, stray and domestic cats now kill more than a <strong>million birds a day</strong> in Australia, and cats have now been recognised as a major threat for rare species such as the western ground parrot and the night parrot that spend most of their life close to the ground. </p>
+                    <input class="button" type="button" style="background:transparent;border:1px solid #fff;" value="Explore More" onclick="location.href='@Url.Action("AvesThreatenedMap", "AvesEndangereds")'" />
+                </div>
+            </div>
+            <img src="~/Content/Images/cat-side-angle.jpg" alt="" title="cat-side-angle" />
+        </div>
+    </div>
+    <div class="col-6 col-md-6">
+        <div class="image-with-hover-overlay image-hover-zoom">
+            <div class="image-hover-overlay background-primary">
+                <div class="image-hover-overlay-content text-center padding-2x">
+                    <h2 class="text-thin">Bushfire</h2>
+                    <p><strong>Loss of habitat</strong> – is another reason due to which many birds are facing extinction. With the fragmented and degraded remains after bushfires, the increasing temperatures, and frequency of droughts  in hotter climate, our birds are starting to lose out. If actions are not taken soon, we could be loosing on many more species forever. </p>
+                    <input class="button" type="button" style="background:transparent;border:1px solid #fff;" value="Explore More" onclick="location.href='@Url.Action("AvesBushfire", "AvesEndangereds")'" />
+                </div>
+            </div>
+            <img src="~/Content/Images/wildfire.jpg" />
+        </div>
+    </div>
+</div>
+<h2 class="text-size-50 text-center">About BioSalvus</h2>
+<hr class="break-small background-primary break-center">
+<div class="row">
+    <div class="col-12 col-md-12 col-sm-12">
+        <div style="text-align:center;padding-left:20%;padding-right:20%;">
+            <p>
+                BioSalvus is a dashboard aiming to help you more effectively to understand the threats that endangered species are facing.
+                Here, you can see the chances of endangered species that may appear in different areas, as well as how they are being threatened.
+                With the help of this dashboard, you can also filter the historical data of different species at different times,
+                so that you can better plan for the protection of Australia's endangered species in the future.
             </p>
         </div>
     </div>
 </div>
-<br />
-<br />
-<br />
-<br />
+
+<h2 class="text-size-50 text-center">Dashboard Tour Video</h2>
+<hr class="break-small background-primary break-center">
 <div class="row">
-    <div class="col-6 col-md-6" style="text-align:center;background-color: #3c4b4d;height:323px;color:white;">
-        <h2>They Are Crying</h2>
-        <p>
-            Australia ’s Biodiversity Is Currently Declining.<br />
-            In Australia, more than 1,700 species and ecological communities are known to be threatened and in verge of extinction.<br />
-            The main threats to species are invasive animals like feral cats, bushfires and changes changes. Other threats include climate change caused by unsustainable use and management of natural resources.<br />
-        </p>
-        <input type="button" style="color:black;" value="Explore Stats" onclick="location.href='@Url.Action("SpeciesMap", "SpeciesAustralias")'" />
-    </div>
-    <div class="col-6 col-md-6">
-        <img class="img-responsive" src="~/Content/Images/2-tricolor-parrots.jpg" alt="2-tricolor-parrots" height="300" width="485" style="margin-left:auto;"/>
-    </div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<div class="row">
-    <div class="col-4 col-md-4">
-        <div style="background-color:lightgrey;height: 350px;text-align:center;">
-            <img class="img-responsive" src="~/Content/Images/cat-and-hummingbird.jpg" alt="cat-and-hummingbird img" height="200" width="350" style="height:200px;" />
-            <h2>Cats</h2>
-            <p>Cats hunt Billions of Australian Fauna pushing them to extinction. What we can do to help!</p>
-            <input type="button" value="Know More" onclick="location.href='@Url.Action("Cats", "Home")'" />
-        </div>
-    </div>
-    <div class="col-4 col-md-4">
-        <div style="background-color: #3c4b4d;height: 350px;text-align: center;color:white;">
-            <img class="img-responsive" src="~/Content/Images/tornado.jpg" alt="torando img" height="200" width="350" style="height:200px;" />
-            <h2>Climate Change</h2>
-            @*<p>
-                Understand what future has in plan and how to prevent them.
-            </p>*@
-            <p>**Content currently unavailable - under construction**</p>
-            <input type="button" style="color:black;" value="Disabled" />
-        </div>
-    </div>
-    <div class="col-4 col-md-4">
-        <div style="background-color:lightgrey;height: 350px;text-align: center;">
-            <img class="img-responsive" src="~/Content/Images/burning-antler.jpg" alt="burning-antler img" height="200" width="350" style="height:200px;" />
-            <h2>Bushfire</h2>
-            @*<p>In December 2019, Australia Burns. Find out more!</p>*@
-            <p>**Content currently unavailable - under construction**</p>
-            <input type="button" value="Disabled" />
+    <div class="col-12 col-md-12 col-sm-12">
+        <div style="text-align:center;padding-left:20%;padding-right:20%;">
+            <p>
+                **COMING SOON**
+            </p>
         </div>
     </div>
 </div>
