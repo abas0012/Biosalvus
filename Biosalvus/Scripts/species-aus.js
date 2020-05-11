@@ -476,7 +476,7 @@ map.on('load', function () {
     document.getElementById("refreshbtn").addEventListener("click", function () {
         setAllStateFlagOFF();
         setAllStatusFlagOFF();
-        resetStatusBtnBorderColor();
+        resetStatusBtnColor();
         resetStateFilter();
         resetCountInitialValue();
         resetRankingValue();
@@ -496,8 +496,8 @@ map.on('load', function () {
             setLegendCountValues(vulnerablearray);
             setAllStatusFlagOFF();
             vulnerable = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+            resetStatusBtnColor(); //Button Highlight Toggle
+            document.getElementById("vulnerablebutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
             $('#statusfilter').html('Vulnerable');
         }
         if (nswstate == true || actstate == true || vicstate == true || qldstate == true
@@ -508,8 +508,8 @@ map.on('load', function () {
                 resetRankingValue();
                 setLegendCountValues(vulnerablearray);
                 setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("vulnerablebutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 vulnerable = true;
                 dynamicChart();
                 dynamicTable();
@@ -518,8 +518,8 @@ map.on('load', function () {
             else { //NO OTHER BUTTON CLICKED
                 document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
                 setLegendCountValues(vulnerablearray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("vulnerablebutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("vulnerablebutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 vulnerable = true;
                 dynamicChart();
                 dynamicTable();
@@ -527,47 +527,47 @@ map.on('load', function () {
             }          
         }
     });
-    document.getElementById("wildextinctbutton").addEventListener("click", function () {     
-        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
-            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
-            resetStateFilter();
-            resetRankingValue();
-            displayStateFilter(extinctinwildarray);
-            setLegendCountValues(extinctinwildarray);
-            setAllStatusFlagOFF();
-            wildextinct = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-            $('#statusfilter').html('Extinct in wild');
-        }
-        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
-            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
-            if (conservation == true || endangered == true || critendangered == true ||
-                extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
-                document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
-                resetRankingValue();
-                setLegendCountValues(extinctinwildarray);
-                setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-                wildextinct = true;
-                dynamicChart();
-                dynamicTable();
-                $('#statusfilter').html('Extinct in wild');
-            }
-            else { //NO OTHER BUTTON CLICKED
-                document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
-                setLegendCountValues(extinctinwildarray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("wildextinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-                wildextinct = true;
-                dynamicChart();
-                dynamicTable();
-                $('#statusfilter').html('Extinct in wild');
-            }
-        }
-    });
+    //document.getElementById("wildextinctbutton").addEventListener("click", function () {     
+    //    if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+    //        && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+    //        showLegend();
+    //        resetStateFilter();
+    //        resetRankingValue();
+    //        displayStateFilter(extinctinwildarray);
+    //        setLegendCountValues(extinctinwildarray);
+    //        setAllStatusFlagOFF();
+    //        wildextinct = true;
+    //        resetStatusBtnColor(); //Button Highlight Toggle
+    //        document.getElementById("wildextinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //        $('#statusfilter').html('Extinct in wild');
+    //    }
+    //    if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+    //        || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+    //        if (conservation == true || endangered == true || critendangered == true ||
+    //            extinct == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+    //            document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
+    //            resetRankingValue();
+    //            setLegendCountValues(extinctinwildarray);
+    //            setAllStatusFlagOFF();
+    //            resetStatusBtnColor(); //Button Highlight Toggle
+    //            document.getElementById("wildextinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //            wildextinct = true;
+    //            dynamicChart();
+    //            dynamicTable();
+    //            $('#statusfilter').html('Extinct in wild');
+    //        }
+    //        else { //NO OTHER BUTTON CLICKED
+    //            document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
+    //            setLegendCountValues(extinctinwildarray);
+    //            resetStatusBtnColor(); //Button Highlight Toggle
+    //            document.getElementById("wildextinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //            wildextinct = true;
+    //            dynamicChart();
+    //            dynamicTable();
+    //            $('#statusfilter').html('Extinct in wild');
+    //        }
+    //    }
+    //});
     document.getElementById("endangeredbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
@@ -578,8 +578,8 @@ map.on('load', function () {
             setLegendCountValues(endangeredarray);
             setAllStatusFlagOFF();
             endangered = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            resetStatusBtnColor(); //Button Highlight Toggle
+            document.getElementById("endangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
             $('#statusfilter').html('Endangered');
         }
         if (nswstate == true || actstate == true || vicstate == true || qldstate == true
@@ -590,8 +590,8 @@ map.on('load', function () {
                 resetRankingValue();
                 setLegendCountValues(endangeredarray);
                 setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("endangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 endangered = true;
                 dynamicChart();
                 dynamicTable();
@@ -600,8 +600,8 @@ map.on('load', function () {
             else { //NO OTHER BUTTON CLICKED
                 document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
                 setLegendCountValues(endangeredarray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("endangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("endangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 endangered = true;
                 dynamicChart();
                 dynamicTable();
@@ -620,8 +620,8 @@ map.on('load', function () {
             setLegendCountValues(critendangeredarray);
             setAllStatusFlagOFF();
             critendangered = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            resetStatusBtnColor(); //Button Highlight Toggle
+            document.getElementById("critendangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
             $('#statusfilter').html('Critically Endangered');
         }
         if (nswstate == true || actstate == true || vicstate == true || qldstate == true
@@ -632,8 +632,8 @@ map.on('load', function () {
                 resetRankingValue();
                 setLegendCountValues(critendangeredarray);
                 setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("critendangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 critendangered = true;
                 dynamicChart();
                 dynamicTable();
@@ -642,8 +642,8 @@ map.on('load', function () {
             else { //NO OTHER BUTTON CLICKED
                 document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
                 setLegendCountValues(critendangeredarray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("critendangeredbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("critendangeredbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 critendangered = true;
                 dynamicChart();
                 dynamicTable();
@@ -661,8 +661,8 @@ map.on('load', function () {
             setLegendCountValues(conservationarray);
             setAllStatusFlagOFF();
             conservation = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            resetStatusBtnColor(); //Button Highlight Toggle
+            document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
             $('#statusfilter').html('Conservation Dependent');
         }
         if (nswstate == true || actstate == true || vicstate == true || qldstate == true
@@ -673,8 +673,8 @@ map.on('load', function () {
                 resetRankingValue();
                 setLegendCountValues(conservationarray);
                 setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 conservation = true;
                 dynamicChart();
                 dynamicTable();
@@ -683,8 +683,8 @@ map.on('load', function () {
             else { //NO OTHER BUTTON CLICKED
                 document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
                 setLegendCountValues(conservationarray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 conservation = true;
                 dynamicChart();
                 dynamicTable();
@@ -692,47 +692,47 @@ map.on('load', function () {
             }
         }
     });
-    document.getElementById("extinctbutton").addEventListener("click", function () {
-        if (nswstate == false && actstate == false && vicstate == false && qldstate == false
-            && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
-            resetStateFilter();
-            resetRankingValue();
-            displayStateFilter(extinctarray);
-            setLegendCountValues(extinctarray);
-            setAllStatusFlagOFF();
-            extinct = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-            $('#statusfilter').html('Extinct');
-        }
-        if (nswstate == true || actstate == true || vicstate == true || qldstate == true
-            || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
-            if (conservation == true || endangered == true || wildextinct == true ||
-                critendangered == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
-                document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
-                resetRankingValue();
-                setLegendCountValues(extinctarray);
-                setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-                extinct = true;
-                dynamicChart();
-                dynamicTable();
-                $('#statusfilter').html('Extinct');
-            }
-            else { //NO OTHER BUTTON CLICKED
-                document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
-                setLegendCountValues(extinctarray);
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("extinctbutton").style.borderColor = 'red'; //Button Highlight Toggle
-                extinct = true;
-                dynamicChart();
-                dynamicTable();
-                $('#statusfilter').html('Extinct');
-            }
-        }
-    });
+    //document.getElementById("extinctbutton").addEventListener("click", function () {
+    //    if (nswstate == false && actstate == false && vicstate == false && qldstate == false
+    //        && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
+    //        showLegend();
+    //        resetStateFilter();
+    //        resetRankingValue();
+    //        displayStateFilter(extinctarray);
+    //        setLegendCountValues(extinctarray);
+    //        setAllStatusFlagOFF();
+    //        extinct = true;
+    //        resetStatusBtnColor(); //Button Highlight Toggle
+    //        document.getElementById("extinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //        $('#statusfilter').html('Extinct');
+    //    }
+    //    if (nswstate == true || actstate == true || vicstate == true || qldstate == true
+    //        || tasstate == true || wastate == true || ntstate == true || sastate == true) { //IF AT LEAST 1 STATE
+    //        if (conservation == true || endangered == true || wildextinct == true ||
+    //            critendangered == true || vulnerable == true) { //AT LEAST 1 OTHER BUTTON CLICKED
+    //            document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
+    //            resetRankingValue();
+    //            setLegendCountValues(extinctarray);
+    //            setAllStatusFlagOFF();
+    //            resetStatusBtnColor(); //Button Highlight Toggle
+    //            document.getElementById("extinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //            extinct = true;
+    //            dynamicChart();
+    //            dynamicTable();
+    //            $('#statusfilter').html('Extinct');
+    //        }
+    //        else { //NO OTHER BUTTON CLICKED
+    //            document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
+    //            setLegendCountValues(extinctarray);
+    //            resetStatusBtnColor(); //Button Highlight Toggle
+    //            document.getElementById("extinctbutton").style.backgroundColor = '#d68c45'; //Button Highlight Toggle
+    //            extinct = true;
+    //            dynamicChart();
+    //            dynamicTable();
+    //            $('#statusfilter').html('Extinct');
+    //        }
+    //    }
+    //});
     document.getElementById("conservationbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
@@ -743,8 +743,8 @@ map.on('load', function () {
             setLegendCountValues(conservationarray);
             setAllStatusFlagOFF();
             conservation = true;
-            resetStatusBtnBorderColor(); //Button Highlight Toggle
-            document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+            resetStatusBtnColor(); //Button Highlight Toggle
+            document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
             $('#statusfilter').html('Conservation Dependent');
         }
         if (nswstate == true || actstate == true || vicstate == true || qldstate == true
@@ -755,8 +755,8 @@ map.on('load', function () {
                 resetRankingValue();
                 setLegendCountValues(conservationarray);
                 setAllStatusFlagOFF();
-                resetStatusBtnBorderColor(); //Button Highlight Toggle
-                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle
+                document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 conservation = true;
                 dynamicChart();
                 dynamicTable();
@@ -765,8 +765,8 @@ map.on('load', function () {
             else { //NO OTHER BUTTON CLICKED
                 setLegendCountValues(conservationarray);
                 document.getElementById("speciesgroupChart").style.display = "block"; //show Species Grouping Block
-                resetStatusBtnBorderColor(); //Button Highlight Toggle              
-                document.getElementById("conservationbutton").style.borderColor = 'red'; //Button Highlight Toggle
+                resetStatusBtnColor(); //Button Highlight Toggle              
+                document.getElementById("conservationbutton").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
                 conservation = true;
                 dynamicChart();
                 dynamicTable();
@@ -1027,11 +1027,11 @@ function resetCountButtonValue() {
     }
 }
 
-//Function to Reset border colour in Status Button to white
-const statusbtnarray = ['vulnerablebutton', 'conservationbutton', 'endangeredbutton', 'critendangeredbutton', 'wildextinctbutton', 'extinctbutton'];
-function resetStatusBtnBorderColor() {
+//Function to Reset border colour in Status Button to #2c6e49 (Dark Green)
+const statusbtnarray = ['vulnerablebutton', 'conservationbutton', 'endangeredbutton', 'critendangeredbutton']; //, 'wildextinctbutton', 'extinctbutton'
+function resetStatusBtnColor() {
     for (i = 0; i < statusbtnarray.length; i++) {
-        document.getElementById(statusbtnarray[i]).style.borderColor = 'white';
+        document.getElementById(statusbtnarray[i]).style.backgroundColor = '#2c6e49';
     }
 }
 
@@ -1122,23 +1122,23 @@ var barChartData = {
     datakeys: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     labels: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     datasets: [{
-        //label: 'Animalia',
+        //label: 'Animal Group Counts',
         data: [0, 0, 0, 0, 0, 0], //Initial Value
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            'rgba(214, 140, 69 , 0.2)',
+            'rgba(214, 140, 69 , 0.2)',
+            'rgba(214, 140, 69 , 0.2)',
+            'rgba(214, 140, 69 , 0.2)',
+            'rgba(214, 140, 69 , 0.2)',
+            'rgba(214, 140, 69 , 0.2)'
         ],
         borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            'rgba(214, 140, 69, 1)',
+            'rgba(214, 140, 69, 1)',
+            'rgba(214, 140, 69, 1)',
+            'rgba(214, 140, 69, 1)',
+            'rgba(214, 140, 69, 1)',
+            'rgba(214, 140, 69, 1)'
         ],
         borderWidth: 1
     }]

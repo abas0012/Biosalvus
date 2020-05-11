@@ -1,15 +1,33 @@
 ﻿@model Biosalvus.Models.EndageredMapViewModel
 @{
-    ViewBag.Title = "AvesBushfire";
+    ViewBag.Title = "Threat: Bushfire";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
     .list {
         cursor: pointer;
     }
-</style>
-<h2>Threatened Birds vs. Bushfire Map</h2>
+    .button {
+        border-radius: 4px;
+    }
 
+        .button:hover {
+            background-color: #4c956c;
+            color: white;
+        }
+</style>
+<header class="section background-dark">
+    <div class="line">
+        <h1 class="text-white margin-top-bottom-40 text-size-60 text-line-height-1">Bushfire</h1>
+        <p class="margin-bottom-0 text-size-16">
+            Explore our Dashboard to view the Threatened Birds vs. Bushfire occurances.<br>
+            You can start by selecting either the Threatened Status of the birds.<br>
+            Distinct Birds details are selectable from the dropdown.
+        </p>
+    </div>
+</header>
+<h2 class="text-size-50 text-center">@ViewBag.Title</h2>
+<hr class="break-small background-primary break-center">
 <div class="row">
     <div class="col-md-10">
         <div id="map" style="height:450px;"></div> <!--This is the Map-->
@@ -17,17 +35,17 @@
     <div class="col-md-2">
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <button id="vulnerablebtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                <button id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Vulnerable
                 </button>
             </div>
             <div class="col-md-12 col-xs-12">
-                <button id="endangeredbtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                <button id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Endangered
                 </button>
             </div>
             <div class="col-md-12 col-xs-12">
-                <button id="critendangeredbtn" style="color:white;background-color:#d68c45;margin-left:10%;margin-right:10%;">
+                <button id="critendangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Critically Endangered
                 </button>
             </div>
@@ -77,7 +95,7 @@
         </div>
     </div>
 </div>
-<div id="birdRankChart"  style="height:400px;">
+<div id="birdRankChart" style="height:400px;display:none;">
     <canvas id="birdRankCanvas" width="400" height="400"></canvas>
 </div>
 <!--Vulnerable Birds Table Data-->

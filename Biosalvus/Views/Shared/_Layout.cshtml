@@ -19,7 +19,25 @@
           type='text/css' />
     <script src="~/Scripts/Chart.js"></script> <!--Chart.js-->
     <script src="~/Scripts/Chart.min.js"></script> <!--Chart.js-->
+    <script type="text/javascript">
+        var spinnerVisible = false;
+        function showProgress() {
+            if (!spinnerVisible) {
+                $("div#spinner").fadeIn("fast");
+                spinnerVisible = true;
+            }
+        };
+        function hideProgress() {
+            if (spinnerVisible) {
+                var spinner = $("div#spinner");
+                spinner.stop();
+                spinner.fadeOut("fast");
+                spinnerVisible = false;
+            }
+        };
+    </script>
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:rgba(247,247,247,1);">
         <div class="container">
@@ -43,15 +61,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="float:right;">
-                    <li>@Html.ActionLink("Threat: Bushfire", "AvesBushfire", "AvesEndangereds")</li>
-                    <li>@Html.ActionLink("Threat: Feral Cats", "AvesThreatenedMap", "AvesEndangereds")</li>
-                    <li>@Html.ActionLink("Explore Australia", "SpeciesMap", "SpeciesAustralias")</li>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li style="color:black;">@Html.ActionLink("Explore Australia", "SpeciesMap", "SpeciesAustralias")</li>
+                    <li style="color:black;">@Html.ActionLink("Threat: Bushfire", "AvesBushfire", "AvesEndangereds")</li>
+                    <li style="color:black;">@Html.ActionLink("Threat: Feral Cats", "AvesThreatenedMap", "AvesEndangereds")</li>
+                    <li style="color:black;">@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <div id="spinner" style="display: none;width: 100px;height: 100px;position: fixed;top: 50%;left: 50%;background: url(spinner.gif) no-repeat center #fff;text-align: center;padding: 10px;font: normal 16px Tahoma, Geneva, sans-serif;border: 1px solid #666;margin-left: -50px;margin-top: -50px;z-index: 2;overflow: auto;">
+            Loading...
+        </div>
         @RenderBody()
         <hr />
         <footer>

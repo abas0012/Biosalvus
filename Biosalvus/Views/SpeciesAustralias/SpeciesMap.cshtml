@@ -1,7 +1,7 @@
 ﻿@model Biosalvus.Models.SpeciesAllViewModel
 
 @{
-    ViewBag.Title = "Threatened Animals Australia";
+    ViewBag.Title = "Explore Australia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -28,97 +28,125 @@
             margin-right: 5px;
             width: 10px;
         }
-</style>
-<h2>@ViewBag.Title</h2>
+    .button {
+        border-radius: 4px;
+    }
 
-@*<h3>Filter Selected: <span id="mapfilter"></span></h3>*@
+        .button:hover {
+            background-color: #4c956c;
+            color: white;
+        }
+</style>
+<header class="section background-dark">
+    <div class="line">
+        <h1 class="text-white margin-top-bottom-40 text-size-60 text-line-height-1">Explore Australia's Biodiversity</h1>
+        <p class="margin-bottom-0 text-size-16">
+            Explore our Dashboard to view the most current status of threatened Australian Wildlife.<br>
+            The Map bellow represent Australia's 5 States and 2 Territories to select from.<br>
+            You can start by selecting either the State or Threatened Status.<br>
+            Chart Bar can be selected to further explore each animal groupings.
+        </p>
+    </div>
+</header>
+<h2 class="text-size-50 text-center">@ViewBag.Title</h2>
+<hr class="break-small background-primary break-center">
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-xs-12">
+        <blockquote class="margin-top-bottom-20">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">State: <span id="statefilter"></span></h3>
+        </blockquote>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+        <blockquote class="margin-top-bottom-20">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">Status: <span id="statusfilter"></span></h3>
+        </blockquote>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+        <blockquote class="margin-top-bottom-20">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">Grouping: <span id="groupfilter"></span></h3>
+        </blockquote>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-6 col-xs-12">
-        <div id="species-map" style="height:450px;"></div> <!--This is the Map-->
+        <strong>Select States on Map</strong>
+        <div id="species-map" style="height:500px;"></div> <!--This is the Map-->
     </div>
     <div class="col-md-6 col-xs-12">
+        <strong>Select Buttons to display Grouping Statistics</strong>
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <div class="col-md-4 col-xs-4">
-                    <button id="vulnerablebutton" style="width: 100%;height: 70px;color:white;background-color:orangered;">
+                <div class="col-md-6 col-xs-6">
+                    <button class="button" id="vulnerablebutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Vulnerable
-                        <span id="vulnerablecnt">486</span>
+                        @*<span id="vulnerablecnt">486</span>*@
                     </button>
+                    <span id="vulnerablecnt" style="text-align:center;font-size:large;"><strong>486</strong></span>
                 </div>
-                <div class="col-md-4 col-xs-4">
-                    <button id="conservationbutton" style="width: 100%;height: 70px;color:white;background-color:orange;">
+                <div class="col-md-6 col-xs-6">
+                    <button class="button" id="conservationbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Conservation Dependent
-                        <span id="conservationcnt">28</span>
+                        @*<span id="conservationcnt">28</span>*@
                     </button>
+                    <span id="conservationcnt" style="text-align:center;font-size:large;"><strong>28</strong></span>
                 </div>
-                <div class="col-md-4 col-xs-4">
-                    <button id="endangeredbutton" style="width: 100%;height: 70px;color:white;background-color:brown;">
+                <div class="col-md-6 col-xs-6">
+                    <button class="button" id="endangeredbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Endangered
-                        <span id="endangeredcnt">312</span>
+                        @*<span id="endangeredcnt">312</span>*@
                     </button>
+                    <span id="endangeredcnt" style="text-align:center;font-size:large;"><strong>312</strong></span>
                 </div>
-                <div class="col-md-4 col-xs-4">
-                    <button id="critendangeredbutton" style="width: 100%;height: 70px;color:white;background-color:maroon;">
+                <div class="col-md-6 col-xs-6">
+                    <button class="button" id="critendangeredbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Critically Endangered
-                        <span id="critendangeredncnt">136</span>
+                        @*<span id="critendangeredncnt">136</span>*@
                     </button>
+                    <span id="critendangeredncnt" style="text-align:center;font-size:large;"><strong>136</strong></span>
                 </div>
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-xs-4" style="display:none;">
                     <button id="wildextinctbutton" style="width: 100%;height: 70px;color:white;background-color:darkgrey;">
                         Extinct in the wild
                         <span id="wildextinctcnt">1</span>
                     </button>
                 </div>
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-xs-4" style="display:none;">
                     <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
                         Extinct
                         <span id="extinctcnt">95</span>
                     </button>
                 </div>
+            </div>            
+            <div class="col-lg-6 col-md-6 col-xs-6" style="display:block;height:350px;">
+                <strong>Species Count per State:</strong>
+                <div id="legend" class="legend" style="height:100%;">
+                    <div class="col-md-6 col-xs-6"><p id="rank1" style="font-size:xx-large;margin-bottom:40px;">ACT</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank2" style="font-size:xx-large;margin-bottom:40px;">NSW</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank3" style="font-size:xx-large;margin-bottom:40px;">VIC</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank4" style="font-size:xx-large;margin-bottom:40px;">QLD</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank5" style="font-size:xx-large;margin-bottom:40px;">SA</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank6" style="font-size:xx-large;margin-bottom:40px;">NT</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank7" style="font-size:xx-large;margin-bottom:40px;">WA</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="rank8" style="font-size:xx-large;margin-bottom:40px;">TAS</p></div>
+                </div>
             </div>
-            <div class="col-md-12 col-xs-12">
-                <div id="legend" class="legend">
-                    <h4>Status Count Ranking:</h4>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(51, 0, 0,1)"></span><nbsp></nbsp><p id="rank1"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(165, 42, 42,1)"></span><nbsp></nbsp><p id="rank2"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 69, 0,1)"></span><nbsp></nbsp><p id="rank3"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(255, 165, 0,1)"></span><nbsp></nbsp><p id="rank4"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(184, 181, 35,1)"></span><nbsp></nbsp><p id="rank5"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(245,225,7,1)"></span><nbsp></nbsp><p id="rank6"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(169, 169, 169,1)"></span><nbsp></nbsp><p id="rank7"></p></div>
-                    <div class="col-md-2 col-xs-2"><span style="background-color: rgba(211, 211, 211,1)"></span><nbsp></nbsp><p id="rank8"></p></div>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <button id="refreshbtn" style="width:30%;height:50px;color:white;background-color:lightblue;float:left;">
-                        ALL/REFRESH
-                    </button>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3>State: <span id="statefilter"></span></h3>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Status: <span id="statusfilter"></span></h3>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Group: <span id="groupfilter"></span></h3>
-                    </div>
-                </div>
+            <strong>Click on Bar to show Grouping Details Table</strong>
+            <div id="speciesgroupChart" class="col-lg-6 col-md-6 col-xs-6" style="height:300px;display:block;">
+                <canvas id="groupChart" width="300" height="300"></canvas>
             </div>
         </div>
     </div>
 </div>
-<br />
-<h4>Species Grouping</h4>
-<div id="speciesgrouping" class="row">
-    <div id="speciesgroupChart" class="col-md-4 col-xs-4" style="height:400px;display:none;">
-        <canvas id="groupChart" width="400" height="400"></canvas>
-    </div>
-    <div id="speciesgroupTable" class="col-md-8 col-xs-8" style="height:400px;display:none;">
+<div id="speciesgrouping" class="row">   
+    @*<div id="speciesgroupChart" class="col-md-4 col-xs-4" style="height:400px;display:none;">
+            <canvas id="groupChart" width="400" height="400"></canvas>
+        </div>*@
+    <div id="speciesgroupTable" class="col-md-12 col-xs-12" style="height:400px;display:none;">
+        <strong>Grouping Details Table</strong>
         <div id="speciesbygroupings" class="row">
             <div class="col-md-12 col-xs-12">
-                <table  class="table">
+                <table class="table">
                     <thead>
                         <tr>
                             <th style="width:25%;">
@@ -157,7 +185,7 @@
                                 </td>
                             </tr>
                         }
-                    </tbody>                   
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -202,7 +230,12 @@
     </div>
 
 </div>
-
+<!--CLEAR ALL BUTTON-->
+<div class="col-md-12 col-xs-12">
+    <button id="refreshbtn" style="width:30%;height:50px;color:white;background-color:#2c6e49;">
+        CLEAR SELECCTION
+    </button>
+</div>
 
 <div class="row">
     <div class="col-md-6">

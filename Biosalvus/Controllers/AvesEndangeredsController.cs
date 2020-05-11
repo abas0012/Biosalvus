@@ -147,6 +147,36 @@ namespace Biosalvus.Controllers
                                             }
                                             ).OrderByDescending(x => x.birdcount)
                                             .ThenByDescending(x => x.speciesname);
+            var catranks = from r in db.CatRecordsdb
+                            group r by r.LocalGovernmentAreas2011 into g
+                            select new
+                            {
+                                city = g.Key,
+                                rate = (g.Count() / 11.60)
+                            };
+            var birdranks = from r in db.AvesEndangereds
+                            group r by new { r.vernacularName, r.verbatimLocality, r.Status } into g
+                            select new
+                            {
+                                name = g.Key.vernacularName,
+                                city = g.Key.verbatimLocality,
+                                status = g.Key.Status,
+                                count = g.Count()
+                            };
+            //BirdCatRank
+            //Brown Thornbill
+            viewmodel.brownThornbillRankings = (from b in birdranks
+                                                where b.name == "Brown Thornbill"
+                                                join c in catranks on b.city equals c.city into birdcatrank
+                                                from c in birdcatrank
+                                                select new BirdThreatRanking
+                                                {
+                                                    birdcount = b.count,
+                                                    threatrate = c.rate,
+                                                    speciesname = b.name,
+                                                    status = b.status,
+                                                    locality = b.city
+                                                }).OrderByDescending(x => x.birdcount);
             return View(viewmodel);
         }
 
@@ -306,27 +336,7 @@ namespace Biosalvus.Controllers
         // GET: AvesEndangereds/Details/5
         public ActionResult VulnerableDetails(int? id)
         {
-            string state = "Victoria";
-            string criticallyendangered = "Critically Endangered";
-            string endangered = "Endangered";
-            string vulnerable = "Vulnerable";
-
-            EndageredMapViewModel viewmodel = new EndageredMapViewModel();
-            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
-                                                 where (r.Status == vulnerable && r.vernacularName != null)
-                                                 select new DistinctBird
-                                                 {
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
-
-                                                 }).DistinctBy(x => x.speciesname);
-            return View(viewmodel);
+            return View();
         }
 
         // GET: AvesEndangereds/Create
