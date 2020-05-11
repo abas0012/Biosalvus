@@ -7,6 +7,7 @@
     .list {
         cursor: pointer;
     }
+
     .button {
         border-radius: 4px;
     }
@@ -35,43 +36,259 @@
     <div class="col-md-2">
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <button id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                <button class="button" id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Vulnerable
                 </button>
             </div>
             <div class="col-md-12 col-xs-12">
-                <button id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                <button class="button" id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Endangered
                 </button>
             </div>
             <div class="col-md-12 col-xs-12">
-                <button id="critendangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                <button class="button" id="critendangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Critically Endangered
                 </button>
+            </div>
+            <!--DROPDOWN LIST-->
+            <div class="col-md-12 col-xs-12">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        Birds List
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li id="vulnerableheader" class="dropdown-header"><strong>Vulnerable</strong></li>
+                        <li id="bartailedgodwitlst" class="list">Bar-tailed Godwit</li>
+                        <li id="bassianthrushlst" class="list">Bassian Thrush</li>
+                        <li id="blackbrowedalbatrosslst" class="list">Black-browed Albatross</li>
+                        <li id="bluepetrellst" class="list">Blue Petrel</li>
+                        <li id="capebarrengooselst" class="list">Cape Barren goose</li>
+                        <li id="crestedshriketitlst" class="list">Crested Shrike-tit</li>
+                        <li id="fairyternlst" class="list">Fairy Tern</li>
+                        <li id="goldenwhistlerlst" class="list">Golden Whistler</li>
+                        <li id="greenrosellalst" class="list">Green Rosella</li>
+                        <li id="horsfieldbushlarklst" class="list">Horsfield's Bushlark</li>
+                        <li id="malleefowllst" class="list">Malleefowl</li>
+                        <li id="northerngiantpetrellst" class="list">Northern giant petrel</li>
+                        <li id="piedcurrawonglst" class="list">Pied Currawong</li>
+                        <li id="redloredwhisterlst" class="list">Red-lored Whistler</li>
+                        <li id="regentparrotlst" class="list">Regent Parrot</li>
+                        <li id="shyalbatrosslst" class="list">shy albatross</li>
+                        <li id="spinetailedswiftlst" class="list">Spine-tailed swift</li>
+                        <li id="superbparrotlst" class="list">Superb Parrot</li>
+                        <li id="wanderingalbatrosslst" class="list">Wandering Albatross</li>
+                        <li id="whitewingedfairywrenlst" class="list">White-winged Fairy-wren</li>
+                        <li id="endangeredheader" class="dropdown-header"><strong>Endangered</strong></li>
+                        <li id="australasianbitternlst" class="list">Australasian Bittern</li>
+                        <li id="azurekingfisherlst" class="list">Azure Kingfisher</li>
+                        <li id="blackearedminerlst" class="list">Black-eared Miner</li>
+                        <li id="brownthornbilllst" class="list">Brown Thornbill</li>
+                        <li id="easternbristlebirdlst" class="list">Eastern Bristlebird</li>
+                        <li id="easterngroundparrotlst" class="list">Eastern Ground Parrot</li>
+                        <li id="glossyblackcockatoolst" class="list">Glossy Black-cockatoo</li>
+                        <li id="helmetedhoneyeaterlst" class="list">Helmeted Honeyeater</li>
+                        <li id="hoodedrobinlst" class="list">Hooded Robin</li>
+                        <li id="huahoulst" class="list">Huahou</li>
+                        <li id="malleeemuwrenlst" class="list">Mallee Emu-wren</li>
+                        <li id="redtailedblackcockatoolst" class="list">Red-tailed Black Cockatoo</li>
+                        <li id="southernemuwrenlst" class="list">Southern Emu-wren</li>
+                        <li id="southerngiantpetrellst" class="list">southern giant-petrel</li>
+                        <li id="swiftparrotlst" class="list">Swift Parrot</li>
+                        <li id="wedgetailedeaglelst" class="list">Wedge-tailed Eagle</li>
+                        <li id="yellowtuftedhoneyeaterlst" class="list">Yellow-tufted Honeyeater</li>
+                        <li id="critendangeredheader" class="dropdown-header"><strong>Critically Endangered.</strong></li>
+                        <li id="curlewsandpiperlst" class="list">Curlew Sandpiper</li>
+                        <li id="easterncurlewlst" class="list">Eastern curlew</li>
+                        <li id="greatknotlst" class="list">Great Knot</li>
+                        <li id="orangebelliedparrotlst" class="list">Orange-bellied Parrot</li>
+                        <li id="plainswandererlst" class="list">Plains-wanderer</li>
+                        <li id="regenthoneyeaterlst" class="list">Regent Honeyeater</li>
+                        <li id="spottedquailthrushlst" class="list">Spotted Quail-thrush</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!--DROPDOWN LIST-->
-<div>
-    <div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                Birds List
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li id="vulnerableheader" class="dropdown-header">Vulnerable</li>
-                <li id="brownthornbilllst" class="list">Brown Thornbill</li>
-                <li id="endangeredheader" class="dropdown-header">Endangered</li>
-                <li id="emulst">Emu</li>
-                <li id="critendangeredheader" class="dropdown-header">Critically Endangered.</li>
-            </ul>
+
+<!-- Australasian Bittern -->
+<div id="australasianbittern" style="display:none;">
+    @foreach (var item in Model.australasionBitternRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/australasian-bittern.jpg" alt="australasianbittern" />
+            The Australasian bittern, also known as the brown bittern or matuku hūrepo, is a large bird in the heron family Ardeidae. A secretive bird with a distinctive booming call, it is more often heard than seen. Australasian bitterns are endangered in both Australia and New Zealand.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.australasionBitternRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
         </div>
     </div>
 </div>
-<!--BROWN THORNBILL-->
-<div id="brownthornbill">
+<!-- Azure Kingfisher -->
+<div id="azurekingfisher" style="display:none;">
+    @foreach (var item in Model.azureKingfisherRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/azure-kingfisher.jpg" alt="azurekingfisher" />
+            The azure kingfisher is a small kingfisher, in the river kingfisher subfamily, Alcedininae. It is found in Northern and Eastern Australia and Tasmania, as well as the lowlands of New Guinea and neighbouring islands, and out to North Maluku and Romang.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.azureKingfisherRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Bar-tailed Godwit -->
+<div id="bartailedgodwit" style="display:none;">
+    @foreach (var item in Model.barTailedGodwitRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/bar-tailed-godwit.jpg" alt="bartailedgodwit" />
+            The bar-tailed godwit is a large wader in the family Scolopacidae, which feeds on bristle-worms and shellfish on coastal mudflats and estuaries. It has distinctive red breeding plumage, long legs, and a long upturned bill. Bar-tailed godwits breed on Arctic coasts and tundra from Scandinavia to Alaska, and overwinter on coasts in temperate and tropical regions of the Old World, Australia and New Zealand. The migration of the subspecies Limosa lapponica baueri from across the Pacific Ocean from Alaska to New Zealand is the longest known non-stop flight of any bird, and also the longest journey without pausing to feed by any animal. The round-trip migration for this subspecies is over 29,000 km.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.barTailedGodwitRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Bassian Thrush -->
+<div id="bassianthrush" style="display:none;">
+    @foreach (var item in Model.bassianThrushRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/bassian-thrush.jpg" alt="bassianthrush" />
+            The Bassian thrush, also known as the olive-tailed thrush, is a medium-sized mostly insectivorous thrush found predominantly in southeastern Australia and Tasmania. The thrushes range from 27 to 29 cm in length and average 100 g.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.bassianThrushRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Black-browed Albatross -->
+<div id="blackbrowedalbatross" style="display:none;">
+    @foreach (var item in Model.blackBrowedAlbatrossRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/black-browed-albatross.jpg" alt="blackbrowedalbatross" />
+            The black-browed albatross, also known as the black-browed mollymawk, is a large seabird of the albatross family Diomedeidae; it is the most widespread and common member of its family.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.blackBrowedAlbatrossRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Black-eared Miner -->
+<div id="blackearedminer" style="display:none;">
+    @foreach (var item in Model.blackEaredMinerRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/black-eared-miner.jpg" alt="blackearedminer" />
+            The black-eared miner is an endangered honeyeater endemic to mallee woodland in south-eastern Australia.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.blackEaredMinerRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Blue Petrel -->
+<div id="bluepetrel" style="display:none;">
+    @foreach (var item in Model.bluePetrelRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/blue-petrel.jpg" alt="bluepetrel" />
+            The blue petrel is a small seabird in the shearwater and petrel family, Procellariidae. This small petrel is the only member of the genus Halobaena, but is closely allied to the prions. It is distributed across the Southern Ocean but breeds at only six known sites, all close to the Antarctic Convergence zone.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.bluePetrelRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Brown Thornbill -->
+<div id="brownthornbill" style="display:none;">
     @foreach (var item in Model.brownThornbillRankings.Take(1))
     {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
     <div class="row">
@@ -95,6 +312,933 @@
         </div>
     </div>
 </div>
+<!-- Cape Barren goose -->
+<div id="capebarrengoose" style="display:none;">
+    @foreach (var item in Model.capeBarrenGooseRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/cape-barren-goose.jpg" alt="capebarrengoose" />
+            The Cape Barren goose is a large goose resident in southern Australia. The species is named for Cape Barren Island, where specimens were first sighted by European explorers.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.capeBarrenGooseRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Crested Shrike-tit -->
+<div id="crestedshriketit" style="display:none;">
+    @foreach (var item in Model.crestedShriketitRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/crested-shriketit.jpg" alt="crestedshriketit" />
+            The crested shriketit, or Australian shriketit, is a bird endemic to Australia where it inhabits open eucalypt forest and woodland. It is the only species contained within both the family Falcunculidae and the genus Falcunculus.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.crestedShriketitRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Curlew Sandpiper -->
+<div id="curlewsandpiper" style="display:none;">
+    @foreach (var item in Model.curlewSandpiperRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/curlew-sandpiper.jpg" alt="curlewsandpiper" />
+            The curlew sandpiper is a small wader that breeds on the tundra of Arctic Siberia. The genus name is from Ancient Greek kalidris or skalidris, a term used by Aristotle for some grey-coloured waterside birds. The specific ferruginea is from Latin ferrugo, ferruginis, "iron rust" referring to its colour in breeding plumage.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.curlewSandpiperRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Eastern Bristlebird -->
+<div id="easternbristlebird" style="display:none;">
+    @foreach (var item in Model.easternBristlebirdRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/eastern-bristlebird.jpg" alt="easternbristlebird" />
+            The eastern bristlebird is a species of bird in the bristlebird family, Dasyornithidae. It is endemic to Australia. Its natural habitats are temperate forests, temperate shrubland, and temperate grassland. It is threatened by habitat loss.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.easternBristlebirdRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Eastern curlew -->
+<div id="easterncurlew" style="display:none;">
+    @foreach (var item in Model.easternCurlewRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/eastern-curlew.jpg" alt="easterncurlew" />
+            The Far Eastern curlew is a large shorebird most similar in appearance to the long-billed curlew, but slightly larger. It is mostly brown in color, differentiated from other curlews by its plain, unpatterned brown underwing. It is not only the largest curlew but probably the world's largest sandpiper, at 60–66 cm in length and 110 cm across the wings. The body is reportedly 565–1,150 g, which may be equaled by the Eurasian curlew. The extremely long bill, at 12.8–20.1 cm in length, rivals the bill size of the closely related long-billed curlew as the longest bill for a sandpiper.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.easternCurlewRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Eastern Ground Parrot -->
+<div id="easterngroundparrot" style="display:none;">
+    @foreach (var item in Model.easternGroundParrotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/eastern-ground-parrot.jpg" alt="easterngroundparrot" />
+            The eastern ground parrot of Australia is one of only five ground-dwelling parrots in the world, the others being its closest relatives, the western ground parrot, the extremely rare night parrot, the somewhat closely related Antipodes parakeet, and the unrelated highly endangered kakapo from New Zealand.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.easternGroundParrotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Fairy Tern -->
+<div id="fairytern" style="display:none;">
+    @foreach (var item in Model.fairyTernRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/fairy-tern.jpg" alt="fairytern" />
+            The fairy tern is a small tern which is native to the southwestern Pacific. It is listed as "Vulnerable" by the IUCN and the New Zealand subspecies is "Critically Endangered".
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.fairyTernRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Glossy Black-cockatoo -->
+<div id="glossyblackcockatoo" style="display:none;">
+    @foreach (var item in Model.glossyBlackCockatooRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/glossy-black-cockaoo.jpg" alt="glossyblackcockatoo" />
+            The glossy black cockatoo, is the smallest member of the subfamily Calyptorhynchinae found in eastern Australia. Adult glossy black cockatoos may reach 50 cm in length. They are sexually dimorphic. Males are blackish brown, except for their prominent red tail bands; the females are dark brownish with some yellow spotting. Three subspecies are recognised.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.glossyBlackCockatooRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Golden Whistler -->
+<div id="goldenwhistler" style="display:none;">
+    @foreach (var item in Model.goldernWhistlerRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/golden-whistler.jpg" alt="goldenwhistler" />
+            The Australian golden whistler, or golden whistler, is a species of bird found in forest, woodland, mallee, mangrove and scrub in Australia Most populations are resident, but some in south-eastern Australia migrate north during the winter. Its taxonomy is highly complex and remains a matter of dispute, with some authorities including as many as 59 subspecies of the golden whistler, while others treat several of these as separate species.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.goldernWhistlerRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Great Knot -->
+<div id="greatknot" style="display:none;">
+    @foreach (var item in Model.greatKnotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/great-knot.jpg" alt="greatknot" />
+            The great knot is a small wader. It is the largest of the calidrid species. The genus name is from Ancient Greek kalidris or skalidris, a term used by Aristotle for some grey-coloured waterside birds. The specific tenuirostris is from Latin tenuis "slender" and rostrum "bill".
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.greatKnotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Green Rosella -->
+<div id="greenrosella" style="display:none;">
+    @foreach (var item in Model.greenRosellaRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/great-knot.jpg" alt="greenrosella" />
+            The fairy tern is a small tern which is native to the southwestern Pacific. It is listed as "Vulnerable" by the IUCN and the New Zealand subspecies is "Critically Endangered".
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.greenRosellaRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Helmeted Honeyeater -->
+<div id="helmetedhoneyeater" style="display:none;">
+    @foreach (var item in Model.helmetedHoneyeaterRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/helmeted-honeyeater.jpg" alt="helmetedhoneyeater" />
+            The helmeted honeyeater is a passerine bird in the honeyeater family. It is a distinctive and critically endangered subspecies of the yellow-tufted honeyeater, that exists in the wild only as a tiny relict population in the Australian state of Victoria, in the Yellingbo Nature Conservation Reserve.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.helmetedHoneyeaterRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Hooded Robin -->
+<div id="hoodedrobin" style="display:none;">
+    @foreach (var item in Model.hoodedRobinRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/hooded-robin.jpg" alt="hoodedrobin" />
+            The hooded robin is a small passerine bird native to Australia. Like many brightly coloured robins of the Petroicidae, it is sexually dimorphic; the male bearing distinctive black and white plumage, while the female is a nondescript grey-brown.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.hoodedRobinRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Horsfield's Bushlark -->
+<div id="horsfieldbushlark" style="display:none;">
+    @foreach (var item in Model.horsfieldBushlarkRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/horsfields-bushlark.jpg" alt="horsfieldbushlark" />
+            Horsfield's bush lark is a species of lark which inhabits grassland throughout most of Australia and much of Southeast Asia.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.horsfieldBushlarkRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Huahou -->
+<div id="huahou" style="display:none;">
+    @foreach (var item in Model.huahouRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/huahuo-red-knot.jpg" alt="huahou" />
+            The red knot is a medium-sized shorebird which breeds in tundra and the Arctic Cordillera in the far north of Canada, Europe, and Russia. It is a large member of the Calidris sandpipers, second only to the great knot. Six subspecies are recognised.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.huahouRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Mallee Emu-wren -->
+<div id="malleeemuwren" style="display:none;">
+    @foreach (var item in Model.malleeEmuWrenRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/mallee-emu-wren.jpg" alt="malleeemuwren" />
+            The mallee emu-wren is a species of bird in the Australasian wren family, Maluridae. It is endemic to Australia. Its natural habitat is temperate grassland. It is threatened because of habitat loss.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.malleeEmuWrenRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Malleefowl -->
+<div id="malleefowl" style="display:none;">
+    @foreach (var item in Model.malleefowlRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/malleefowl.jpg" alt="malleefowl" />
+            The malleefowl is a stocky ground-dwelling Australian bird about the size of a domestic chicken. It is notable for the large nesting mounds constructed by the males and lack of parental care after the chicks hatch. It is the only living representative of the genus Leipoa, though the extinct giant malleefowl was a close relative.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.malleefowlRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Masked Owl -->
+<div id="maskedowl" style="display:none;">
+    @foreach (var item in Model.maskedOwlRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/australian-masked-owl.jpg" alt="maskedowl" />
+            The Australian masked owl is a barn owl of Southern New Guinea and the non-desert areas of Australia.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.maskedOwlRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Northern giant petrel -->
+<div id="northerngiantpetrel" style="display:none;">
+    @foreach (var item in Model.northenGiantPetrelRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/northern-giant-petrel.jpg" alt="northerngiantpetrel" />
+            The northern giant petrel, also known as Hall's giant petrel, is a large predatory seabird of the southern oceans. Its distribution overlaps broadly, but is slightly north of, the similar southern giant petrel.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.northenGiantPetrelRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Orange-bellied Parrot -->
+<div id="orangebelliedparrot" style="display:none;">
+    @foreach (var item in Model.orangeBelliedParrotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/orange-bellied-parrot.jpg" alt="orangebelliedparrot" />
+            The orange-bellied parrot is a small parrot endemic to southern Australia, and one of only three species of parrot that migrate. It was described by John Latham in 1790. A small parrot around 20 cm long, it exhibits sexual dimorphism.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.orangeBelliedParrotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Pied Currawong -->
+<div id="piedcurrawong" style="display:none;">
+    @foreach (var item in Model.piedCurrawongRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/pied-currawong.jpg" alt="piedcurrawong" />
+            The pied currawong is a medium-sized black passerine bird native to eastern Australia and Lord Howe Island. One of three currawong species in the genus Strepera, it is closely related to the butcherbirds and Australian magpie of the family Artamidae. Six subspecies are recognised. It is a robust crowlike bird averaging around 48 cm in length, black or sooty grey-black in plumage with white undertail and wing patches, yellow irises, and a heavy bill. The male and female are similar in appearance. Known for its melodious calls, the species' name currawong is believed to be of indigenous origin.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.piedCurrawongRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Plains-wanderer -->
+<div id="plainswanderer" style="display:none;">
+    @foreach (var item in Model.plainsWandererRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/plains-wanderer.jpg" alt="plainswanderer" />
+            The plains-wanderer is a bird, the only representative of family Pedionomidae and genus Pedionomus. It is endemic to Australia. The majority of the remaining population is found in the Riverina region of New South Wales.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.plainsWandererRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Red-lored Whistler -->
+<div id="redloredwhister" style="display:none;">
+    @foreach (var item in Model.redLoredWhistlerRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/red-lored-whistler.jpg" alt="redloredwhister" />
+            The red-lored whistler is a species of bird of the whistler family Pachycephalidae that is endemic to Australia.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.redLoredWhistlerRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Red-tailed Black Cockatoo -->
+<div id="redtailedblackcockatoo" style="display:none;">
+    @foreach (var item in Model.redTailedCockatooRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/red-tailed-black-cockatoo.jpg" alt="redtailedcockatoo" />
+            The red-tailed black cockatoo also known as Banksian- or Banks' black cockatoo, is a large black cockatoo native to Australia. Adult males have a characteristic pair of bright red panels on the tail that gives the species its name. It is more common in the drier parts of the continent. Five subspecies are recognised, differing chiefly in beak size. Although the more northerly subspecies are widespread, the two southern subspecies, the forest red-tailed black cockatoo and the south-eastern red-tailed black cockatoo are under threat.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.redTailedCockatooRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Regent Honeyeater -->
+<div id="regenthoneyeater" style="display:none;">
+    @foreach (var item in Model.regentHoneyEaterRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/regent-honeyeater.jpg" alt="regenthoneyeater" />
+            The regent honeyeater is a critically endangered bird endemic to southeastern Australia. It is commonly considered a flagship species within its range, with the efforts going into its conservation having positive effects on many other species that share its habitat.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.regentHoneyEaterRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Regent Parrot -->
+<div id="regentparrot" style="display:none;">
+    @foreach (var item in Model.regentParrotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/regent-parrot.jpg" alt="regentparrot" />
+            The regent parrot or rock pebbler is a bird found in southern Australia. It has predominantly yellow plumage with a green tail. The bird is found primarily in eucalyptus groves and other wooded areas of subtropical southwestern Australia, as well as in a smaller area of subtropical and temperate southeastern Australia. Seeds make up the bulk of its diet.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.regentParrotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- shy albatross -->
+<div id="shyalbatross" style="display:none;">
+    @foreach (var item in Model.shyAlbatrossRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/shy-albatross.jpg" alt="shyalbatross" />
+            The shy albatross or shy mollymawk is a medium-sized albatross that breeds on three Australian islands and ranges across the southern Indian Ocean. Some authorities call this species the white-capped albatross.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.shyAlbatrossRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Southern Emu-wren -->
+<div id="southernemuwren" style="display:none;">
+    @foreach (var item in Model.southernEmuWrenRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/southern-emu-wren.jpg" alt="southernemuwren" />
+            The southern emu-wren is a species of bird in the Australasian wren family, Maluridae. It is endemic to Australia. Its natural habitats are temperate forests and Mediterranean-type shrubby vegetation.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.southernEmuWrenRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- southern giant-petrel -->
+<div id="southerngiantpetrel" style="display:none;">
+    @foreach (var item in Model.southernGiantPetrelRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/southern-giant-petrel.jpg" alt="southerngiantpetrel" />
+            The southern giant petrel, also known as the Antarctic giant petrel, giant fulmar, stinker, and stinkpot, is a large seabird of the southern oceans. Its distribution overlaps broadly with the similar northern giant petrel, though it overall is centered slightly further south.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.southernGiantPetrelRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Spine-tailed swift -->
+<div id="spinetailedswift" style="display:none;">
+    @foreach (var item in Model.spinetailedSwiftRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/spine-tailed-swift.jpg" alt="spinetailedswift" />
+            The white-throated needletail, also known as needle-tailed swift or spine-tailed swift, is a large swift in the genus Hirundapus. It is reputed to reach speeds of up to 170 km/h in horizontal flight, but this is unverified because the methods used to measure its speed have not been published.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.spinetailedSwiftRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Spotted Quail-thrush -->
+<div id="spottedquailthrush" style="display:none;">
+    @foreach (var item in Model.spottedQuailRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/spotted-quail-thrush.jpg" alt="spottedquailthrush" />
+            The spotted quail-thrush is a species of bird in the family Psophodidae. It is endemic to Australia. Its natural habitat is subtropical, tropical and temperate dry forest.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.spottedQuailRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Superb Parrot -->
+<div id="superbparrot" style="display:none;">
+    @foreach (var item in Model.superbParrotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/superb-parrot.jpg" alt="superbparrot" />
+            The superb parrot, also known as Barraband's parrot, Barraband's parakeet, or green leek parrot, is a parrot native to south-eastern Australia. It is a dimorphic species and one of three species in the genus Polytelis.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.superbParrotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Swift Parrot -->
+<div id="swiftparrot" style="display:none;">
+    @foreach (var item in Model.swiftParrotRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/swift-parrot.jpg" alt="swiftparrot" />
+            The swift parrot breeds in Tasmania and migrates north to south eastern Australia from Griffith-Warialda in New South Wales and west to Adelaide in the winter. It is related to the rosellas, with the feeding habits of a lorikeet. It is the only member in the genus Lathamus.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.swiftParrotRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Wandering Albatross -->
+<div id="wanderingalbatross" style="display:none;">
+    @foreach (var item in Model.wanderingAlbatrossRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/wandering-albatross.jpg" alt="wanderingalbatross" />
+            The wandering albatross, snowy albatross, white-winged albatross or goonie is a large seabird from the family Diomedeidae, which has a circumpolar range in the Southern Ocean.It is one of the largest, best known, and most studied species of bird in the world, with it possessing the greatest known wingspan of any living bird. This is also one of the most far ranging birds. Some individual wandering albatrosses are known to circumnavigate the Southern Ocean three times, covering more than 120,000 km, in one year.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.wanderingAlbatrossRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Wedge-tailed Eagle -->
+<div id="wedgetailedeagle" style="display:none;">
+    @foreach (var item in Model.wedgeTailedEagleRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/wedge-tailed-eagle.jpg" alt="wedgetailedeagle" />
+            The wedge-tailed eagle is the largest bird of prey in Australia, and is also found in southern New Guinea, part of Papua New Guinea, and Indonesia. It has long, fairly broad wings, fully feathered legs, and an unmistakable wedge-shaped tail.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.wedgeTailedEagleRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- White-winged Fairy-wren -->
+<div id="whitewingedfairywren" style="display:none;">
+    @foreach (var item in Model.whiteWingedFairyWrenRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/white-winged-fairywren.jpg" alt="whitewingedfairywren" />
+            The white-winged fairywren is a species of passerine bird in the Australasian wren family, Maluridae. Like other fairywrens, this species displays marked sexual dimorphism and one or more males of a social group grow brightly coloured plumage during the breeding season. The female is sandy-brown with light-blue tail feathers; it is smaller than the male, which, in breeding plumage, has a bright-blue body, black bill, and white wings.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.whiteWingedFairyWrenRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Yellow-tufted Honeyeater -->
+<div id="yellowtuftedhoneyeater" style="display:none;">
+    @foreach (var item in Model.yellowTuftedHoneyEaterRankings.Take(1))
+    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Birds/yellow-tufted-honeyeater.jpg" alt="yellowtuftedhoneyeater" />
+            The yellow-tufted honeyeater is a passerine bird found in the south-east ranges of Australia. A predominantly black and yellow honeyeater, it is split into four subspecies.
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                @foreach (var item in Model.yellowTuftedHoneyEaterRankings.Take(5))
+                {
+                    <tr class="birddata">
+                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
+                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
+                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
+                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--CHARTS-->
 <div id="birdRankChart" style="height:400px;display:none;">
     <canvas id="birdRankCanvas" width="400" height="400"></canvas>
 </div>
