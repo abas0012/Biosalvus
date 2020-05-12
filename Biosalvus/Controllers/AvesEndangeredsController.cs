@@ -26,6 +26,7 @@ namespace Biosalvus.Controllers
             string criticallyendangered = "Critically Endangered";
             string endangered = "Endangered";
             string vulnerable = "Vulnerable";
+            string extinct = "Extinct";
             string catfood = "Y";
             
 
@@ -136,18 +137,6 @@ namespace Biosalvus.Controllers
                                             }
                                             ).OrderByDescending(x => x.birdcount)
                                             .ThenByDescending(x => x.speciesname);
-            //Emu
-            viewmodel.emuRankings = (from r in db.AvesEndangereds
-                                            where r.vernacularName == "Emu"
-                                            group r by new { r.vernacularName, r.verbatimLocality } into groupedByObject
-                                            select new BirdThreatRanking
-                                            {
-                                                birdcount = groupedByObject.Count(x => x.vernacularName != null),
-                                                speciesname = groupedByObject.Key.vernacularName,
-                                                locality = groupedByObject.Key.verbatimLocality
-                                            }
-                                            ).OrderByDescending(x => x.birdcount)
-                                            .ThenByDescending(x => x.speciesname);
             var catranks = from r in db.CatRecordsdb
                             group r by r.LocalGovernmentAreas2011 into g
                             select new
@@ -156,6 +145,7 @@ namespace Biosalvus.Controllers
                                 rate = (g.Count() / 11.60)
                             };
             var birdranks = from r in db.AvesEndangereds
+                            where (r.vernacularName != null && r.CatFood == catfood && r.Status == extinct) 
                             group r by new { r.vernacularName, r.verbatimLocality, r.Status } into g
                             select new
                             {
@@ -319,16 +309,20 @@ namespace Biosalvus.Controllers
             string criticallyendangered = "Critically Endangered";
             string endangered = "Endangered";
             string vulnerable = "Vulnerable";
+            string extinct = "Extinct";
             string vic = "VIC";
+            DateTime cutoffdate = new DateTime(2019,7,1,0,0,0);
             EndageredMapViewModel viewmodel = new EndageredMapViewModel();
             var fireranks = from r in db.FireDatas
+                            where r.acq_date >= cutoffdate
                             group r by r.city into g
                             select new
                             {
                                 city = g.Key,
-                                rate = (g.Count() / 388.59)
+                                rate = (g.Count() / 68.82)
                             };
             var birdranks = from r in db.AvesEndangereds
+                            where (r.vernacularName != null && r.Status == extinct)
                             group r by new { r.vernacularName, r.verbatimLocality, r.Status } into g
                             select new
                             {
@@ -419,6 +413,7 @@ namespace Biosalvus.Controllers
                                                  catfood = r.CatFood
                                              });
             viewmodel.firelist = (from r in db.FireDatas
+                                  where r.acq_date >= cutoffdate
                                   select new FireRecords
                                   {
                                       firelatitude = r.latitude,
@@ -427,15 +422,15 @@ namespace Biosalvus.Controllers
                                       acq_date = r.acq_date
                                   }
                                   );
-            viewmodel.fireRanks = (from r in db.FireDatas
-                                   where r.state == vic
-                                   group r by new { r.city, r.state } into groupedByObject
-                                   select new FireRanks
-                                   {
-                                       firecount = groupedByObject.Count(x => x.city != null),
-                                       city = groupedByObject.Key.city,
-                                       state = groupedByObject.Key.state
-                                   }).OrderByDescending(x => x.firecount);
+            //viewmodel.fireRanks = (from r in db.FireDatas
+            //                       where r.state == vic
+            //                       group r by new { r.city, r.state } into groupedByObject
+            //                       select new FireRanks
+            //                       {
+            //                           firecount = groupedByObject.Count(x => x.city != null),
+            //                           city = groupedByObject.Key.city,
+            //                           state = groupedByObject.Key.state
+            //                       }).OrderByDescending(x => x.firecount);
 
             //BIRD FIRE RANK
             //Australasian Bittern
