@@ -520,27 +520,27 @@ map.on('load', function () {
                     ['linear'],
                     ['heatmap-density'],
                     0,
-                    'rgba(33,102,172,0)',
+                    'rgba(75,255,0,0)',
                     0.1,
-                    'rgba(103,169,207,0.5)',
+                    'rgba(100,255,0,0.5)',
                     0.2,
-                    'rgba(209,229,240,0.5)',
+                    'rgba(125,255,0,0.5)',
                     0.3,
-                    'rgba(153,255,148,0.5)',
+                    'rgba(150,255,0,0.5)',
                     0.4,
-                    'rgba(87,255,82,0.5)',
+                    'rgba(175,255,0,0.5)',
                     0.5,
-                    'rgba(255,255,183,0.5)',
+                    'rgba(200,255,0,0.5)',
                     0.6,
-                    'rgba(255,255,177,0.5)',
+                    'rgba(225,255,0,0.5)',
                     0.7,
-                    'rgba(250,252,84,0.5)',
+                    'rgba(255,225,0,0.5)',
                     0.8,
-                    'rgba(253,219,199,0.5)',
+                    'rgba(255,200,0,0.5)',
                     0.9,
-                    'rgba(239,138,98,0.5)',
+                    'rgba(255,175,0,0.5)',
                     1,
-                    'rgba(255,200,0,0.5)'
+                    'rgba(255,150,0,0.5)'
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
@@ -735,9 +735,11 @@ map.addControl(new mapboxgl.NavigationControl());
 // location of the feature, with description HTML from its properties.
 map.on('click', 'endangeredbirds', function (e) {
     var name = e.features[0].properties.endangeredname;
-    new mapboxgl.Popup()
-        .setHTML(name)
-        .addTo(map);
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
 });
 // Change the cursor to a pointer when the mouse is over the endangeredbirds layer.
 map.on('mouseenter', 'endangeredbirds', function () {
@@ -748,7 +750,61 @@ map.on('mouseleave', 'endangeredbirds', function () {
     map.getCanvas().style.cursor = '';
 });
 
+map.on('click', 'critendangeredbirds', function (e) {
+    var name = e.features[0].properties.critendangeredname;
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
+});
+// Change the cursor to a pointer when the mouse is over the critendangeredbirds layer.
+map.on('mouseenter', 'critendangeredbirds', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'critendangeredbirds', function () {
+    map.getCanvas().style.cursor = '';
+});
 
+map.on('click', 'vulnerablebirds', function (e) {
+    var name = e.features[0].properties.vulnerablename;
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
+});
+// Change the cursor to a pointer when the mouse is over the vulnerablebirds layer.
+map.on('mouseenter', 'vulnerablebirds', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'vulnerablebirds', function () {
+    map.getCanvas().style.cursor = '';
+});
+
+//map.on('mousemove', 'airport', function (e) {
+//    // Change the cursor style as a UI indicator.
+//    map.getCanvas().style.cursor = 'pointer';
+
+//    // Populate the popup and set its coordinates based on the feature.
+//    var feature = e.features[0];
+//    popup
+//        .setLngLat(feature.geometry.coordinates)
+//        .setText(
+//            feature.properties.name +
+//            ' (' +
+//            feature.properties.abbrev +
+//            ')'
+//        )
+//        .addTo(map);
+//});
+
+//map.on('mouseleave', 'airport', function () {
+//    map.getCanvas().style.cursor = '';
+//    popup.remove();
+//});
 
 
 

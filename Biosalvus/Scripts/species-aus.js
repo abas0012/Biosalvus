@@ -77,6 +77,8 @@ var map = new mapboxgl.Map({
     container: 'species-map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
     zoom: 2.8,
+    maxZoom: 2.8,
+    minZoom: 2.8,
     center: [-224.503977, -26.902479] //Uluru Longitude (Center of Australia)
 });
 var hoveredStateId = null;
@@ -938,81 +940,81 @@ function displayStateFilter(temparray) {
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(51, 0, 0, 0.4)'); //Dark Maroon
+                    'rgba(255, 0, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(51, 0, 0, 1)'); //Dark Maroon
+                    'rgba(255, 0, 0, 1)');
                 break;
             case 1: //RANK 2
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(165, 42, 42, 0.4)'); //Red
+                    'rgba(255, 100, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(165, 42, 42, 1)'); //Red
+                    'rgba(255, 100, 0, 1)');
                 break;
             case 2: //RANK 3
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(255, 69, 0, 0.4)'); //Brown
+                    'rgba(255, 200, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(255, 69, 0, 1)'); //Brown
+                    'rgba(255, 200, 0, 1)');
                 break;
             case 3: //RANK 4
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(255, 165, 0,0.4)'); //Orange
+                    'rgba(200, 255, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(255, 165, 0,1)'); //Orange
+                    'rgba(200, 255, 0, 1)');
                 break;
             case 4: //RANK 5
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(184, 181, 35, 0.4)'); //Mustard Yellow
+                    'rgba(100, 255, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(184, 181, 35, 1)'); //Mustard Yellow
+                    'rgba(100, 255, 0, 1)');
                 break;
             case 5: //RANK 6
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(245, 225, 7, 0.4)'); //Yellow
+                    'rgba(0, 255, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(245, 225, 7, 1)'); //Yellow
+                    'rgba(0, 255, 0, 1)'); 
                 break;
             case 6: //RANK 7
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(169, 169, 169, 0.4)'); //Dark Gray
+                    'rgba(0, 255, 100, 0.8)'); //Dark Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(169, 169, 169, 1)'); //Dark Gray
+                    'rgba(0, 255, 100, 1)'); //Dark Gray
                 break;
             case 7: //RANK 8
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(211, 211, 211, 0.4)'); //Light Gray
+                    'rgba(0, 255, 200, 0.8)'); //Light Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(211, 211, 211, 1)'); //Light Gray
+                    'rgba(0, 255, 200, 1)'); //Light Gray
                 break;
         }
     }
@@ -1051,9 +1053,17 @@ function resetStateFilter() {
 
 //Function to Reset Rank Count value to N/A
 function resetRankingValue() {
-    for (i = 0; i < rankcountarray.length; i++) {
-        document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
-    }
+    //for (i = 0; i < rankcountarray.length; i++) {
+    //    document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
+    //}
+    document.getElementById("rank1").innerHTML = 'ACT';
+    document.getElementById("rank2").innerHTML = 'NSW';
+    document.getElementById("rank3").innerHTML = 'VIC';
+    document.getElementById("rank4").innerHTML = 'QLD';
+    document.getElementById("rank5").innerHTML = 'SA';
+    document.getElementById("rank6").innerHTML = 'NT';
+    document.getElementById("rank7").innerHTML = 'WA';
+    document.getElementById("rank8").innerHTML = 'TAS';
 }
 
 function hideLegend() {
@@ -1122,7 +1132,7 @@ var barChartData = {
     datakeys: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     labels: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     datasets: [{
-        //label: 'Animal Group Counts',
+        label: 'Animal Group Counts',
         data: [0, 0, 0, 0, 0, 0], //Initial Value
         backgroundColor: [
             'rgba(214, 140, 69 , 0.2)',
@@ -1730,31 +1740,6 @@ function dynamicTable() {
 }
 
 
-// Change the cursor to a pointer when the mouse is over the state layer.
-map.on('mouseenter', 'ACT', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'NSW', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'VIC', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'QLD', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'TAS', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'SA', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'NT', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseenter', 'WA', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
 // Change it back to a pointer when it leaves.
 map.on('mouseleave', 'ACT', function () {
     map.getCanvas().style.cursor = '';
@@ -1779,4 +1764,29 @@ map.on('mouseleave', 'WA', function () {
 });
 map.on('mouseleave', 'NT', function () {
     map.getCanvas().style.cursor = '';
+});
+// Change the cursor to a pointer when the mouse is over the state layer.
+map.on('mouseenter', 'ACT', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'NSW', function (e) {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'VIC', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'QLD', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'TAS', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'SA', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'NT', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseenter', 'WA', function () {
+    map.getCanvas().style.cursor = 'pointer';
 });

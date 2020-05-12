@@ -41,53 +41,53 @@ namespace Biosalvus.Controllers
                                       catindividualcount = r.IndividualCount                                
                                   });
 
-            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
-                                                 where (r.Status == vulnerable && r.vernacularName != null)
-                                                 select new DistinctBird
-                                              {
-                                                     ID = r.ID,
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
+            //viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
+            //                                     where (r.Status == vulnerable && r.vernacularName != null)
+            //                                     select new DistinctBird
+            //                                  {
+            //                                         ID = r.ID,
+            //                                         speciesname = r.vernacularName,
+            //                                         status = r.Status,
+            //                                         specieskingdom = r.kingdom,
+            //                                         speciesphylum = r.phylum,
+            //                                         speciesclass = r._class,
+            //                                         speciesorder = r.order,
+            //                                         speciesfamily = r.order,
+            //                                         speciesgenus = r.genus
 
-                                              }).DistinctBy(x => x.speciesname);
-            viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
-                                                 where (r.Status == endangered && r.vernacularName != null)
-                                                 select new DistinctBird
-                                                 {
-                                                     ID = r.ID,
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
+            //                                  }).DistinctBy(x => x.speciesname);
+            //viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
+            //                                     where (r.Status == endangered && r.vernacularName != null)
+            //                                     select new DistinctBird
+            //                                     {
+            //                                         ID = r.ID,
+            //                                         speciesname = r.vernacularName,
+            //                                         status = r.Status,
+            //                                         specieskingdom = r.kingdom,
+            //                                         speciesphylum = r.phylum,
+            //                                         speciesclass = r._class,
+            //                                         speciesorder = r.order,
+            //                                         speciesfamily = r.order,
+            //                                         speciesgenus = r.genus
 
-                                                 }).DistinctBy(x => x.speciesname);
-            viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
-                                                     where (r.Status == criticallyendangered && r.vernacularName != null)
-                                                 select new DistinctBird
-                                                 {
-                                                     ID = r.ID,
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
+            //                                     }).DistinctBy(x => x.speciesname);
+            //viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
+            //                                         where (r.Status == criticallyendangered && r.vernacularName != null)
+            //                                     select new DistinctBird
+            //                                     {
+            //                                         ID = r.ID,
+            //                                         speciesname = r.vernacularName,
+            //                                         status = r.Status,
+            //                                         specieskingdom = r.kingdom,
+            //                                         speciesphylum = r.phylum,
+            //                                         speciesclass = r._class,
+            //                                         speciesorder = r.order,
+            //                                         speciesfamily = r.order,
+            //                                         speciesgenus = r.genus
 
-                                                 }).DistinctBy(x => x.speciesname);
+            //                                     }).DistinctBy(x => x.speciesname);
             viewmodel.vulnerablebirds = (from r in db.AvesEndangereds
-                                         where (r.Status == vulnerable && r.CatFood == catfood)
+                                         where (r.Status == vulnerable && r.CatFood == catfood && r.vernacularName != null)
                                          select new BirdPoint
                                          {
                                              birdname = r.vernacularName,
@@ -99,7 +99,7 @@ namespace Biosalvus.Controllers
                                              catfood = r.CatFood
                                          });
             viewmodel.endangeredbirds = (from r in db.AvesEndangereds
-                                         where (r.Status == endangered && r.CatFood == catfood)
+                                         where (r.Status == endangered && r.CatFood == catfood && r.vernacularName != null)
                                          select new BirdPoint
                                          {
                                              birdname = r.vernacularName,
@@ -111,7 +111,7 @@ namespace Biosalvus.Controllers
                                              catfood = r.CatFood
                                          });
             viewmodel.critendangeredbirds = (from r in db.AvesEndangereds
-                                         where (r.Status == criticallyendangered && r.CatFood == catfood)
+                                         where (r.Status == criticallyendangered && r.CatFood == catfood && r.vernacularName != null)
                                          select new BirdPoint
                                          {
                                              birdname = r.vernacularName,
@@ -217,9 +217,9 @@ namespace Biosalvus.Controllers
                                                         status = b.status,
                                                         locality = b.city
                                                     }).OrderByDescending(x => x.birdcount);
-            //Orange - bellied Parrot
+            //Orange-bellied Parrot
             viewmodel.orangeBelliedParrotRankings = (from b in birdranks
-                                             where b.name == "Orange - bellied Parrot"
+                                             where b.name == "Orange-bellied Parrot"
                                                      join c in catranks on b.city equals c.city into birdcatrank
                                              from c in birdcatrank
                                              select new BirdThreatRanking
@@ -230,9 +230,9 @@ namespace Biosalvus.Controllers
                                                  status = b.status,
                                                  locality = b.city
                                              }).OrderByDescending(x => x.birdcount);
-            //Southern Emu - wren
+            //Southern Emu-wren
             viewmodel.southernEmuWrenRankings = (from b in birdranks
-                                                     where b.name == "Southern Emu - wren"
+                                                     where b.name == "Southern Emu-wren"
                                                  join c in catranks on b.city equals c.city into birdcatrank
                                                      from c in birdcatrank
                                                      select new BirdThreatRanking
@@ -251,7 +251,7 @@ namespace Biosalvus.Controllers
                                                  select new BirdThreatRanking
                                                  {
                                                      birdcount = b.count,
-                                                     threatrate = c.rate,
+                                                     threatrate = 0.0,
                                                      speciesname = b.name,
                                                      status = b.status,
                                                      locality = b.city
@@ -282,9 +282,9 @@ namespace Biosalvus.Controllers
                                                   status = b.status,
                                                   locality = b.city
                                               }).OrderByDescending(x => x.birdcount);
-            //Yellow - tufted Honeyeater
+            //Yellow-tufted Honeyeater
             viewmodel.yellowTuftedHoneyEaterRankings = (from b in birdranks
-                                             where b.name == "Yellow - tufted Honeyeater"
+                                             where b.name == "Yellow-tufted Honeyeater"
                                                         join c in catranks on b.city equals c.city into birdcatrank
                                              from c in birdcatrank
                                              select new BirdThreatRanking
@@ -337,53 +337,53 @@ namespace Biosalvus.Controllers
                                 status = g.Key.Status,
                                 count = g.Count()
                             };
-            viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
-                                                 where (r.Status == vulnerable && r.vernacularName != null)
-                                                 select new DistinctBird
-                                                 {
-                                                     ID = r.ID,
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
+            //viewmodel.distinctvulnerableBirds = (from r in db.AvesEndangereds
+            //                                     where (r.Status == vulnerable && r.vernacularName != null)
+            //                                     select new DistinctBird
+            //                                     {
+            //                                         ID = r.ID,
+            //                                         speciesname = r.vernacularName,
+            //                                         status = r.Status,
+            //                                         specieskingdom = r.kingdom,
+            //                                         speciesphylum = r.phylum,
+            //                                         speciesclass = r._class,
+            //                                         speciesorder = r.order,
+            //                                         speciesfamily = r.order,
+            //                                         speciesgenus = r.genus
 
-                                                 }).DistinctBy(x => x.speciesname);
-            viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
-                                                 where (r.Status == endangered && r.vernacularName != null)
-                                                 select new DistinctBird
-                                                 {
-                                                     ID = r.ID,
-                                                     speciesname = r.vernacularName,
-                                                     status = r.Status,
-                                                     specieskingdom = r.kingdom,
-                                                     speciesphylum = r.phylum,
-                                                     speciesclass = r._class,
-                                                     speciesorder = r.order,
-                                                     speciesfamily = r.order,
-                                                     speciesgenus = r.genus
+            //                                     }).DistinctBy(x => x.speciesname);
+            //viewmodel.distinctendangeredBirds = (from r in db.AvesEndangereds
+            //                                     where (r.Status == endangered && r.vernacularName != null)
+            //                                     select new DistinctBird
+            //                                     {
+            //                                         ID = r.ID,
+            //                                         speciesname = r.vernacularName,
+            //                                         status = r.Status,
+            //                                         specieskingdom = r.kingdom,
+            //                                         speciesphylum = r.phylum,
+            //                                         speciesclass = r._class,
+            //                                         speciesorder = r.order,
+            //                                         speciesfamily = r.order,
+            //                                         speciesgenus = r.genus
 
-                                                 }).DistinctBy(x => x.speciesname);
-            viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
-                                                     where (r.Status == criticallyendangered && r.vernacularName != null)
-                                                     select new DistinctBird
-                                                     {
-                                                         ID = r.ID,
-                                                         speciesname = r.vernacularName,
-                                                         status = r.Status,
-                                                         specieskingdom = r.kingdom,
-                                                         speciesphylum = r.phylum,
-                                                         speciesclass = r._class,
-                                                         speciesorder = r.order,
-                                                         speciesfamily = r.order,
-                                                         speciesgenus = r.genus
+            //                                     }).DistinctBy(x => x.speciesname);
+            //viewmodel.distinctcritendangeredBirds = (from r in db.AvesEndangereds
+            //                                         where (r.Status == criticallyendangered && r.vernacularName != null)
+            //                                         select new DistinctBird
+            //                                         {
+            //                                             ID = r.ID,
+            //                                             speciesname = r.vernacularName,
+            //                                             status = r.Status,
+            //                                             specieskingdom = r.kingdom,
+            //                                             speciesphylum = r.phylum,
+            //                                             speciesclass = r._class,
+            //                                             speciesorder = r.order,
+            //                                             speciesfamily = r.order,
+            //                                             speciesgenus = r.genus
 
-                                                     }).DistinctBy(x => x.speciesname);
+            //                                         }).DistinctBy(x => x.speciesname);
             viewmodel.vulnerablebirds = (from r in db.AvesEndangereds
-                                         where r.Status == vulnerable
+                                         where (r.Status == vulnerable && r.vernacularName != null)
                                          select new BirdPoint
                                          {
                                              birdname = r.vernacularName,
@@ -395,7 +395,7 @@ namespace Biosalvus.Controllers
                                              catfood = r.CatFood
                                          });
             viewmodel.endangeredbirds = (from r in db.AvesEndangereds
-                                         where r.Status == endangered
+                                         where (r.Status == endangered && r.vernacularName != null)
                                          select new BirdPoint
                                          {
                                              birdname = r.vernacularName,
@@ -407,7 +407,7 @@ namespace Biosalvus.Controllers
                                              catfood = r.CatFood
                                          });
             viewmodel.critendangeredbirds = (from r in db.AvesEndangereds
-                                             where r.Status == criticallyendangered
+                                             where (r.Status == criticallyendangered && r.vernacularName != null)
                                              select new BirdPoint
                                              {
                                                  birdname = r.vernacularName,
@@ -477,9 +477,9 @@ namespace Biosalvus.Controllers
                                                             status = b.status,
                                                             locality = b.city
                                                         }).OrderByDescending(x => x.birdcount);
-            //Bar - tailed Godwit
+            //Bar-tailed Godwit
             viewmodel.barTailedGodwitRankings = (from b in birdranks
-                                                 where b.name == "Bar - tailed Godwit"
+                                                 where b.name == "Bar-tailed Godwit"
                                                  join f in fireranks on b.city equals f.city into birdfirerank
                                                  from f in birdfirerank
                                                  select new BirdThreatRanking
@@ -503,9 +503,9 @@ namespace Biosalvus.Controllers
                                                      status = b.status,
                                                      locality = b.city
                                                  }).OrderByDescending(x => x.birdcount);
-            //Black - browed Albatross
+            //Black-browed Albatross
             viewmodel.blackBrowedAlbatrossRankings = (from b in birdranks
-                                               where b.name == "Black - browed Albatross"
+                                               where b.name == "Black-browed Albatross"
                                                       join f in fireranks on b.city equals f.city into birdfirerank
                                                from f in birdfirerank
                                                select new BirdThreatRanking
@@ -516,9 +516,9 @@ namespace Biosalvus.Controllers
                                                    status = b.status,
                                                    locality = b.city
                                                }).OrderByDescending(x => x.birdcount);
-            //Black - eared Miner
+            //Black-eared Miner
             viewmodel.blackEaredMinerRankings = (from b in birdranks
-                                                      where b.name == "Black - eared Miner"
+                                                      where b.name == "Black-eared Miner"
                                                  join f in fireranks on b.city equals f.city into birdfirerank
                                                       from f in birdfirerank
                                                       select new BirdThreatRanking
@@ -633,9 +633,9 @@ namespace Biosalvus.Controllers
                                                    status = b.status,
                                                    locality = b.city
                                                }).OrderByDescending(x => x.birdcount);
-            //Eastern Shrike - tit
+            //Eastern Shrike-tit
             viewmodel.easternShriketitRankings = (from b in birdranks
-                                                     where b.name == "Eastern Shrike - tit"
+                                                     where b.name == "Eastern Shrike-tit"
                                                   join f in fireranks on b.city equals f.city into birdfirerank
                                                      from f in birdfirerank
                                                      select new BirdThreatRanking
@@ -763,9 +763,9 @@ namespace Biosalvus.Controllers
                                                        status = b.status,
                                                        locality = b.city
                                                    }).OrderByDescending(x => x.birdcount);
-            //Mallee Emu - wren
+            //Mallee Emu-wren
             viewmodel.malleeEmuWrenRankings = (from b in birdranks
-                                        where b.name == "Mallee Emu - wren"
+                                        where b.name == "Mallee Emu-wren"
                                                join f in fireranks on b.city equals f.city into birdfirerank
                                         from f in birdfirerank
                                         select new BirdThreatRanking
@@ -815,9 +815,9 @@ namespace Biosalvus.Controllers
                                                 status = b.status,
                                                 locality = b.city
                                             }).OrderByDescending(x => x.birdcount);
-            //Orange - bellied Parrot
+            //Orange-bellied Parrot
             viewmodel.orangeBelliedParrotRankings = (from b in birdranks
-                                                    where b.name == "Orange - bellied Parrot"
+                                                    where b.name == "Orange-bellied Parrot"
                                                      join f in fireranks on b.city equals f.city into birdfirerank
                                                     from f in birdfirerank
                                                     select new BirdThreatRanking
@@ -841,9 +841,9 @@ namespace Biosalvus.Controllers
                                                          status = b.status,
                                                          locality = b.city
                                                      }).OrderByDescending(x => x.birdcount);
-            //Plains - wanderer
+            //Plains-wanderer
             viewmodel.plainsWandererRankings = (from b in birdranks
-                                               where b.name == "Plains - wanderer"
+                                               where b.name == "Plains-wanderer"
                                                 join f in fireranks on b.city equals f.city into birdfirerank
                                                from f in birdfirerank
                                                select new BirdThreatRanking
@@ -854,9 +854,9 @@ namespace Biosalvus.Controllers
                                                    status = b.status,
                                                    locality = b.city
                                                }).OrderByDescending(x => x.birdcount);
-            //Red - lored Whistler
+            //Red-lored Whistler
             viewmodel.redLoredWhistlerRankings = (from b in birdranks
-                                                where b.name == "Red - lored Whistler"
+                                                where b.name == "Red-lored Whistler"
                                                   join f in fireranks on b.city equals f.city into birdfirerank
                                                 from f in birdfirerank
                                                 select new BirdThreatRanking
@@ -867,9 +867,9 @@ namespace Biosalvus.Controllers
                                                     status = b.status,
                                                     locality = b.city
                                                 }).OrderByDescending(x => x.birdcount);
-            //Red - tailed Black Cockatoo
+            //Red-tailed Black Cockatoo
             viewmodel.redTailedCockatooRankings = (from b in birdranks
-                                                  where b.name == "Red - tailed Black Cockatoo"
+                                                  where b.name == "Red-tailed Black Cockatoo"
                                                    join f in fireranks on b.city equals f.city into birdfirerank
                                                   from f in birdfirerank
                                                   select new BirdThreatRanking
@@ -940,14 +940,14 @@ namespace Biosalvus.Controllers
                                                  select new BirdThreatRanking
                                                  {
                                                      birdcount = b.count,
-                                                     threatrate = f.rate,
+                                                     threatrate = 0.0,
                                                      speciesname = b.name,
                                                      status = b.status,
                                                      locality = b.city
                                                  }).OrderByDescending(x => x.birdcount);
-            //Spine - tailed swift
+            //Spine-tailed swift
             viewmodel.spinetailedSwiftRankings = (from b in birdranks
-                                                     where b.name == "Spine - tailed swift"
+                                                     where b.name == "Spine-tailed swift"
                                                   join f in fireranks on b.city equals f.city into birdfirerank
                                                      from f in birdfirerank
                                                      select new BirdThreatRanking
@@ -958,9 +958,9 @@ namespace Biosalvus.Controllers
                                                          status = b.status,
                                                          locality = b.city
                                                      }).OrderByDescending(x => x.birdcount);
-            //Spotted Quail - thrush
+            //Spotted Quail-thrush
             viewmodel.spottedQuailRankings = (from b in birdranks
-                                                  where b.name == "Spotted Quail - thrush"
+                                                  where b.name == "Spotted Quail-thrush"
                                               join f in fireranks on b.city equals f.city into birdfirerank
                                                   from f in birdfirerank
                                                   select new BirdThreatRanking
@@ -1010,9 +1010,9 @@ namespace Biosalvus.Controllers
                                                  status = b.status,
                                                  locality = b.city
                                              }).OrderByDescending(x => x.birdcount);
-            //Wedge - tailed Eagle
+            //Wedge-tailed Eagle
             viewmodel.wedgeTailedEagleRankings = (from b in birdranks
-                                                    where b.name == "Wedge - tailed Eagle"
+                                                    where b.name == "Wedge-tailed Eagle"
                                                   join f in fireranks on b.city equals f.city into birdfirerank
                                                     from f in birdfirerank
                                                     select new BirdThreatRanking
@@ -1023,9 +1023,9 @@ namespace Biosalvus.Controllers
                                                         status = b.status,
                                                         locality = b.city
                                                     }).OrderByDescending(x => x.birdcount);
-            //White - winged Fairy - wren
+            //White-winged Fairy-wren
             viewmodel.whiteWingedFairyWrenRankings = (from b in birdranks
-                                                  where b.name == "White - winged Fairy - wren"
+                                                  where b.name == "White-winged Fairy-wren"
                                                       join f in fireranks on b.city equals f.city into birdfirerank
                                                   from f in birdfirerank
                                                   select new BirdThreatRanking
@@ -1036,9 +1036,9 @@ namespace Biosalvus.Controllers
                                                       status = b.status,
                                                       locality = b.city
                                                   }).OrderByDescending(x => x.birdcount);
-            //Yellow - tufted Honeyeater
+            //Yellow-tufted Honeyeater
             viewmodel.yellowTuftedHoneyEaterRankings = (from b in birdranks
-                                                      where b.name == "Yellow - tufted Honeyeater"
+                                                      where b.name == "Yellow-tufted Honeyeater"
                                                         join f in fireranks on b.city equals f.city into birdfirerank
                                                       from f in birdfirerank
                                                       select new BirdThreatRanking
