@@ -69,7 +69,7 @@
     </div>
     <div class="col-md-2">
         <div class="row">
-
+            <strong>Select bellow Threatened Status to Start</strong>
             <div class="col-md-12 col-xs-12">
                 <button class="button" id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Vulnerable
@@ -85,9 +85,10 @@
                     Critically Endangered
                 </button>
             </div>
+            <strong>Search a specific bird from the list bellow</strong>
             <div class="col-md-12 col-xs-12">
                 <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">
                         Birds List
                         <span class="caret"></span>
                     </button>
@@ -124,7 +125,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.easternBristlebirdRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -149,7 +150,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.easternGroundParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -174,7 +175,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.helmetedHoneyeaterRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -199,7 +200,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.hoodedRobinRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -224,7 +225,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.orangeBelliedParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -249,7 +250,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.southernEmuWrenRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -260,6 +261,7 @@
                     </tr>
                 }
             </table>
+            
         </div>
     </div>
 </div>
@@ -274,7 +276,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.southernGiantPetrelRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -299,7 +301,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.spottedQuailRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -324,7 +326,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.swiftParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -349,7 +351,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.yellowTuftedHoneyEaterRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -372,7 +374,7 @@
             The brown thornbill is a passerine bird usually found in eastern and south-eastern Australia, including Tasmania. It can grow up to 10 centimetres long, and feeds on insects. It is brown, grey and white. The species has five subspecies.
         </div>
         <div class="col-md-6">
-            <table class="table"><tr><th>Bird Count</th><th>Status</th><th>City</th><th>Cat Rate</th></tr>
+            <table class="table"><tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Cat Rate</th></tr>
                 @foreach (var item in Model.brownThornbillRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -381,27 +383,6 @@
                         <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
                         <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
                     </tr>
-                }
-            </table>
-        </div>
-    </div>
-</div>
-<!--EMU-->
-<div id="emu" style="display:none;">
-    @foreach (var item in Model.emuRankings.Take(1))
-    {
-        <h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>
-    }
-    <div class="row">
-        <div class="col-md-6"><img class="img-responsive" src="~/Content/Images/Birds/emu.png" alt="emu" />
-            The emu is the second-largest living bird by height, after its ratite relative, the ostrich. It is endemic to Australia where it is the largest native bird and the only extant member of the genus Dromaius. The emu's range covers most of mainland Australia, but the Tasmanian, Kangaroo Island and King Island subspecies became extinct after the European settlement of Australia in 1788. The bird is sufficiently common for it to be rated as a least-concern species by the International Union for Conservation of Nature.
-        </div>
-        <div class="col-md-6">
-            <table class="table">
-                <tr><th>Suburb</th></tr>
-                @foreach (var item in Model.emuRankings.Take(5))
-                {
-                    <tr><td>@Html.DisplayFor(modelitem => item.locality)</td></tr>
                 }
             </table>
         </div>
@@ -468,6 +449,82 @@
     }
 </table>
 
+<!--DATA SOURCE DESCRIPTION-->
+<div>
+    <strong>Data Source Reference</strong>
+    <ul>
+        <li>
+            Birds Spottings: Atlas of Living Australia (01/01/2018 - 21/03/2020) https://www.ala.org.au/
+        </li>
+        <li>
+            Birds Description/Images: Wikipedia
+        </li>
+        <li>
+            Feral Cats: Atlas of Living Australia ( - 25/12/2019) https://www.ala.org.au/
+        </li>
+    </ul>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    var allBirdsDesc = ["easternbristlebird", "easterngroundparrot", "helmetedhoneyeater", "bassianthrush", "hoodedrobin"
+        , "southernemuwren", "southerngiantpetrel", "yellowtuftedhoneyeater", "orangebelliedparrot", "spottedquailthrush"];
+    function hideAllBirdDescription() {
+        for (i = 0; i < allBirdsDesc.length; i++) {
+            if (allBirdsDesc[i] != null) {
+                document.getElementById(allBirdsDesc[i]).style.display = "none";
+            };
+        };
+    };
+
+    document.getElementById("easternbristlebirdlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('easternbristlebird').style.display = "block";
+
+    });
+    document.getElementById("easterngroundparrotlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('easterngroundparrot').style.display = "block";
+
+    });
+    document.getElementById("helmetedhoneyeaterlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('helmetedhoneyeater').style.display = "block";
+
+    });
+    document.getElementById("hoodedrobinlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('hoodedrobin').style.display = "block";
+
+    });
+    document.getElementById("southernemuwrenlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('southernemuwren').style.display = "block";
+
+    });
+    document.getElementById("southerngiantpetrellst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('southerngiantpetrel').style.display = "block";
+
+    });
+    document.getElementById("yellowtuftedhoneyeaterlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('yellowtuftedhoneyeater').style.display = "block";
+
+    });
+    document.getElementById("orangebelliedparrotlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('orangebelliedparrot').style.display = "block";
+
+    });
+    document.getElementById("spottedquailthrushlst").addEventListener("click", function () {
+        hideAllBirdDescription();
+        document.getElementById('spottedquailthrush').style.display = "block";
+
+    });
+</script>
 }

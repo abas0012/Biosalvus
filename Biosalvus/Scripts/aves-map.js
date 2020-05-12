@@ -238,6 +238,7 @@ for (i = 0; i < fires.length; i++) {
         "properties": {
             "firecity": fires[i].firecity,
             "firedate": fires[i].firedate,
+            "firecount": 1,
             "icon": "circle-15"
         },
         "geometry": {
@@ -380,18 +381,102 @@ map.on('load', function () {
             }
         }
     );
-    //Fire Layer
+    ////Fire Layer
+    //map.addLayer(
+    //    {
+    //        'id': 'firelayer',
+    //        'type': 'circle',
+    //        'source': 'firedatasource',
+    //        'paint': {
+    //            'circle-color': 'rgba(255,0,0,1)', //RED
+    //            'circle-radius': 2
+    //        }
+    //    }
+    //);
+    //HEATMAP OF FIRE
     map.addLayer(
         {
-            'id': 'firelayer',
-            'type': 'circle',
+            'id': 'firedensity-heat',
+            'type': 'heatmap',
             'source': 'firedatasource',
+            'maxzoom': 20,
             'paint': {
-                'circle-color': 'rgba(255,0,0,1)', //RED
-                'circle-radius': 2
+                // Increase the heatmap weight based on frequency and property individualcount
+                'heatmap-weight': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'firecount'],
+                    0,
+                    0,
+                    6,
+                    1
+                ],
+                // Increase the heatmap color weight weight by zoom level
+                // heatmap-intensity is a multiplier on top of heatmap-weight
+                'heatmap-intensity': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    0,
+                    1,
+                    9,
+                    3
+                ],
+                // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+                // Begin color ramp at 0-stop with a 0-transparancy color
+                // to create a blur-like effect.
+                'heatmap-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['heatmap-density'],
+                    0,
+                    'rgba(255,255,0,0)',
+                    0.1,
+                    'rgba(255,225,0,0.5)',
+                    0.2,
+                    'rgba(255,200,0,0.5)',
+                    0.3,
+                    'rgba(255,175,0,0.5)',
+                    0.4,
+                    'rgba(255,150,0,0.5)',
+                    0.5,
+                    'rgba(255,125,0,0.5)',
+                    0.6,
+                    'rgba(255,100,0,0.5)',
+                    0.7,
+                    'rgba(255,75,0,0.5)',
+                    0.8,
+                    'rgba(255,50,0,0.5)',
+                    0.9,
+                    'rgba(255,25,0,0.5)',
+                    1,
+                    'rgba(255,0,0,0.5)'
+                ],
+                // Adjust the heatmap radius by zoom level
+                'heatmap-radius': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    0,
+                    1,
+                    9,
+                    20
+                ],
+                // Transition from heatmap to circle layer by zoom level
+                'heatmap-opacity': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    10,
+                    1,
+                    20,
+                    0
+                ]
             }
-        }
+        },
+        'waterway-label'
     );
+
     // Add a GeoJSON source containing place coordinates and information for Cats.
     map.addSource('catsdatasource', {
         'type': 'geojson',
@@ -591,243 +676,7 @@ function showCritEndangeredList() {
     };
 };
 
-//DESCRIPTION INTERACTION
-var allBirdsDesc = ["australasianbittern", "azurekingfisher", "bartailedgodwit", "bassianthrush", "blackbrowedalbatross"
-    , "blackearedminer", "bluepetrel", "brownthornbill", "capebarrengoose", "crestedshriketit"
-    , "curlewsandpiper", "easternbristlebird", "easterncurlew", "easterngroundparrot", "fairytern"
-    , "glossyblackcockatoo", "goldenwhistler", "greatknot", "greenrosella", "helmetedhoneyeater"
-    , "hoodedrobin", "horsfieldbushlark", "huahou", "malleeemuwren", "malleefowl", "maskedowl", "northerngiantpetrel"
-    , "orangebelliedparrot", "piedcurrawong", "plainswanderer", "redloredwhister", "redtailedblackcockatoo"
-    , "regenthoneyeater", "regentparrot", "shyalbatross", "southernemuwren", "southerngiantpetrel", "spinetailedswift"
-    , "spottedquailthrush", "superbparrot", "swiftparrot", "wanderingalbatross", "wedgetailedeagle"
-    , "whitewingedfairywren", "yellowtuftedhoneyeater"];
-function hideAllBirdDescription() {
-    for (i = 0; i < allBirdsDesc.length; i++) {
-        if (allBirdsDesc[i] != null) {
-            document.getElementById(allBirdsDesc[i]).style.display = "none";
-        };
-    };
-};
 
-document.getElementById("bartailedgodwitlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('bartailedgodwit').style.display = "block";
-
-});
-document.getElementById("bassianthrushlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('bassianthrush').style.display = "block";
-
-});
-document.getElementById("blackbrowedalbatrosslst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('blackbrowedalbatross').style.display = "block";
-
-});
-document.getElementById("bluepetrellst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('bluepetrel').style.display = "block";
-
-});
-document.getElementById("capebarrengooselst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('capebarrengoose').style.display = "block";
-
-});
-document.getElementById("crestedshriketitlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('crestedshriketit').style.display = "block";
-
-});
-document.getElementById("fairyternlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('fairytern').style.display = "block";
-
-});
-document.getElementById("goldenwhistlerlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('goldenwhistler').style.display = "block";
-
-});
-document.getElementById("greenrosellalst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('greenrosella').style.display = "block";
-
-});
-document.getElementById("horsfieldbushlarklst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('horsfieldbushlark').style.display = "block";
-
-});
-document.getElementById("malleefowllst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('malleefowl').style.display = "block";
-
-});
-document.getElementById("northerngiantpetrellst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('northerngiantpetrel').style.display = "block";
-
-});
-document.getElementById("piedcurrawonglst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('piedcurrawong').style.display = "block";
-
-});
-document.getElementById("redloredwhisterlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('redloredwhister').style.display = "block";
-
-});
-document.getElementById("regentparrotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('regentparrot').style.display = "block";
-
-});
-document.getElementById("shyalbatrosslst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('shyalbatross').style.display = "block";
-
-});
-document.getElementById("spinetailedswiftlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('spinetailedswift').style.display = "block";
-
-});
-document.getElementById("superbparrotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('superbparrot').style.display = "block";
-
-});
-document.getElementById("wanderingalbatrosslst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('wanderingalbatross').style.display = "block";
-
-});
-document.getElementById("whitewingedfairywrenlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('whitewingedfairywren').style.display = "block";
-
-});
-document.getElementById("australasianbitternlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('australasianbittern').style.display = "block";
-
-});
-document.getElementById("azurekingfisherlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('azurekingfisher').style.display = "block";
-
-});
-document.getElementById("blackearedminerlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('blackearedminer').style.display = "block";
-
-});
-document.getElementById("brownthornbilllst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('brownthornbill').style.display = "block";
-
-});
-document.getElementById("easternbristlebirdlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('easternbristlebird').style.display = "block";
-
-});
-document.getElementById("easterngroundparrotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('easterngroundparrot').style.display = "block";
-
-});
-document.getElementById("glossyblackcockatoolst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('glossyblackcockatoo').style.display = "block";
-
-});
-document.getElementById("helmetedhoneyeaterlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('helmetedhoneyeater').style.display = "block";
-
-});
-document.getElementById("hoodedrobinlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('hoodedrobin').style.display = "block";
-
-});
-document.getElementById("huahoulst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('huahou').style.display = "block";
-
-});
-document.getElementById("malleeemuwrenlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('malleeemuwren').style.display = "block";
-
-});
-document.getElementById("redtailedblackcockatoolst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('redtailedblackcockatoo').style.display = "block";
-
-});
-document.getElementById("southernemuwrenlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('southernemuwren').style.display = "block";
-
-});
-document.getElementById("southerngiantpetrellst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('southerngiantpetrel').style.display = "block";
-
-});
-document.getElementById("swiftparrotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('swiftparrot').style.display = "block";
-
-});
-document.getElementById("wedgetailedeaglelst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('wedgetailedeagle').style.display = "block";
-
-});
-document.getElementById("yellowtuftedhoneyeaterlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('yellowtuftedhoneyeater').style.display = "block";
-
-});
-document.getElementById("curlewsandpiperlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('curlewsandpiper').style.display = "block";
-
-});
-document.getElementById("easterncurlewlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('easterncurlew').style.display = "block";
-
-});
-document.getElementById("greatknotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('greatknot').style.display = "block";
-
-});
-document.getElementById("orangebelliedparrotlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('orangebelliedparrot').style.display = "block";
-
-});
-document.getElementById("plainswandererlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('plainswanderer').style.display = "block";
-
-});
-document.getElementById("regenthoneyeaterlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('regenthoneyeater').style.display = "block";
-
-});
-document.getElementById("spottedquailthrushlst").addEventListener("click", function () {
-    hideAllBirdDescription();
-    document.getElementById('spottedquailthrush').style.display = "block";
-});
 
 
 

@@ -6,16 +6,18 @@
 <style>
     .list {
         cursor: pointer;
-        font-size:12px;
-        padding-left:20px
-    }
-    .list:hover{
-        background-color:lightblue;
+        font-size: 12px;
+        padding-left: 20px
     }
 
-    .dropdown-header{
-        padding-left:0px;
+        .list:hover {
+            background-color: lightblue;
+        }
+
+    .dropdown-header {
+        padding-left: 0px;
     }
+
     .button {
         border-radius: 4px;
         margin-bottom: 20px;
@@ -44,6 +46,7 @@
     </div>
     <div class="col-md-2">
         <div class="row">
+            <strong>Select bellow Threatened Status to Start</strong>
             <div class="col-md-12 col-xs-12">
                 <button class="button" id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Vulnerable
@@ -60,9 +63,10 @@
                 </button>
             </div>
             <!--DROPDOWN LIST-->
+            <strong>Search a specific bird from the list bellow</strong>
             <div class="col-md-12 col-xs-12">
-                <div class="dropdown" style="width:100%;">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">
                         Birds List
                         <span class="caret"></span>
                     </button>
@@ -132,7 +136,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.australasionBitternRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -157,7 +161,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.azureKingfisherRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -182,7 +186,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.barTailedGodwitRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -207,7 +211,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.bassianThrushRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -232,7 +236,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.blackBrowedAlbatrossRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -257,7 +261,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.blackEaredMinerRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -282,7 +286,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.bluePetrelRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -307,7 +311,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.brownThornbillRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -335,7 +339,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.crestedShriketitRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -360,7 +364,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.curlewSandpiperRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -385,7 +389,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.easternBristlebirdRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -410,7 +414,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.easternCurlewRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -435,7 +439,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.easternGroundParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -460,7 +464,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.fairyTernRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -485,7 +489,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.glossyBlackCockatooRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -513,7 +517,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.greatKnotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -538,7 +542,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.greenRosellaRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -563,7 +567,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.helmetedHoneyeaterRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -588,7 +592,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.hoodedRobinRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -613,7 +617,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.horsfieldBushlarkRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -638,7 +642,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.huahouRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -663,7 +667,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.malleeEmuWrenRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -688,7 +692,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.malleefowlRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -716,7 +720,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.northenGiantPetrelRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -741,7 +745,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.orangeBelliedParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -766,7 +770,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.piedCurrawongRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -791,7 +795,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.plainsWandererRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -816,7 +820,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.redLoredWhistlerRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -841,7 +845,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.redTailedCockatooRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -866,7 +870,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.regentHoneyEaterRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -891,7 +895,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.regentParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -916,7 +920,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.shyAlbatrossRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -941,7 +945,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.southernEmuWrenRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -966,7 +970,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.southernGiantPetrelRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -991,7 +995,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.spinetailedSwiftRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1016,7 +1020,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.spottedQuailRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1041,7 +1045,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.superbParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1066,7 +1070,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.swiftParrotRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1091,7 +1095,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.wanderingAlbatrossRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1116,7 +1120,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.wedgeTailedEagleRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1141,7 +1145,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.whiteWingedFairyWrenRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1166,7 +1170,7 @@
         </div>
         <div class="col-md-6">
             <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
+                <tr><th data-toggle="tooltip" title="Total historal count from data source">Bird Count</th><th>Status</th><th data-toggle="tooltip" title="Registered PSMA Administrative Boundaries">City</th><th data-toggle="tooltip" title="Count Per City/Total Count">Fire Rate</th></tr>
                 @foreach (var item in Model.yellowTuftedHoneyEaterRankings.Take(5))
                 {
                     <tr class="birddata">
@@ -1243,9 +1247,265 @@
         </tr>
     }
 </table>
-
+<!--DATA SOURCE DESCRIPTION-->
+<div>
+    <strong>Data Source Reference</strong>
+    <ul>
+        <li>
+            Birds Spottings: Atlas of Living Australia (01/01/2018 - 21/03/2020) https://www.ala.org.au/
+        </li>
+        <li>
+            Birds Description/Images: Wikipedia
+        </li>
+        <li>
+            Bushfire: NASA (01/01/2019 - 31/12/2019) https://firms.modaps.eosdis.nasa.gov/
+        </li>
+    </ul>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 
+        //DESCRIPTION INTERACTION
+        var allBirdsDesc = ["australasianbittern", "azurekingfisher", "bartailedgodwit", "bassianthrush", "blackbrowedalbatross"
+            , "blackearedminer", "bluepetrel", "brownthornbill", "capebarrengoose", "crestedshriketit"
+            , "curlewsandpiper", "easternbristlebird", "easterncurlew", "easterngroundparrot", "fairytern"
+            , "glossyblackcockatoo", "goldenwhistler", "greatknot", "greenrosella", "helmetedhoneyeater"
+            , "hoodedrobin", "horsfieldbushlark", "huahou", "malleeemuwren", "malleefowl", "maskedowl", "northerngiantpetrel"
+            , "orangebelliedparrot", "piedcurrawong", "plainswanderer", "redloredwhister", "redtailedblackcockatoo"
+            , "regenthoneyeater", "regentparrot", "shyalbatross", "southernemuwren", "southerngiantpetrel", "spinetailedswift"
+            , "spottedquailthrush", "superbparrot", "swiftparrot", "wanderingalbatross", "wedgetailedeagle"
+            , "whitewingedfairywren", "yellowtuftedhoneyeater"];
+        function hideAllBirdDescription() {
+            for (i = 0; i < allBirdsDesc.length; i++) {
+                if (allBirdsDesc[i] != null) {
+                    document.getElementById(allBirdsDesc[i]).style.display = "none";
+                };
+            };
+        };
+
+        document.getElementById("bartailedgodwitlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('bartailedgodwit').style.display = "block";
+
+        });
+        document.getElementById("bassianthrushlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('bassianthrush').style.display = "block";
+
+        });
+        document.getElementById("blackbrowedalbatrosslst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('blackbrowedalbatross').style.display = "block";
+
+        });
+        document.getElementById("bluepetrellst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('bluepetrel').style.display = "block";
+
+        });
+        document.getElementById("capebarrengooselst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('capebarrengoose').style.display = "block";
+
+        });
+        document.getElementById("crestedshriketitlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('crestedshriketit').style.display = "block";
+
+        });
+        document.getElementById("fairyternlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('fairytern').style.display = "block";
+
+        });
+        document.getElementById("goldenwhistlerlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('goldenwhistler').style.display = "block";
+
+        });
+        document.getElementById("greenrosellalst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('greenrosella').style.display = "block";
+
+        });
+        document.getElementById("horsfieldbushlarklst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('horsfieldbushlark').style.display = "block";
+
+        });
+        document.getElementById("malleefowllst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('malleefowl').style.display = "block";
+
+        });
+        document.getElementById("northerngiantpetrellst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('northerngiantpetrel').style.display = "block";
+
+        });
+        document.getElementById("piedcurrawonglst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('piedcurrawong').style.display = "block";
+
+        });
+        document.getElementById("redloredwhisterlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('redloredwhister').style.display = "block";
+
+        });
+        document.getElementById("regentparrotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('regentparrot').style.display = "block";
+
+        });
+        document.getElementById("shyalbatrosslst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('shyalbatross').style.display = "block";
+
+        });
+        document.getElementById("spinetailedswiftlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('spinetailedswift').style.display = "block";
+
+        });
+        document.getElementById("superbparrotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('superbparrot').style.display = "block";
+
+        });
+        document.getElementById("wanderingalbatrosslst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('wanderingalbatross').style.display = "block";
+
+        });
+        document.getElementById("whitewingedfairywrenlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('whitewingedfairywren').style.display = "block";
+
+        });
+        document.getElementById("australasianbitternlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('australasianbittern').style.display = "block";
+
+        });
+        document.getElementById("azurekingfisherlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('azurekingfisher').style.display = "block";
+
+        });
+        document.getElementById("blackearedminerlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('blackearedminer').style.display = "block";
+
+        });
+        document.getElementById("brownthornbilllst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('brownthornbill').style.display = "block";
+
+        });
+        document.getElementById("easternbristlebirdlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('easternbristlebird').style.display = "block";
+
+        });
+        document.getElementById("easterngroundparrotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('easterngroundparrot').style.display = "block";
+
+        });
+        document.getElementById("glossyblackcockatoolst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('glossyblackcockatoo').style.display = "block";
+
+        });
+        document.getElementById("helmetedhoneyeaterlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('helmetedhoneyeater').style.display = "block";
+
+        });
+        document.getElementById("hoodedrobinlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('hoodedrobin').style.display = "block";
+
+        });
+        document.getElementById("huahoulst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('huahou').style.display = "block";
+
+        });
+        document.getElementById("malleeemuwrenlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('malleeemuwren').style.display = "block";
+
+        });
+        document.getElementById("redtailedblackcockatoolst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('redtailedblackcockatoo').style.display = "block";
+
+        });
+        document.getElementById("southernemuwrenlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('southernemuwren').style.display = "block";
+
+        });
+        document.getElementById("southerngiantpetrellst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('southerngiantpetrel').style.display = "block";
+
+        });
+        document.getElementById("swiftparrotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('swiftparrot').style.display = "block";
+
+        });
+        document.getElementById("wedgetailedeaglelst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('wedgetailedeagle').style.display = "block";
+
+        });
+        document.getElementById("yellowtuftedhoneyeaterlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('yellowtuftedhoneyeater').style.display = "block";
+
+        });
+        document.getElementById("curlewsandpiperlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('curlewsandpiper').style.display = "block";
+
+        });
+        document.getElementById("easterncurlewlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('easterncurlew').style.display = "block";
+
+        });
+        document.getElementById("greatknotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('greatknot').style.display = "block";
+
+        });
+        document.getElementById("orangebelliedparrotlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('orangebelliedparrot').style.display = "block";
+
+        });
+        document.getElementById("plainswandererlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('plainswanderer').style.display = "block";
+
+        });
+        document.getElementById("regenthoneyeaterlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('regenthoneyeater').style.display = "block";
+
+        });
+        document.getElementById("spottedquailthrushlst").addEventListener("click", function () {
+            hideAllBirdDescription();
+            document.getElementById('spottedquailthrush').style.display = "block";
+        });
+    </script>
 }
 
