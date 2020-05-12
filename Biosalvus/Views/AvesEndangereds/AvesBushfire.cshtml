@@ -6,10 +6,19 @@
 <style>
     .list {
         cursor: pointer;
+        font-size:12px;
+        padding-left:20px
+    }
+    .list:hover{
+        background-color:lightblue;
     }
 
+    .dropdown-header{
+        padding-left:0px;
+    }
     .button {
         border-radius: 4px;
+        margin-bottom: 20px;
     }
 
         .button:hover {
@@ -52,7 +61,7 @@
             </div>
             <!--DROPDOWN LIST-->
             <div class="col-md-12 col-xs-12">
-                <div class="dropdown">
+                <div class="dropdown" style="width:100%;">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                         Birds List
                         <span class="caret"></span>
@@ -314,28 +323,6 @@
 </div>
 <!-- Cape Barren goose -->
 <div id="capebarrengoose" style="display:none;">
-    @foreach (var item in Model.capeBarrenGooseRankings.Take(1))
-    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
-    <div class="row">
-        <div class="col-md-6">
-            <img class="img-responsive" src="~/Content/Images/Birds/cape-barren-goose.jpg" alt="capebarrengoose" />
-            The Cape Barren goose is a large goose resident in southern Australia. The species is named for Cape Barren Island, where specimens were first sighted by European explorers.
-        </div>
-        <div class="col-md-6">
-            <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
-                @foreach (var item in Model.capeBarrenGooseRankings.Take(5))
-                {
-                    <tr class="birddata">
-                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
-                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
-                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
-                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
-                    </tr>
-                }
-            </table>
-        </div>
-    </div>
 </div>
 <!-- Crested Shrike-tit -->
 <div id="crestedshriketit" style="display:none;">
@@ -514,28 +501,6 @@
 </div>
 <!-- Golden Whistler -->
 <div id="goldenwhistler" style="display:none;">
-    @foreach (var item in Model.goldernWhistlerRankings.Take(1))
-    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
-    <div class="row">
-        <div class="col-md-6">
-            <img class="img-responsive" src="~/Content/Images/Birds/golden-whistler.jpg" alt="goldenwhistler" />
-            The Australian golden whistler, or golden whistler, is a species of bird found in forest, woodland, mallee, mangrove and scrub in Australia Most populations are resident, but some in south-eastern Australia migrate north during the winter. Its taxonomy is highly complex and remains a matter of dispute, with some authorities including as many as 59 subspecies of the golden whistler, while others treat several of these as separate species.
-        </div>
-        <div class="col-md-6">
-            <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
-                @foreach (var item in Model.goldernWhistlerRankings.Take(5))
-                {
-                    <tr class="birddata">
-                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
-                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
-                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
-                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
-                    </tr>
-                }
-            </table>
-        </div>
-    </div>
 </div>
 <!-- Great Knot -->
 <div id="greatknot" style="display:none;">
@@ -739,28 +704,6 @@
 </div>
 <!-- Masked Owl -->
 <div id="maskedowl" style="display:none;">
-    @foreach (var item in Model.maskedOwlRankings.Take(1))
-    {<h3><strong>@Html.DisplayFor(modelitem => item.speciesname)</strong></h3>}
-    <div class="row">
-        <div class="col-md-6">
-            <img class="img-responsive" src="~/Content/Images/Birds/australian-masked-owl.jpg" alt="maskedowl" />
-            The Australian masked owl is a barn owl of Southern New Guinea and the non-desert areas of Australia.
-        </div>
-        <div class="col-md-6">
-            <table class="table">
-                <tr><th>Bird Count</th><th>Status</th><th>City</th><th>Fire Rate</th></tr>
-                @foreach (var item in Model.maskedOwlRankings.Take(5))
-                {
-                    <tr class="birddata">
-                        <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
-                        <td class="birdstatus">@Html.DisplayFor(modelitem => item.status)</td>
-                        <td class="birdcity">@Html.DisplayFor(modelitem => item.locality)</td>
-                        <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
-                    </tr>
-                }
-            </table>
-        </div>
-    </div>
 </div>
 <!-- Northern giant petrel -->
 <div id="northerngiantpetrel" style="display:none;">
@@ -1303,5 +1246,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
+
 }
 
