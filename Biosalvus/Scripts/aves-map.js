@@ -14,10 +14,10 @@ const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dC
 var aves = [];
 var cats = [];
 var fires = [];
-var vulnerablearray = [];
+//var vulnerablearray = [];
 var endangeredarray = [];
 var critendangeredarray = [];
-var vulnerable = false;
+//var vulnerable = false;
 var endangered = false;
 var critendangered = false;
 //// The first step is obtain all the latitude and longitude from the HTML
@@ -67,53 +67,53 @@ var critendangered = false;
 //}
 //GATHER BIRDS LOCATION DATA
 
-//Vulnerable Birds
-$(".vulnerablebirds").each(function () {
-    var vulnerablename = $(".vulnerablename", this).text().trim();
-    var vulnerablescientific = $(".vulnerablescientific", this).text().trim();
-    var vulnerablelongitude = $(".vulnerablelongitude", this).text().trim();
-    var vulnerablelatitude = $(".vulnerablelatitude", this).text().trim();
-    var vulnerablestate = $(".vulnerablestate", this).text().trim();
-    var vulnerablestatus = $(".vulnerablestatus", this).text().trim();
-    var vulnerablecatfood = $(".vulnerablecatfood", this).text().trim();
-    // Create a point data structure to hold the values.
-    var point = {
-        "vulnerablename": vulnerablename,
-        "vulnerablescientific": vulnerablescientific,
-        "vulnerablelongitude": vulnerablelongitude,
-        "vulnerablelatitude": vulnerablelatitude,
-        "vulnerablestate": vulnerablestate,
-        "vulnerablestatus": vulnerablestatus,
-        "vulnerablecatfood": vulnerablecatfood
-    };
-    // Push them all into an array.
-    vulnerablearray.push(point);
-});
-//data from points
-var vulnerabledata = [];
-for (i = 0; i < vulnerablearray.length; i++) {
-    var feature = {
-        "type": "Feature",
-        "properties": {
-            "vulnerablename": vulnerablearray[i].vulnerablename,
-            "vulnerablescientific": vulnerablearray[i].vulnerablescientific,
-            "vulnerablestate": vulnerablearray[i].vulnerablestate,
-            "vulnerablestatus": vulnerablearray[i].vulnerablestatus,
-            "vulnerablecatfood": vulnerablearray[i].vulnerablecatfood,
-            "icon": "circle-15"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [vulnerablearray[i].vulnerablelongitude, vulnerablearray[i].vulnerablelatitude]
-        }
-    };
-    vulnerabledata.push(feature)
-}
-//finaldata
-var vulnerablefinaldata = {
-    "type": "FeatureCollection",
-    "features": vulnerabledata
-}
+////Vulnerable Birds
+//$(".vulnerablebirds").each(function () {
+//    var vulnerablename = $(".vulnerablename", this).text().trim();
+//    var vulnerablescientific = $(".vulnerablescientific", this).text().trim();
+//    var vulnerablelongitude = $(".vulnerablelongitude", this).text().trim();
+//    var vulnerablelatitude = $(".vulnerablelatitude", this).text().trim();
+//    var vulnerablestate = $(".vulnerablestate", this).text().trim();
+//    var vulnerablestatus = $(".vulnerablestatus", this).text().trim();
+//    var vulnerablecatfood = $(".vulnerablecatfood", this).text().trim();
+//    // Create a point data structure to hold the values.
+//    var point = {
+//        "vulnerablename": vulnerablename,
+//        "vulnerablescientific": vulnerablescientific,
+//        "vulnerablelongitude": vulnerablelongitude,
+//        "vulnerablelatitude": vulnerablelatitude,
+//        "vulnerablestate": vulnerablestate,
+//        "vulnerablestatus": vulnerablestatus,
+//        "vulnerablecatfood": vulnerablecatfood
+//    };
+//    // Push them all into an array.
+//    vulnerablearray.push(point);
+//});
+////data from points
+//var vulnerabledata = [];
+//for (i = 0; i < vulnerablearray.length; i++) {
+//    var feature = {
+//        "type": "Feature",
+//        "properties": {
+//            "vulnerablename": vulnerablearray[i].vulnerablename,
+//            "vulnerablescientific": vulnerablearray[i].vulnerablescientific,
+//            "vulnerablestate": vulnerablearray[i].vulnerablestate,
+//            "vulnerablestatus": vulnerablearray[i].vulnerablestatus,
+//            "vulnerablecatfood": vulnerablearray[i].vulnerablecatfood,
+//            "icon": "circle-15"
+//        },
+//        "geometry": {
+//            "type": "Point",
+//            "coordinates": [vulnerablearray[i].vulnerablelongitude, vulnerablearray[i].vulnerablelatitude]
+//        }
+//    };
+//    vulnerabledata.push(feature)
+//}
+////finaldata
+//var vulnerablefinaldata = {
+//    "type": "FeatureCollection",
+//    "features": vulnerabledata
+//}
 
 
 //Critically Endangered Birds
@@ -325,11 +325,11 @@ map.on('load', function () {
         'type': 'geojson',
         'data': critendangeredfinaldata
     });
-    // Add a GeoJSON source containing place coordinates and information for Vulnerable Birds.
-    map.addSource('vulnerabledatasource', {
-        'type': 'geojson',
-        'data': vulnerablefinaldata
-    });
+    //// Add a GeoJSON source containing place coordinates and information for Vulnerable Birds.
+    //map.addSource('vulnerabledatasource', {
+    //    'type': 'geojson',
+    //    'data': vulnerablefinaldata
+    //});
     // Add a GeoJSON source containing place coordinates and information for Fire.
     map.addSource('firedatasource', {
         'type': 'geojson',
@@ -366,21 +366,21 @@ map.on('load', function () {
             }
         }
     );
-    //Vulnerable Birds Layer
-    map.addLayer(
-        {
-            'id': 'vulnerablebirds',
-            'type': 'circle',
-            'source': 'vulnerabledatasource',
-            'paint': {
-                'circle-color': 'rgba(0,0,0,1)', //BLACK
-                'circle-radius': 3
-            },
-            'layout': {
-                'visibility': 'none'
-            }
-        }
-    );
+    ////Vulnerable Birds Layer
+    //map.addLayer(
+    //    {
+    //        'id': 'vulnerablebirds',
+    //        'type': 'circle',
+    //        'source': 'vulnerabledatasource',
+    //        'paint': {
+    //            'circle-color': 'rgba(0,0,0,1)', //BLACK
+    //            'circle-radius': 3
+    //        },
+    //        'layout': {
+    //            'visibility': 'none'
+    //        }
+    //    }
+    //);
     ////Fire Layer
     //map.addLayer(
     //    {
@@ -568,21 +568,21 @@ map.on('load', function () {
     );
 
     //BUTTONS INTERACTIONS
-    document.getElementById("vulnerablebtn").addEventListener("click", function () {
-        resetStatusBtnColor();
-        document.getElementById("vulnerablebtn").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
-        hideBirds();
-        setAllStatusFlagOFF();
-        vulnerable = true;
-        map.setLayoutProperty(
-            'vulnerablebirds',
-            'visibility',
-            'visible'
-        );
-        showVulnerableList();
-        hideCritEndangeredList();
-        hideEndangeredList();
-    });
+    //document.getElementById("vulnerablebtn").addEventListener("click", function () {
+    //    resetStatusBtnColor();
+    //    document.getElementById("vulnerablebtn").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
+    //    hideBirds();
+    //    setAllStatusFlagOFF();
+    //    vulnerable = true;
+    //    map.setLayoutProperty(
+    //        'vulnerablebirds',
+    //        'visibility',
+    //        'visible'
+    //    );
+    //    showVulnerableList();
+    //    hideCritEndangeredList();
+    //    hideEndangeredList();
+    //});
     document.getElementById("endangeredbtn").addEventListener("click", function () {
         resetStatusBtnColor();
         document.getElementById("endangeredbtn").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
@@ -595,7 +595,7 @@ map.on('load', function () {
             'visible'
         );
         showEndangeredList();
-        hideVulnerableList();
+        //hideVulnerableList();
         hideCritEndangeredList();
     });
     document.getElementById("critendangeredbtn").addEventListener("click", function () {
@@ -608,13 +608,13 @@ map.on('load', function () {
             'visibility',
             'visible'
         );
-        hideVulnerableList();
+        //hideVulnerableList();
         hideEndangeredList();
         showCritEndangeredList();
     });
 });
 //Function to Reset border colour in Status Button to #2c6e49 (Dark Green)
-const statusbtnarray = ['vulnerablebtn', 'endangeredbtn', 'critendangeredbtn'];
+const statusbtnarray = ['endangeredbtn', 'critendangeredbtn'];
 function resetStatusBtnColor() {
     for (i = 0; i < statusbtnarray.length; i++) {
         document.getElementById(statusbtnarray[i]).style.backgroundColor = '#2c6e49';
@@ -622,18 +622,18 @@ function resetStatusBtnColor() {
 }
 
 //HIDE AND SHOW BIRDS LISTS
-var vulnerablelist = ['vulnerableheader', 'bartailedgodwitlst', 'bassianthrushlst', 'blackbrowedalbatrosslst', 'bluepetrellst'
-    , 'capebarrengooselst', 'crestedshriketitlst', 'fairyternlst', 'goldenwhistlerlst', 'greenrosellalst'
-    , 'horsfieldbushlarklst', 'malleefowllst', 'northerngiantpetrellst', 'piedcurrawonglst', 'redloredwhisterlst'
-    , 'regentparrotlst', 'shyalbatrosslst', 'spinetailedswiftlst', 'superbparrotlst', 'wanderingalbatrosslst'
-    , 'whitewingedfairywrenlst', 'nalst'];
-function hideVulnerableList() {
-    for (i = 0; i < vulnerablelist.length; i++) {
-        if (document.getElementById(vulnerablelist[i]) != null) {
-            document.getElementById(vulnerablelist[i]).style.display = "none";
-        };    
-    };
-};
+//var vulnerablelist = ['vulnerableheader', 'bartailedgodwitlst', 'bassianthrushlst', 'blackbrowedalbatrosslst', 'bluepetrellst'
+//    , 'capebarrengooselst', 'crestedshriketitlst', 'fairyternlst', 'goldenwhistlerlst', 'greenrosellalst'
+//    , 'horsfieldbushlarklst', 'malleefowllst', 'northerngiantpetrellst', 'piedcurrawonglst', 'redloredwhisterlst'
+//    , 'regentparrotlst', 'shyalbatrosslst', 'spinetailedswiftlst', 'superbparrotlst', 'wanderingalbatrosslst'
+//    , 'whitewingedfairywrenlst', 'nalst'];
+//function hideVulnerableList() {
+//    for (i = 0; i < vulnerablelist.length; i++) {
+//        if (document.getElementById(vulnerablelist[i]) != null) {
+//            document.getElementById(vulnerablelist[i]).style.display = "none";
+//        };    
+//    };
+//};
 function showVulnerableList() {
     for (i = 0; i < vulnerablelist.length; i++) {
         if (document.getElementById(vulnerablelist[i]) != null) {
@@ -682,14 +682,14 @@ function showCritEndangeredList() {
 
 //Show Bird coordinates if Status is true.
 function showBirds() {
-    if (vulnerable = true) {
-        map.setLayoutProperty(
-            'vulnerablebirds',
-            'visibility',
-            'visible'
-        );
-    }
-    else if (endangered = true) {
+    //if (vulnerable = true) {
+    //    map.setLayoutProperty(
+    //        'vulnerablebirds',
+    //        'visibility',
+    //        'visible'
+    //    );
+    //}
+    if (endangered = true) {
         map.setLayoutProperty(
             'endangeredbirds',
             'visibility',
@@ -716,16 +716,16 @@ function hideBirds() {
         'visibility',
         'none'
     );
-    map.setLayoutProperty(
-        'vulnerablebirds',
-        'visibility',
-        'none'
-    );
+    //map.setLayoutProperty(
+    //    'vulnerablebirds',
+    //    'visibility',
+    //    'none'
+    //);
 }
 
 //sets all status boolean flag to False
 function setAllStatusFlagOFF() {
-    vulnerable = false;
+    //vulnerable = false;
     endangered = false;
     critendangered = false;
 }
@@ -767,22 +767,22 @@ map.on('mouseleave', 'critendangeredbirds', function () {
     map.getCanvas().style.cursor = '';
 });
 
-map.on('click', 'vulnerablebirds', function (e) {
-    var name = e.features[0].properties.vulnerablename;
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
-});
-// Change the cursor to a pointer when the mouse is over the vulnerablebirds layer.
-map.on('mouseenter', 'vulnerablebirds', function () {
-    map.getCanvas().style.cursor = 'pointer';
-});
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'vulnerablebirds', function () {
-    map.getCanvas().style.cursor = '';
-});
+//map.on('click', 'vulnerablebirds', function (e) {
+//    var name = e.features[0].properties.vulnerablename;
+//    var coordinates = e.features[0].geometry.coordinates.slice();
+//    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+//        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+//    }
+//    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
+//});
+//// Change the cursor to a pointer when the mouse is over the vulnerablebirds layer.
+//map.on('mouseenter', 'vulnerablebirds', function () {
+//    map.getCanvas().style.cursor = 'pointer';
+//});
+//// Change it back to a pointer when it leaves.
+//map.on('mouseleave', 'vulnerablebirds', function () {
+//    map.getCanvas().style.cursor = '';
+//});
 
 //map.on('mousemove', 'airport', function (e) {
 //    // Change the cursor style as a UI indicator.
