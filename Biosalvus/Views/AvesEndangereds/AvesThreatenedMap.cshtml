@@ -67,58 +67,52 @@
 <h2 class="text-size-50 text-center">@ViewBag.Title</h2>
 <hr class="break-small background-primary break-center">
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div id="map" style="height:450px;"></div> <!--This is the Map-->
-    </div>
-    <div class="col-md-2">
-        
-    </div>
-</div>
-<div class="row">
-    @*<div class="col-md-12 col-xs-12">
-
-            <button class="button" id="vulnerablebtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
-                Vulnerable
-            </button>
-        </div>*@   
-    <div class="col-md-4 col-xs-4">
-        <strong>Select bellow Threatened Status to Start</strong>
-        <button class="button" id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
-            Endangered
-        </button>
-    </div>
-    <div class="col-md-4 col-xs-4">
-        <br />
-        <button class="button" id="critendangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
-            Critically Endangered
-        </button>
-    </div>
-    <div class="col-md-4 col-xs-4">
-        <strong>Search a specific bird from the list bellow</strong>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">
-                Birds List
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                @*<li id="vulnerableheader" class="dropdown-header"><strong>Vulnerable</strong></li>
-                    <li id="nalst" class="list">N/A</li>*@
-                <li id="endangeredheader" class="dropdown-header"><strong>Endangered</strong></li>
-                <li id="easternbristlebirdlst" class="list">Eastern Bristlebird</li>
-                <li id="easterngroundparrotlst" class="list">Eastern Ground Parrot</li>
-                <li id="helmetedhoneyeaterlst" class="list">Helmeted Honeyeater</li>
-                <li id="hoodedrobinlst" class="list">Hooded Robin</li>
-                <li id="southernemuwrenlst" class="list">Southern Emu-wren</li>
-                <li id="southerngiantpetrellst" class="list">southern giant-petrel</li>
-                <li id="swiftparrotlst" class="list">Swift Parrot</li>
-                <li id="yellowtuftedhoneyeaterlst" class="list">Yellow-tufted Honeyeater</li>
-                <li id="critendangeredheader" class="dropdown-header"><strong>Critically Endangered.</strong></li>
-                <li id="orangebelliedparrotlst" class="list">Orange-bellied Parrot</li>
-                <li id="spottedquailthrushlst" class="list">Spotted Quail-thrush</li>
-            </ul>
+        <div class="row">
+            <div class="col-md-4 col-xs-4">
+                Select bellow Threatened Status to Start
+                <button class="button" id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                    Endangered
+                </button>
+            </div>
+            <div class="col-md-4 col-xs-4">
+                <br />
+                <button class="button" id="critendangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                    Critically Endangered
+                </button>
+            </div>
+            <div class="col-md-4 col-xs-4">
+                Search a specific bird from the list bellow
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">
+                        Birds List
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li id="endangeredheader" class="dropdown-header"><strong>Endangered</strong></li>
+                        <li id="easternbristlebirdlst" class="list">Eastern Bristlebird</li>
+                        <li id="easterngroundparrotlst" class="list">Eastern Ground Parrot</li>
+                        <li id="helmetedhoneyeaterlst" class="list">Helmeted Honeyeater</li>
+                        <li id="hoodedrobinlst" class="list">Hooded Robin</li>
+                        <li id="southernemuwrenlst" class="list">Southern Emu-wren</li>
+                        <li id="southerngiantpetrellst" class="list">southern giant-petrel</li>
+                        <li id="swiftparrotlst" class="list">Swift Parrot</li>
+                        <li id="yellowtuftedhoneyeaterlst" class="list">Yellow-tufted Honeyeater</li>
+                        <li id="critendangeredheader" class="dropdown-header"><strong>Critically Endangered.</strong></li>
+                        <li id="orangebelliedparrotlst" class="list">Orange-bellied Parrot</li>
+                        <li id="spottedquailthrushlst" class="list">Spotted Quail-thrush</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="col-md-4">
+            <strong>Cat Suburb Ranking Chart</strong>
+            <canvas id="catsuburbchart" width="300" height="300"></canvas>
+    </div>
 </div>
+
 
 
 @*Eastern Bristlebird*@
@@ -544,6 +538,55 @@
         hideAllBirdDescription();
         document.getElementById('swiftparrot').style.display = "block";
 
+    });
+
+    var barChartData = {
+        datakeys: ['East Gippsland', 'Mornington Peninsula', 'Baw Baw', 'Wellington', 'Colac Otway', 'Glenelg', 'Surf Coast Shire', 'Southern Grampians','City of Melbourne'],
+        labels: ['East Gippsland', 'Mornington Peninsula', 'Baw Baw', 'Wellington', 'Colac Otway', 'Glenelg', 'Surf Coast Shire', 'Southern Grampians','City of Melbourne'],
+        datasets: [{
+            label: '%',
+            data: [40.22, 8.55, 7.70, 7.21, 7.09, 7.09, 6.48, 5.62, 5.26, 4.76],
+            backgroundColor: [
+                'rgba(255,150,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)',
+                'rgba(200,255,0,0.5)'
+            ],
+            borderColor: [
+                'rgba(255,150,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)',
+                'rgba(200,255,0,1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+    var ctx = document.getElementById('catsuburbchart').getContext('2d');
+    var groupChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: barChartData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 </script>
 }
