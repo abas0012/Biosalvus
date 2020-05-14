@@ -4,29 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .legend {
-        background-color: #fff;
-        border-radius: 3px;
-        bottom: 30px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        padding: 10px;
-        right: 10px;
-        z-index: 1;
+
+    .legend .bar {
+        height: 10px;
+        width: 100%;
+        background: linear-gradient(to right, rgba(200,255,0,1), rgba(255,150,0,1));
+        border: 1px solid;
+        margin-top:5px;
     }
-
-        .legend h4 {
-            margin: 0 0 10px;
-        }
-
-        .legend div span {
-            border-radius: 50%;
-            display: inline-block;
-            height: 10px;
-            margin-right: 5px;
-            width: 10px;
-        }
-
+        
     .list {
         cursor: pointer;
         font-size: 12px;
@@ -53,10 +39,13 @@
     .birddetail{
         border: solid;
     }
+    table td {
+        border-bottom: 1px solid #000;
+    }
 </style>
 <header class="section background-dark">
     <div class="line">
-        <h1 class="text-white margin-top-bottom-40 text-size-60 text-line-height-1">Feral Cats</h1>
+        <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
         <p class="margin-bottom-0 text-size-16">
             Explore our Dashboard to view the Threatened Birds vs. Feral Cats occurances.<br>
             You can start by selecting either the Threatened Status of the birds.<br>
@@ -64,14 +53,25 @@
         </p>
     </div>
 </header>
-<h2 class="text-size-50 text-center">@ViewBag.Title</h2>
 <hr class="break-small background-primary break-center">
 <div class="row">
     <div class="col-md-8">
         <div id="map" style="height:450px;"></div> <!--This is the Map-->
         <div class="row">
+            <div class="col-md-6 col-xs-6">Frequency of Feral Cats:</div>
+            <div class="col-md-6 col-xs-6">
+                <div id="legend" class="legend">
+                    <div class="bar"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6" style="text-align:left;">0%</div><div class="col-md-6 col-xs-6" style="text-align:right;">>40%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
             <div class="col-md-4 col-xs-4">
-                Select bellow Threatened Status to Start
+                Select any Threatened Status to Start
                 <button class="button" id="endangeredbtn" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                     Endangered
                 </button>
@@ -83,7 +83,7 @@
                 </button>
             </div>
             <div class="col-md-4 col-xs-4">
-                Search a specific bird from the list bellow
+                Look for specific bird from the list
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">
                         Birds List
@@ -108,7 +108,13 @@
         </div>
     </div>
     <div class="col-md-4">
-            <strong>Cat Suburb Ranking Chart</strong>
+        <p style="font-size:0.8125rem;font-weight:500;color:#555;font:inherit;line-height:1.54;">
+            REGIONS WITH THE MOST FERAL CATS SPOTTINGS IN VICTORIA, AUSTRALIA
+        </p>
+        <p style="font-size:20px;font-weight:300;color:#555;font:inherit;line-height:1.58;letter-spacing:0.1px;">
+            In the last <strong>12 months</strong> in <strong>Victoria</strong>, the region with the most feral cat occurance was
+            <strong>East Gippsland</strong>, with <strong>239</strong> cat spottings, represeting <strong>40.22%</strong> of the total spottings detected.
+        </p>
             <canvas id="catsuburbchart" width="300" height="300"></canvas>
     </div>
 </div>

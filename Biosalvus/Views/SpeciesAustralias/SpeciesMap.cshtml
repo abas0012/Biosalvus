@@ -37,10 +37,14 @@
             background-color: #4c956c;
             color: white;
         }
+
+        table td {
+            border-bottom: 1px solid #000;
+        }
 </style>
 <header class="section background-dark">
     <div class="line">
-        <h1 class="text-white margin-top-bottom-40 text-size-60 text-line-height-1">Explore Australia's Biodiversity</h1>
+        <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
         <p class="margin-bottom-0 text-size-16">
             Explore our Dashboard to view the most current status of threatened Australian Wildlife.<br>
             The Map bellow represent Australia's 5 States and 2 Territories to select from.<br>
@@ -49,7 +53,6 @@
         </p>
     </div>
 </header>
-<h2 class="text-size-50 text-center">@ViewBag.Title</h2>
 <hr class="break-small background-primary break-center">
 <div class="row">
     <div class="col-lg-4 col-md-4 col-xs-12">
@@ -139,9 +142,9 @@
                 </button>
             </div>
             @*<strong>Click on Bar to show Grouping Details Table</strong>
-        <div id="speciesgroupChart" class="col-lg-6 col-md-6 col-xs-6" style="height:300px;display:block;">
-            <canvas id="groupChart" width="300" height="300"></canvas>
-        </div>*@
+                <div id="speciesgroupChart" class="col-lg-6 col-md-6 col-xs-6" style="height:300px;display:block;">
+                    <canvas id="groupChart" width="300" height="300"></canvas>
+                </div>*@
         </div>
     </div>
 </div>
@@ -199,7 +202,20 @@
         </div>
     </div>
 </div>
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<!--DATA SOURCE DESCRIPTION-->
+<div>
+    <strong>Data Source Reference</strong>
+    <ul>
+        <li>
+            Species Data: Atlas of Living Australia  https://www.ala.org.au/
+        </li>
+    </ul>
+</div>
 <div class="row">
     <div class="col-md-12">
         <table id="speciescountbygroupings" class="table" style="display:none;">
