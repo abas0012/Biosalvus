@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .legend .bar {
+    /*.legend .bar {
         height: 10px;
         width: 100%;
         background: linear-gradient(to right, rgba(255,255,0,1), rgba(255,0,0,1));
         border: 1px solid;
         margin-top: 5px;
-    }
+    }*/
     .list {
         cursor: pointer;
         font-size: 12px;
@@ -55,7 +55,7 @@
 <div class="row">
     <div class="col-md-9">
         <div id="map" style="height:450px;"></div> <!--This is the Map-->
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-6 col-xs-6">Frequency of Bushfire:</div>
             <div class="col-md-6 col-xs-6">
                 <div id="legend" class="legend">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="row">
             <div class="col-md-4 col-xs-4">
                 Select any Threatened Status to Start
@@ -815,8 +815,6 @@
         <tr class="firecoordinates">
             <td class="firelatitude">@Html.DisplayFor(modelitem => item.firelatitude)</td>
             <td class="firelongitude">@Html.DisplayFor(modelitem => item.firelongitude)</td>
-            <td class="firecity">@Html.DisplayFor(modelitem => item.city)</td>
-            <td class="firedate">@Html.DisplayFor(modelitem => item.acq_date)</td>
         </tr>
     }
 </table>

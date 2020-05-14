@@ -19,23 +19,6 @@
           type='text/css' />
     <script src="~/Scripts/Chart.js"></script> <!--Chart.js-->
     <script src="~/Scripts/Chart.min.js"></script> <!--Chart.js-->
-    <script type="text/javascript">
-        var spinnerVisible = false;
-        function showProgress() {
-            if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
-            }
-        };
-        function hideProgress() {
-            if (spinnerVisible) {
-                var spinner = $("div#spinner");
-                spinner.stop();
-                spinner.fadeOut("fast");
-                spinnerVisible = false;
-            }
-        };
-    </script>
     <style>
         .navtab {
             border-radius: 4px;
@@ -78,9 +61,6 @@
         </div>
     </div>
     <div class="container body-content">
-        <div id="spinner" style="display: none;width: 100px;height: 100px;position: fixed;top: 50%;left: 50%;background: url(spinner.gif) no-repeat center #fff;text-align: center;padding: 10px;font: normal 16px Tahoma, Geneva, sans-serif;border: 1px solid #666;margin-left: -50px;margin-top: -50px;z-index: 2;overflow: auto;">
-            Loading...
-        </div>
         @RenderBody()
         <hr />
         <footer>

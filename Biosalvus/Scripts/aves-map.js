@@ -218,14 +218,14 @@ var endangeredfinaldata = {
 $(".firecoordinates").each(function () {
     var firelatitude = $(".firelatitude", this).text().trim();
     var firelongitude = $(".firelongitude", this).text().trim();
-    var firecity = $(".firecity", this).text().trim();
-    var firedate = $(".firedate", this).text().trim();
+    //var firecity = $(".firecity", this).text().trim();
+    //var firedate = $(".firedate", this).text().trim();
     // Create a point data structure to hold the values.
     var point = {
         "firelatitude": firelatitude,
-        "firelongitude": firelongitude,
-        "firecity": firecity,
-        "firedate": firedate
+        "firelongitude": firelongitude
+        //"firecity": firecity,
+        //"firedate": firedate
     };
     // Push them all into an array.
     fires.push(point);
@@ -236,8 +236,8 @@ for (i = 0; i < fires.length; i++) {
     var feature = {
         "type": "Feature",
         "properties": {
-            "firecity": fires[i].firecity,
-            "firedate": fires[i].firedate,
+            //"firecity": fires[i].firecity,
+            //"firedate": fires[i].firedate,
             "firecount": 1,
             "icon": "circle-15"
         },

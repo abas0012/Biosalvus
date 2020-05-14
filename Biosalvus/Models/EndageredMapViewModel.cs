@@ -73,7 +73,7 @@ namespace Biosalvus.Models
         //Malleefowl
         public IEnumerable<BirdThreatRanking> malleefowlRankings { get; set; }
         //Masked Owl
-        public IEnumerable<BirdThreatRanking> maskedOwlRankings { get; set; }
+        //public IEnumerable<BirdThreatRanking> maskedOwlRankings { get; set; }
         //Northern giant petrel
         public IEnumerable<BirdThreatRanking> northenGiantPetrelRankings { get; set; }
         //Orange - bellied Parrot
@@ -151,7 +151,7 @@ namespace Biosalvus.Models
     public class BirdThreatRanking
     {
         public int birdcount { get; set; }
-        public double threatrate { get; set; }
+        public string threatrate { get; set; }
         public string speciesname { get; set; }
         public string status { get; set; }
         public string locality { get; set; }
