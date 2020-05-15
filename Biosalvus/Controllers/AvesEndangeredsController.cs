@@ -725,44 +725,6 @@ namespace Biosalvus.Controllers
                                                      locality = g.Key.verbatimLocality
                                                  }
                                                 ).OrderByDescending(x => x.birdcount);
-            //viewmodel.brownThornbillRankings = (from b in birdranks
-            //                                    where b.name == "Brown Thornbill"
-            //                                    join f in fireranks on b.city equals f.city into birdfirerank
-            //                                    from f in birdfirerank
-            //                                    select new BirdThreatRanking
-            //                                    {
-            //                                        birdcount = b.count,
-            //                                        threatrate = f.rate,
-            //                                        speciesname = b.name,
-            //                                        status = b.status,
-            //                                        locality = b.city
-            //                                    }).AsNoTracking().OrderByDescending(x => x.birdcount).Take(() => 5);
-            ////Cape Barren goose
-            //viewmodel.bluePetrelRankings = (from b in birdranks
-            //                                where b.name == "Blue Petrel"
-            //                                join f in fireranks on b.city equals f.city into birdfirerank
-            //                                from f in birdfirerank
-            //                                select new BirdThreatRanking
-            //                                {
-            //                                    birdcount = b.count,
-            //                                    threatrate = f.rate,
-            //                                    speciesname = b.name,
-            //                                    status = b.status,
-            //                                    locality = b.city
-            //                                }).AsNoTracking().OrderByDescending(x => x.birdcount);
-            ////Crested Shrike-tit
-            //viewmodel.crestedShriketitRankings = (from b in birdranks
-            //                                where b.name == "Crested Shrike-tit"
-            //                                      join f in fireranks on b.city equals f.city into birdfirerank
-            //                                from f in birdfirerank
-            //                                select new BirdThreatRanking
-            //                                {
-            //                                    birdcount = b.count,
-            //                                    threatrate = f.rate,
-            //                                    speciesname = b.name,
-            //                                    status = b.status,
-            //                                    locality = b.city
-            //                                }).AsNoTracking().OrderByDescending(x => x.birdcount);
             //Curlew Sandpiper
             viewmodel.curlewSandpiperRankings = (from b in db.AvesEndangereds
                                                     where b.vernacularName == "Curlew Sandpiper"
@@ -772,22 +734,9 @@ namespace Biosalvus.Controllers
                                                         birdcount = g.Count(),
                                                         threatrate = g.Key.measurementID,
                                                         speciesname = g.Key.vernacularName,
-                                                        
                                                         locality = g.Key.verbatimLocality
                                                     }
                                                 ).OrderByDescending(x => x.birdcount);
-            //viewmodel.curlewSandpiperRankings = (from b in birdranks
-            //                                      where b.name == "Curlew Sandpiper"
-            //                                     join f in fireranks on b.city equals f.city into birdfirerank
-            //                                      from f in birdfirerank
-            //                                      select new BirdThreatRanking
-            //                                      {
-            //                                          birdcount = b.count,
-            //                                          threatrate = f.rate,
-            //                                          speciesname = b.name,
-            //                                          status = b.status,
-            //                                          locality = b.city
-            //                                      }).AsNoTracking().OrderByDescending(x => x.birdcount).Take(() => 5);
             //Eastern Bristlebird
             viewmodel.easternBristlebirdRankings = (from b in db.AvesEndangereds
                                                where b.vernacularName == "Eastern Bristlebird"
@@ -801,18 +750,6 @@ namespace Biosalvus.Controllers
                                                    locality = g.Key.verbatimLocality
                                                }
                                                 ).OrderByDescending(x => x.birdcount);
-            //viewmodel.easternBristlebirdRankings = (from b in birdranks
-            //                                     where b.name == "Eastern Bristlebird"
-            //                                        join f in fireranks on b.city equals f.city into birdfirerank
-            //                                     from f in birdfirerank
-            //                                     select new BirdThreatRanking
-            //                                     {
-            //                                         birdcount = b.count,
-            //                                         threatrate = f.rate,
-            //                                         speciesname = b.name,
-            //                                         status = b.status,
-            //                                         locality = b.city
-            //                                     }).AsNoTracking().OrderByDescending(x => x.birdcount).Take(() => 5);
             //Eastern curlew
             viewmodel.easternCurlewRankings = (from b in db.AvesEndangereds
                                                      where b.vernacularName == "Eastern curlew"
@@ -826,18 +763,7 @@ namespace Biosalvus.Controllers
                                                          locality = g.Key.verbatimLocality
                                                      }
                                                 ).OrderByDescending(x => x.birdcount);
-            //viewmodel.easternCurlewRankings = (from b in birdranks
-            //                                        where b.name == "Eastern curlew"
-            //                                   join f in fireranks on b.city equals f.city into birdfirerank
-            //                                        from f in birdfirerank
-            //                                        select new BirdThreatRanking
-            //                                        {
-            //                                            birdcount = b.count,
-            //                                            threatrate = f.rate,
-            //                                            speciesname = b.name,
-            //                                            status = b.status,
-            //                                            locality = b.city
-            //                                        }).AsNoTracking().OrderByDescending(x => x.birdcount).Take(() => 5);
+
             //Eastern Ground Parrot
             viewmodel.easternGroundParrotRankings = (from b in db.AvesEndangereds
                                                   where b.vernacularName == "Eastern Ground Parrot"
@@ -985,8 +911,7 @@ namespace Biosalvus.Controllers
                                              {
                                                  birdcount = g.Count(),
                                                  threatrate = g.Key.measurementID,
-                                                 speciesname = g.Key.vernacularName,
-                                                 
+                                                 speciesname = g.Key.vernacularName,                                               
                                                  locality = g.Key.verbatimLocality
                                              }
                                                 ).OrderByDescending(x => x.birdcount);
