@@ -8,7 +8,7 @@
     .legend .bar {
         height: 10px;
         width: 100%;
-        background: linear-gradient(to right, rgba(200,255,0,1), rgba(255,150,0,1));
+        background: linear-gradient(to right, rgba(255,150,0,1), rgba(255,150,0,1));
         border: 1px solid;
         margin-top: 5px;
     }
@@ -29,15 +29,13 @@
 
     .button {
         border-radius: 4px;
+        margin-bottom: 5px;
     }
 
         .button:hover {
             background-color: #4c956c;
             color: white;
         }
-
-    /*.birddetail {
-    }*/
 
     table td {
         border-bottom: 1px solid #000;
@@ -55,28 +53,26 @@
     </div>
 </header>
 <br />
-<br />
 <!--ROW 1-->
 <div class="row">
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-12">
         <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:600px;">
-            <h4><strong>Map</strong></h4>
-            <div class="row">
+            <h5><strong>Map</strong></h5>
+            <div class="row" style="margin:1px 1px 1px 1px;">
                 <div class="col-md-6 col-xs-6">
-                    <button class="button" id="endangeredbtn" style="padding:1px 1px 1px 1px;font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                    <button class="button" id="endangeredbtn" style="padding:3px 3px 3px 3px;font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Endangered
                     </button>
                 </div>
                 <div class="col-md-6 col-xs-6">
-                    <button class="button" id="critendangeredbtn" style="padding:1px 1px 1px 1px;font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                    <button class="button" id="critendangeredbtn" style="padding:3px 3px 3px 3px;font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
                         Critically Endangered
                     </button>
                 </div>  
             </div>
-            <br />
             <div id="map" style="height:450px;"></div> <!--This is the Map-->
             <div class="row" style="margin-top:10px;margin-bottom:10px;">
-                <div class="col-md-6 col-xs-6">Frequency of Feral Cats:</div>
+                <div class="col-md-6 col-xs-6" style="text-align:right;">Frequency of Feral Cats:</div>
                 <div class="col-md-6 col-xs-6">
                     <div id="legend" class="legend">
                         <div class="bar"></div>
@@ -88,11 +84,12 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-xs-3">
+    <!--COL 2-->
+    <div class="col-md-3 col-xs-12">
         <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:600px;height:600px;">
-            <h4><strong>Bird Details</strong></h4>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="padding:1px 1px 1px 1px;width:100%;height:50px;text-align:center;font-size:large;">
+            <h5><strong>Bird Details</strong></h5>
+            <div class="dropdown" style="margin:1px 1px 1px 1px;">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="padding:3px 3px 3px 3px;width:100%;height:50px;text-align:center;font-size:large;">
                     <span id="dropdowntitle">Select Specific Bird</span>
                     <span class="caret"></span>
                 </button>
@@ -111,15 +108,14 @@
                     <li id="spottedquailthrushlst" class="list">Spotted Quail-thrush</li>
                 </ul>
             </div>
-            <br />
             @*Eastern Bristlebird*@
             <div class="birddetail" id="easternbristlebird" style="display:none;">                
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <img class="img-responsive" src="~/Content/Images/Birds/eastern-bristlebird.jpg" alt="easternbristlebird" />
+                        <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/eastern-bristlebird.jpg" alt="easternbristlebird" />
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        The eastern bristlebird is a species of bird in the bristlebird family, Dasyornithidae. It is endemic to Australia. Its natural habitats are temperate forests, temperate shrubland, and temperate grassland. It is threatened by habitat loss.
+                        <p>The eastern bristlebird is a species of bird in the bristlebird family, Dasyornithidae. It is endemic to Australia. Its natural habitats are temperate forests, temperate shrubland, and temperate grassland. It is threatened by habitat loss.</p>                     
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <table class="table">
@@ -141,10 +137,10 @@
             <div class="birddetail" id="easterngroundparrot" style="display:none;">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <img class="img-responsive" src="~/Content/Images/Birds/eastern-ground-parrot.jpg" alt="easterngroundparrot" />
+                        <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/eastern-ground-parrot.jpg" alt="easterngroundparrot" />
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        The eastern ground parrot of Australia is one of only five ground-dwelling parrots in the world, the others being its closest relatives, the western ground parrot, the extremely rare night parrot, the somewhat closely related Antipodes parakeet, and the unrelated highly endangered kakapo from New Zealand.
+                        <p>The eastern ground parrot of Australia is one of only five ground-dwelling parrots in the world, the others being its closest relatives, the western ground parrot, the extremely rare night parrot, the somewhat closely related Antipodes parakeet, and the unrelated highly endangered kakapo from New Zealand.</p>              
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <table class="table">
@@ -153,7 +149,6 @@
                             {
                                 <tr class="birddata">
                                     <td class="birdcount">@Html.DisplayFor(modelitem => item.birdcount)</td>
-
                                     <td class="birdCity/Council">@Html.DisplayFor(modelitem => item.locality)</td>
                                     <td class="threatrate">@Html.DisplayFor(modelitem => item.threatrate)</td>
                                 </tr>
@@ -166,10 +161,10 @@
             <div class="birddetail" id="helmetedhoneyeater" style="display:none;">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <img class="img-responsive" src="~/Content/Images/Birds/helmeted-honeyeater.jpg" alt="helmetedhoneyeater" />
+                        <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/helmeted-honeyeater.jpg" alt="helmetedhoneyeater" />
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        The helmeted honeyeater is a passerine bird in the honeyeater family. It is a distinctive and critically endangered subspecies of the yellow-tufted honeyeater, that exists in the wild only as a tiny relict population in the Australian state of Victoria, in the Yellingbo Nature Conservation Reserve.
+                        <p>The helmeted honeyeater is a passerine bird in the honeyeater family. It is a distinctive and critically endangered subspecies of the yellow-tufted honeyeater, that exists in the wild only as a tiny relict population in the Australian state of Victoria, in the Yellingbo Nature Conservation Reserve.</p>                        
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <table class="table">
@@ -192,10 +187,10 @@
 
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/hooded-robin.jpg" alt="hoodedrobin" />
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/hooded-robin.jpg" alt="hoodedrobin" />
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The hooded robin is a small passerine bird native to Australia. Like many brightly coloured robins of the Petroicidae, it is sexually dimorphic; the male bearing distinctive black and white plumage, while the female is a nondescript grey-brown.
+                          <p>The hooded robin is a small passerine bird native to Australia. Like many brightly coloured robins of the Petroicidae, it is sexually dimorphic; the male bearing distinctive black and white plumage, while the female is a nondescript grey-brown.</p>                         
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -216,10 +211,10 @@
             <div class="birddetail" id="orangebelliedparrot" style="display:none;">
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/orange-bellied-parrot.jpg" alt="orangebelliedparrot" />
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/orange-bellied-parrot.jpg" alt="orangebelliedparrot" />
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The orange-bellied parrot is a small parrot endemic to southern Australia, and one of only three species of parrot that migrate. It was described by John Latham in 1790. A small parrot around 20 cm long, it exhibits sexual dimorphism.
+                          <p>The orange-bellied parrot is a small parrot endemic to southern Australia, and one of only three species of parrot that migrate. It was described by John Latham in 1790. A small parrot around 20 cm long, it exhibits sexual dimorphism.</p>                      
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -241,10 +236,10 @@
             <div class="birddetail" id="southernemuwren" style="display:none;">               
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/southern-emu-wren.jpg" alt="southernemuwren" />
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/southern-emu-wren.jpg" alt="southernemuwren" />
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The southern emu-wren is a species of bird in the Australasian wren family, Maluridae. It is endemic to Australia. Its natural habitats are temperate forests and Mediterranean-type shrubby vegetation.
+                          <p>The southern emu-wren is a species of bird in the Australasian wren family, Maluridae. It is endemic to Australia. Its natural habitats are temperate forests and Mediterranean-type shrubby vegetation.</p>                         
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -266,10 +261,10 @@
             <div class="birddetail" id="southerngiantpetrel" style="display:none;">            
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <img class="img-responsive" src="~/Content/Images/Birds/southern-giant-petrel.jpg" alt="southerngiantpetrel" />
+                        <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/southern-giant-petrel.jpg" alt="southerngiantpetrel" />
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        The southern giant petrel, also known as the Antarctic giant petrel, giant fulmar, stinker, and stinkpot, is a large seabird of the southern oceans. Its distribution overlaps broadly with the similar northern giant petrel, though it overall is centered slightly further south.
+                        <p>The southern giant petrel, also known as the Antarctic giant petrel, giant fulmar, stinker, and stinkpot, is a large seabird of the southern oceans. Its distribution overlaps broadly with the similar northern giant petrel, though it overall is centered slightly further south.</p>                      
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <table class="table">
@@ -290,10 +285,10 @@
             <div class="birddetail" id="spottedquailthrush" style="display:none;">                
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/spotted-quail-thrush.jpg" alt="spottedquailthrush" />
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/spotted-quail-thrush.jpg" alt="spottedquailthrush" />
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The spotted quail-thrush is a species of bird in the family Psophodidae. It is endemic to Australia. Its natural habitat is subtropical, tropical and temperate dry forest.
+                          <p>The spotted quail-thrush is a species of bird in the family Psophodidae. It is endemic to Australia. Its natural habitat is subtropical, tropical and temperate dry forest.</p>                         
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -314,10 +309,10 @@
             <div class="birddetail" id="swiftparrot" style="display:none;">                
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/swift-parrot.jpg" alt="swiftparrot" />                       
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/swift-parrot.jpg" alt="swiftparrot" />                       
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The swift parrot breeds in Tasmania and migrates north to south eastern Australia from Griffith-Warialda in New South Wales and west to Adelaide in the winter. It is related to the rosellas, with the feeding habits of a lorikeet. It is the only member in the genus Lathamus.
+                          <p>The swift parrot breeds in Tasmania and migrates north to south eastern Australia from Griffith-Warialda in New South Wales and west to Adelaide in the winter. It is related to the rosellas, with the feeding habits of a lorikeet. It is the only member in the genus Lathamus.</p>                         
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -339,10 +334,10 @@
             <div class="birddetail" id="yellowtuftedhoneyeater" style="display:none;">
                   <div class="row">
                       <div class="col-md-12 col-xs-12">
-                          <img class="img-responsive" src="~/Content/Images/Birds/yellow-tufted-honeyeater.jpg" alt="yellowtuftedhoneyeater" />
+                          <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/yellow-tufted-honeyeater.jpg" alt="yellowtuftedhoneyeater" />
                       </div>
                       <div class="col-md-12 col-xs-12">
-                          The yellow-tufted honeyeater is a passerine bird found in the south-east ranges of Australia. A predominantly black and yellow honeyeater, it is split into four subspecies.
+                          <p>The yellow-tufted honeyeater is a passerine bird found in the south-east ranges of Australia. A predominantly black and yellow honeyeater, it is split into four subspecies.</p>                         
                       </div>
                       <div class="col-md-12 col-xs-12">
                           <table class="table">
@@ -362,9 +357,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-xs-3">
+    <div class="col-md-3 col-xs-12">
         <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:600px;">
-            <h4><strong>Regions With The Most Feral Cats Spottings in Vic,Australia</strong></h4>
+            <h5><strong>Top 10 Regions of Feral Cats Spottings in Victoria, Australia</strong></h5>
             <p style="font-size:20px;font-weight:300;color:#555;font:inherit;line-height:1.58;letter-spacing:0.1px;">
                 In the last <strong>12 months</strong> in <strong>Victoria</strong>, the region with the most feral cat occurance was
                 <strong>East Gippsland</strong>, with <strong>239</strong> cat spottings, represeting <strong>40.22%</strong> of the total spottings detected.
@@ -388,21 +383,6 @@
     }
 </table>
 
-<!--Vulnerable Birds Table Data-->
-@*<table class="table" style="display:none">
-        @foreach (var item in Model.vulnerablebirds)
-        {
-            <tr class="vulnerablebirds">
-                <td class="vulnerablename">@Html.DisplayFor(modelItem => item.birdname)</td>
-                <td class="vulnerablescientific">@Html.DisplayFor(modelItem => item.scientificname)</td>
-                <td class="vulnerablelongitude">@Html.DisplayFor(modelItem => item.birdlongitude)</td>
-                <td class="vulnerablelatitude">@Html.DisplayFor(modelItem => item.birdlatitude)</td>
-                <td class="vulnerablestate">@Html.DisplayFor(modelItem => item.state)</td>
-                <td class="vulnerablestatus">@Html.DisplayFor(modelItem => item.status)</td>
-                <td class="vulnerablecatfood">@Html.DisplayFor(modelItem => item.catfood)</td>
-            </tr>
-        }
-    </table>*@
 <!--Critically Endangered Birds Table Data-->
 <table class="table" style="display:none">
     @foreach (var item in Model.critendangeredbirds)
@@ -540,28 +520,28 @@
                 data: [40.22, 8.55, 7.70, 7.21, 7.09, 7.09, 6.48, 5.62, 5.26, 4.76],
                 backgroundColor: [
                     'rgba(255,150,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)',
-                    'rgba(200,255,0,0.5)'
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)',
+                    'rgba(255,150,0,0.5)'
                 ],
                 borderColor: [
                     'rgba(255,150,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)',
-                    'rgba(200,255,0,1)'
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)',
+                    'rgba(255,150,0,1)'
                 ],
                 borderWidth: 1
             }]
