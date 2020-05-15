@@ -20,100 +20,6 @@ var critendangeredarray = [];
 //var vulnerable = false;
 var endangered = false;
 var critendangered = false;
-//// The first step is obtain all the latitude and longitude from the HTML
-//// jQuery selector for Aves Endangered
-//$(".avescoordinates").each(function () {
-//    var avesname = $(".avesname", this).text().trim();
-//    var aveslongitude = $(".aveslongitude", this).text().trim();
-//    var aveslatitude = $(".aveslatitude", this).text().trim();
-//    var avesstatus = $(".avesstatus", this).text().trim();
-//    var avesstate = $(".avesstate", this).text().trim();
-//    var catfood = $(".catfood", this).text().trim();
-//    // Create a point data structure to hold the values.
-//    var point = {
-//        "avesname": avesname,
-//        "aveslatitude": aveslatitude,
-//        "aveslongitude": aveslongitude,
-//        "avesstatus": avesstatus,
-//        "avesstate": avesstate,
-//        "catfood": catfood
-//    };
-//    // Push them all into an array.
-//    aves.push(point);
-//});
-////data from points
-//var avesdata = [];
-//for (i = 0; i < aves.length; i++) {
-//    var feature = {
-//        "type": "Feature",
-//        "properties": {
-//            "avesname": aves[i].avesname,
-//            "avesstatus": aves[i].avesstatus,
-//            "avesstate": aves[i].avesstate,
-//            "catfood": aves[i].catfood
-//            //"icon": "circle-15" //Point Type and Colour variations
-//        },
-//        "geometry": {
-//            "type": "Point",
-//            "coordinates": [aves[i].aveslongitude, aves[i].aveslatitude]
-//        }
-//    };
-//    avesdata.push(feature)
-//}
-////finaldata
-//var avesfinaldata = {
-//    "type": "FeatureCollection",
-//    "features": avesdata
-//}
-//GATHER BIRDS LOCATION DATA
-
-////Vulnerable Birds
-//$(".vulnerablebirds").each(function () {
-//    var vulnerablename = $(".vulnerablename", this).text().trim();
-//    var vulnerablescientific = $(".vulnerablescientific", this).text().trim();
-//    var vulnerablelongitude = $(".vulnerablelongitude", this).text().trim();
-//    var vulnerablelatitude = $(".vulnerablelatitude", this).text().trim();
-//    var vulnerablestate = $(".vulnerablestate", this).text().trim();
-//    var vulnerablestatus = $(".vulnerablestatus", this).text().trim();
-//    var vulnerablecatfood = $(".vulnerablecatfood", this).text().trim();
-//    // Create a point data structure to hold the values.
-//    var point = {
-//        "vulnerablename": vulnerablename,
-//        "vulnerablescientific": vulnerablescientific,
-//        "vulnerablelongitude": vulnerablelongitude,
-//        "vulnerablelatitude": vulnerablelatitude,
-//        "vulnerablestate": vulnerablestate,
-//        "vulnerablestatus": vulnerablestatus,
-//        "vulnerablecatfood": vulnerablecatfood
-//    };
-//    // Push them all into an array.
-//    vulnerablearray.push(point);
-//});
-////data from points
-//var vulnerabledata = [];
-//for (i = 0; i < vulnerablearray.length; i++) {
-//    var feature = {
-//        "type": "Feature",
-//        "properties": {
-//            "vulnerablename": vulnerablearray[i].vulnerablename,
-//            "vulnerablescientific": vulnerablearray[i].vulnerablescientific,
-//            "vulnerablestate": vulnerablearray[i].vulnerablestate,
-//            "vulnerablestatus": vulnerablearray[i].vulnerablestatus,
-//            "vulnerablecatfood": vulnerablearray[i].vulnerablecatfood,
-//            "icon": "circle-15"
-//        },
-//        "geometry": {
-//            "type": "Point",
-//            "coordinates": [vulnerablearray[i].vulnerablelongitude, vulnerablearray[i].vulnerablelatitude]
-//        }
-//    };
-//    vulnerabledata.push(feature)
-//}
-////finaldata
-//var vulnerablefinaldata = {
-//    "type": "FeatureCollection",
-//    "features": vulnerabledata
-//}
 
 
 //Critically Endangered Birds
@@ -303,10 +209,10 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', //light map
     zoom: 5,
-    maxZoom: 7,
+    maxZoom: 8,
     minZoom: 5,
-    center: [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
-    //center: [144.946457, -37.840935] //Victoria, AUS
+    //center: [endangeredarray[i].endangeredlongitude, endangeredarray[i].endangeredlatitude]
+    center: [144.946457, -37.840935] //Victoria, AUS
 });
 map.on('load', function () {
     //// Add a GeoJSON source containing place coordinates and information for Aves.
@@ -520,11 +426,11 @@ map.on('load', function () {
                     ['linear'],
                     ['heatmap-density'],
                     0,
-                    'rgba(75,255,0,0)',
+                    'rgba(255,255,255,0)',
                     0.1,
-                    'rgba(100,255,0,0.5)',
+                    'rgba(255,255,255,0.5)',
                     0.2,
-                    'rgba(125,255,0,0.5)',
+                    'rgba(255,255,255,0.5)',
                     0.3,
                     'rgba(150,255,0,0.5)',
                     0.4,
@@ -568,21 +474,6 @@ map.on('load', function () {
     );
 
     //BUTTONS INTERACTIONS
-    //document.getElementById("vulnerablebtn").addEventListener("click", function () {
-    //    resetStatusBtnColor();
-    //    document.getElementById("vulnerablebtn").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
-    //    hideBirds();
-    //    setAllStatusFlagOFF();
-    //    vulnerable = true;
-    //    map.setLayoutProperty(
-    //        'vulnerablebirds',
-    //        'visibility',
-    //        'visible'
-    //    );
-    //    showVulnerableList();
-    //    hideCritEndangeredList();
-    //    hideEndangeredList();
-    //});
     document.getElementById("endangeredbtn").addEventListener("click", function () {
         resetStatusBtnColor();
         document.getElementById("endangeredbtn").style.backgroundColor = 'rgba(214, 140, 69, 1)'; //Button Highlight Toggle
@@ -622,18 +513,6 @@ function resetStatusBtnColor() {
 }
 
 //HIDE AND SHOW BIRDS LISTS
-//var vulnerablelist = ['vulnerableheader', 'bartailedgodwitlst', 'bassianthrushlst', 'blackbrowedalbatrosslst', 'bluepetrellst'
-//    , 'capebarrengooselst', 'crestedshriketitlst', 'fairyternlst', 'goldenwhistlerlst', 'greenrosellalst'
-//    , 'horsfieldbushlarklst', 'malleefowllst', 'northerngiantpetrellst', 'piedcurrawonglst', 'redloredwhisterlst'
-//    , 'regentparrotlst', 'shyalbatrosslst', 'spinetailedswiftlst', 'superbparrotlst', 'wanderingalbatrosslst'
-//    , 'whitewingedfairywrenlst', 'nalst'];
-//function hideVulnerableList() {
-//    for (i = 0; i < vulnerablelist.length; i++) {
-//        if (document.getElementById(vulnerablelist[i]) != null) {
-//            document.getElementById(vulnerablelist[i]).style.display = "none";
-//        };    
-//    };
-//};
 function showVulnerableList() {
     for (i = 0; i < vulnerablelist.length; i++) {
         if (document.getElementById(vulnerablelist[i]) != null) {
@@ -716,11 +595,6 @@ function hideBirds() {
         'visibility',
         'none'
     );
-    //map.setLayoutProperty(
-    //    'vulnerablebirds',
-    //    'visibility',
-    //    'none'
-    //);
 }
 
 //sets all status boolean flag to False
@@ -767,101 +641,6 @@ map.on('mouseleave', 'critendangeredbirds', function () {
     map.getCanvas().style.cursor = '';
 });
 
-//map.on('click', 'vulnerablebirds', function (e) {
-//    var name = e.features[0].properties.vulnerablename;
-//    var coordinates = e.features[0].geometry.coordinates.slice();
-//    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-//        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-//    }
-//    new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
-//});
-//// Change the cursor to a pointer when the mouse is over the vulnerablebirds layer.
-//map.on('mouseenter', 'vulnerablebirds', function () {
-//    map.getCanvas().style.cursor = 'pointer';
-//});
-//// Change it back to a pointer when it leaves.
-//map.on('mouseleave', 'vulnerablebirds', function () {
-//    map.getCanvas().style.cursor = '';
-//});
-
-//map.on('mousemove', 'airport', function (e) {
-//    // Change the cursor style as a UI indicator.
-//    map.getCanvas().style.cursor = 'pointer';
-
-//    // Populate the popup and set its coordinates based on the feature.
-//    var feature = e.features[0];
-//    popup
-//        .setLngLat(feature.geometry.coordinates)
-//        .setText(
-//            feature.properties.name +
-//            ' (' +
-//            feature.properties.abbrev +
-//            ')'
-//        )
-//        .addTo(map);
-//});
-
-//map.on('mouseleave', 'airport', function () {
-//    map.getCanvas().style.cursor = '';
-//    popup.remove();
-//});
 
 
 
-////CHART.JS GRAPH
-//var birdcityarray = [];
-//var birdcitykey = [];
-//var birdcitydata = [];
-//$(".birddata").each(function () {
-//    var i = 1;
-//    var birdcity = $(".birdcity", this).text().trim();
-//    var threatrate = $(".threatrate", this).text().trim();
-//    var key = {
-//        "birdcity": i + ". " + birdcity
-//    };
-//    var data = {
-//        "threatrate": threatrate
-//    };
-//    birdcitykey.push(key);
-//    birdcitydata.push(data);
-//    i++;
-//});
-
-//var barChartData = {
-//    datakeys: birdcitykey,
-//    labels: birdcitykey,
-//    datasets: [{
-//        data: birdcitydata, //Initial Value
-//        backgroundColor: [
-//            'rgba(255, 99, 132, 0.2)',
-//            'rgba(54, 162, 235, 0.2)',
-//            'rgba(255, 206, 86, 0.2)',
-//            'rgba(75, 192, 192, 0.2)',
-//            'rgba(153, 102, 255, 0.2)',
-//            'rgba(255, 159, 64, 0.2)'
-//        ],
-//        borderColor: [
-//            'rgba(255, 99, 132, 1)',
-//            'rgba(54, 162, 235, 1)',
-//            'rgba(255, 206, 86, 1)',
-//            'rgba(75, 192, 192, 1)',
-//            'rgba(153, 102, 255, 1)',
-//            'rgba(255, 159, 64, 1)'
-//        ],
-//        borderWidth: 1
-//    }]
-//};
-//var ctx = document.getElementById('birdRankCanvas').getContext('2d');
-//var groupChart = new Chart(ctx, {
-//    type: 'bar',
-//    data: barChartData,
-//    options: {
-//        scales: {
-//            yAxes: [{
-//                ticks: {
-//                    beginAtZero: true
-//                }
-//            }]
-//        }
-//    }
-//});

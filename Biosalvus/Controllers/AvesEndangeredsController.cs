@@ -540,7 +540,7 @@ namespace Biosalvus.Controllers
                                                  //catfood = r.CatFood
                                              });
             viewmodel.firelist = (from r in db.FireDatas
-                                  where (r.acq_date >= cutoffdate && r.satellite == "Terra" && r.daynight == "D")
+                                  where (r.acq_date >= cutoffdate && r.satellite == "Terra")
                                   select new FireRecords
                                   {
                                       firelatitude = r.latitude,
