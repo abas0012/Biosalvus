@@ -482,8 +482,9 @@ map.on('load', function () {
         resetStateFilter();
         resetCountInitialValue();
         resetRankingValue();
-        document.getElementById("speciesgroupChart").style.display = "none"; //hide Species Grouping Chart
+        //document.getElementById("speciesgroupChart").style.display = "none"; //hide Species Grouping Chart
         document.getElementById("speciesgroupTable").style.display = "none"; //hide Species Grouping Table
+        document.getElementById("starttable").style.display = "none";
         $('#statefilter').html('');
         $('#statusfilter').html('');
         $('#groupfilter').html('');
@@ -1206,6 +1207,7 @@ document.getElementById("groupChart").onclick = function (evt) {
             $('#groupfilter').html('Others');
             break;
     }
+    document.getElementById("starttable").style.display = "none";
     displayAllTableRow("speciesbygroupings"); //Refresh to show all rows in Table
     dynamicTable();//Dynamically update table display based on State, Status and Group Selected
 }

@@ -38,9 +38,11 @@
             color: white;
         }
 
-        table td {
-            border-bottom: 1px solid #000;
-        }
+    table td {
+        border-bottom: 1px solid #000;
+        font-size: 11px;
+        text-align:center;
+    }
 </style>
 <header class="section background-dark">
     <div class="line">
@@ -55,103 +57,95 @@
 </header>
 <div class="row">
     <div class="col-lg-4 col-md-4 col-xs-12">
-        <blockquote class="margin-top-bottom-20">
-            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">State: <span id="statefilter"></span></h3>
+        <blockquote class="margin-top-bottom-10">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-10">State: <span id="statefilter"></span></h3>
         </blockquote>
     </div>
     <div class="col-lg-4 col-md-4 col-xs-12">
-        <blockquote class="margin-top-bottom-20">
-            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">Status: <span id="statusfilter"></span></h3>
+        <blockquote class="margin-top-bottom-10">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-10">Status: <span id="statusfilter"></span></h3>
         </blockquote>
     </div>
     <div class="col-lg-4 col-md-4 col-xs-12">
-        <blockquote class="margin-top-bottom-20">
-            <h3 class="text-size-20 text-line-height-1 margin-bottom-15">Grouping: <span id="groupfilter"></span></h3>
+        <blockquote class="margin-top-bottom-10">
+            <h3 class="text-size-20 text-line-height-1 margin-bottom-10">Grouping: <span id="groupfilter"></span></h3>
         </blockquote>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-6 col-xs-12">
-        <strong>Select States on Map</strong>
-        <div id="species-map" style="height:500px;"></div> <!--This is the Map-->
+        <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:700px;">
+            <div class="row">
+                <div class="col-md-6 col-xs-6"><h5><strong>Map</strong></h5></div>
+                <div class="col-md-6 col-xs-6">
+                    <!--CLEAR ALL BUTTON-->
+                        <button class="button" id="refreshbtn" style="width:100%;height:100%;color:white;background-color:#2c6e49;text-align:center;">
+                            Clear Selection
+                        </button>
+                </div>
+            </div>          
+            <div id="species-map" style="height:500px;"></div> <!--This is the Map-->
+            <strong>State Count:</strong>
+            <div class="row">     
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank1" style="font-size:large;margin-bottom:2px;">ACT</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank2" style="font-size:large;margin-bottom:2px;">NSW</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank3" style="font-size:large;margin-bottom:2px;">VIC</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank4" style="font-size:large;margin-bottom:2px;">QLD</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank5" style="font-size:large;margin-bottom:2px;">SA </p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank6" style="font-size:large;margin-bottom:2px;">NT </p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank7" style="font-size:large;margin-bottom:2px;">WA </p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank8" style="font-size:large;margin-bottom:2px;">TAS</p></div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-xs-12">
-        <strong>Select Buttons to display Grouping Statistics</strong>
-        <div class="row">
-            <div class="col-md-12 col-xs-12">
-                <div style="border: 2px solid;border-color: lightgrey; box-shadow: 1px 1px;margin:1px 1px 1px 1px;padding-right:0px;padding-left:0px;">
+    <!--COL 2-->
+    <div class="col-md-3 col-xs-12">
+        <div>
+            <div class="row">       
+                <div style="margin-bottom:5px;padding:15px 15px 15px 15px;background-color:white;height:250px;">
+                    <div class="col-md-12 col-xs-12"><strong>Status Count:</strong></div>
                     <div class="col-md-6 col-xs-6" style="text-align:center;">
-                        <button class="button" id="vulnerablebutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                        <button class="button" id="vulnerablebutton" style="font-size:small;width:100%;height:45px;color:white;background-color:#2c6e49;">
                             Vulnerable
                         </button>
-                        <span id="vulnerablecnt" style="text-align:center;font-size:large;"><strong>486</strong></span>
                     </div>
+                    <div class="col-md-6 col-xs-6"><p id="vulnerablecnt" style="text-align:center;font-size:x-large;height:45px;">486</p></div>
                     <div class="col-md-6 col-xs-6" style="text-align:center;">
-                        <button class="button" id="conservationbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                        <button class="button" id="conservationbutton" style="font-size:small;width:100%;height:45px;color:white;background-color:#2c6e49;">
                             Conservation Dependent
                         </button>
-                        <span id="conservationcnt" style="text-align:center;font-size:large;"><strong>28</strong></span>
                     </div>
+                    <div class="col-md-6 col-xs-6"><p id="conservationcnt" style="text-align:center;font-size:x-large;height:45px;">28</p></div>
                     <div class="col-md-6 col-xs-6" style="text-align:center;">
-                        <button class="button" id="endangeredbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                        <button class="button" id="endangeredbutton" style="font-size:small;width:100%;height:45px;color:white;background-color:#2c6e49;">
                             Endangered
                         </button>
-                        <span id="endangeredcnt" style="text-align:center;font-size:large;"><strong>312</strong></span>
                     </div>
+                    <div class="col-md-6 col-xs-6"><p id="endangeredcnt" style="text-align:center;font-size:x-large;height:45px;">312</p></div>
                     <div class="col-md-6 col-xs-6" style="text-align:center;">
-                        <button class="button" id="critendangeredbutton" style="font-size:large;width:100%;height:50px;color:white;background-color:#2c6e49;">
+                        <button class="button" id="critendangeredbutton" style="font-size:small;width:100%;height:45px;color:white;background-color:#2c6e49;">
                             Critically Endangered
                         </button>
-                        <span id="critendangeredncnt" style="text-align:center;font-size:large;"><strong>136</strong></span>
                     </div>
-                    <div class="col-md-4 col-xs-4" style="display:none;">
-                        <button id="wildextinctbutton" style="width: 100%;height: 70px;color:white;background-color:darkgrey;">
-                            Extinct in the wild
-                            <span id="wildextinctcnt">1</span>
-                        </button>
-                    </div>
-                    <div class="col-md-4 col-xs-4" style="display:none;">
-                        <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
-                            Extinct
-                            <span id="extinctcnt">95</span>
-                        </button>
-                    </div>
-                </div>                
-            </div>
-            <div class="col-lg-12 col-md-12 col-xs-12" style="display:block;height:300px;">
-                <div style="border: 2px solid;border-color: lightgrey; box-shadow: 1px 1px;margin:1px 1px 1px 1px;padding-right:0px;padding-left:0px;">
-                    <strong>Species Count per State:</strong>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank1" style="font-size:x-large;margin-bottom:40px;">ACT</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank2" style="font-size:x-large;margin-bottom:40px;">NSW</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank3" style="font-size:x-large;margin-bottom:40px;">VIC</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank4" style="font-size:x-large;margin-bottom:40px;">QLD</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank5" style="font-size:x-large;margin-bottom:40px;">SA</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank6" style="font-size:x-large;margin-bottom:40px;">NT</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank7" style="font-size:x-large;margin-bottom:40px;">WA</p></div>
-                    <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank8" style="font-size:x-large;margin-bottom:40px;">TAS</p></div>
+                    <div class="col-md-6 col-xs-6"><p id="critendangeredncnt" style="text-align:center;font-size:x-large;height:45px;">136</p></div>
                 </div>
-            </div>
-            <!--CLEAR ALL BUTTON-->
-            <div class="col-md-12 col-xs-12">
-                <button class="button" id="refreshbtn" style="width:45%;height:50px;color:white;background-color:#2c6e49;text-align:center;">
-                    Clear Selection
-                </button>
-            </div>
+                <div id="speciesgroupChart" class="col-md-12 col-xs-12" style="margin-top:5px;padding:15px 15px 15px 15px;background-color:white;height:440px;">
+                    <div>
+                        <strong>Click on Graph for more details</strong>
+                        <canvas id="groupChart" width="280" height="280"></canvas>
+                    </div>
+                </div>
+            </div>       
         </div>
     </div>
-</div>
-<div id="speciesgrouping" class="row">
-    <div style="border: 2px solid;border-color: lightgrey; box-shadow: 1px 1px;margin:1px 1px 1px 1px;padding-right:0px;padding-left:0px;">
-        <div id="speciesgroupChart" class="col-md-3 col-xs-3" style="height:300px;display:none;">
-            <strong>Click on Bar for more details</strong>
-            <canvas id="groupChart" width="300" height="300"></canvas>
-        </div>
-        <div id="speciesgroupTable" class="col-md-9 col-xs-9" style="height:400px;display:none;">
-            <strong>Grouping Details Table</strong>
-            <div id="speciesbygroupings" class="row">
+    <!--COL 3-->
+    <div class="col-md-3 col-xs-12">
+        <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:700px;">
+            <div class="row">    
                 <div class="col-md-12 col-xs-12">
-                    <table class="table">
+                    <strong>Grouping Details Table</strong>
+                    <table id="starttable" class="table">
                         <thead>
                             <tr>
                                 <th style="width:25%;">
@@ -170,32 +164,72 @@
                         </thead>
                     </table>
                 </div>
-                <div class="col-md-12 col-xs-12" style="overflow:scroll;height:400px;">
-                    <table>
-                        <tbody>
-                            @foreach (var item in Model.speciesbygroupings)
-                            {
-                                <tr class="speciesbygroupings">
-                                    <td class="speciesname" style="width:25%;">
-                                        @Html.DisplayFor(modelItem => item.CommonName)
-                                    </td>
-                                    <td class="speciesstatus" style="width:25%;">
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td class="speciesstate" style="width:25%;">
-                                        @Html.DisplayFor(modelItem => item.StateCode)
-                                    </td>
-                                    <td class="speciesgrouping" style="width:25%;">
-                                        @Html.DisplayFor(modelItem => item.Grouping)
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                <div id="speciesgroupTable" class="col-md-12 col-xs-12" style="height:600px;display:none;">
+                    <div id="speciesbygroupings" class="row">
+                        <div class="col-md-12 col-xs-12" style="overflow:scroll;height:600px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:25%;">
+                                            Name
+                                        </th>
+                                        <th style="width:25%;">
+                                            Status
+                                        </th>
+                                        <th style="width:25%;">
+                                            State
+                                        </th>
+                                        <th style="width:25%;">
+                                            Group
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table>
+                                <tbody>
+                                    @foreach (var item in Model.speciesbygroupings)
+                                    {
+                                        <tr class="speciesbygroupings">
+                                            <td class="speciesname" style="width:25%;">
+                                                @Html.DisplayFor(modelItem => item.CommonName)
+                                            </td>
+                                            <td class="speciesstatus" style="width:25%;">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td class="speciesstate" style="width:25%;">
+                                                @Html.DisplayFor(modelItem => item.StateCode)
+                                            </td>
+                                            <td class="speciesgrouping" style="width:25%;">
+                                                @Html.DisplayFor(modelItem => item.Grouping)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div style="border: 2px solid;border-color: lightgrey; box-shadow: 1px 1px;margin:1px 1px 1px 1px;padding-right:0px;padding-left:0px;">
+            <div class="col-md-4 col-xs-4" style="display:none;">
+                <button id="wildextinctbutton" style="width: 100%;height: 100%;color:white;background-color:darkgrey;">
+                    Extinct in the wild
+                    <span id="wildextinctcnt">1</span>
+                </button>
+            </div>
+            <div class="col-md-4 col-xs-4" style="display:none;">
+                <button id="extinctbutton" style="width: 100%;height: 70px;color:white;background-color:lightgrey;">
+                    Extinct
+                    <span id="extinctcnt">95</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 <br />
 <br />
@@ -203,7 +237,7 @@
 <br />
 <br />
 <!--DATA SOURCE DESCRIPTION-->
-<div>
+<div style="font-size:smaller;">
     <strong>Data Source Reference</strong>
     <ul>
         <li>
