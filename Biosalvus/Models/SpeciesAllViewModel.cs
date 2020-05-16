@@ -17,6 +17,8 @@ namespace Biosalvus.Models
        public IEnumerable<SpeciesCountExtinctInWild> speciescountextinctinwild{ get; set; }
        public IEnumerable<SpeciesCountByGrouping> speciescountbygroupings { get; set; }
        public IEnumerable<SpeciesByGrouping> speciesbygroupings { get; set; } 
+       public IEnumerable<GroupingByState> groupingByStates { get; set; }
+       public IEnumerable<GroupingByStatus> groupingByStatuses { get; set; }
     }
 
     public class SpeciesCountGroupedStatus
@@ -76,6 +78,21 @@ namespace Biosalvus.Models
         public string Status { get; set; }
         public string Grouping { get; set; }
     }
+
+    public class GroupingByState
+    {
+        public int TotalCount { get; set; }
+        public string StateCode { get; set; }
+        public string Grouping { get; set; }
+    }
+
+    public class GroupingByStatus
+    {
+        public int TotalCount { get; set; }
+        public string Status { get; set; }
+        public string Grouping { get; set; }
+    }
+
     public class SpeciesByGrouping
     {
         public string CommonName { get; set; }

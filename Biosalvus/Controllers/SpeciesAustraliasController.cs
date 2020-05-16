@@ -40,7 +40,7 @@ namespace Biosalvus.Controllers
                                                   Status = groupedbyStatus.Key.Threatened_status
                                               });
             viewModel.speciescountbystatestatus = (from r in db.SpeciesAustralias
-                                                   where (r.Present_ == present && r.Kingdom == animalia)
+                                                   where (r.Present_ == present && r.Kingdom == animalia && r.Threatened_status != extinct && r.Threatened_status != extinctinthewild)
                                                    group r by new { r.Threatened_status, r.StateCode } into groupedbyStatus
                                                    select new SpeciesCountGroupedStateStatus
                                                    {
@@ -111,6 +111,24 @@ namespace Biosalvus.Controllers
                                                      StateCode = groupedCounts.Key.StateCode,
                                                      Status = groupedCounts.Key.Threatened_status,
                                                      Grouping = groupedCounts.Key.Grouping
+                                                 }).OrderBy(x => x.Grouping);
+            viewModel.groupingByStates = (from r in db.SpeciesAustralias
+                                                 where (r.Present_ == present && r.Kingdom == animalia)
+                                                 group r by new { r.StateCode, r.Grouping } into g
+                                                 select new GroupingByState
+                                                 {
+                                                     TotalCount = g.Count(x => x.Threatened_status != null),
+                                                     StateCode = g.Key.StateCode,
+                                                     Grouping = g.Key.Grouping
+                                                 }).OrderBy(x => x.Grouping);
+            viewModel.groupingByStatuses = (from r in db.SpeciesAustralias
+                                                 where (r.Present_ == present && r.Kingdom == animalia)
+                                                 group r by new { r.Threatened_status, r.Grouping } into g
+                                                 select new GroupingByStatus
+                                                 {
+                                                     TotalCount = g.Count(x => x.Threatened_status != null),
+                                                     Status = g.Key.Threatened_status,
+                                                     Grouping = g.Key.Grouping
                                                  }).OrderBy(x => x.Grouping);
             viewModel.speciesbygroupings = (from r in db.SpeciesAustralias
                                             where (r.Present_ == present && r.Kingdom == animalia)
