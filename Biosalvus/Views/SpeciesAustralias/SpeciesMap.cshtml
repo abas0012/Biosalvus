@@ -41,7 +41,7 @@
     table td {
         border-bottom: 1px solid #000;
         font-size: 11px;
-        text-align:center;
+        text-align: center;
     }
 </style>
 <header class="section background-dark">
@@ -49,9 +49,9 @@
         <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
         <p class="margin-bottom-0 text-size-16">
             Explore our Dashboard to view the most current status of threatened Australian Wildlife.<br>
-            The Map bellow represent Australia's 5 States and 2 Territories to select from.<br>
+            Below represent Australia's 5 States and 2 Territories to select from.<br>
             You can start by selecting either the State or Threatened Status.<br>
-            Chart Bar can be selected to further explore each animal groupings.
+            Bar Chart can be selected to further explore each animal groupings.
         </p>
     </div>
 </header>
@@ -80,29 +80,29 @@
                 <div class="col-md-6 col-xs-6"><h5><strong>Map</strong></h5></div>
                 <div class="col-md-6 col-xs-6">
                     <!--CLEAR ALL BUTTON-->
-                        <button class="button" id="refreshbtn" style="width:100%;height:100%;color:white;background-color:#2c6e49;text-align:center;">
-                            Clear Selection
-                        </button>
+                    <button class="button" id="refreshbtn" style="width:100%;height:100%;color:white;background-color:#2c6e49;text-align:center;">
+                        Clear Selection
+                    </button>
                 </div>
-            </div>          
+            </div>
             <div id="species-map" style="height:500px;"></div> <!--This is the Map-->
             <strong>State Count:</strong>
-            <div class="row">     
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank1" style="font-size:large;margin-bottom:2px;">ACT</p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank2" style="font-size:large;margin-bottom:2px;">NSW</p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank3" style="font-size:large;margin-bottom:2px;">VIC</p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank4" style="font-size:large;margin-bottom:2px;">QLD</p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank5" style="font-size:large;margin-bottom:2px;">SA </p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank6" style="font-size:large;margin-bottom:2px;">NT </p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank7" style="font-size:large;margin-bottom:2px;">WA </p></div>
-                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank8" style="font-size:large;margin-bottom:2px;">TAS</p></div>
+            <div class="row">
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank1" style="font-size:large;margin-bottom:2px;">ACT: 28</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank2" style="font-size:large;margin-bottom:2px;">NSW: 193</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank3" style="font-size:large;margin-bottom:2px;">VIC: 128</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank4" style="font-size:large;margin-bottom:2px;">QLD: 189</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank5" style="font-size:large;margin-bottom:2px;">SA: 144</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank6" style="font-size:large;margin-bottom:2px;">NT: 95</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank7" style="font-size:large;margin-bottom:2px;">WA: 168</p></div>
+                <div class="col-md-6 col-xs-6" style="text-align:center;"><p id="rank8" style="font-size:large;margin-bottom:2px;">TAS: 113</p></div>
             </div>
         </div>
     </div>
     <!--COL 2-->
     <div class="col-md-3 col-xs-12">
         <div>
-            <div class="row">       
+            <div class="row">
                 <div style="margin-bottom:5px;padding:15px 15px 15px 15px;background-color:white;height:250px;">
                     <div class="col-md-12 col-xs-12"><strong>Status Count:</strong></div>
                     <div class="col-md-6 col-xs-6" style="text-align:center;">
@@ -136,55 +136,55 @@
                         <canvas id="groupChart" width="280" height="280"></canvas>
                     </div>
                 </div>
-            </div>       
+            </div>
         </div>
     </div>
     <!--COL 3-->
     <div class="col-md-3 col-xs-12">
         <div style="margin:1px 1px 1px 1px;padding:15px 15px 15px 15px;background-color:white;height:700px;">
-            <div class="row">    
+            <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <strong>Grouping Details Table</strong>
-                    <table id="starttable" class="table">
-                        <thead>
-                            <tr>
-                                <th style="width:25%;">
-                                    Name
-                                </th>
-                                <th style="width:25%;">
-                                    Status
-                                </th>
-                                <th style="width:25%;">
-                                    State
-                                </th>
-                                <th style="width:25%;">
-                                    Group
-                                </th>
-                            </tr>
-                        </thead>
-                    </table>
+                    @*<table id="starttable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:25%;">
+                                        Name
+                                    </th>
+                                    <th style="width:25%;">
+                                        Status
+                                    </th>
+                                    <th style="width:25%;">
+                                        State
+                                    </th>
+                                    <th style="width:25%;">
+                                        Group
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>*@
                 </div>
-                <div id="speciesgroupTable" class="col-md-12 col-xs-12" style="height:600px;display:none;">
+                <div id="speciesgroupTable" class="col-md-12 col-xs-12" style="height:700px;display:block;">
                     <div id="speciesbygroupings" class="row">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:25%;">
+                                        Name
+                                    </th>
+                                    <th style="width:25%;">
+                                        Status
+                                    </th>
+                                    <th style="width:25%;">
+                                        State
+                                    </th>
+                                    <th style="width:25%;">
+                                        Group
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                         <div class="col-md-12 col-xs-12" style="overflow:scroll;height:600px;">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:25%;">
-                                            Name
-                                        </th>
-                                        <th style="width:25%;">
-                                            Status
-                                        </th>
-                                        <th style="width:25%;">
-                                            State
-                                        </th>
-                                        <th style="width:25%;">
-                                            Group
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
                             <table>
                                 <tbody>
                                     @foreach (var item in Model.speciesbygroupings)
@@ -283,7 +283,40 @@
     </div>
 
 </div>
-
+<!--Grounping Count by State-->
+@*<table id="groupingcountbystate" class="table" style="display:none;">
+    @foreach (var item in Model.speciescountbygroupings)
+    {
+        <tr class="groupingcountbystate">
+            <td class="statetotalcount">
+                @Html.DisplayFor(modelItem => item.TotalCount)
+            </td>
+            <td class="groupingcountstate">
+                @Html.DisplayFor(modelItem => item.StateCode)
+            </td>
+            <td class="stategroup">
+                @Html.DisplayFor(modelItem => item.Grouping)
+            </td>
+        </tr>
+    }
+</table>*@
+<!--Grounping Count by Status-->
+@*<table id="groupingcountbystatus" class="table" style="display:none;">
+    @foreach (var item in Model.speciescountbygroupings)
+    {
+        <tr class="groupingcountbystatus">
+            <td class="statustotalcount">
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td class="groupingcountstatus">
+                @Html.DisplayFor(modelItem => item.StateCode)
+            </td>
+            <td class="statusgroup">
+                @Html.DisplayFor(modelItem => item.Grouping)
+            </td>
+        </tr>
+    }
+</table>*@
 
 <div class="row">
     <div class="col-md-6">

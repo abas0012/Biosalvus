@@ -410,6 +410,8 @@
     <Content Include="Content\Images\Birds\yellow-tailed-black-cockatoo.jpg" />
     <Content Include="Content\Images\Birds\yellow-tufted-honeyeater.jpg" />
     <Content Include="Content\Images\burning-antler.jpg" />
+    <Content Include="Content\Images\burning-banner-1.jpg" />
+    <Content Include="Content\Images\burning-banner-2.jpg" />
     <Content Include="Content\Images\bushfire1.jpg" />
     <Content Include="Content\Images\cat-and-hummingbird.jpg" />
     <Content Include="Content\Images\cat-and-mouse.jpg" />
@@ -423,6 +425,7 @@
     <Content Include="Content\Images\kingfisher.jpg" />
     <Content Include="Content\Images\plant-in-hand.jpg" />
     <Content Include="Content\Images\tornado.jpg" />
+    <Content Include="Content\Images\wild-cat-banner-1.jpg" />
     <Content Include="Content\Images\wildfire.jpg" />
     <Content Include="Content\template-style.css" />
     <Content Include="favicon.ico" />

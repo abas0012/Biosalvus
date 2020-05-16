@@ -8,7 +8,7 @@
     .legend .bar {
         height: 10px;
         width: 100%;
-        background: linear-gradient(to right, rgba(255,150,0,1), rgba(255,150,0,1));
+        background: linear-gradient(to right, rgba(255,255,0,0.5), rgba(255,150,0,0.5));
         border: 1px solid;
         margin-top: 5px;
     }
@@ -42,15 +42,17 @@
         font-size:12.5px;
     }
 </style>
-<header class="section background-dark">
-    <div class="line">
-        <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
-        <p class="margin-bottom-0 text-size-16">
-            Explore our Dashboard to view the Threatened Birds vs. Feral Cats occurances.<br>
-            You can start by selecting either the Threatened Status of the birds.<br>
-            Distinct Birds details are selectable from the dropdown.
-        </p>
-    </div>
+<header style="padding:3rem 5.25rem;">
+    <div style="background-image:url(../Content/Images/wild-cat-banner-1.jpg);height:245px;width:100%;background-position-x:center;background-repeat:no-repeat;background-size:cover;">
+        <div class="line">
+            <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
+            <p class="margin-bottom-0 text-size-16" style="color:white;">
+                Explore our Dashboard to view the Threatened Birds vs. Feral Cats occurances.<br>
+                You can start by selecting either the Threatened Status of the birds.<br>
+                Distinct Birds details are selectable from the dropdown.
+            </p>
+        </div>
+    </div>  
 </header>
 <br />
 <!--ROW 1-->
@@ -90,7 +92,7 @@
             <h5><strong>Bird Details</strong></h5>
             <div class="dropdown" style="margin:1px 1px 1px 1px;">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="padding:3px 3px 3px 3px;width:100%;height:50px;text-align:center;font-size:large;">
-                    <span id="dropdowntitle">Select Specific Bird</span>
+                    <span id="dropdowntitle">Eastern Bristlebird</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -109,7 +111,7 @@
                 </ul>
             </div>
             @*Eastern Bristlebird*@
-            <div class="birddetail" id="easternbristlebird" style="display:none;">                
+            <div class="birddetail" id="easternbristlebird" style="display:block;">                
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/eastern-bristlebird.jpg" alt="easternbristlebird" />
@@ -519,29 +521,29 @@
                 label: '%',
                 data: [40.22, 8.55, 7.70, 7.21, 7.09, 7.09, 6.48, 5.62, 5.26, 4.76],
                 backgroundColor: [
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)',
-                    'rgba(255,150,0,0.5)'
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)',
+                    'rgba(44,110,73,0.5)'
                 ],
                 borderColor: [
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)',
-                    'rgba(255,150,0,1)'
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)',
+                    'rgba(44,110,73,1)'
                 ],
                 borderWidth: 1
             }]

@@ -40,15 +40,18 @@
         font-size: 12.5px;
     }
 </style>
-<header class="section background-dark">
-    <div class="line">
-        <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
-        <p class="margin-bottom-0 text-size-16">
-            Explore our Dashboard to view the Threatened Birds vs. Bushfire occurances.<br>
-            You can start by selecting either the Threatened Status of the birds.<br>
-            Distinct Birds details are selectable from the dropdown.
-        </p>
+<header style="padding:3rem 5.25rem;">
+    <div style="background-image:url(../Content/Images/burning-banner-1.jpg);height:245px;width:100%;background-position-x:center;background-repeat:no-repeat;background-size:cover;">
+        <div class="line">
+            <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
+            <p class="margin-bottom-0 text-size-16" style="color:white;">
+                Explore our Dashboard to view the Threatened Birds vs. Bushfire occurances.<br>
+                You can start by selecting either the Threatened Status of the birds.<br>
+                Distinct Birds details are selectable from the dropdown.
+            </p>
+        </div>
     </div>
+    
 </header>
 <br />
 <div class="row">
@@ -88,7 +91,7 @@
             <h5><strong>Bird Details</strong></h5>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="padding:3px 3px 3px 3px;width:100%;height:50px;text-align:center;font-size:large;">
-                    <span id="dropdowntitle">Select Specific Bird</span>
+                    <span id="dropdowntitle">Australasian Bittern</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -121,7 +124,7 @@
                 </ul>
             </div>
             <!-- Australasian Bittern -->
-            <div class="birddetail" id="australasianbittern" style="display:none;">
+            <div class="birddetail" id="australasianbittern" style="display:block;">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:100px;" src="~/Content/Images/Birds/australasian-bittern.jpg" alt="australasianbittern" />

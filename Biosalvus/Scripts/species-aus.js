@@ -483,8 +483,11 @@ map.on('load', function () {
         resetCountInitialValue();
         resetRankingValue();
         //document.getElementById("speciesgroupChart").style.display = "none"; //hide Species Grouping Chart
-        document.getElementById("speciesgroupTable").style.display = "none"; //hide Species Grouping Table
-        document.getElementById("starttable").style.display = "none";
+        resetTableRows();
+        document.getElementById("speciesgroupTable").style.display = "block"; 
+        //document.getElementById("speciesbygroupings").getElementsByTagName("tr").style.display = "block";
+        //document.getElementById("starttable").style.display = "block";
+        resetChartValue();
         $('#statefilter').html('');
         $('#statusfilter').html('');
         $('#groupfilter').html('');
@@ -492,7 +495,7 @@ map.on('load', function () {
     document.getElementById("vulnerablebutton").addEventListener("click", function () {     
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
+            //showLegend();
             resetStateFilter();
             resetRankingValue();
             displayStateFilter(vulnerablearray);
@@ -574,7 +577,7 @@ map.on('load', function () {
     document.getElementById("endangeredbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
+            //showLegend();
             resetStateFilter();
             resetRankingValue();
             displayStateFilter(endangeredarray);
@@ -616,7 +619,7 @@ map.on('load', function () {
     document.getElementById("critendangeredbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
+            //showLegend();
             resetStateFilter();
             resetRankingValue();
             displayStateFilter(critendangeredarray);
@@ -657,7 +660,7 @@ map.on('load', function () {
     document.getElementById("conservationbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
+            //showLegend();
             resetStateFilter();
             resetRankingValue();
             displayStateFilter(conservationarray);
@@ -739,7 +742,7 @@ map.on('load', function () {
     document.getElementById("conservationbutton").addEventListener("click", function () {
         if (nswstate == false && actstate == false && vicstate == false && qldstate == false
             && tasstate == false && wastate == false && ntstate == false && sastate == false) { //IF NO STATE IS HIGHLIGHTED
-            showLegend();
+            //showLegend();
             resetStateFilter();
             resetRankingValue();
             displayStateFilter(conservationarray);
@@ -951,71 +954,71 @@ function displayStateFilter(temparray) {
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
+                    'rgba(255, 25, 0, 0.8)');
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(255, 25, 0, 1)');
+                break;
+            case 2: //RANK 3
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(255, 50, 0, 0.8)');
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(255, 50, 0, 1)');
+                break;
+            case 3: //RANK 4
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
+                    'rgba(255, 75, 0, 0.8)');
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-outline-color',
+                    'rgba(255, 75, 0, 1)');
+                break;
+            case 4: //RANK 5
+                map.setPaintProperty(
+                    temparray[i].state,
+                    'fill-color',
                     'rgba(255, 100, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
                     'rgba(255, 100, 0, 1)');
                 break;
-            case 2: //RANK 3
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-color',
-                    'rgba(255, 200, 0, 0.8)');
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-outline-color',
-                    'rgba(255, 200, 0, 1)');
-                break;
-            case 3: //RANK 4
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-color',
-                    'rgba(200, 255, 0, 0.8)');
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-outline-color',
-                    'rgba(200, 255, 0, 1)');
-                break;
-            case 4: //RANK 5
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-color',
-                    'rgba(100, 255, 0, 0.8)');
-                map.setPaintProperty(
-                    temparray[i].state,
-                    'fill-outline-color',
-                    'rgba(100, 255, 0, 1)');
-                break;
             case 5: //RANK 6
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(0, 255, 0, 0.8)');
+                    'rgba(255, 125, 0, 0.8)');
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(0, 255, 0, 1)'); 
+                    'rgba(255, 125, 0, 1)'); 
                 break;
             case 6: //RANK 7
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(0, 255, 100, 0.8)'); //Dark Gray
+                    'rgba(255, 150, 0, 0.8)'); //Dark Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(0, 255, 100, 1)'); //Dark Gray
+                    'rgba(255, 150, 0, 1)'); //Dark Gray
                 break;
             case 7: //RANK 8
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-color',
-                    'rgba(0, 255, 200, 0.8)'); //Light Gray
+                    'rgba(255, 175, 0, 0.8)'); //Light Gray
                 map.setPaintProperty(
                     temparray[i].state,
                     'fill-outline-color',
-                    'rgba(0, 255, 200, 1)'); //Light Gray
+                    'rgba(255, 175, 0, 1)'); //Light Gray
                 break;
         }
     }
@@ -1057,23 +1060,23 @@ function resetRankingValue() {
     //for (i = 0; i < rankcountarray.length; i++) {
     //    document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
     //}
-    document.getElementById("rank1").innerHTML = 'ACT';
-    document.getElementById("rank2").innerHTML = 'NSW';
-    document.getElementById("rank3").innerHTML = 'VIC';
-    document.getElementById("rank4").innerHTML = 'QLD';
-    document.getElementById("rank5").innerHTML = 'SA';
-    document.getElementById("rank6").innerHTML = 'NT';
-    document.getElementById("rank7").innerHTML = 'WA';
-    document.getElementById("rank8").innerHTML = 'TAS';
+    document.getElementById("rank1").innerHTML = 'ACT: 28';
+    document.getElementById("rank2").innerHTML = 'NSW: 193';
+    document.getElementById("rank3").innerHTML = 'VIC: 128';
+    document.getElementById("rank4").innerHTML = 'QLD: 189';
+    document.getElementById("rank5").innerHTML = 'SA: 144';
+    document.getElementById("rank6").innerHTML = 'NT: 95';
+    document.getElementById("rank7").innerHTML = 'WA: 168';
+    document.getElementById("rank8").innerHTML = 'TAS: 113';
 }
 
-function hideLegend() {
-    document.getElementById("legend").style.display = "none";
-}
+//function hideLegend() {
+//    document.getElementById("legend").style.display = "none";
+//}
 
-function showLegend() {
-    document.getElementById("legend").style.display = "block";
-}
+//function showLegend() {
+//    document.getElementById("legend").style.display = "block";
+//}
 
 
 //sets all state boolean flag to False
@@ -1114,7 +1117,7 @@ function setAllGroupFlagOFF() {
 
 
 //CHARTS.JS GRAPHS JAVASCRIPTS
-var countgroupingarray = [];
+var countgroupingarray = []; //Grouping Count by State-Status
 $(".speciescountbygroupings").each(function () {
     var speciestotalcount = $(".speciestotalcount", this).text().trim();
     var speciescountstatus = $(".speciescountstatus", this).text().trim();
@@ -1129,12 +1132,15 @@ $(".speciescountbygroupings").each(function () {
     countgroupingarray.push(temp);
 });
 
+var stategroupingarray = []; //Grouping Count by State
+var statusgroupingarray = []; //Grouping Count by Status
+
 var barChartData = {
     datakeys: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     labels: ['Amphibians', 'Birds', 'Insects', 'Mammals', 'Reptiles', 'Others'],
     datasets: [{
         label: 'Animal Group Counts',
-        data: [0, 0, 0, 0, 0, 0], //Initial Value
+        data: [62, 377, 26, 315, 171, 107], //Initial Value
         backgroundColor: [
             'rgba(214, 140, 69 , 0.2)',
             'rgba(214, 140, 69 , 0.2)',
@@ -1207,7 +1213,7 @@ document.getElementById("groupChart").onclick = function (evt) {
             $('#groupfilter').html('Others');
             break;
     }
-    document.getElementById("starttable").style.display = "none";
+    //document.getElementById("starttable").style.display = "none";
     displayAllTableRow("speciesbygroupings"); //Refresh to show all rows in Table
     dynamicTable();//Dynamically update table display based on State, Status and Group Selected
 }
@@ -1247,6 +1253,13 @@ function updateChart(state, status) {
     groupChart.update();
 }
 
+function resetChartValue() {
+    var array = [62, 377, 26, 315, 171, 107];
+    for (i = 0; i < array.length; i++) { //Update the bar chart
+        barChartData.datasets[0].data[i] = array[i];
+    };
+    groupChart.update();
+}
 
 //'statefilter' determines the String State Code
 //'statusfilter' determines the String Threatened Status
@@ -1256,6 +1269,7 @@ function groupingTableDisplayFilter(statefilter, statusfilter, groupfilter) {
     var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
     table = document.getElementById("speciesbygroupings");
     tr = table.getElementsByTagName("tr");
+    
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
         td1 = tr[i].getElementsByTagName("td")[1]; //Status
@@ -1271,6 +1285,14 @@ function groupingTableDisplayFilter(statefilter, statusfilter, groupfilter) {
                 tr[i].style.display = "none";
             }
         }
+    }
+}
+
+function resetTableRows() {
+    table = document.getElementById("speciesbygroupings");
+    tr = table.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "";
     }
 }
 

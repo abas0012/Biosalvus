@@ -585,7 +585,7 @@ aside.aside-left {
 }
 
 .background-dark, .primary-color-dark .background-primary {
-    background-color: #d68c45 !important;
+    background-color: #2c6e49 !important;
 }
 /* Background Opacity */
 .background-white.background-transparent, .primary-color-white .background-primary.background-transparent {
@@ -2290,7 +2290,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 blockquote {
-    background: #fefee3 none repeat scroll 0 0;
+    background: rgba(255,255,255, 0.75) none repeat scroll 0 0;
 }
 
     blockquote:before {
