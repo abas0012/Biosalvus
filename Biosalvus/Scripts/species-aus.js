@@ -1332,6 +1332,7 @@ var ctx = document.getElementById('groupChart').getContext('2d');
 var groupChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: barChartData,
+    
     options: {
         scales: {
             yAxes: [{
@@ -1345,6 +1346,8 @@ var groupChart = new Chart(ctx, {
             //    barPercentage: 0.5
             //}]
         },
+        //responsive = true,
+        //maintainAspectRatio: false,
         events: ['click']
     }
 });
@@ -1503,7 +1506,6 @@ function groupingTableDisplayFilter(statefilter, statusfilter, groupfilter) {
     var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
     table = document.getElementById("speciesbygroupings");
     tr = table.getElementsByTagName("tr");
-    
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
         td1 = tr[i].getElementsByTagName("td")[1]; //Status
@@ -1527,7 +1529,6 @@ function groupingTableState(statefilter) {
     var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
     table = document.getElementById("speciesbygroupings");
     tr = table.getElementsByTagName("tr");
-
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
         td1 = tr[i].getElementsByTagName("td")[1]; //Status
@@ -1575,7 +1576,6 @@ function groupingTableGroup(groupfilter) {
     var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
     table = document.getElementById("speciesbygroupings");
     tr = table.getElementsByTagName("tr");
-
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
         td1 = tr[i].getElementsByTagName("td")[1]; //Status
@@ -1586,6 +1586,75 @@ function groupingTableGroup(groupfilter) {
             stateValue = td2.textContent.trim() || td2.innerText.trim();
             groupValue = td3.textContent.trim() || td3.innerText.trim();
             if (groupValue == groupfilter) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+//Dynamic Table State-Status
+function groupingTableStateStatus(statefilter, statusfilter) {
+    // Declare variables
+    var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
+    table = document.getElementById("speciesbygroupings");
+    tr = table.getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td1 = tr[i].getElementsByTagName("td")[1]; //Status
+        td2 = tr[i].getElementsByTagName("td")[2]; //State
+        td3 = tr[i].getElementsByTagName("td")[3]; //Grouping
+        if (td1) {
+            statusValue = td1.textContent.trim() || td1.innerText.trim();
+            stateValue = td2.textContent.trim() || td2.innerText.trim();
+            groupValue = td3.textContent.trim() || td3.innerText.trim();
+            if (stateValue == statefilter && statusValue == statusfilter) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+//Dynamic Table State-Grouping
+function groupingTableStateGrouping(statefilter, groupfilter) {
+    // Declare variables
+    var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
+    table = document.getElementById("speciesbygroupings");
+    tr = table.getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td1 = tr[i].getElementsByTagName("td")[1]; //Status
+        td2 = tr[i].getElementsByTagName("td")[2]; //State
+        td3 = tr[i].getElementsByTagName("td")[3]; //Grouping
+        if (td1) {
+            statusValue = td1.textContent.trim() || td1.innerText.trim();
+            stateValue = td2.textContent.trim() || td2.innerText.trim();
+            groupValue = td3.textContent.trim() || td3.innerText.trim();
+            if (stateValue == statefilter && groupValue == groupfilter) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+//Dynamic Table Status-Grouping
+function groupingTableStatusGrouping(statusfilter, groupfilter) {
+    // Declare variables
+    var statusfilter, statefilter, groupfilter, table, tr, td1, td2, td3, i, statusValue, stateValue, groupValue;
+    table = document.getElementById("speciesbygroupings");
+    tr = table.getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td1 = tr[i].getElementsByTagName("td")[1]; //Status
+        td2 = tr[i].getElementsByTagName("td")[2]; //State
+        td3 = tr[i].getElementsByTagName("td")[3]; //Grouping
+        if (td1) {
+            statusValue = td1.textContent.trim() || td1.innerText.trim();
+            stateValue = td2.textContent.trim() || td2.innerText.trim();
+            groupValue = td3.textContent.trim() || td3.innerText.trim();
+            if (statusValue == statusfilter && groupValue == groupfilter) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -1699,6 +1768,112 @@ function dynamicTable() {
     else if (reptiles == true) groupingTableGroup('Reptiles');
     else if (others == true) groupingTableGroup('Others');
     //State-Status
+    if (actstate == true && vulnerable == true) groupingTableStateStatus('ACT','Vulnerable');
+    else if (actstate == true && conservation == true) groupingTableStateStatus('ACT', 'Conservation Dependent');
+    else if (actstate == true && endangered == true) groupingTableStateStatus('ACT', 'Endangered');
+    else if (actstate == true && critendangered == true) groupingTableStateStatus('ACT', 'Critically Endangered');
+    if (nswstate == true && vulnerable == true) groupingTableStateStatus('NSW', 'Vulnerable');
+    else if (nswstate == true && conservation == true) groupingTableStateStatus('NSW', 'Conservation Dependent');
+    else if (nswstate == true && endangered == true) groupingTableStateStatus('NSW', 'Endangered');
+    else if (nswstate == true && critendangered == true) groupingTableStateStatus('NSW', 'Critically Endangered');
+    if (vicstate == true && vulnerable == true) groupingTableStateStatus('VIC', 'Vulnerable');
+    else if (vicstate == true && conservation == true) groupingTableStateStatus('VIC', 'Conservation Dependent');
+    else if (vicstate == true && endangered == true) groupingTableStateStatus('VIC', 'Endangered');
+    else if (vicstate == true && critendangered == true) groupingTableStateStatus('VIC', 'Critically Endangered');
+    if (qldstate == true && vulnerable == true) groupingTableStateStatus('QLD', 'Vulnerable');
+    else if (qldstate == true && conservation == true) groupingTableStateStatus('QLD', 'Conservation Dependent');
+    else if (qldstate == true && endangered == true) groupingTableStateStatus('QLD', 'Endangered');
+    else if (qldstate == true && critendangered == true) groupingTableStateStatus('QLD', 'Critically Endangered');
+    if (tasstate == true && vulnerable == true) groupingTableStateStatus('TAS', 'Vulnerable');
+    else if (tasstate == true && conservation == true) groupingTableStateStatus('TAS', 'Conservation Dependent');
+    else if (tasstate == true && endangered == true) groupingTableStateStatus('TAS', 'Endangered');
+    else if (tasstate == true && critendangered == true) groupingTableStateStatus('TAS', 'Critically Endangered');
+    if (wastate == true && vulnerable == true) groupingTableStateStatus('WA', 'Vulnerable');
+    else if (wastate == true && conservation == true) groupingTableStateStatus('WA', 'Conservation Dependent');
+    else if (wastate == true && endangered == true) groupingTableStateStatus('WA', 'Endangered');
+    else if (wastate == true && critendangered == true) groupingTableStateStatus('WA', 'Critically Endangered');
+    if (sastate == true && vulnerable == true) groupingTableStateStatus('SA', 'Vulnerable');
+    else if (sastate == true && conservation == true) groupingTableStateStatus('SA', 'Conservation Dependent');
+    else if (sastate == true && endangered == true) groupingTableStateStatus('SA', 'Endangered');
+    else if (sastate == true && critendangered == true) groupingTableStateStatus('SA', 'Critically Endangered');
+    if (ntstate == true && vulnerable == true) groupingTableStateStatus('NT', 'Vulnerable');
+    else if (ntstate == true && conservation == true) groupingTableStateStatus('NT', 'Conservation Dependent');
+    else if (ntstate == true && endangered == true) groupingTableStateStatus('NT', 'Endangered');
+    else if (ntstate == true && critendangered == true) groupingTableStateStatus('NT', 'Critically Endangered');
+    //State-Grouping
+    if (actstate == true && amphibians == true) groupingTableStateGrouping('ACT', 'Amphibians');
+    else if (actstate == true && birds == true) groupingTableStateGrouping('ACT', 'Birds');
+    else if (actstate == true && insects == true) groupingTableStateGrouping('ACT', 'Insects');
+    else if (actstate == true && mammals == true) groupingTableStateGrouping('ACT', 'Mammals');
+    else if (actstate == true && reptiles == true) groupingTableStateGrouping('ACT', 'Reptiles');
+    else if (actstate == true && others == true) groupingTableStateGrouping('ACT', 'Others');
+    if (nswstate == true && amphibians == true) groupingTableStateGrouping('NSW', 'Amphibians');
+    else if (nswstate == true && birds == true) groupingTableStateGrouping('NSW', 'Birds');
+    else if (nswstate == true && insects == true) groupingTableStateGrouping('NSW', 'Insects');
+    else if (nswstate == true && mammals == true) groupingTableStateGrouping('NSW', 'Mammals');
+    else if (nswstate == true && reptiles == true) groupingTableStateGrouping('NSW', 'Reptiles');
+    else if (nswstate == true && others == true) groupingTableStateGrouping('NSW', 'Others');
+    if (vicstate == true && amphibians == true) groupingTableStateGrouping('VIC', 'Amphibians');
+    else if (vicstate == true && birds == true) groupingTableStateGrouping('VIC', 'Birds');
+    else if (vicstate == true && insects == true) groupingTableStateGrouping('VIC', 'Insects');
+    else if (vicstate == true && mammals == true) groupingTableStateGrouping('VIC', 'Mammals');
+    else if (vicstate == true && reptiles == true) groupingTableStateGrouping('VIC', 'Reptiles');
+    else if (vicstate == true && others == true) groupingTableStateGrouping('VIC', 'Others');
+    if (qldstate == true && amphibians == true) groupingTableStateGrouping('QLD', 'Amphibians');
+    else if (qldstate == true && birds == true) groupingTableStateGrouping('QLD', 'Birds');
+    else if (qldstate == true && insects == true) groupingTableStateGrouping('QLD', 'Insects');
+    else if (qldstate == true && mammals == true) groupingTableStateGrouping('QLD', 'Mammals');
+    else if (qldstate == true && reptiles == true) groupingTableStateGrouping('QLD', 'Reptiles');
+    else if (qldstate == true && others == true) groupingTableStateGrouping('QLD', 'Others');
+    if (tasstate == true && amphibians == true) groupingTableStateGrouping('TAS', 'Amphibians');
+    else if (tasstate == true && birds == true) groupingTableStateGrouping('TAS', 'Birds');
+    else if (tasstate == true && insects == true) groupingTableStateGrouping('TAS', 'Insects');
+    else if (tasstate == true && mammals == true) groupingTableStateGrouping('TAS', 'Mammals');
+    else if (tasstate == true && reptiles == true) groupingTableStateGrouping('TAS', 'Reptiles');
+    else if (tasstate == true && others == true) groupingTableStateGrouping('TAS', 'Others');
+    if (wastate == true && amphibians == true) groupingTableStateGrouping('WA', 'Amphibians');
+    else if (wastate == true && birds == true) groupingTableStateGrouping('WA', 'Birds');
+    else if (wastate == true && insects == true) groupingTableStateGrouping('WA', 'Insects');
+    else if (wastate == true && mammals == true) groupingTableStateGrouping('WA', 'Mammals');
+    else if (wastate == true && reptiles == true) groupingTableStateGrouping('WA', 'Reptiles');
+    else if (wastate == true && others == true) groupingTableStateGrouping('WA', 'Others');
+    if (ntstate == true && amphibians == true) groupingTableStateGrouping('NT', 'Amphibians');
+    else if (ntstate == true && birds == true) groupingTableStateGrouping('NT', 'Birds');
+    else if (ntstate == true && insects == true) groupingTableStateGrouping('NT', 'Insects');
+    else if (ntstate == true && mammals == true) groupingTableStateGrouping('NT', 'Mammals');
+    else if (ntstate == true && reptiles == true) groupingTableStateGrouping('NT', 'Reptiles');
+    else if (ntstate == true && others == true) groupingTableStateGrouping('NT', 'Others');
+    if (sastate == true && amphibians == true) groupingTableStateGrouping('SA', 'Amphibians');
+    else if (sastate == true && birds == true) groupingTableStateGrouping('SA', 'Birds');
+    else if (sastate == true && insects == true) groupingTableStateGrouping('SA', 'Insects');
+    else if (sastate == true && mammals == true) groupingTableStateGrouping('SA', 'Mammals');
+    else if (sastate == true && reptiles == true) groupingTableStateGrouping('SA', 'Reptiles');
+    else if (sastate == true && others == true) groupingTableStateGrouping('SA', 'Others');
+    //Status-Grouping
+    if (vulnerable == true && amphibians == true) groupingTableStatusGrouping('Vulnerable','Amphibians');
+    else if (vulnerable == true && birds == true) groupingTableStatusGrouping('Vulnerable', 'Birds');
+    else if (vulnerable == true && insects == true) groupingTableStatusGrouping('Vulnerable', 'Insects');
+    else if (vulnerable == true && mammals == true) groupingTableStatusGrouping('Vulnerable', 'Mammals');
+    else if (vulnerable == true && reptiles == true) groupingTableStatusGrouping('Vulnerable', 'Reptiles');
+    else if (vulnerable == true && others == true) groupingTableStatusGrouping('Vulnerable', 'Others');
+    if (conservation == true && amphibians == true) groupingTableStatusGrouping('Vulnerable', 'Amphibians');
+    else if (conservation == true && birds == true) groupingTableStatusGrouping('Conservation Dependent', 'Birds');
+    else if (conservation == true && insects == true) groupingTableStatusGrouping('Conservation Dependent', 'Insects');
+    else if (conservation == true && mammals == true) groupingTableStatusGrouping('Conservation Dependent', 'Mammals');
+    else if (conservation == true && reptiles == true) groupingTableStatusGrouping('Conservation Dependent', 'Reptiles');
+    else if (conservation == true && others == true) groupingTableStatusGrouping('Conservation Dependent', 'Others');
+    if (endangered == true && amphibians == true) groupingTableStatusGrouping('Endangered', 'Amphibians');
+    else if (endangered == true && birds == true) groupingTableStatusGrouping('Endangered', 'Birds');
+    else if (endangered == true && insects == true) groupingTableStatusGrouping('Endangered', 'Insects');
+    else if (endangered == true && mammals == true) groupingTableStatusGrouping('Endangered', 'Mammals');
+    else if (endangered == true && reptiles == true) groupingTableStatusGrouping('Endangered', 'Reptiles');
+    else if (endangered == true && others == true) groupingTableStatusGrouping('Endangered', 'Others');
+    if (critendangered == true && amphibians == true) groupingTableStatusGrouping('Critically Endangered', 'Amphibians');
+    else if (critendangered == true && birds == true) groupingTableStatusGrouping('Critically Endangered', 'Birds');
+    else if (critendangered == true && insects == true) groupingTableStatusGrouping('Critically Endangered', 'Insects');
+    else if (critendangered == true && mammals == true) groupingTableStatusGrouping('Critically Endangered', 'Mammals');
+    else if (critendangered == true && reptiles == true) groupingTableStatusGrouping('Critically Endangered', 'Reptiles');
+    else if (critendangered == true && others == true) groupingTableStatusGrouping('Critically Endangered', 'Others');
     //ACT-Amphibians
     if (actstate == true && vulnerable == true && amphibians == true) groupingTableDisplayFilter('ACT', 'Vulnerable', 'Amphibians');
     else if (actstate == true && vulnerable == true && amphibians == true) groupingTableDisplayFilter('ACT', 'Vulnerable', 'Amphibians');

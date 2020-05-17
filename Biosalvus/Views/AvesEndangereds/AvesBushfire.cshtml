@@ -41,7 +41,7 @@
     }
 </style>
 <header>
-    <div style="padding:3rem 5.25rem;background-image:url(../Content/Images/burning-banner-1.jpg);height:245px;width:100%;background-position-x:center;background-repeat:no-repeat;background-size:cover;">
+    <div style="padding:3rem 5.25rem;background-image:url(../Content/Images/burning-banner-1.jpg);height:auto;width:auto;background-position-x:center;background-repeat:no-repeat;background-size:cover;">
         <div class="line">
             <h1 class="text-white margin-top-bottom-10 text-size-60 text-line-height-1">@ViewBag.Title</h1>
             <p class="margin-bottom-0 text-size-16" style="color:white;">
@@ -70,6 +70,7 @@
                     </button>
                 </div>
             </div>
+            <strong>Note: </strong>Points on map are selectable for distribution details.
             <div id="map" style="height:450px;"></div> <!--This is the Map-->
             <div class="row" style="margin-top:10px;margin-bottom:10px;">
                 <div class="col-md-6 col-xs-6">Frequency of Bushfire:</div>
@@ -77,7 +78,7 @@
                     <div id="legend" class="legend">
                         <div class="bar"></div>
                         <div class="row">
-                            <div class="col-md-6 col-xs-6" style="text-align:left;">0%</div><div class="col-md-6 col-xs-6" style="text-align:right;">>75%</div>
+                            <div class="col-md-6 col-xs-6" style="text-align:left;">LOW</div><div class="col-md-6 col-xs-6" style="text-align:right;">HIGH</div>
                         </div>
                     </div>
                 </div>

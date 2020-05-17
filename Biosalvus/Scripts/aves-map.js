@@ -512,6 +512,11 @@ map.on('load', function () {
             'visibility',
             'visible'
         );
+        map.setLayoutProperty(
+            'endangeredhighlight',
+            'visibility',
+            'visible'
+        );
         showEndangeredList();
         //hideVulnerableList();
         hideCritEndangeredList();
@@ -523,6 +528,11 @@ map.on('load', function () {
         setAllStatusFlagOFF();
         map.setLayoutProperty(
             'critendangeredbirds',
+            'visibility',
+            'visible'
+        );
+        map.setLayoutProperty(
+            'critendangeredhighlight',
             'visibility',
             'visible'
         );
@@ -623,12 +633,12 @@ function hideBirds() {
         'none'
     );
     map.setLayoutProperty(
-        'currentendangered',
+        'endangeredhighlight',
         'visibility',
         'none'
     );
     map.setLayoutProperty(
-        'currentcritendangered',
+        'critendangeredhighlight',
         'visibility',
         'none'
     );
