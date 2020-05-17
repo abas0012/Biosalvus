@@ -494,8 +494,10 @@ map.on('load', function () {
     document.getElementById("refreshbtn").addEventListener("click", function () {
         setAllStateFlagOFF();
         setAllStatusFlagOFF();
+        setAllGroupFlagOFF(); //TEST
         resetStatusBtnColor();
-        resetStateFilter();
+        //resetStateFilter();
+        setOriginalMapFilter();
         resetCountInitialValue();
         resetRankingValue();
         //document.getElementById("speciesgroupChart").style.display = "none"; //hide Species Grouping Chart
@@ -1102,31 +1104,31 @@ function resetRankingValue() {
     //for (i = 0; i < rankcountarray.length; i++) {
     //    document.getElementById(rankcountarray[i]).innerHTML = 'N/A';
     //}
-    document.getElementById("rank1").innerHTML = 'NSW<br /> 193';
+    document.getElementById("rank1").innerHTML = 'QLD<br /> 176';
     //document.getElementById("rank1").style.backgroundColor = 'white';
     //document.getElementById("rank1").style.color = 'black'
 
-    document.getElementById("rank2").innerHTML = 'QLD<br /> 189';
+    document.getElementById("rank2").innerHTML = 'NSW<br /> 170';
     //document.getElementById("rank2").style.backgroundColor = 'white';
     //document.getElementById("rank2").style.color = 'black'
 
-    document.getElementById("rank3").innerHTML = 'WA<br /> 168';
+    document.getElementById("rank3").innerHTML = 'WA<br /> 151';
     //document.getElementById("rank3").style.backgroundColor = 'white';
     //document.getElementById("rank3").style.color = 'black'
 
-    document.getElementById("rank4").innerHTML = 'SA<br /> 144';
+    document.getElementById("rank4").innerHTML = 'SA<br /> 127';
     //document.getElementById("rank4").style.backgroundColor = 'white';
     //document.getElementById("rank4").style.color = 'black'
 
-    document.getElementById("rank5").innerHTML = 'VIC<br /> 128';
+    document.getElementById("rank5").innerHTML = 'VIC<br /> 120';
     //document.getElementById("rank5").style.backgroundColor = 'white';
     //document.getElementById("rank5").style.color = 'black'
 
-    document.getElementById("rank6").innerHTML = 'TAS<br /> 113';
+    document.getElementById("rank6").innerHTML = 'TAS<br /> 106';
     //document.getElementById("rank6").style.backgroundColor = 'white';
     //document.getElementById("rank6").style.color = 'black'
 
-    document.getElementById("rank7").innerHTML = 'NT<br /> 95';
+    document.getElementById("rank7").innerHTML = 'NT<br /> 84';
     //document.getElementById("rank7").style.backgroundColor = 'white';
     //document.getElementById("rank7").style.color = 'black'
 
@@ -1144,6 +1146,73 @@ function resetBlankRankingValue() {
     document.getElementById("rank6").innerHTML = '';
     document.getElementById("rank7").innerHTML = '';
     document.getElementById("rank8").innerHTML = '';
+}
+
+function setOriginalMapFilter() {
+    map.setPaintProperty(
+        'NSW',
+        'fill-color',
+        'rgba(88,0,0,0.8)'); //
+    map.setPaintProperty(
+        'NSW',
+        'fill-outline-color',
+        'rgba(88,0,0,0.8)'); //
+    map.setPaintProperty(
+        'ACT',
+        'fill-color',
+        'rgba(248,195,2,0.8)'); //
+    map.setPaintProperty(
+        'ACT',
+        'fill-outline-color',
+        'rgba(248,195,2,0.8)'); //
+    map.setPaintProperty(
+        'SA',
+        'fill-color',
+        'rgba(250,0,0,0.8)'); //
+    map.setPaintProperty(
+        'SA',
+        'fill-outline-color',
+        'rgba(250,0,0,0.8)'); //
+    map.setPaintProperty(
+        'VIC',
+        'fill-color',
+        'rgba(248,96,2,0.8)'); //
+    map.setPaintProperty(
+        'VIC',
+        'fill-outline-color',
+        'rgba(248,96,2,0.8)'); //
+    map.setPaintProperty(
+        'TAS',
+        'fill-color',
+        'rgba(250,137,0,0.8)'); //
+    map.setPaintProperty(
+        'TAS',
+        'fill-outline-color',
+        'rgba(250,137,0,0.8)'); //
+    map.setPaintProperty(
+        'QLD',
+        'fill-color',
+        'rgba(128,0,0,0.8)'); //
+    map.setPaintProperty(
+        'QLD',
+        'fill-outline-color',
+        'rgba(128,0,0,0.8)'); //
+    map.setPaintProperty(
+        'WA',
+        'fill-color',
+        'rgba(192,0,0,0.8)'); //
+    map.setPaintProperty(
+        'WA',
+        'fill-outline-color',
+        'rgba(192,0,0,0.8)'); //
+    map.setPaintProperty(
+        'NT',
+        'fill-color',
+        'rgba(250,170,26,0.8)'); //
+    map.setPaintProperty(
+        'NT',
+        'fill-outline-color',
+        'rgba(250,170,26,0.8)'); //
 }
 //function hideLegend() {
 //    document.getElementById("legend").style.display = "none";
@@ -1629,6 +1698,7 @@ function dynamicTable() {
     else if (mammals == true) groupingTableGroup('Mammals');
     else if (reptiles == true) groupingTableGroup('Reptiles');
     else if (others == true) groupingTableGroup('Others');
+    //State-Status
     //ACT-Amphibians
     if (actstate == true && vulnerable == true && amphibians == true) groupingTableDisplayFilter('ACT', 'Vulnerable', 'Amphibians');
     else if (actstate == true && vulnerable == true && amphibians == true) groupingTableDisplayFilter('ACT', 'Vulnerable', 'Amphibians');

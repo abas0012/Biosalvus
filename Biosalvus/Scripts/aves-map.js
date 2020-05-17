@@ -250,8 +250,9 @@ map.on('load', function () {
             'source': 'endangereddatasource',
             'paint': {
                 'circle-color': 'rgba(0,0,0,1)', //BLACK
-                'circle-radius': 3
+                'circle-radius': 4
             },
+            'filter': ['in', 'name', feature.properties['name']], //TEST
             'layout': {
                 'visibility': 'none'
             }
@@ -265,7 +266,7 @@ map.on('load', function () {
             'source': 'critendangereddatasource',
             'paint': {
                 'circle-color': 'rgba(0,0,0,1)', //BLACK
-                'circle-radius': 3
+                'circle-radius': 4
             },
             'layout': {
                 'visibility': 'none'
@@ -614,6 +615,7 @@ map.on('click', 'endangeredbirds', function (e) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
     new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
+    //map.setPaintProperty('endangeredbirds', 'circle-color', 'rgba(0, 0, 255, 1)');//TEST
 });
 // Change the cursor to a pointer when the mouse is over the endangeredbirds layer.
 map.on('mouseenter', 'endangeredbirds', function () {
