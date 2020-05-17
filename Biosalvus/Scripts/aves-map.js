@@ -226,16 +226,43 @@ map.on('load', function () {
         'type': 'geojson',
         'data': endangeredfinaldata
     });
+    map.addSource('currentendangered', {
+        type: 'geojson',
+        data: {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+    map.addLayer({
+        "id": "endangeredhighlight",
+        "source": "currentendangered",
+        'type': 'circle',
+        'paint': {
+            'circle-color': 'rgba(255,0,0,1)', //RED
+            'circle-radius': 5
+        }
+    });
     // Add a GeoJSON source containing place coordinates and information for Critically Endangered Birds.
     map.addSource('critendangereddatasource', {
         'type': 'geojson',
         'data': critendangeredfinaldata
     });
-    //// Add a GeoJSON source containing place coordinates and information for Vulnerable Birds.
-    //map.addSource('vulnerabledatasource', {
-    //    'type': 'geojson',
-    //    'data': vulnerablefinaldata
-    //});
+    map.addSource('currentcritendangered', {
+        type: 'geojson',
+        data: {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+    map.addLayer({
+        "id": "critendangeredhighlight",
+        "source": "currentcritendangered",
+        'type': 'circle',
+        'paint': {
+            'circle-color': 'rgba(255,0,0,1)', //RED
+            'circle-radius': 5
+        }
+    });
     // Add a GeoJSON source containing place coordinates and information for Fire.
     map.addSource('firedatasource', {
         'type': 'geojson',
@@ -250,9 +277,8 @@ map.on('load', function () {
             'source': 'endangereddatasource',
             'paint': {
                 'circle-color': 'rgba(0,0,0,1)', //BLACK
-                'circle-radius': 4
+                'circle-radius': 3.5
             },
-            'filter': ['in', 'name', feature.properties['name']], //TEST
             'layout': {
                 'visibility': 'none'
             }
@@ -266,7 +292,7 @@ map.on('load', function () {
             'source': 'critendangereddatasource',
             'paint': {
                 'circle-color': 'rgba(0,0,0,1)', //BLACK
-                'circle-radius': 4
+                'circle-radius': 3.5
             },
             'layout': {
                 'visibility': 'none'
@@ -596,6 +622,16 @@ function hideBirds() {
         'visibility',
         'none'
     );
+    map.setLayoutProperty(
+        'currentendangered',
+        'visibility',
+        'none'
+    );
+    map.setLayoutProperty(
+        'currentcritendangered',
+        'visibility',
+        'none'
+    );
 }
 
 //sets all status boolean flag to False
@@ -614,8 +650,17 @@ map.on('click', 'endangeredbirds', function (e) {
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
+    var highlight = []; //THIS WORKS
+    for (i = 0; i < endangereddata.length; i++) {
+        if (endangereddata[i].properties.endangeredname == name) {
+            highlight.push(endangereddata[i]);
+        }
+    };
     new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
-    //map.setPaintProperty('endangeredbirds', 'circle-color', 'rgba(0, 0, 255, 1)');//TEST
+    map.getSource('currentendangered').setData({
+        "type": "FeatureCollection",
+        "features": highlight
+    });
 });
 // Change the cursor to a pointer when the mouse is over the endangeredbirds layer.
 map.on('mouseenter', 'endangeredbirds', function () {
@@ -632,7 +677,17 @@ map.on('click', 'critendangeredbirds', function (e) {
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
+    var highlight = []; //THIS WORKS
+    for (i = 0; i < critendangereddata.length; i++) {
+        if (critendangereddata[i].properties.critendangeredname == name) {
+            highlight.push(critendangereddata[i]);
+        }
+    };
     new mapboxgl.Popup().setLngLat(coordinates).setHTML(name).addTo(map);
+    map.getSource('currentcritendangered').setData({
+        "type": "FeatureCollection",
+        "features": highlight
+    });
 });
 // Change the cursor to a pointer when the mouse is over the critendangeredbirds layer.
 map.on('mouseenter', 'critendangeredbirds', function () {
