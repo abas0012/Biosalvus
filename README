@@ -1,1 +1,11 @@
-
+Important Files
+~/Scripts/aves-map.js //Main Javascript File for Threat: Bushfire and Threat: Feral Cats Page
+~/Scripts/species-aus.js //Main Javascript File for Explore Australia Page
+~/Models/EndangeredMapViewModel.cs //Main View Model for Threat: Bushfire and Threat: Feral Cats Page
+~/Models/SpeciesAllViewModels.cs //Main View Model for Explore Australia
+~/Controllers/AvesEndangeredsController.cs //Main Controller for Threat: Bushfire and Threat: Feral Cats Page
+~/Controllers/SpeciesAustraliasController.cs //Main Controller for Explore Australia
+~/Views/AvesEndangereds/AvesThreatenedMap.cshtml //Main View for Threat: Feral Cats Page
+~/Views/AvesEndangereds/AvesBushfire.cshtml //Main View for Threat: Bushfire
+~/Views/SpeciesAustralias/SpeciesMap.cshtml//Main View for Explore Australia
+~/Views/Shared/_Layout.cshtml //Main overrall Website layout page
