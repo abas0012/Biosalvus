@@ -1,4 +1,16 @@
 Important Files
+This Application follows a ASP.NET MVC Framework which has a number of 'One Table'-like Data Structure on the backend.
+The main functionalities of the application is a dynamic dashboard derived from 1-2 Tables in the Database.
+Model here acts as the Entity link to the Database
+Controllers mainly function to create aggregated queries necessary
+Views are to display the dashboard in a HTML/CSS/Javascript format.
+  Majority of the Programming of the Views are done using Javacsript and JQuery.
+
+There are a few External APIs used such as:
+Mapbox: https://docs.mapbox.com/mapbox-gl-js/api/
+Charts.js: https://www.chartjs.org/
+
+Bellow are some key files that are necessary to keep the Application running smoothly.
 ~/Scripts/aves-map.js //Main Javascript File for Threat: Bushfire and Threat: Feral Cats Page
 ~/Scripts/species-aus.js //Main Javascript File for Explore Australia Page
 ~/Models/EndangeredMapViewModel.cs //Main View Model for Threat: Bushfire and Threat: Feral Cats Page
