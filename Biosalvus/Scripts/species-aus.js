@@ -1,10 +1,21 @@
 ﻿/**
 * This is a JavaScript to call MapBox API to load the maps of Species Australia db.
-* I have set the default configuration to enable the geocoder and the navigation control.
-* https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
+* Map Layers uses Australian State Geosjon Polygon as source which have onclick functions associated with it.
+* Charts have onclick functions associated to display data.
+* Buttons have onclick functions associated to display data.
+* The core of the dynamic dashboard is through the use of Boolean Flags; each State, Threat Level Buttons and Animal Grouping have their own.
+* This flags determines the flow logic on each functions.
+*
+* This script is specific to a particular Page of the application at the moment
+*
+* External API used:
+* https://docs.mapbox.com/mapbox-gl-js/api/
+* https://www.chartjs.org/
+* See each respective API Links for more details
 *
 * @author Adhi Baskoro <abas0012@student.monash.edu>
-* Date: 22/04/2020
+* Create Date: 22/04/2020
+* Last Update Date: 25/05/2020
 */
 //STATE BOOLEAN FLAGS
 var nswstate = false; //Boolean Flag for NSW
