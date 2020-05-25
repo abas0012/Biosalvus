@@ -1,14 +1,17 @@
 ﻿/**
-* This is a simple JavaScript to call MapBox API to load Aves Endangered Points.
+* This is a JavaScript file to call MapBox API to load Aves Endangered Points.
 * Filter Function 1: based on Status; Endangered, Vulnerable etc. 
-* Filter Function 2: after Filter 1 drill-down to aves belonging to that group. - Optional
-* I have set the default configuration to enable the geocoder and the navigation control.
-* https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
+* Filter Function 2: after Filter 1 drill-down to Birds belonging to that group. - Optional
 * 
+* External API used:
+* https://docs.mapbox.com/mapbox-gl-js/api/
+* https://www.chartjs.org/
+* See each respective API Links for more details
 *
-* Filter by Text Input 
+* 
 * @author Adhi Baskoro <abas0012@student.monash.edu>
-* Date: 21/04/2020
+* Create Date: 21/04/2020
+* Last Update Date: 25/05/2020
 */
 const TOKEN = "pk.eyJ1IjoiYWJhczAwMTIiLCJhIjoiY2s4cDBvejUxMDJjaTNtcXViemgxYTI1dCJ9.wRCYToYunc4isymyq4Gy_Q";
 var aves = [];
